@@ -8,6 +8,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/mouse.h>
 
 // custom modifier combinations
 #define HYP LS(LC(LA(LGUI)))
@@ -30,7 +31,8 @@
 #define MEHFUN        9
 #define MEHHFUN       10
 #define MEDIA         11
-#define CONFIG        12
+#define MOUSE         12
+#define CONFIG        13
 
 / {
   chosen {
@@ -54,7 +56,7 @@
    &lt CONFIG TILDE &kp Q &kp       W  &kp      E   &kp      R       &kp        T                     &kp       Y   &kp        U     &kp      I      &kp       O   &lt MEHHFUN  P   &lt HYPHFUN  BACKSLASH
    &mt HYP    HASH  &kp A &mt LCTRL S  &mt LALT D   &mt LGUI F       &mt LSHFT  G                     &mt RSHFT H   &mt RGUI   J     &mt RALT K      &mt RCTRL L   &lt MEHFUN  SEMI &lt HYPFUN   DQT
    &mt MEH    GRAVE &kp Z &kp       X  &kp      C   &kp      V       &kp        B                     &kp       N   &kp        M     &kp      COMMA  &kp       DOT &kp         FSLH &lt HFUN     SQT 
-                                   &lt MEDIA    ESC &lt NAV  SPACE   &kp        TAB                   &lt SYM   RET &lt NUM    DEL   &lt FUN BSPC 
+                                   &lt MEDIA    ESC &lt NAV  SPACE   &lt MOUSE  TAB                   &lt SYM   RET &lt NUM    DEL   &lt FUN BSPC 
                         >;
                 };
 
@@ -106,7 +108,7 @@
                 nav_layer {
                         label = "NAV";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      |     |         |       |        |        |                                               |    PASTE |      COPY |     CUT    |    UNDO  |      REDO |           INS|
+// |      |     |         |       |        |        |                                               |    PASTE |      COPY |     CUT    |    UNDO  |      REDO |          INS |
 // |      |     |   LCTRL |  LALT |   LGUI | LSHIFT |                                               |     LEFT |      DOWN |      UP    |    RIGHT |           |     CAPSLOCK |
 // |      |     |         |       |        |        |                                               |     HOME | PAGE_DOWN | PAGE_UP    |    END   |           |              |      
 //                        |       |        |        |                                               |      RET |      BSPC |     DEL    |
@@ -222,6 +224,20 @@
                                                 &kp MEHK(ESC)   &kp SPACE      &kp TAB                &none     &none    &none     
                         >;
                 };
+                mouse_layer {
+                        label = "MOUSE";
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |      |     |         |       |        |        |                                               |              |               |            |               |           |              |
+// |      |     |   LCTRL |  LALT |   LGUI | LSHIFT |                                               |              |               |            |               |           |              |
+// |      |     |         |       |        |        |                                               |              |               |            |               |           |              |      
+//                        |       |        |        |                                               | R CLICK      | L CLICK       |  M CLICK   |
+                        bindings = <
+   &none &none &none     &none    &none    &none                                                     &none           &none          &none        &none             &none         &none   
+   &none &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                 &none           &none          &none        &none             &none         &none
+   &none &none &none     &none    &none    &none                                                     &none           &none          &none        &none             &mkp MB4      &mkp MB5
+                         &none    &none    &none                                                     &mkp RCLK       &mkp LCLK      &mkp MCLK      
+                        >;
+                };
 
                 config_layer {
                         label = "CONFIG";
@@ -231,10 +247,10 @@
 // |      |     |     |     |     |     |                                                           |   BT_CLR |    BT_SEL 1 |   BT_SEL 2 |   BT_SEL 3 |  BT_SEL 4 |      |
 //                    |     |     |     |                                                           |          |             |            |
                          bindings = <
-   &none &none &none     &none    &none    &none                                                     &none       &none        &none        &none        &none        &none 
-   &none &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                 &none       &none        &none        &none        &none        &none
-   &none &none &none     &none    &none    &none                                                     &bt BT_CLR  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none 
-                         &none    &none    &none                                                     &none       &none        &none      
+   &none &none &none     &none    &none    &none                                                     &bt BT_CLR   &none        &none        &none        &none        &none 
+   &none &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                 &none        &none        &none        &none        &none        &none
+   &none &none &none     &none    &none    &none                                                     &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none &none       
+                         &none    &none    &none                                                     &to QWERTY   &to CMMDH    &none      
                         >;
                 };
 
