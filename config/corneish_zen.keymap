@@ -32,7 +32,8 @@
 #define MEHHFUN       10
 #define MEDIA         11
 #define MOUSE         12
-#define CONFIG        13
+#define NUMPAD        13
+#define CONFIG        14
 
 / {
   chosen {
@@ -56,7 +57,7 @@
    &lt CONFIG TILDE &kp Q &kp       W  &kp      E   &kp      R       &kp        T                     &kp       Y   &kp        U     &kp      I      &kp       O   &lt MEHHFUN  P   &lt HYPHFUN  BACKSLASH
    &mt HYP    HASH  &kp A &mt LCTRL S  &mt LALT D   &mt LGUI F       &mt LSHFT  G                     &mt RSHFT H   &mt RGUI   J     &mt RALT K      &mt RCTRL L   &lt MEHFUN  SEMI &lt HYPFUN   DQT
    &mt MEH    GRAVE &kp Z &kp       X  &kp      C   &kp      V       &kp        B                     &kp       N   &kp        M     &kp      COMMA  &kp       DOT &kp         FSLH &lt HFUN     SQT 
-                                   &lt MEDIA    ESC &lt NAV  SPACE   &lt MOUSE  TAB                   &lt SYM   RET &lt NUM    DEL   &lt FUN BSPC 
+                                   &lt MEDIA    ESC &lt NAV  TAB     &lt MOUSE  SPACE                 &lt SYM   RET &lt NUM    DEL   &lt FUN BSPC 
                         >;
                 };
 
@@ -146,7 +147,7 @@
    &kp F13 &kp F7 &kp F8 &kp   F9 &none     &kp SYSREQ                                               &none       &none    &none    &none     &none &none
    &kp F12 &kp F4 &kp F5 &kp   F6 &none     &kp SCROLLLOCK                                           &kp RSHFT   &kp RGUI &kp RALT &kp RCTRL &none &none
    &kp F11 &kp F1 &kp F2 &kp   F3 &kp F10   &kp PAUSE_BREAK                                          &none       &none    &none    &none     &none &none
-                        &kp K_APP &kp SPACE &kp TAB                                                  &none       &none    &none     
+                        &kp K_APP &kp TAB   &kp SPACE                                                &none       &none    &none     
                         >;
                 };
 
@@ -161,7 +162,7 @@
    &kp F23 &kp F17 &kp F18 &kp   F19 &kp F24   &kp SYSREQ                                            &none     &none    &none    &none     &none &none
    &kp F22 &kp F14 &kp F15 &kp   F16 &none     &kp SCROLLLOCK                                        &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &none
    &kp F21 &kp F11 &kp F12 &kp   F13 &kp F20   &kp PAUSE_BREAK                                       &none     &none    &none    &none     &none &none
-                           &kp K_APP &kp SPACE &kp TAB                                               &none     &none    &none     
+                           &kp K_APP &kp TAB   &kp SPACE                                             &none     &none    &none     
                         >;
                 };
 
@@ -176,7 +177,7 @@
   &kp HYPER(F13) &kp HYPER(F7) &kp HYPER(F8)  &kp HYPER(F9)  &none          &kp SYSREQ                &none     &none    &none    &none     &none &none
   &kp HYPER(F12) &kp HYPER(F4) &kp HYPER(F5)  &kp HYPER(F6)  &none          &kp SCROLLLOCK            &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &none
   &kp HYPER(F11) &kp HYPER(F1) &kp HYPER(F2)  &kp HYPER(F3)  &kp HYPER(F10) &kp PAUSE_BREAK           &none     &none    &none    &none     &none &none 
-                                              &kp HYPER(ESC) &kp SPACE      &kp TAB                   &none     &none    &none     
+                                              &kp HYPER(ESC) &kp TAB        &kp SPACE                 &none     &none    &none     
                         >;
                 };
 
@@ -191,7 +192,7 @@
   &kp HYPER(F23) &kp HYPER(F17) &kp HYPER(F18)  &kp HYPER(F19) &kp HYPER(F24) &kp SYSREQ             &none     &none    &none    &none     &none &none
   &kp HYPER(F22) &kp HYPER(F14) &kp HYPER(F15)  &kp HYPER(F16) &none          &kp SCROLLLOCK         &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &none
   &kp HYPER(F21) &kp HYPER(F11) &kp HYPER(F12)  &kp HYPER(F13) &kp HYPER(F20) &kp PAUSE_BREAK        &none     &none    &none    &none     &none &none 
-                                                &kp HYPER(ESC) &kp SPACE      &kp TAB                &none     &none    &none     
+                                                &kp HYPER(ESC) &kp TAB        &kp SPACE              &none     &none    &none     
                         >;
                 };
 
@@ -206,7 +207,7 @@
   &kp MEHK(F13)   &kp MEHK(F7)  &kp MEHK(F8)  &kp MEHK(F9)   &none         &kp SYSREQ                 &none     &none    &none    &none     &none &none
   &kp MEHK(F12)   &kp MEHK(F4)  &kp MEHK(F5)  &kp MEHK(F6)   &none         &kp SCROLLLOCK             &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &none
   &kp MEHK(F11)   &kp MEHK(F1)  &kp MEHK(F2)  &kp MEHK(F3)   &kp MEHK(F10) &kp PAUSE_BREAK            &none     &none    &none    &none     &none &none 
-                                              &kp MEHK(ESC) &kp SPACE      &kp TAB                    &none     &none    &none     
+                                              &kp MEHK(ESC) &kp TAB        &kp SPACE                  &none     &none    &none     
                         >;
                 };
 
@@ -221,7 +222,7 @@
   &kp MEHK(F23)   &kp MEHK(F17)  &kp MEHK(F18)  &kp MEHK(F19)   &kp MEHK(F24)  &kp SYSREQ             &none     &none    &none    &none     &none &none
   &kp MEHK(F22)   &kp MEHK(F14)  &kp MEHK(F15)  &kp MEHK(F16)   &none          &kp SCROLLLOCK         &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &none
   &kp MEHK(F21)   &kp MEHK(F11)  &kp MEHK(F12)  &kp MEHK(F13)   &kp MEHK(F20)  &kp PAUSE_BREAK        &none     &none    &none    &none     &none &none 
-                                                &kp MEHK(ESC)   &kp SPACE      &kp TAB                &none     &none    &none     
+                                                &kp MEHK(ESC)   &kp TAB        &kp SPACE              &none     &none    &none     
                         >;
                 };
                 mouse_layer {
@@ -238,19 +239,34 @@
                          &none    &none    &none                                                     &mkp RCLK       &mkp LCLK      &mkp MCLK      
                         >;
                 };
+                
+                numpad_layer {
+                        label = "NUMPAD";
+// -------------------------------------------------------------------------------------------------------------------------------------------------------
+// | !  |  7  |  8  |  9  | * | / |                                                                 |        |         |        |           |     |      |
+// | -  |  4  |  5  |  6  | + | ^ |                                                                 | RSHIFT | RGUI    | RALT   | RCTRL     |     |      |
+// | .  |  1  |  2  |  3  | , | % |                                                                 |        |         |        |           |     |      |
+//                  |  0  | = | ~ |                                                                 |        |         |        |
+                            bindings = <
+   &kp KP_EQUAL &kp KP_N7 &kp KP_N8 &kp KP_N9   &kp KP_ASTERISK &kp KP_SLASH                          &none     &none    &none    &none       &none &none
+   &kp KP_MINUS &kp KP_N4 &kp KP_N5 &kp KP_N6   &kp KP_PLUS     &kp KP_LPAR                           &kp RSHFT &kp RGUI &kp RALT &kp RCTRL   &none &none
+   &kp KP_DOT   &kp KP_N1 &kp KP_N2 &kp KP_N3   &kp KP_COMMA    &kp KP_RPAR                           &none     &none    &none    &none       &none &none
+                                    &kp KP_N0   &kp KP_CLEAR    &kp KP_ENTER                          &kp KP_COMMA       &none    &none      
+                        >;
+                };
 
                 config_layer {
                         label = "CONFIG";
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      |     |     |     |     |     |                                                           |          |             |            |            |           |      |
-// |      |     |     |     |     |     |                                                           |          |             |            |            |           |      |
-// |      |     |     |     |     |     |                                                           |   BT_CLR |    BT_SEL 1 |   BT_SEL 2 |   BT_SEL 3 |  BT_SEL 4 |      |
-//                    |     |     |     |                                                           |          |             |            |
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------00-------------------------------
+// |      | left reset     |        |          |        |         |                                     |  BT_CLR       |             |            |                  | right reset      | NUMLOCK    |
+// |      | left bootloade |        |          |        |         |                                     |  BT_SEL 0     | BT_SEL 1    | BT_SEL 2   | BT_SEL 3         | right bootloader | CAPSLOCK   |
+// |      |                |        |          |        |         |                                     |  BT_DISC 0    | BT_DISC 1   | BT_DISC 2  | BIT_DISC 3       |                  | SCROLLLOCK |
+//                                  |          |        |         |                                     |  printscreen  | to QWERTY   | to CMMDH   |
                          bindings = <
-   &none &none &none     &none    &none    &none                                                     &bt BT_CLR   &none        &none        &none        &none        &none 
-   &none &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                 &none        &none        &none        &none        &none        &none
-   &none &none &none     &none    &none    &none                                                     &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none &none       
-                         &none    &none    &none                                                     &to QWERTY   &to CMMDH    &none      
+   &none       &sys_reset    &none     &none    &none    &none                                            &bt BT_CLR       &bt BT_PRV     &bt BT_NXT    &bt BT_CLR_ALL  &sys_reset         &kp LNLCK
+   &none       &bootloader   &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                        &bt BT_SEL 0     &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3    &bootloader        &kp CAPSLOCK
+   &none       &none         &none     &none    &none    &none                                            &bt BT_DISC 0    &bt BT_DISC 1  &bt BT_DISC 2 &bt BT_DISC 3   &none              &kp SCROLLLOCK
+                                       &none    &none    &none                                            &kp PRINTSCREEN  &to QWERTY   &to CMMDH      
                         >;
                 };
 
