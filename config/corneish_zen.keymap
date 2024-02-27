@@ -59,16 +59,16 @@
 
                 default_layer {
                         label = "QWERTY";
-// ---------------------------------------------------------------------------------------------------------------------------------------
-// | TILDE |  Q  |  W  |  E  |  R  |  T  |                                                          |  Y  |  U   |  I   |  O  |  P  |  \ |
-// | HASH  |  A  |  S  |  D  |  F  |  G  |                                                          |  H  |  J   |  K   |  L  |  ;  |  " |
-// | GRAVE |  Z  |  X  |  C  |  V  |  B  |                                                          |  N  |  M   |  ,   |  .  |  /  |  ' |
-//                     | ESC | SPC | TAB |                                                          | RET |  DEL | BSPC |
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// | TILDE |  Q  |  W  |  E  |  R  |  T  |                                                            |  Y  |  U   |  I   |  O  |  P  |  \ |
+// | HASH  |  A  |  S  |  D  |  F  |  G  |                                                            |  H  |  J   |  K   |  L  |  ;  |  " |
+// | GRAVE |  Z  |  X  |  C  |  V  |  B  |                                                            |  N  |  M   |  ,   |  .  |  /  |  ' |
+//                     | ESC | SPC | TAB |                                                            | RET |  DEL | BSPC |
                         bindings = <
-   &lt CONFIG TILDE &lt MISC Q &lt DISPLAY W  &kp      E   &kp      R       &kp        T              &kp       Y   &kp        U     &lt LANGUAGE I      &lt INTERNATIONAL O   &lt MEHHFUN  P   &lt HYPHFUN  BACKSLASH
-   &mt HYP    HASH  &kp      A &mt LCTRL   S  &mt LALT D   &mt LGUI F       &mt LSHFT  G              &mt RSHFT H   &mt RGUI   J     &mt RALT     K      &mt RCTRL L           &lt MEHFUN  SEMI &lt HYPFUN   DQT
-   &mt MEH    GRAVE &kp      Z &mt RCTRL   X  &mt RALT C   &mt RGUI V       &mt RSHFT  B              &mt LSHFT N   &mt LGUI   M     &mt LALT COMMA      &mt LCTRL DOT         &kp         FSLH &lt HFUN     SQT 
-                                        &lt VOLUME ESC &lt NAV  TAB     &lt MOUSE  SPACE              &lt SYM   RET &lt NUM    DEL   &lt FUN BSPC 
+   &lt CONFIG TILDE &lt MISC Q &lt DISPLAY W  &lt POWER E   &kp      R       &kp        T              &kp       Y   &kp        U     &lt LANGUAGE I      &lt INTERNATIONAL O   &lt MEHHFUN  P   &lt HYPHFUN  BACKSLASH
+   &mt HYP    HASH  &kp      A &mt LCTRL   S  &mt LALT  D   &mt LGUI F       &mt LSHFT  G              &mt RSHFT H   &mt RGUI   J     &mt RALT     K      &mt RCTRL L           &lt MEHFUN  SEMI &lt HYPFUN   DQT
+   &mt MEH    GRAVE &kp      Z &mt RCTRL   X  &mt RALT  C   &mt RGUI V       &mt RSHFT  B              &mt LSHFT N   &mt LGUI   M     &mt LALT COMMA      &mt LCTRL DOT         &kp         FSLH &lt HFUN     SQT 
+                                        &lt VOLUME ESC  &lt NAV  TAB     &lt MOUSE  SPACE              &lt SYM   RET &lt NUM    DEL   &lt FUN BSPC 
                         >;
                 };
 
@@ -299,16 +299,16 @@
 
                 power_layer {
                         label = "POWER";
-// -----------------------------------------------------------------------------------------------------------------------------
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
-//                     |     |      |         |                                     |      |      |      |
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                     |     C_RESET      |     K_POWER   |    C_POWER     |      |      |       |
+// |     |      |      |     |      |         |                                     |     C_SLEEP_MODE |     K_SLEEP   |    C_SLEEP     |      |      |       | 
+// |     |      |      |     |      |         |                                     |                  |               |                |      |      |       |
+//                     |     |      |         |                                     |     K_LOCK       |     C_AL_LOCK |    C_AL_LOGOFF |
                          bindings = <
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
-                        &none  &none  &none                                           &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                           &kp C_RESET        &kp K_POWER    &kp K_POWER       &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                           &kp C_SLEEP_MODE   &kp K_SLEEP    &kp C_SLEEP       &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                           &none              &none          &none             &none  &none  &none
+                        &none  &none  &none                                           &kp K_LOCK         &kp C_AL_LOCK  &kp C_AL_LOGOFF  
                         >;
                 };
 
