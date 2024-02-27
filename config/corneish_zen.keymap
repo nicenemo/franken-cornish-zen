@@ -261,16 +261,16 @@
 
                 misc_layer {
                         label = "MISC";
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// | TILDE2        |      |         |          |             |             |                              | to QWERTY     | to CMMDH    | CLEAR       | CLEAR_AGAIN      | PRINTSCREEN  | NUMLOCK    |
-// | mt HYP NUHS   |      |   LCTRL |     LALT |   LGUI      | LSHFT       |                              | CAPS WORD     | OUT         | OPER        | EXSEL            |              | CAPSLOCK   |
-// | MEH           |      |   RCTRL |     RALT |   RGUI      | RSHFT       |                              | PAUSE_BREAK   | CRSEL       | PRIOR       | SEPARATOR        | K_EDIT       | SCROLLLOCK |
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// | TILDE2        |      |         |          |             |             |                              | to QWERTY     | to CMMDH    | CLEAR       | CLEAR_AGAIN      | NUMLOCK    |         |
+// | mt HYP NUHS   |      |   LCTRL |     LALT |   LGUI      | LSHFT       |                              | CAPS WORD     | OUT         | OPER        | EXSEL            | CAPSLOCK   |         |
+// | MEH           |      |   RCTRL |     RALT |   RGUI      | RSHFT       |                              | PAUSE_BREAK   | CRSEL       | PRIOR       | SEPARATOR        | SCROLLLOCK |         |
 //                                  |          |             | PRINTSCREEN |                              | SYSREQ        | K_CANCEL    | ALT_ERASE   |
                          bindings = <
-   &kp TILDE2     &none     &none     &none    &none           &none                                          &to QWERTY      &to CMMDH    &kp CLEAR       &kp CLEAR_AGAIN     &kp PRINTSCREEN &kp LNLCK
-   &mt HYP NUHS   &none     &kp LCTRL &kp LALT &kp LGUI        &kp LSHFT                                      &caps_word      &kp OUT      &kp OPER        &kp EXSEL           &none           &kp CAPSLOCK
-   &kp MEH        &none     &kp RCTRL &kp RALT &kp RGUI        &kp RSHFT                                      &kp PAUSE_BREAK &kp CRSEL    &kp PRIOR       &kp SEPARATOR       &kp K_EDIT      &kp SCROLLLOCK
-                                      &none    &none           &none                                          &kp SYSREQ      &kp K_CANCEL &kp ALT_ERASE 
+   &kp TILDE2     &none     &none     &none    &none           &none                                        &to QWERTY      &to CMMDH     &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &none
+   &mt HYP NUHS   &none     &kp LCTRL &kp LALT &kp LGUI        &kp LSHFT                                    &caps_word      &kp OUT       &kp OPER       &kp EXSEL       &kp CAPSLOCK   &none
+   &kp MEH        &none     &kp RCTRL &kp RALT &kp RGUI        &kp RSHFT                                    &kp PAUSE_BREAK &kp CRSEL     &kp PRIOR      &kp SEPARATOR   &kp SCROLLLOCK &none
+                                      &none    &kp K_EDIT      &kp PRINTSCREEN                              &kp SYSREQ      &kp K_CANCEL  &kp ALT_ERASE 
                         >;
                 };
                 config_layer {
