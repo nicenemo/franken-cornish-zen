@@ -262,13 +262,13 @@
                 misc_layer {
                         label = "MISC";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// | TILDE2        |      |         |          |             |             |                              | to QWERTY     | to CMMDH    | CLEAR       | CLEAR_AGAIN      | NUMLOCK    |         |
-// | mt HYP NUHS   |      |   LCTRL |     LALT |   LGUI      | LSHFT       |                              | CAPS WORD     | OUT         | OPER        | EXSEL            | CAPSLOCK   |         |
+// | TILDE2        |      |         |          |             |             |                              | to QWERTY     | to CMMDH    | CLEAR       | CLEAR_AGAIN      | NUMLOCK    | NUBS    |
+// | mt HYP NUHS   |      |   LCTRL |     LALT |   LGUI      | LSHFT       |                              | CAPS WORD     | OUT         | OPER        | EXSEL            | CAPSLOCK   | PIPE2   |
 // | MEH           |      |   RCTRL |     RALT |   RGUI      | RSHFT       |                              | PAUSE_BREAK   | CRSEL       | PRIOR       | SEPARATOR        | SCROLLLOCK |         |
 //                                  |          |             | PRINTSCREEN |                              | SYSREQ        | K_CANCEL    | ALT_ERASE   |
                          bindings = <
-   &kp TILDE2     &none     &none     &none    &none           &none                                        &to QWERTY      &to CMMDH     &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &none
-   &mt HYP NUHS   &none     &kp LCTRL &kp LALT &kp LGUI        &kp LSHFT                                    &caps_word      &kp OUT       &kp OPER       &kp EXSEL       &kp CAPSLOCK   &none
+   &kp TILDE2     &none     &none     &none    &none           &none                                        &to QWERTY      &to CMMDH     &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &kp NUBS
+   &mt HYP NUHS   &none     &kp LCTRL &kp LALT &kp LGUI        &kp LSHFT                                    &caps_word      &kp OUT       &kp OPER       &kp EXSEL       &kp CAPSLOCK   &kp PIPE2
    &kp MEH        &none     &kp RCTRL &kp RALT &kp RGUI        &kp RSHFT                                    &kp PAUSE_BREAK &kp CRSEL     &kp PRIOR      &kp SEPARATOR   &kp SCROLLLOCK &none
                                       &none    &kp K_EDIT      &kp PRINTSCREEN                              &kp SYSREQ      &kp K_CANCEL  &kp ALT_ERASE 
                         >;
