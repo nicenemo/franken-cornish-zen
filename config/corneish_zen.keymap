@@ -258,21 +258,21 @@
                         >;
                 };
 
+
                 misc_layer {
                         label = "MISC";
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      |           |         |          |        |         |                                     |               |             |            |                  |              | NUMLOCK    |
-// | HYP  |           |   LCTRL |     LALT |   LGUI | LSHFT   |                                     |               |             |            |                  |              | CAPSLOCK   |
-// |      |           |         |          |        |         |                                     |               |             |            |                  |              | SCROLLLOCK |
-//                              |          |        |         |                                     | PRINTSCREEN   | to QWERTY   | to CMMDH   |
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |      |           |         |          |            |             |                                | to QWERTY     | to CMMDH    | CLEAR       | CLEAR_AGAIN      | PRINTSCREEN  | NUMLOCK    |
+// | HYP  |           |   LCTRL |     LALT |   LGUI     | LSHFT       |                                | CAPS WORD     | OUT         | OPER        | EXSEL            |              | CAPSLOCK   |
+// | MEH  |           |   RCTRL |     RALT |   RGUI     | RSHFT       |                                | PAUSE_BREAK   | CRSEL       | PRIOR       | SEPARATOR        | K_EDIT       | SCROLLLOCK |
+//                              |          |            | PRINTSCREEN |                                | SYSREQ        | K_CANCEL    | ALT_ERASE   |
                          bindings = <
-   &none     &none     &none     &none    &none    &none                                              &none            &none        &none        &none               &none         &kp LNLCK
-   &kp HYP   &none     &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                          &caps_word       &none        &none        &none               &none         &kp CAPSLOCK
-   &kp MEH   &none     &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                          &none            &none        &none        &none               &none         &kp SCROLLLOCK
-                                 &none    &none    &none                                              &kp PRINTSCREEN  &to QWERTY   &to CMMDH 
+   &none     &none     &none     &none    &none           &none                                          &to QWERTY      &to CMMDH    &kp CLEAR       &kp CLEAR_AGAIN     &kp PRINTSCREEN &kp LNLCK
+   &kp HYP   &none     &kp LCTRL &kp LALT &kp LGUI        &kp LSHFT                                      &caps_word      &kp OUT      &kp OPER        &kp EXSEL           &none           &kp CAPSLOCK
+   &kp MEH   &none     &kp RCTRL &kp RALT &kp RGUI        &kp RSHFT                                      &kp PAUSE_BREAK &kp CRSEL    &kp PRIOR       &kp SEPARATOR       &kp K_EDIT      &kp SCROLLLOCK
+                                 &none    &none           &none                                          &kp SYSREQ      &kp K_CANCEL &kp ALT_ERASE 
                         >;
                 };
-
                 config_layer {
                         label = "CONFIG";
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
