@@ -33,7 +33,8 @@
 #define MEDIA         11
 #define MOUSE         12
 #define NUMPAD        13
-#define CONFIG        14
+#define MISC          14
+#define CONFIG        15
 
 / {
   chosen {
@@ -54,9 +55,9 @@
 // | GRAVE |  Z  |  X  |  C  |  V  |  B  |                                                          |  N  |  M   |  ,   |  .  |  /  |  ' |
 //                     | ESC | SPC | TAB |                                                          | RET |  DEL | BSPC |
                         bindings = <
-   &lt CONFIG TILDE &kp Q &kp       W  &kp      E   &kp      R       &kp        T                     &kp       Y   &kp        U     &kp      I      &kp       O   &lt MEHHFUN  P   &lt HYPHFUN  BACKSLASH
-   &mt HYP    HASH  &kp A &mt LCTRL S  &mt LALT D   &mt LGUI F       &mt LSHFT  G                     &mt RSHFT H   &mt RGUI   J     &mt RALT K      &mt RCTRL L   &lt MEHFUN  SEMI &lt HYPFUN   DQT
-   &mt MEH    GRAVE &kp Z &mt RCTRL X  &mt RALT C   &mt RGUI V       &mt RSHFT  B                     &mt LSHFT N   &mt LGUI   M     &mt LALT COMMA  &mt LCTRL DOT &kp         FSLH &lt HFUN     SQT 
+   &lt CONFIG TILDE &lt MISC Q &kp       W  &kp      E   &kp      R       &kp        T                     &kp       Y   &kp        U     &kp      I      &kp       O   &lt MEHHFUN  P   &lt HYPHFUN  BACKSLASH
+   &mt HYP    HASH  &kp      A &mt LCTRL S  &mt LALT D   &mt LGUI F       &mt LSHFT  G                     &mt RSHFT H   &mt RGUI   J     &mt RALT K      &mt RCTRL L   &lt MEHFUN  SEMI &lt HYPFUN   DQT
+   &mt MEH    GRAVE &kp      Z &mt RCTRL X  &mt RALT C   &mt RGUI V       &mt RSHFT  B                     &mt LSHFT N   &mt LGUI   M     &mt LALT COMMA  &mt LCTRL DOT &kp         FSLH &lt HFUN     SQT 
                                    &lt MEDIA    ESC &lt NAV  TAB     &lt MOUSE  SPACE                 &lt SYM   RET &lt NUM    DEL   &lt FUN BSPC 
                         >;
                 };
@@ -255,18 +256,33 @@
                         >;
                 };
 
+                misc_layer {
+                        label = "MISC";
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |      |                |        |          |        |         |                                     |               |             |            |                  |                  | NUMLOCK    |
+// |      |                |        |          |        |         |                                     |               |             |            |                  |                  | CAPSLOCK   |
+// |      |                |        |          |        |         |                                     |               |             |            |                  |                  | SCROLLLOCK |
+//                                  |          |        |         |                                     |               |             |            |
+                         bindings = <
+   &none       &none         &none     &none    &none    &none                                            &none            &none        &none        &none               &none              &kp LNLCK
+   &none       &none         &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                        &caps_word       &none        &none        &none               &none              &kp CAPSLOCK
+   &none       &none         &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                        &none            &none        &none        &none               &none              &kp SCROLLLOCK
+                                       &none    &none    &none                                            &kp PRINTSCREEN  &none        &none 
+                        >;
+                };
+
                 config_layer {
                         label = "CONFIG";
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------00-------------------------------
-// |      | left reset     |        |          |        |         |                                     |  BT_CLR       |             |            |                  | right reset      | NUMLOCK    |
-// |      | left bootloade |        |          |        |         |                                     |  BT_SEL 0     | BT_SEL 1    | BT_SEL 2   | BT_SEL 3         | right bootloader | CAPSLOCK   |
-// |      |                |        |          |        |         |                                     |  BT_DISC 0    | BT_DISC 1   | BT_DISC 2  | BIT_DISC 3       |                  | SCROLLLOCK |
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------00------------------------------------
+// |      | left reset     |        |          |        |         |                                     |  BT_CLR       | BT_PRV      | BT_NXT     | BT_CLR_AL        |                  | right reset     |
+// |      | left bootloade |        |          |        |         |                                     |  BT_SEL 0     | BT_SEL 1    | BT_SEL 2   | BT_SEL 3         | BT_SEL 4         |right bootloader | 
+// |      |                |        |          |        |         |                                     |  BT_DISC 0    | BT_DISC 1   | BT_DISC 2  | BIT_DISC 3       | BT_DISC 4        |                 |
 //                                  |          |        |         |                                     |  printscreen  | to QWERTY   | to CMMDH   |
                          bindings = <
-   &none       &sys_reset    &none     &none    &none    &none                                            &bt BT_CLR       &bt BT_PRV     &bt BT_NXT    &bt BT_CLR_ALL  &sys_reset         &kp LNLCK
-   &none       &bootloader   &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                        &bt BT_SEL 0     &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3    &bootloader        &kp CAPSLOCK
-   &none       &none         &none     &none    &none    &none                                            &bt BT_DISC 0    &bt BT_DISC 1  &bt BT_DISC 2 &bt BT_DISC 3   &none              &kp SCROLLLOCK
-                                       &none    &none    &none                                            &kp PRINTSCREEN  &to QWERTY   &to CMMDH      
+   &none       &sys_reset    &none     &none    &none    &none                                            &bt BT_CLR       &bt BT_PRV     &bt BT_NXT    &bt BT_CLR_ALL  &none              &sys_reset 
+   &none       &bootloader   &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                        &bt BT_SEL 0     &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3    &bt BT_SEL 4       &bootloader
+   &none       &none         &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                        &bt BT_DISC 0    &bt BT_DISC 1  &bt BT_DISC 2 &bt BT_DISC 3   &bt BT_DISC 4      &none
+                                       &none    &none    &none                                            &to QWERTY       &to CMMDH      &none      
                         >;
                 };
 
