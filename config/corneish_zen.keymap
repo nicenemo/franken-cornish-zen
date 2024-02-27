@@ -9,6 +9,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/outputs.h>
 
 // custom modifier combinations
 #define HYP LS(LC(LA(LGUI)))
@@ -274,14 +275,14 @@
                 config_layer {
                         label = "CONFIG";
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      | left reset     |        |          |        |         |                                     |  BT_CLR       | BT_PRV      | BT_NXT     | BT_CLR_AL        |       | right reset      |
-// |      | left bootloade |        |          |        |         |                                     |  BT_SEL 1     | BT_SEL 2    | BT_SEL 3   | BT_SEL 4         |       | right bootloader | 
-// |      |                |        |          |        |         |                                     |  BT_DISC 0    | BT_DISC 1   | BT_DISC 2  | BIT_DISC 3       |       |                  |
+// |      | left reset     |        |          |        |         |                                     |  BT_CLR       | BT_PRV      | BT_NXT     | BT_CLR_AL        | OUT_USB       | right reset      |
+// |      | left bootloade |        |          |        |         |                                     |  BT_SEL 1     | BT_SEL 2    | BT_SEL 3   | BT_SEL 4         | OUT_BLE       | right bootloader | 
+// |      |                |        |          |        |         |                                     |  BT_DISC 0    | BT_DISC 1   | BT_DISC 2  | BIT_DISC 3       | OUT_TOG       |                  |
 //                                  |          |        |         |                                     |  to QWERTY    | to CMMDH    |            |
                          bindings = <
-   &none       &sys_reset    &none     &none     &none    &none                                           &bt BT_CLR       &bt BT_PRV     &bt BT_NXT    &bt BT_CLR_ALL  &none   &sys_reset 
-   &none       &bootloader   &none     &none     &none    &none                                           &bt BT_SEL 1     &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4    &none   &bootloader
-   &none       &none         &none     &none     &none    &none                                           &bt BT_DISC 1    &bt BT_DISC 2  &bt BT_DISC 3 &bt BT_DISC 4   &none   &none
+   &none       &sys_reset    &none     &none     &none    &none                                           &bt BT_CLR       &bt BT_PRV     &bt BT_NXT    &bt BT_CLR_ALL  &out OUT_USB    &sys_reset 
+   &none       &bootloader   &none     &none     &none    &none                                           &bt BT_SEL 1     &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4    &out OUT_BLE    &bootloader
+   &none       &none         &none     &none     &none    &none                                           &bt BT_DISC 1    &bt BT_DISC 2  &bt BT_DISC 3 &bt BT_DISC 4   &out OUT_TOG    &none
                                        &none     &none    &none                                           &to QWERTY       &to CMMDH      &none      
                         >;
                 };
