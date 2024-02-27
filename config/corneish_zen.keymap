@@ -10,6 +10,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/ext_power.h>
 
 // custom modifier combinations
 #define HYP LS(LC(LA(LGUI)))
@@ -263,27 +264,27 @@
 // |      |           |         |          |        |         |                                     |               |             |            |                  |              | NUMLOCK    |
 // | HYP  |           |   LCTRL |     LALT |   LGUI | LSHFT   |                                     |               |             |            |                  |              | CAPSLOCK   |
 // |      |           |         |          |        |         |                                     |               |             |            |                  |              | SCROLLLOCK |
-//                              |          |        |         |                                     |               |             |            |
+//                              |          |        |         |                                     | PRINTSCREEN   | to QWERTY   | to CMMDH   |
                          bindings = <
    &none     &none     &none     &none    &none    &none                                              &none            &none        &none        &none               &none         &kp LNLCK
    &kp HYP   &none     &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                          &caps_word       &none        &none        &none               &none         &kp CAPSLOCK
    &kp MEH   &none     &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                          &none            &none        &none        &none               &none         &kp SCROLLLOCK
-                                 &none    &none    &none                                              &kp PRINTSCREEN  &none        &none 
+                                 &none    &none    &none                                              &kp PRINTSCREEN  &to QWERTY   &to CMMDH 
                         >;
                 };
 
                 config_layer {
                         label = "CONFIG";
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      | left reset     |        |          |        |         |                                     |  BT_CLR       | BT_PRV      | BT_NXT     | BT_CLR_AL        | OUT_USB       | right reset      |
-// |      | left bootloade |        |          |        |         |                                     |  BT_SEL 1     | BT_SEL 2    | BT_SEL 3   | BT_SEL 4         | OUT_BLE       | right bootloader | 
-// |      |                |        |          |        |         |                                     |  BT_DISC 0    | BT_DISC 1   | BT_DISC 2  | BIT_DISC 3       | OUT_TOG       |                  |
-//                                  |          |        |         |                                     |  to QWERTY    | to CMMDH    |            |
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |      | left reset      |        |          |        |         |                                     |  BT_CLR         | BT_PRV         | BT_NXT     | BT_CLR_AL        | OUT_USB       | right reset      |
+// |      | left bootloader |        |          |        |         |                                     |  BT_SEL 1       | BT_SEL 2       | BT_SEL 3   | BT_SEL 4         | OUT_BLE       | right bootloader | 
+// |      |                 |        |          |        |         |                                     |  BT_DISC 0      | BT_DISC 1      | BT_DISC 2  | BIT_DISC 3       | OUT_TOG       |                  |
+//                                   |          |        |         |                                     |  EP_TOG         | EP_ON          | EP_OFF     |
                          bindings = <
-   &none       &sys_reset    &none     &none     &none    &none                                           &bt BT_CLR       &bt BT_PRV     &bt BT_NXT    &bt BT_CLR_ALL  &out OUT_USB    &sys_reset 
-   &none       &bootloader   &none     &none     &none    &none                                           &bt BT_SEL 1     &bt BT_SEL 2   &bt BT_SEL 3  &bt BT_SEL 4    &out OUT_BLE    &bootloader
-   &none       &none         &none     &none     &none    &none                                           &bt BT_DISC 1    &bt BT_DISC 2  &bt BT_DISC 3 &bt BT_DISC 4   &out OUT_TOG    &none
-                                       &none     &none    &none                                           &to QWERTY       &to CMMDH      &none      
+   &none       &sys_reset    &none     &none     &none    &none                                           &bt BT_CLR        &bt BT_PRV       &bt BT_NXT    &bt BT_CLR_ALL  &out OUT_USB    &sys_reset 
+   &none       &bootloader   &none     &none     &none    &none                                           &bt BT_SEL 1      &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_SEL 4    &out OUT_BLE    &bootloader
+   &none       &none         &none     &none     &none    &none                                           &bt BT_DISC 1     &bt BT_DISC 2    &bt BT_DISC 3 &bt BT_DISC 4   &out OUT_TOG    &none
+                                       &none     &none    &none                                           &ext_power EP_TOG &ext_power EP_ON &ext_power EP_OFF      
                         >;
                 };
 
