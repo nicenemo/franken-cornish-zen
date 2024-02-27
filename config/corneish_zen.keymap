@@ -21,22 +21,30 @@
 
 
 // layers
-#define QWERTY        0
-#define CMMDH         1
-#define SYM           2
-#define NUM           3
-#define NAV           4
-#define FUN           5
-#define HFUN          6
-#define HYPFUN        7
-#define HYPHFUN       8
-#define MEHFUN        9
-#define MEHHFUN       10
-#define MEDIA         11
-#define MOUSE         12
-#define NUMPAD        13
-#define MISC          14
-#define CONFIG        15
+#define QWERTY          0
+#define CMMDH           1
+#define SYM             2
+#define NUM             3
+#define NAV             4
+#define FUN             5
+#define HFUN            6
+#define HYPFUN          7
+#define HYPHFUN         8
+#define MEHFUN          9
+#define MEHHFUN        10
+#define VOLUME         11
+#define MOUSE          12
+#define NUMPAD         13
+#define MISC           14
+#define CONFIG         15
+#define POWER          16
+#define INPUT_ASSIST   17
+#define APPLICATIONS   18
+#define CONSUMER       19
+#define DISPLAY        20
+#define MEDIA          21
+#define INTERNATIONAL  22
+#define LANGUAGE       23
 
 / {
   chosen {
@@ -60,7 +68,7 @@
    &lt CONFIG TILDE &lt MISC Q &kp       W  &kp      E   &kp      R       &kp        T                &kp       Y   &kp        U     &kp      I      &kp       O   &lt MEHHFUN  P   &lt HYPHFUN  BACKSLASH
    &mt HYP    HASH  &kp      A &mt LCTRL S  &mt LALT D   &mt LGUI F       &mt LSHFT  G                &mt RSHFT H   &mt RGUI   J     &mt RALT K      &mt RCTRL L   &lt MEHFUN  SEMI &lt HYPFUN   DQT
    &mt MEH    GRAVE &kp      Z &mt RCTRL X  &mt RALT C   &mt RGUI V       &mt RSHFT  B                &mt LSHFT N   &mt LGUI   M     &mt LALT COMMA  &mt LCTRL DOT &kp         FSLH &lt HFUN     SQT 
-                                   &lt MEDIA    ESC &lt NAV  TAB     &lt MOUSE  SPACE                 &lt SYM   RET &lt NUM    DEL   &lt FUN BSPC 
+                                     &lt VOLUME ESC &lt NAV  TAB     &lt MOUSE  SPACE                 &lt SYM   RET &lt NUM    DEL   &lt FUN BSPC 
                         >;
                 };
 
@@ -124,8 +132,8 @@
                         >;
                 };
 
-                media_layer {
-                        label = "MEDIA";
+                volume_layer {
+                        label = "VOLUME";
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |      |     |         |       |        |       |                                                 |     RECORD |                  |       SHUFFLE |             SLOW |   SLOW TRACKING |       CAPTIONS |
 // | HYP  |     |   LCTRL |  LALT |   LGUI | LSHFT |                                                 |       PREV |      VOLUME DOWN |     VOLUME UP |             NEXT |                 | DATA ON SCREEN |
@@ -289,5 +297,124 @@
                         >;
                 };
 
+                power_layer {
+                        label = "POWER";
+// -----------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+//                     |     |      |         |                                     |      |      |      |
+                         bindings = <
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+                        &none  &none  &none                                           &none  &none  &none 
+                        >;
+                };
+
+                input_assist_layer {
+                        label = "I. Assist";
+// -----------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+//                     |     |      |         |                                     |      |      |      |
+                         bindings = <
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+                        &none  &none  &none                                           &none  &none  &none 
+                        >;
+                };
+
+                applications_layer {
+                        label = "APPLICATIONS";
+// -----------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+//                     |     |      |         |                                     |      |      |      |
+                         bindings = <
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+                        &none  &none  &none                                           &none  &none  &none 
+                        >;
+                };
+
+                consumer_layer {
+                        label = "CONSUMER";
+// -----------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+//                     |     |      |         |                                     |      |      |      |
+                         bindings = <
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+                        &none  &none  &none                                           &none  &none  &none 
+                        >;
+                };
+
+                display_layer {
+                        label = "DISPLAY";
+// -----------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+//                     |     |      |         |                                     |      |      |      |
+                         bindings = <
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+                        &none  &none  &none                                           &none  &none  &none 
+                        >;
+                };
+
+                media_layer {
+                        label = "MEDIA";
+// -----------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+//                     |     |      |         |                                     |      |      |      |
+                         bindings = <
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+                        &none  &none  &none                                           &none  &none  &none 
+                        >;
+                };
+
+                international_layer {
+                        label = "INT";
+// -----------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+//                     |     |      |         |                                     |      |      |      |
+                         bindings = <
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+                        &none  &none  &none                                           &none  &none  &none 
+                        >;
+                };
+
+                lang_layer {
+                        label = "LANG";
+// -----------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
+// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
+//                     |     |      |         |                                     |      |      |      |
+                         bindings = <
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
+                        &none  &none  &none                                           &none  &none  &none 
+                        >;
+                };
         };
 };
