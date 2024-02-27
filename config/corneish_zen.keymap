@@ -270,7 +270,7 @@
    &kp TILDE2     &none     &none     &none      &none          &none                                        &to QWERTY      &to CMMDH     &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &kp NUBS
    &mt HYP NUHS   &none     &kp LCTRL &kp LALT   &kp LGUI       &kp LSHFT                                    &caps_word      &kp OUT       &kp OPER       &kp EXSEL       &kp CAPSLOCK   &kp PIPE2
    &kp MEH        &none     &kp RCTRL &kp RALT   &kp RGUI       &kp RSHFT                                    &kp PAUSE_BREAK &kp CRSEL     &kp PRIOR      &kp SEPARATOR   &kp SCROLLLOCK &none
-                                      &kp SYSREQ &kp K_EDIT     &kp PRINTSCREEN                              &none           &kp K_CANCEL  &kp ALT_ERASE 
+                                      &kp SYSREQ &kp K_EDIT     &kp PRINTSCREEN                              &kp RET2        &kp K_CANCEL  &kp ALT_ERASE 
                         >;
                 };
                 config_layer {
