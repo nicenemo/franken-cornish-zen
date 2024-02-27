@@ -113,14 +113,14 @@
                         label = "NAV";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |      |     |         |      |      |       |                                                   |    PASTE |      COPY |     CUT    |    UNDO  |      REDO |          INS |
-// | HYP  |     |   LCTRL | LALT | LGUI | LSHFT |                                                   |     LEFT |      DOWN |      UP    |    RIGHT |           |     CAPSLOCK |
+// | HYP  |     |   LCTRL | LALT | LGUI | LSHFT |                                                   |     LEFT |      DOWN |      UP    |    RIGHT |           |              |
 // | MEH  |     |   RCTRL | RALT | RGUI | RSHFT |                                                   |     HOME | PAGE_DOWN | PAGE_UP    |    END   |           |              |      
-//                        |      |      |       |                                                   |      RET |      BSPC |     DEL    |
+//                        |      |      | K_APP |                                                   |      RET |      BSPC |     DEL    |
                         bindings = <
    &none   &none &none     &none    &none    &none                                                    &kp K_PASTE &kp    K_COPY &kp   K_CUT &kp K_UNDO &kp K_REDO  &kp      INS
-   &kp HYP &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &kp LEFT    &kp      DOWN &kp      UP &kp RIGHT  &none       &none
+   &kp HYP &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &kp LEFT    &kp      DOWN &kp      UP &kp RIGHT  &none       &none   
    &kp MEH &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &kp HOME    &kp PAGE_DOWN &kp PAGE_UP &kp END    &none       &none
-                           &none    &none    &none                                                    &kp RET     &kp BSPC      &kp     DEL      
+                           &none    &none    &kp K_APP                                                    &kp RET     &kp BSPC      &kp     DEL      
                         >;
                 };
 
@@ -145,12 +145,12 @@
 // |   F13 |   F7 |   F8 |     F9 |           |       |                                             |           |        |        |         |     |      |
 // |   F12 |   F4 |   F5 |     F6 |           |       |                                             | RSHFT     | RGUI   | RALT   | RCTRL   |     | HYP  |
 // |   F11 |   F1 |   F2 |     F3 |     F10   |       |                                             | LSHFT     | LGUI   | LALT   | LCTRL   |     | MEH  |
-//                       |    APP |     SPACE |   TAB |                                             |           |        |        |
+//                       |        |     SPACE |   TAB |                                             |           |        |        |
                          bindings = <
    &kp F13 &kp F7 &kp F8 &kp   F9 &none     &kp SYSREQ                                               &none       &none    &none    &none     &none &none
    &kp F12 &kp F4 &kp F5 &kp   F6 &none     &kp SCROLLLOCK                                           &kp RSHFT   &kp RGUI &kp RALT &kp RCTRL &none &kp HYP
    &kp F11 &kp F1 &kp F2 &kp   F3 &kp F10   &kp PAUSE_BREAK                                          &kp LSHFT   &kp LGUI &kp LALT &kp LCTRL &none &kp MEH
-                        &kp K_APP &kp TAB   &kp SPACE                                                &none       &none    &none     
+                        &none     &kp TAB   &kp SPACE                                                &none       &none    &none     
                         >;
                 };
 
@@ -160,12 +160,12 @@
 // |   F23 |   F17 |   F18 |     F19 |   F24  |        |                                            |        |         |        |         |     |      |
 // |   F22 |   F14 |   F15 |     F16 |        |        |                                            | RSHFT  | RGUI    | RALT   | RCTRL   |     | HYP  |
 // |   F21 |   F11 |   F12 |     F13 |   F20  |        |                                            | LSHFT  | LGUI    | LALT   | LCTRL   |     | MEH  |
-//                         |     APP | SPACE  |    TAB |                                            |        |         |        |
+//                         |         | SPACE  |    TAB |                                            |        |         |        |
                          bindings = <
    &kp F23 &kp F17 &kp F18 &kp   F19 &kp F24   &kp SYSREQ                                            &none     &none    &none    &none     &none &none
    &kp F22 &kp F14 &kp F15 &kp   F16 &none     &kp SCROLLLOCK                                        &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp HYP
    &kp F21 &kp F11 &kp F12 &kp   F13 &kp F20   &kp PAUSE_BREAK                                       &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp MEH
-                           &kp K_APP &kp TAB   &kp SPACE                                             &none     &none    &none     
+                           &none     &kp TAB   &kp SPACE                                             &none     &none    &none     
                         >;
                 };
 
