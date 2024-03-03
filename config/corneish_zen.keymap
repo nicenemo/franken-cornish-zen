@@ -142,7 +142,7 @@
                         bindings = <
    &none    &none &none     &none    &none    &none                                                    &none            &kp K_VOLUME_DOWN    &kp K_VOLUME_UP    &none                 &none                &none 
    &kp HYP  &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &kp C_BASS_BOOST &kp C_VOLUME_DOWN    &kp C_VOLUME_UP    &kp C_ALT_AUDIO_INC   &none                &none
-   &kp MEH  &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &none            &kp K_VOLUME_DOWN2   &none              &none                 &none                &none
+   &kp MEH  &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &none            &kp K_VOLUME_DOWN2   &kp K_VOLUME_UP2   &none                 &none                &none
                             &none    &none    &none                                                    &kp K_MUTE       &kp C_MUTE           &kp K_MUTE2
                         >;
                 };
