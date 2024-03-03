@@ -135,14 +135,14 @@
                 volume_layer {
                         label = "VOLUME";
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      |     |         |       |        |       |                                                 |              |       K_VOL_DOWN     |     K_VOl_UP     |                     |                 |                |
+// |      |     |         |       |        |       |                                                 |              |       K_VOLUME_DOWN  |     K_VOlUME_UP  |                     |                 |                |
 // | HYP  |     |   LCTRL |  LALT |   LGUI | LSHFT |                                                 | C_BASS_BOOST |       C_VOLUME_DOWN  |     C_VOLUME_UP  |     C_ALT_AUDIO_INC |                 |                |
 // | MEH  |     |   RCTRL |  RALT |   RGUI | RSHFT |                                                 |              |       K_VOLUME_DOWN2 |     K_VOlUME_UP2 |                     |                 |                |      
 //                        |       |        |       |                                                 | K_MUTE       |       C_MUTE         |     K_MUTE2      |
                         bindings = <
-   &none    &none &none     &none    &none    &none                                                    &none            &none                &none              &none                 &none                &none 
+   &none    &none &none     &none    &none    &none                                                    &none            &kp K_VOLUME_DOWN    &kp K_VOLUME_UP    &none                 &none                &none 
    &kp HYP  &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &kp C_BASS_BOOST &kp C_VOLUME_DOWN    &kp C_VOLUME_UP    &kp C_ALT_AUDIO_INC   &none                &none
-   &kp MEH  &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &none            &none                &none              &none                 &none                &none
+   &kp MEH  &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &none            &kp K_VOLUME_DOWN2   &none              &none                 &none                &none
                             &none    &none    &none                                                    &kp K_MUTE       &kp C_MUTE           &kp K_MUTE2
                         >;
                 };
