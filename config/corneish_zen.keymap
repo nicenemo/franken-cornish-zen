@@ -12,6 +12,7 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include "numpad_extra_keys.h"
+#include "consumer_extra_keys.h"
 
 // custom modifier combinations
 #define HYP LS(LC(LA(LGUI)))
@@ -42,7 +43,7 @@
 #define CONFIG         17
 #define POWER          18
 #define INPUT_ASSIST   19
-#define APPLICATIONS   20
+#define APPLAUNCH      20
 #define CONSUMER       21
 #define DISPLAY        22
 #define MEDIA          23
@@ -68,10 +69,10 @@
 // | GRAVE |  Z  |  X  |  C  |  V  |  B  |                                                            |  N  |  M   |  ,   |  .  |  /  |  ' |
 //                     | ESC | SPC | TAB |                                                            | RET |  DEL | BSPC |
                         bindings = <
-   &lt CONFIG TILDE &lt MISC Q &lt DISPLAY W  &lt POWER E   &kp      R       &kp        T              &kp          Y   &lt MEHHFUN       U     &lt MEHFUN   I      &lt HYPHFUN O   &lt HYPFUN         P    &lt HFUN  BACKSLASH
-   &mt HYP    HASH  &kp      A &mt LCTRL   S  &mt LALT  D   &mt LGUI F       &mt LSHFT  G              &mt RSHFT    H   &mt RGUI          J     &mt RALT     K      &mt RCTRL   L   &lt INTERNATIONAL  SEMI &mt HYP   DQT
-   &mt MEH    GRAVE &kp      Z &mt RCTRL   X  &mt RALT  C   &mt RGUI V       &mt RSHFT  B              &mt LSHFT    N   &mt LGUI          M     &mt LALT COMMA      &mt LCTRL   DOT &lt LANGUAGE       FSLH &mt MEH   SQT 
-                                        &lt VOLUME ESC  &lt NAV  TAB     &lt MOUSE  SPACE              &lt SYM      RET &lt NUM           DEL   &lt FUN BSPC 
+   &lt CONFIG TILDE &lt MISC Q &lt DISPLAY W  &lt POWER E   &kp      R       &lt NPCTRL  T             &lt MEHFUN   Y   &lt HYPFUN        U     &lt FUN      I      &kp         O   &lt NPSYM          P    &lt NUMPAD  BACKSLASH
+   &mt HYP    HASH  &kp      A &mt LCTRL   S  &mt LALT  D   &mt LGUI F       &mt LSHFT   G             &mt RSHFT    H   &mt RGUI          J     &mt RALT     K      &mt RCTRL   L   &kp                SEMI &mt HYP     DQT
+   &mt MEH    GRAVE &kp      Z &mt RCTRL   X  &mt RALT  C   &mt RGUI V       &mt RSHFT   B             &mt LSHFT    N   &mt LGUI          M     &mt LALT COMMA      &mt LCTRL   DOT &lt LANGUAGE       FSLH &mt MEH     SQT 
+                                        &lt VOLUME ESC  &lt NAV  TAB     &lt MOUSE   SPACE             &lt SYM      RET &lt NUM           DEL   &lt APPLAUNCH BSPC 
                         >;
                 };
 
@@ -130,8 +131,8 @@
                         bindings = <
    &none   &none &none     &none    &none    &none                                                    &kp K_PASTE &kp    K_COPY &kp   K_CUT &kp K_UNDO &kp K_REDO  &kp      INS
    &kp HYP &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &kp LEFT    &kp      DOWN &kp      UP &kp RIGHT  &none       &none   
-   &kp MEH &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &kp HOME    &kp PAGE_DOWN &kp PAGE_UP &kp END    &none       &none
-                           &none    &none    &kp K_APP                                                &kp RET     &kp DEL      &kp  BSPC      
+   &kp MEH &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &kp HOME    &kp PAGE_DOWN &kp PAGE_UP &kp END    &none       &kp    K_APP
+                           &kp DEL  &none    &kp BSPC                                                 &kp RET     &kp DEL      &kp  BSPC      
                         >;
                 };
 
@@ -152,15 +153,15 @@
 
                 fun_layer {
                         label = "FUN";
-// -------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       |   F7 |   F8 |     F9 |           |       |                                             |           |        |        |         |     |      |
-// |       |   F4 |   F5 |     F6 |           |       |                                             | RSHFT     | RGUI   | RALT   | RCTRL   |     | HYP  |
-// |       |   F1 |   F2 |     F3 |           |       |                                             | LSHFT     | LGUI   | LALT   | LCTRL   |     | MEH  |
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |       |   F7 |   F8 |     F9 |           |       |                                             |           |        |        |         |       HFUN |          |
+// |       |   F4 |   F5 |     F6 |           |       |                                             | RSHFT     | RGUI   | RALT   | RCTRL   |            |     HYP  |
+// |       |   F1 |   F2 |     F3 |           |       |                                             | LSHFT     | LGUI   | LALT   | LCTRL   |            |     MEH  |
 //                       |    F10 |           |       |                                             |           |        |        |
                          bindings = <
-   &none     &kp F7 &kp F8 &kp   F9  &none     &none                                                  &none       &none    &none    &none     &none &none
-   &none     &kp F4 &kp F5 &kp   F6  &none     &none                                                  &kp RSHFT   &kp RGUI &kp RALT &kp RCTRL &none &kp HYP
-   &none     &kp F1 &kp F2 &kp   F3  &none     &none                                                  &kp LSHFT   &kp LGUI &kp LALT &kp LCTRL &none &kp MEH
+   &none     &kp F7 &kp F8 &kp   F9  &none     &none                                                  &none       &none    &none    &none     &mo   HFUN   &none
+   &none     &kp F4 &kp F5 &kp   F6  &none     &none                                                  &kp RSHFT   &kp RGUI &kp RALT &kp RCTRL &none        &kp HYP
+   &none     &kp F1 &kp F2 &kp   F3  &none     &none                                                  &kp LSHFT   &kp LGUI &kp LALT &kp LCTRL &none        &kp MEH
                            &kp   F10 &kp DEL   &kp   BSPC                                             &none       &none    &none     
                         >;
                 };
@@ -182,15 +183,15 @@
 
                 hypfun_layer {
                         label = "HPR FUN";
-// ------------------------------------------------------------------------------------------------------------------------------------------------
-// |    |          F7 |          F8 |           F9  |        |             |                   |        |         |        |         |     |      |
-// |    |          F4 |          F5 |           F6  |        |             |                   | RSHFT  | RGUI    | RALT   | RCTRL   |     | HYP  |
-// |    |          F1 |          F2 |           F3  |        |             |                   | LSHFT  | LGUI    | LALT   | LCTRL   |     | MEH  |
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------
+// |    |          F7 |          F8 |           F9  |        |             |                   |        |         |        | HYPHFUN     |     |            |
+// |    |          F4 |          F5 |           F6  |        |             |                   | RSHFT  | RGUI    | RALT   | RCTRL       |     |       HYP  |
+// |    |          F1 |          F2 |           F3  |        |             |                   | LSHFT  | LGUI    | LALT   | LCTRL       |     |       MEH  |
 //                                  |               |        |             |                   |        |         |        |
                          bindings = <
-  &none  &kp HYPER(F7) &kp HYPER(F8)  &kp HYPER(F9)  &none      &none                            &none     &none    &none    &none     &none &none
-  &none  &kp HYPER(F4) &kp HYPER(F5)  &kp HYPER(F6)  &none      &none                            &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp HYP
-  &none  &kp HYPER(F1) &kp HYPER(F2)  &kp HYPER(F3)  &none      &none                            &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp MEH
+  &none  &kp HYPER(F7) &kp HYPER(F8)  &kp HYPER(F9)  &none      &none                            &none     &none    &none    &mo HYPHFUN   &none &none
+  &none  &kp HYPER(F4) &kp HYPER(F5)  &kp HYPER(F6)  &none      &none                            &kp RSHFT &kp RGUI &kp RALT &kp RCTRL     &none &kp   HYP
+  &none  &kp HYPER(F1) &kp HYPER(F2)  &kp HYPER(F3)  &none      &none                            &kp LSHFT &kp LGUI &kp LALT &kp LCTRL     &none &kp   MEH
                                       &kp HYPER(F10) &kp   DEL  &kp   BSPC                       &none     &none    &none     
                         >;
                 };
@@ -212,15 +213,15 @@
 
                 mehfun_layer {
                         label = "MEH FUN";
-// -----------------------------------------------------------------------------------------------------------------------------------------------
-// |    |         F7 |          F8 |          F9  |        |         |                        |        |         |        |         |     |      |
-// |    |         F4 |          F5 |          F6  |        |         |                        | RSHFT  | RGUI    | RALT   | RCTRL   |     | HYP  |
-// |    |         F1 |          F2 |          F3  |        |         |                        | LSHFT  | LGUI    | LALT   | LCTRL   |     | MEH  |
-//                                 |          F10 |        |         |                        |        |         |        |
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |    |         F7 |          F8 |          F9  |        |         |                        |        |         | MEHHFUN     |             |     |              |
+// |    |         F4 |          F5 |          F6  |        |         |                        | RSHFT  | RGUI    | RALT        |       RCTRL |     |         HYP  |
+// |    |         F1 |          F2 |          F3  |        |         |                        | LSHFT  | LGUI    | LALT        |       LCTRL |     |         MEH  |
+//                                 |          F10 |        |         |                        |        |         |             |
                          bindings = <
-  &none  &kp MEHK(F7)  &kp MEHK(F8)  &kp MEHK(F9)   &none    &none                              &none     &none    &none    &none     &none &none
-  &none  &kp MEHK(F4)  &kp MEHK(F5)  &kp MEHK(F6)   &none    &none                              &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp HYP
-  &none  &kp MEHK(F1)  &kp MEHK(F2)  &kp MEHK(F3)   &none    &none                              &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp MEH
+  &none  &kp MEHK(F7)  &kp MEHK(F8)  &kp MEHK(F9)   &none    &none                              &none     &none    &kp MEHHFUN   &none         &none  &none
+  &none  &kp MEHK(F4)  &kp MEHK(F5)  &kp MEHK(F6)   &none    &none                              &kp RSHFT &kp RGUI &kp RALT      &kp   RCTRL   &none  &kp    HYP
+  &none  &kp MEHK(F1)  &kp MEHK(F2)  &kp MEHK(F3)   &none    &none                              &kp LSHFT &kp LGUI &kp LALT      &kp   LCTRL   &none  &kp    MEH
                                      &kp MEHK(F10)  &kp DEL  &kp BSPC                           &none     &none    &none     
                         >;
                 };
@@ -304,15 +305,15 @@
                 misc_layer {
                         label = "MISC";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// | TILDE2        |      |         |          |             | to NUMPAD   |                              | to QWERTY     | to CMMDH    | CLEAR       | CLEAR_AGAIN      | NUMLOCK    | NUBS    |
-// | mt HYP NUHS   |      |   LCTRL |     LALT |   LGUI      | LSHFT       |                              | CAPS WORD     | OUT         | OPER        | EXSEL            | CAPSLOCK   | PIPE2   |
-// | MEH           |      |   RCTRL |     RALT |   RGUI      | RSHFT       |                              | PAUSE_BREAK   | CRSEL       | PRIOR       | SEPARATOR        | SCROLLLOCK |         |
-//                                  |    SYSREQ|             | PRINTSCREEN |                              |               | K_CANCEL    | ALT_ERASE   |
+// | TILDE2        |      |         |             |                | to NUMPAD   |                              | to QWERTY     | to CMMDH    | CLEAR       | CLEAR_AGAIN      | NUMLOCK    | NUBS    |
+// | mt HYP NUHS   |      |   LCTRL |     LALT    |   LGUI         | LSHFT       |                              | CAPS WORD     | OUT         | OPER        | EXSEL            | CAPSLOCK   | PIPE2   |
+// | MEH           |      |   RCTRL |     RALT    |   RGUI         | RSHFT       |                              | PAUSE_BREAK   | CRSEL       | PRIOR       | SEPARATOR        | SCROLLLOCK |         |
+//                                  |    SYSREQ   |                | PRINTSCREEN |                              |               | K_CANCEL    | ALT_ERASE   |
                          bindings = <
-   &kp TILDE2     &none     &none     &none      &none          &to NUMPAD                                   &to QWERTY      &to CMMDH     &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &kp NUBS
-   &mt HYP NUHS   &none     &kp LCTRL &kp LALT   &kp LGUI       &kp LSHFT                                    &caps_word      &kp OUT       &kp OPER       &kp EXSEL       &kp CAPSLOCK   &kp PIPE2
-   &kp MEH        &none     &kp RCTRL &kp RALT   &kp RGUI       &kp RSHFT                                    &kp PAUSE_BREAK &kp CRSEL     &kp PRIOR      &kp SEPARATOR   &kp SCROLLLOCK &none
-                                      &kp SYSREQ &kp K_EDIT     &kp PRINTSCREEN                              &kp RET2        &kp K_CANCEL  &kp ALT_ERASE 
+   &kp TILDE2     &none     &none     &none         &none             &to NUMPAD                                   &to QWERTY      &to CMMDH     &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &kp NUBS
+   &mt HYP NUHS   &none     &kp LCTRL &kp LALT      &kp LGUI          &kp LSHFT                                    &caps_word      &kp OUT       &kp OPER       &kp EXSEL       &kp CAPSLOCK   &kp PIPE2
+   &kp MEH        &none     &kp RCTRL &kp RALT      &kp RGUI          &kp RSHFT                                    &kp PAUSE_BREAK &kp CRSEL     &kp PRIOR      &kp SEPARATOR   &kp SCROLLLOCK &none
+                                      &kp SYSREQ    &kp K_EDIT        &kp PRINTSCREEN                              &kp RET2        &kp K_CANCEL  &kp ALT_ERASE 
                         >;
                 };
                 config_layer {
@@ -360,33 +361,33 @@
                         >;
                 };
 
-                applications_layer {
-                        label = "APPLICATIONS";
-// -----------------------------------------------------------------------------------------------------------------------------
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
-//                     |     |      |         |                                     |      |      |      |
+                application_launch_layer {
+                        label = "APPL";
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |       C_AL_MY_COMPUTER |     C_AL_DOCUMENTS   |     C_AL_FILE_BROWSER |     C_AL_WWW                |      K_WWW             |      C_AL_CALCULATOR      |                        |           C_AL_IMAGE_BROWSER |              C_AL_NEWS         |           C_AL_TASK_MANAGER        |   C_AL_KEYBOARD_LAYOUT  |      C_AL_COMMAND_LINE                          |          C_AL_HELP         |
+// |       C_AL_EMAIL       |     C_AL_CALENDAR    |     C_AL_CONTACTS     |     C_AL_INSTANT_MESSAGING  |      C_AL_NETWORK_CHAT |      C_AL_TEXT_EDITOR     |                        |           C_AL_AUDIO_BROWSER |              C_AL_VOICEMAIL    |           C_AL_AV_CAPTURE_PLAYBACK |   C_AL_THESAURUS        |      C_AL_TELEPHONY_DIALER                      |          K_HELP            |
+// |       C_AL_WORD        |     C_AL_SPREADSHEET |     C_AL_PRESENTATION |     C_AL_DATABASE           |      C_AL_JOURNAL      |      C_AL_GRAPHICS_EDITOR |                        |           C_AL_MOVIE_BROWSER |              C_AL_FINANCE      |           C_AL_SPELLCHECK          |   C_AL_GRAMMAR_CHECK    |      C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT       |          C_AL_OEM_FEATURES |
+//                                                 |     C_AL_PRESENTATION |     C_AL_PREV_TASK          |      C_AL_NEXT_TASK    |      C_AL_SELECT_TASK     |                        |                              |                                |                                    | 
                          bindings = <
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
-                        &none  &none  &none                                           &none  &none  &none 
+   &kp     C_AL_MY_COMPUTER   &kp C_AL_DOCUMENTS     &kp C_AL_FILE_BROWSER   &kp C_AL_WWW                   &kp K_WWW               &kp  C_AL_CALCULATOR                                 &kp       C_AL_IMAGE_BROWSER   &kp          C_AL_NEWS           &kp      C_AL_TASK_MANAGER         &kp       C_AL_KEYBOARD_LAYOUT   &kp   C_AL_CONTROL_PANEL                      &kp     C_AL_HELP
+   &mt HYP C_AL_EMAIL         &kp C_AL_CALENDAR      &kp C_AL_CONTACTS       &kp C_AL_INSTANT_MESSAGING     &kp C_AL_NETWORK_CHAT   &kp  C_AL_TEXT_EDITOR                                &mt RSHFT C_AL_AUDIO_BROWSER   &mt RGUI     C_AL_VOICEMAIL      &mt RALT C_AL_AV_CAPTURE_PLAYBACK  &mt RCTRL C_AL_THESAURUS         &kp   C_AL_TELEPHONY_DIALER                   &mt HYP K_HELP
+   &mt MEH C_AL_WORD          &kp C_AL_SPREADSHEET   &kp C_AL_PRESENTATION   &kp C_AL_DATABASE              &kp C_AL_JOURNAL        &kp  C_AL_GRAPHICS_EDITOR                            &mt LSHFT C_AL_MOVIE_BROWSER   &mt LGUI     C_AL_FINANCE        &mt LALT C_AL_SPELLCHECK           &mt LCTRL C_AL_GRAMMAR_CHECK     &kp   C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT    &mt MEH C_AL_OEM_FEATURES
+                                                                             &kp C_AL_PREV_TASK             &kp C_AL_NEXT_TASK      &kp  C_AL_SELECT_TASK                                &kp       C_AL_SCREEN_SAVER    &kp          C_AL_COMMAND_LINE   &none 
                         >;
                 };
 
                 consumer_layer {
                         label = "CONSUMER";
-// -----------------------------------------------------------------------------------------------------------------------------
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
-//                     |     |      |         |                                     |      |      |      |
+// ----------------------------     ---------------------------------------------------------------------------------------------------
+// |       |      |      |     |      |         |                                          |      |      |      |      |      |       |
+// |       |      |      |     |      |         |                                          |      |      |      |      |      |       | 
+// |       |      |      |     |      |         |                                          |      |      |      |      |      |       |
+//                       |     |      |         |                                          |      |      |      |
                          bindings = <
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
-                        &none  &none  &none                                           &none  &none  &none 
+   &kp   AT  &none       &none  &none  &none  &none                                          &none  &none  &none  &none  &none  &none 
+   &none     &none       &none  &none  &none  &none                                          &none  &none  &none  &none  &none  &none
+   &none     &none       &none  &none  &none  &none                                          &none  &none  &none  &none  &none  &none
+                                &none  &none  &none                                          &none  &none  &none 
                         >;
                 };
 
@@ -437,15 +438,15 @@
 
                 language_layer {
                         label = "LANG";
-// ------------------------------------------------------------------------------------------------------------------------------------------
-// |     |    LANG7 |    LANG8 |    LANG9  |          |              |                            |      |      |      |      |      |       |
-// |     |    LANG4 |    LANG5 |    LANG6  |          |              |                            |      |      |      |      |      |       | 
-// |     |    LANG1 |    LANG2 |    LANG3  |          |              |                            |      |      |      |      |      |       |
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |     |    LANG7 |    LANG8 |    LANG9  |          |              |                            |      |      |      |                 |                |       |
+// |     |    LANG4 |    LANG5 |    LANG6  |          |              |                            |      |      |      |                 |                |       | 
+// |     |    LANG1 |    LANG2 |    LANG3  |          |              |                            |      |      |      |                 |                |       |
 //                                   |     |          |              |                            |      |      |      |
                          bindings = <
-   &none  &kp LANG7  &kp LANG8  &kp LANG9   &none       &none                                      &none  &none  &none  &none  &none  &none 
-   &none  &kp LANG4  &kp LANG5  &kp LANG6   &none       &none                                      &none  &none  &none  &none  &none  &none
-   &none  &kp LANG1  &kp LANG2  &kp LANG3   &none       &none                                      &none  &none  &none  &none  &none  &none
+   &none  &kp LANG7  &kp LANG8  &kp LANG9   &none       &none                                      &none  &none  &none  &none              &none              &none 
+   &none  &kp LANG4  &kp LANG5  &kp LANG6   &none       &none                                      &none  &none  &none  &none              &none              &none
+   &none  &kp LANG1  &kp LANG2  &kp LANG3   &none       &none                                      &none  &none  &none  &mo INTERNATIONAL  &none              &none
                                 &none       &kp    TAB  &kp   SPACE                                &none  &none  &none 
                         >;
                 };
