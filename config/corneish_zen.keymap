@@ -24,7 +24,7 @@
 
 // layers
 #define QWERTY          0
-#define CMMDH           1
+#define NEO2            1
 #define SYM             2
 #define NUM             3
 #define NAV             4
@@ -76,20 +76,21 @@
                         >;
                 };
 
-                cmmdh_layer {
-                        label = "CM MDH";
-// ---------------------------------------------------------------------------------------------------------------------------------------
-// | TILDE |  Q  |  W  |  F  |  P  |  B  |                                                          |  J  |  L   |  U   |  Y  |  ;  |  \ |
-// | HASH  |  A  |  R  |  S  |  T  |  G  |                                                          |  M  |  N   |  E   |  I  |  O  |  " |
-// | GRAVE |  Z  |  X  |  C  |  D  |  V  |                                                          |  K  |  H   |  ,   |  .  |  /  |  ' |
-//                     | ESC | SPC | TAB |                                                          | RET |  DEL | BSPC |
+                neo2_layer {
+                        label = "NEO2";
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// | TILDE |  X  |  V  |  L  |  C  |  W  |                                                            |  K  |  H   |  G   |  F  |  Q  |  \ |
+// | HASH  |  U  |  I  |  A  |  E  |  O  |                                                            |  S  |  N   |  R   |  T  |  D  |  " |
+// | GRAVE |  /  |  ,  |  "  |  P  |  Z  |                                                            |  B  |  M   |  J   |  .  |  Y  |  ' |
+//                     | ESC | SPC | TAB |                                                            | RET |  DEL | BSPC |
                         bindings = <
-   &trans    &kp Q &kp       W  &kp      F   &kp      P   &kp        B                               &kp       J   &kp        L     &kp      U      &kp       Y   &kp SEMI &trans
-   &trans    &kp A &mt LCTRL R  &mt LALT S   &mt LGUI T   &mt LSHFT  G                               &mt RSHFT M   &mt RGUI   N     &mt RALT E      &mt RCTRL I   &kp O    &trans
-   &trans    &kp Z &mt RCTRL X  &mt RALT C   &mt RGUI D   &mt RSHFT  V                               &mt LSHFT K   &mt LGUI   H     &mt LALT COMMA  &mt LCTRL DOT &kp FSLH &trans
-                                &trans       &trans       &trans                                     &trans        &trans           &trans 
+   &lt CONFIG TILDE &lt MISC X        &lt DISPLAY V         &lt POWER     L   &kp      C       &lt NPCTRL  W                      &lt MEHFUN   K   &lt HYPFUN  H  &lt FUN  G      &kp         F   &lt NPSYM    Q    &lt NUMPAD  BACKSLASH
+   &mt HYP    HASH  &kp      U        &mt LCTRL   I         &mt LALT      A   &mt LGUI E       &mt LSHFT   O                      &mt RSHFT    S   &mt RGUI    N  &mt RALT R      &mt RCTRL   T   &kp          D    &mt HYP     DQT
+   &mt MEH    GRAVE &kp      KP_SLASH &mt RCTRL   COMMA     &mt RALT   SEMI   &mt RGUI P       &mt RSHFT   Z                      &mt LSHFT    B   &mt LGUI    M  &mt LALT J      &mt LCTRL   DOT &lt LANGUAGE Y    &mt MEH     SQT 
+                                                            &lt VOLUME  ESC   &lt NAV  TAB     &lt MOUSE   SPACE                  &lt SYM      RET &lt NUM   DEL  &lt APPLAUNCH BSPC 
                         >;
                 };
+
 
                 number_layer {
                         label = "NUM";
@@ -305,12 +306,12 @@
                 misc_layer {
                         label = "MISC";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// | TILDE2        |      |         |             |                | to NUMPAD   |                              | to QWERTY     | to CMMDH    | CLEAR       | CLEAR_AGAIN      | NUMLOCK    | NUBS    |
+// | TILDE2        |      |         |             |                | to NUMPAD   |                              | to QWERTY     | to NEO2     | CLEAR       | CLEAR_AGAIN      | NUMLOCK    | NUBS    |
 // | mt HYP NUHS   |      |   LCTRL |     LALT    |   LGUI         | LSHFT       |                              | CAPS WORD     | OUT         | OPER        | EXSEL            | CAPSLOCK   | PIPE2   |
 // | MEH           |      |   RCTRL |     RALT    |   RGUI         | RSHFT       |                              | PAUSE_BREAK   | CRSEL       | PRIOR       | SEPARATOR        | SCROLLLOCK |         |
 //                                  |    SYSREQ   |                | PRINTSCREEN |                              |               | K_CANCEL    | ALT_ERASE   |
                          bindings = <
-   &kp TILDE2     &none     &none     &none         &none             &to NUMPAD                                   &to QWERTY      &to CMMDH     &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &kp NUBS
+   &kp TILDE2     &none     &none     &none         &none             &to NUMPAD                                   &to QWERTY      &to NEO2     &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &kp NUBS
    &mt HYP NUHS   &none     &kp LCTRL &kp LALT      &kp LGUI          &kp LSHFT                                    &caps_word      &kp OUT       &kp OPER       &kp EXSEL       &kp CAPSLOCK   &kp PIPE2
    &kp MEH        &none     &kp RCTRL &kp RALT      &kp RGUI          &kp RSHFT                                    &kp PAUSE_BREAK &kp CRSEL     &kp PRIOR      &kp SEPARATOR   &kp SCROLLLOCK &none
                                       &kp SYSREQ    &kp K_EDIT        &kp PRINTSCREEN                              &kp RET2        &kp K_CANCEL  &kp ALT_ERASE 
