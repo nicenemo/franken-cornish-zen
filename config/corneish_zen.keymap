@@ -15,11 +15,17 @@
 #include "consumer_extra_keys.h"
 
 // custom modifier combinations
-#define HYP LS(LC(LA(LGUI)))
-#define HYPER(key) LS(LC(LA(LG(key))))
+#define LHYP LS(LC(LA(LGUI)))
+#define LHYPER(key) LS(LC(LA(LG(key))))
 
-#define MEH LS(LC(LALT))
-#define MEHK(key) LS(LC(LA(key)))
+#define LMEH LS(LC(LALT))
+#define LMEHK(key) LS(LC(LA(key)))
+
+#define RHYP RS(RC(RA(RGUI)))
+#define RHYPER(key) RS(RC(RA(RG(key))))
+
+#define RMEH RS(RC(RALT))
+#define RMEHK(key) RS(RC(RA(key)))
 
 
 // layers
@@ -70,8 +76,8 @@
 //                     | ESC | SPC | TAB |                                                            | RET |  DEL | BSPC |
                         bindings = <
    &lt CONFIG TILDE &lt MISC Q &lt DISPLAY W  &lt POWER E   &kp      R       &lt NPCTRL  T             &lt MEHFUN   Y   &lt HYPFUN        U     &lt FUN      I      &kp         O   &lt NPSYM          P    &lt NUMPAD  BACKSLASH
-   &mt HYP    HASH  &kp      A &mt LCTRL   S  &mt LALT  D   &mt LGUI F       &mt LSHFT   G             &mt RSHFT    H   &mt RGUI          J     &mt RALT     K      &mt RCTRL   L   &kp                SEMI &mt HYP     DQT
-   &mt MEH    GRAVE &kp      Z &mt RCTRL   X  &mt RALT  C   &mt RGUI V       &mt RSHFT   B             &mt LSHFT    N   &mt LGUI          M     &mt LALT COMMA      &mt LCTRL   DOT &lt LANGUAGE       FSLH &mt MEH     SQT 
+   &mt LHYP    HASH  &kp      A &mt LCTRL   S  &mt LALT  D   &mt LGUI F       &mt LSHFT   G             &mt RSHFT    H   &mt RGUI          J     &mt RALT     K      &mt RCTRL   L   &kp                SEMI &mt RHYP     DQT
+   &mt LMEH    GRAVE &kp      Z &mt RCTRL   X  &mt RALT  C   &mt RGUI V       &mt RSHFT   B             &mt LSHFT    N   &mt LGUI          M     &mt LALT COMMA      &mt LCTRL   DOT &lt LANGUAGE       FSLH &mt RMEH     SQT 
                                         &lt VOLUME ESC  &lt NAV  TAB     &lt MOUSE   SPACE             &lt SYM      RET &lt NUM           DEL   &lt APPLAUNCH BSPC 
                         >;
                 };
@@ -85,8 +91,8 @@
 //                     | ESC | SPC | TAB |                                                            | RET |  DEL | BSPC |
                         bindings = <
    &lt CONFIG TILDE &lt MISC X        &lt DISPLAY V         &lt POWER     L   &kp      C       &lt NPCTRL  W                      &lt MEHFUN   K   &lt HYPFUN  H  &lt FUN  G      &kp         F   &lt NPSYM    Q    &lt NUMPAD  BACKSLASH
-   &mt HYP    HASH  &kp      U        &mt LCTRL   I         &mt LALT      A   &mt LGUI E       &mt LSHFT   O                      &mt RSHFT    S   &mt RGUI    N  &mt RALT R      &mt RCTRL   T   &kp          D    &mt HYP     DQT
-   &mt MEH    GRAVE &kp      KP_SLASH &mt RCTRL   COMMA     &mt RALT   SEMI   &mt RGUI P       &mt RSHFT   Z                      &mt LSHFT    B   &mt LGUI    M  &mt LALT J      &mt LCTRL   DOT &lt LANGUAGE Y    &mt MEH     SQT 
+   &mt LHYP    HASH  &kp      U        &mt LCTRL   I         &mt LALT      A   &mt LGUI E       &mt LSHFT   O                      &mt RSHFT    S   &mt RGUI    N  &mt RALT R      &mt RCTRL   T   &kp          D    &mt RHYP     DQT
+   &mt LMEH    GRAVE &kp      KP_SLASH &mt RCTRL   COMMA     &mt RALT   SEMI   &mt RGUI P       &mt RSHFT   Z                      &mt LSHFT    B   &mt LGUI    M  &mt LALT J      &mt LCTRL   DOT &lt LANGUAGE Y    &mt RMEH     SQT 
                                                             &lt VOLUME  ESC   &lt NAV  TAB     &lt MOUSE   SPACE                  &lt SYM      RET &lt NUM   DEL  &lt APPLAUNCH BSPC 
                         >;
                 };
@@ -96,13 +102,13 @@
                         label = "NUM";
 // -------------------------------------------------------------------------------------------------------------------------------------------------------
 // | !  |  7  |  8  |  9  | * | / |                                                                 |        |         |        |           |     |      |
-// | -  |  4  |  5  |  6  | + | ^ |                                                                 | RSHFT  | RGUI    | RALT   | RCTRL     |     | HYP  |
-// | .  |  1  |  2  |  3  | , | % |                                                                 | LSHFT  | LGUI    | LALT   | LCTRL     |     | MEH  |
+// | -  |  4  |  5  |  6  | + | ^ |                                                                 | RSHFT  | RGUI    | RALT   | RCTRL     |     | RHYP  |
+// | .  |  1  |  2  |  3  | , | % |                                                                 | LSHFT  | LGUI    | LALT   | LCTRL     |     | RMEH  |
 //                  |  0  | = | ~ |                                                                 |        |         |        |
                             bindings = <
    &kp EXCL     &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9   &kp KP_ASTERISK &kp KP_SLASH                &none     &none    &none    &none       &none &none
-   &kp KP_MINUS &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6   &kp KP_PLUS     &kp CARET                   &kp RSHFT &kp RGUI &kp RALT &kp RCTRL   &none &kp HYP
-   &kp KP_DOT   &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3   &kp KP_COMMA    &kp PERCENT                 &kp LSHFT &kp LGUI &kp LALT &kp LCTRL   &none &kp MEH
+   &kp KP_MINUS &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6   &kp KP_PLUS     &kp CARET                   &kp RSHFT &kp RGUI &kp RALT &kp RCTRL   &none &kp RHYP
+   &kp KP_DOT   &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3   &kp KP_COMMA    &kp PERCENT                 &kp LSHFT &kp LGUI &kp LALT &kp LCTRL   &none &kp RMEH
                                           &kp NUMBER_0   &kp DEL         &kp BSPC                      &none     &none    &none      
                         >;
                 };
@@ -111,13 +117,13 @@
                         label = "SYM";
 // -----------------------------------------------------------------------------------------------------------------------------------------------------
 // | ! | ( | ) | % | ~   | ^ |                                                                      |        |         |      |           |     |      |
-// | _ | { | } | ^ | +   | : |                                                                      | RSHIFT | RGUI    | RALT | RCTRL     |     | HYP  |
-// | # | [ | ] | & | "|" | $ |                                                                      | LSHFT  | LGUI    | LALT | LCTRL     |     | MEH  |
+// | _ | { | } | ^ | +   | : |                                                                      | RSHIFT | RGUI    | RALT | RCTRL     |     | RHYP  |
+// | # | [ | ] | & | "|" | $ |                                                                      | LSHFT  | LGUI    | LALT | LCTRL     |     | RMEH  |
 //             | < | >   | @ |                                                                      |        |         |      |
                        bindings = <
    &kp EXCL  &kp LPAR &kp RPAR &kp PERCENT   &kp TILDE        &kp CARET                              &none     &none    &none    &none     &none &none
-   &kp UNDER &kp LBRC &kp RBRC &kp CARET     &kp KP_PLUS      &kp COLON                              &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp HYP
-   &kp HASH  &kp LBKT &kp RBKT &kp AMPERSAND &kp PIPE         &kp DOLLAR                             &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp MEH
+   &kp UNDER &kp LBRC &kp RBRC &kp CARET     &kp KP_PLUS      &kp COLON                              &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp RHYP
+   &kp HASH  &kp LBKT &kp RBKT &kp AMPERSAND &kp PIPE         &kp DOLLAR                             &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp RMEH
                                &kp LESS_THAN &kp GREATER_THAN &kp AT                                 &none     &none    &none      
                         >;
                 };
@@ -126,13 +132,13 @@
                         label = "NAV";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |      |     |         |      |      |       |                                                   |    PASTE |      COPY |     CUT    |    UNDO  |      REDO |          INS |
-// | HYP  |     |   LCTRL | LALT | LGUI | LSHFT |                                                   |     LEFT |      DOWN |      UP    |    RIGHT |           |              |
-// | MEH  |     |   RCTRL | RALT | RGUI | RSHFT |                                                   |     HOME | PAGE_DOWN | PAGE_UP    |    END   |           |              |      
+// | LHYP  |     |   LCTRL | LALT | LGUI | LSHFT |                                                   |     LEFT |      DOWN |      UP    |    RIGHT |           |              |
+// | LMEH  |     |   RCTRL | RALT | RGUI | RSHFT |                                                   |     HOME | PAGE_DOWN | PAGE_UP    |    END   |           |              |      
 //                        |      |      | K_APP |                                                   |      RET |      BSPC |     DEL    |
                         bindings = <
    &none   &none &none     &none    &none    &none                                                    &kp K_PASTE &kp    K_COPY &kp   K_CUT &kp K_UNDO &kp K_REDO  &kp      INS
-   &kp HYP &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &kp LEFT    &kp      DOWN &kp      UP &kp RIGHT  &none       &none   
-   &kp MEH &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &kp HOME    &kp PAGE_DOWN &kp PAGE_UP &kp END    &none       &kp    K_APP
+   &kp LHYP &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &kp LEFT    &kp      DOWN &kp      UP &kp RIGHT  &none       &none   
+   &kp LMEH &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &kp HOME    &kp PAGE_DOWN &kp PAGE_UP &kp END    &none       &kp    K_APP
                            &kp DEL  &none    &kp BSPC                                                 &kp RET     &kp DEL      &kp  BSPC      
                         >;
                 };
@@ -141,13 +147,13 @@
                         label = "VOLUME";
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |      |     |         |       |        |       |                                                 |              |       K_VOLUME_DOWN  |     K_VOlUME_UP  |                     |                 |                |
-// | HYP  |     |   LCTRL |  LALT |   LGUI | LSHFT |                                                 | C_BASS_BOOST |       C_VOLUME_DOWN  |     C_VOLUME_UP  |     C_ALT_AUDIO_INC |                 |                |
-// | MEH  |     |   RCTRL |  RALT |   RGUI | RSHFT |                                                 |              |       K_VOLUME_DOWN2 |     K_VOlUME_UP2 |                     |                 |                |      
+// | LHYP  |     |   LCTRL |  LALT |   LGUI | LSHFT |                                                 | C_BASS_BOOST |       C_VOLUME_DOWN  |     C_VOLUME_UP  |     C_ALT_AUDIO_INC |                 |                |
+// | LMEH  |     |   RCTRL |  RALT |   RGUI | RSHFT |                                                 |              |       K_VOLUME_DOWN2 |     K_VOlUME_UP2 |                     |                 |                |      
 //                        |       |        |       |                                                 | K_MUTE       |       C_MUTE         |     K_MUTE2      |
                         bindings = <
    &none    &none &none     &none    &none    &none                                                    &none            &kp K_VOLUME_DOWN    &kp K_VOLUME_UP    &none                 &none                &none 
-   &kp HYP  &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &kp C_BASS_BOOST &kp C_VOLUME_DOWN    &kp C_VOLUME_UP    &kp C_ALT_AUDIO_INC   &none                &none
-   &kp MEH  &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &none            &kp K_VOLUME_DOWN2   &kp K_VOLUME_UP2   &none                 &none                &none
+   &kp LHYP  &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &kp C_BASS_BOOST &kp C_VOLUME_DOWN    &kp C_VOLUME_UP    &kp C_ALT_AUDIO_INC   &none                &none
+   &kp LMEH  &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &none            &kp K_VOLUME_DOWN2   &kp K_VOLUME_UP2   &none                 &none                &none
                             &none    &none    &none                                                    &kp K_MUTE       &kp C_MUTE           &kp K_MUTE2
                         >;
                 };
@@ -156,13 +162,13 @@
                         label = "FUN";
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |       |   F7 |   F8 |     F9 |           |       |                                             |           |        |        |         |       HFUN |          |
-// |       |   F4 |   F5 |     F6 |           |       |                                             | RSHFT     | RGUI   | RALT   | RCTRL   |            |     HYP  |
-// |       |   F1 |   F2 |     F3 |           |       |                                             | LSHFT     | LGUI   | LALT   | LCTRL   |            |     MEH  |
+// |       |   F4 |   F5 |     F6 |           |       |                                             | RSHFT     | RGUI   | RALT   | RCTRL   |            |     RHYP  |
+// |       |   F1 |   F2 |     F3 |           |       |                                             | LSHFT     | LGUI   | LALT   | LCTRL   |            |     RMEH  |
 //                       |    F10 |           |       |                                             |           |        |        |
                          bindings = <
    &none     &kp F7 &kp F8 &kp   F9  &none     &none                                                  &none       &none    &none    &none     &mo   HFUN   &none
-   &none     &kp F4 &kp F5 &kp   F6  &none     &none                                                  &kp RSHFT   &kp RGUI &kp RALT &kp RCTRL &none        &kp HYP
-   &none     &kp F1 &kp F2 &kp   F3  &none     &none                                                  &kp LSHFT   &kp LGUI &kp LALT &kp LCTRL &none        &kp MEH
+   &none     &kp F4 &kp F5 &kp   F6  &none     &none                                                  &kp RSHFT   &kp RGUI &kp RALT &kp RCTRL &none        &kp RHYP
+   &none     &kp F1 &kp F2 &kp   F3  &none     &none                                                  &kp LSHFT   &kp LGUI &kp LALT &kp LCTRL &none        &kp RMEH
                            &kp   F10 &kp DEL   &kp   BSPC                                             &none       &none    &none     
                         >;
                 };
@@ -171,13 +177,13 @@
                         label = "HFUN";
 // -----------------------------------------------------------------------------------------------------------------------------------------------------
 // |       |   F17 |   F18 |     F19 |   F23  |    F24 |                                            |        |         |        |         |     |      |
-// |       |   F14 |   F15 |     F16 |   F21  |    F23 |                                            | RSHFT  | RGUI    | RALT   | RCTRL   |     | HYP  |
-// |       |   F11 |   F12 |     F13 |        |        |                                            | LSHFT  | LGUI    | LALT   | LCTRL   |     | MEH  |
+// |       |   F14 |   F15 |     F16 |   F21  |    F23 |                                            | RSHFT  | RGUI    | RALT   | RCTRL   |     | RHYP  |
+// |       |   F11 |   F12 |     F13 |        |        |                                            | LSHFT  | LGUI    | LALT   | LCTRL   |     | RMEH  |
 //                         |     F20 |        |        |                                            |        |         |        |
                          bindings = <
    &none   &kp F17 &kp F18 &kp   F19 &kp F24   &kp F24                                               &none     &none    &none    &none     &none &none
-   &none   &kp F14 &kp F15 &kp   F16 &kp F21   &kp F22                                               &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp HYP
-   &none   &kp F11 &kp F12 &kp   F13 &none     &none                                                 &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp MEH
+   &none   &kp F14 &kp F15 &kp   F16 &kp F21   &kp F22                                               &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp RHYP
+   &none   &kp F11 &kp F12 &kp   F13 &none     &none                                                 &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp RMEH
                            &kp   F20 &kp DEL   &kp BSPC                                              &none     &none    &none     
                         >;
                 };
@@ -186,14 +192,14 @@
                         label = "HPR FUN";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------
 // |    |          F7 |          F8 |           F9  |        |             |                   |        |         |        | HYPHFUN     |     |            |
-// |    |          F4 |          F5 |           F6  |        |             |                   | RSHFT  | RGUI    | RALT   | RCTRL       |     |       HYP  |
-// |    |          F1 |          F2 |           F3  |        |             |                   | LSHFT  | LGUI    | LALT   | LCTRL       |     |       MEH  |
+// |    |          F4 |          F5 |           F6  |        |             |                   | RSHFT  | RGUI    | RALT   | RCTRL       |     |       RHYP  |
+// |    |          F1 |          F2 |           F3  |        |             |                   | LSHFT  | LGUI    | LALT   | LCTRL       |     |       RMEH  |
 //                                  |               |        |             |                   |        |         |        |
                          bindings = <
-  &none  &kp HYPER(F7) &kp HYPER(F8)  &kp HYPER(F9)  &none      &none                            &none     &none    &none    &mo HYPHFUN   &none &none
-  &none  &kp HYPER(F4) &kp HYPER(F5)  &kp HYPER(F6)  &none      &none                            &kp RSHFT &kp RGUI &kp RALT &kp RCTRL     &none &kp   HYP
-  &none  &kp HYPER(F1) &kp HYPER(F2)  &kp HYPER(F3)  &none      &none                            &kp LSHFT &kp LGUI &kp LALT &kp LCTRL     &none &kp   MEH
-                                      &kp HYPER(F10) &kp   DEL  &kp   BSPC                       &none     &none    &none     
+  &none  &kp LHYPER(F7) &kp LHYPER(F8)  &kp LHYPER(F9)  &none      &none                            &none     &none    &none    &mo HYPHFUN   &none &none
+  &none  &kp LHYPER(F4) &kp LHYPER(F5)  &kp LHYPER(F6)  &none      &none                            &kp RSHFT &kp RGUI &kp RALT &kp RCTRL     &none &kp   RHYP
+  &none  &kp LHYPER(F1) &kp LHYPER(F2)  &kp LHYPER(F3)  &none      &none                            &kp LSHFT &kp LGUI &kp LALT &kp LCTRL     &none &kp   RMEH
+                                      &kp LHYPER(F10) &kp   DEL  &kp   BSPC                       &none     &none    &none     
                         >;
                 };
 
@@ -201,44 +207,44 @@
                         label = "HHPR FUN";
 // ---------------------------------------------------------------------------------------------------------------------------------------------
 // |    |          F17 |          F18 |           F19 |          F23 |          F23 |       |         |        |        |         |     |      |
-// |    |          F14 |          F15 |           F16 |          F21 |          F22 |       | RSHFT   | RGUI   | RALT   | RCTRL   |     | HYP  |
-// |    |          F11 |          F12 |           F13 |              |              |       | LSHFT   | LGUI   | LALT   | LCTRL   |     | MEH  |
+// |    |          F14 |          F15 |           F16 |          F21 |          F22 |       | RSHFT   | RGUI   | RALT   | RCTRL   |     | RHYP  |
+// |    |          F11 |          F12 |           F13 |              |              |       | LSHFT   | LGUI   | LALT   | LCTRL   |     | RMEH  |
 //                                    |           F20 |              |              |       |         |        |        |
                          bindings = <
-  &none  &kp HYPER(F17) &kp HYPER(F18)  &kp HYPER(F19) &kp HYPER(F23) &kp HYPER(F24)         &none     &none    &none    &none     &none &none
-  &none  &kp HYPER(F14) &kp HYPER(F15)  &kp HYPER(F16) &kp HYPER(F21) &kp HYPER(F22)         &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp HYP
-  &none  &kp HYPER(F11) &kp HYPER(F12)  &kp HYPER(F13) &none &none                           &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp MEH
-                                        &kp HYPER(F20) &kp DEL &kp BSPC                      &none     &none    &none     
+  &none  &kp LHYPER(F17) &kp LHYPER(F18)  &kp LHYPER(F19) &kp LHYPER(F23) &kp LHYPER(F24)         &none     &none    &none    &none     &none &none
+  &none  &kp LHYPER(F14) &kp LHYPER(F15)  &kp LHYPER(F16) &kp LHYPER(F21) &kp LHYPER(F22)         &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp RHYP
+  &none  &kp LHYPER(F11) &kp LHYPER(F12)  &kp LHYPER(F13) &none &none                           &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp RMEH
+                                        &kp LHYPER(F20) &kp DEL &kp BSPC                      &none     &none    &none     
                         >;
                 };
 
                 mehfun_layer {
-                        label = "MEH FUN";
+                        label = "LMEH FUN";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |    |         F7 |          F8 |          F9  |        |         |                        |        |         | MEHHFUN     |             |     |              |
-// |    |         F4 |          F5 |          F6  |        |         |                        | RSHFT  | RGUI    | RALT        |       RCTRL |     |         HYP  |
-// |    |         F1 |          F2 |          F3  |        |         |                        | LSHFT  | LGUI    | LALT        |       LCTRL |     |         MEH  |
+// |    |         F4 |          F5 |          F6  |        |         |                        | RSHFT  | RGUI    | RALT        |       RCTRL |     |         RHYP  |
+// |    |         F1 |          F2 |          F3  |        |         |                        | LSHFT  | LGUI    | LALT        |       LCTRL |     |         RMEH  |
 //                                 |          F10 |        |         |                        |        |         |             |
                          bindings = <
-  &none  &kp MEHK(F7)  &kp MEHK(F8)  &kp MEHK(F9)   &none    &none                              &none     &none    &kp MEHHFUN   &none         &none  &none
-  &none  &kp MEHK(F4)  &kp MEHK(F5)  &kp MEHK(F6)   &none    &none                              &kp RSHFT &kp RGUI &kp RALT      &kp   RCTRL   &none  &kp    HYP
-  &none  &kp MEHK(F1)  &kp MEHK(F2)  &kp MEHK(F3)   &none    &none                              &kp LSHFT &kp LGUI &kp LALT      &kp   LCTRL   &none  &kp    MEH
-                                     &kp MEHK(F10)  &kp DEL  &kp BSPC                           &none     &none    &none     
+  &none  &kp LMEHK(F7)  &kp LMEHK(F8)  &kp LMEHK(F9)   &none    &none                              &none     &none    &kp MEHHFUN   &none         &none  &none
+  &none  &kp LMEHK(F4)  &kp LMEHK(F5)  &kp LMEHK(F6)   &none    &none                              &kp RSHFT &kp RGUI &kp RALT      &kp   RCTRL   &none  &kp    RHYP
+  &none  &kp LMEHK(F1)  &kp LMEHK(F2)  &kp LMEHK(F3)   &none    &none                              &kp LSHFT &kp LGUI &kp LALT      &kp   LCTRL   &none  &kp    RMEH
+                                     &kp LMEHK(F10)  &kp DEL  &kp BSPC                           &none     &none    &none     
                         >;
                 };
 
                 mehhfun_layer {
-                        label = "HMEH FUN";
+                        label = "HLMEH FUN";
 // ----------------------------------------------------------------------------------------------------------------------------------------------
 // |    |         F17 |          F18 |          F19 |           F23 |        F24  |          |         |        |        |         |     |      |
-// |    |         F14 |          F15 |          F16 |           F21 |        F23  |          | RSHIFT  | RGUI   | RALT   | RCTRL   |     | HYP  |
-// |    |         F11 |          F12 |          F13 |               |             |          | LSHIFT  | LGUI   | LALT   | LCTRL   |     | MEH  |
+// |    |         F14 |          F15 |          F16 |           F21 |        F23  |          | RSHIFT  | RGUI   | RALT   | RCTRL   |     | RHYP  |
+// |    |         F11 |          F12 |          F13 |               |             |          | LSHIFT  | LGUI   | LALT   | LCTRL   |     | RMEH  |
 //                                   |          F20 |               |             |          |         |        |        |
                          bindings = <
-  &none  &kp MEHK(F17)  &kp MEHK(F18)  &kp MEHK(F19)  &kp MEHK(F23) &kp MEHK(F24)             &none     &none    &none    &none     &none &none
-  &none  &kp MEHK(F14)  &kp MEHK(F15)  &kp MEHK(F16)  &kp MEHK(F21) &kp MEHK(F22)             &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp HYP
-  &none  &kp MEHK(F11)  &kp MEHK(F12)  &kp MEHK(F13)  &none         &none                     &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp MEH
-                                       &kp MEHK(F20)  &kp DEL       &kp BSPC                  &none     &none    &none     
+  &none  &kp LMEHK(F17)  &kp LMEHK(F18)  &kp LMEHK(F19)  &kp LMEHK(F23) &kp LMEHK(F24)             &none     &none    &none    &none     &none &none
+  &none  &kp LMEHK(F14)  &kp LMEHK(F15)  &kp LMEHK(F16)  &kp LMEHK(F21) &kp LMEHK(F22)             &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp RHYP
+  &none  &kp LMEHK(F11)  &kp LMEHK(F12)  &kp LMEHK(F13)  &none         &none                     &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp RMEH
+                                       &kp LMEHK(F20)  &kp DEL       &kp BSPC                  &none     &none    &none     
                         >;
                 };
 
@@ -246,13 +252,13 @@
                         label = "MOUSE";
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |      |     |         |       |        |        |                                               |              |               |            |               |           |              |
-// | HYP  |     |   LCTRL |  LALT |   LGUI | LSHFT  |                                               |              |               |            |               |           |              |
-// | MEH  |     |   RCTRL |  RALT |   RGUI | RSIFT  |                                               |              |               |            |               |           |              |      
+// | LHYP  |     |   LCTRL |  LALT |   LGUI | LSHFT  |                                               |              |               |            |               |           |              |
+// | LMEH  |     |   RCTRL |  RALT |   RGUI | RSIFT  |                                               |              |               |            |               |           |              |      
 //                        |       |        |        |                                               | R CLICK      | L CLICK       |  M CLICK   |
                         bindings = <
    &none   &none &none     &none    &none    &none                                                    &none           &none          &none        &none             &none         &none   
-   &kp HYP &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &none           &none          &none        &none             &none         &none
-   &kp MEH &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &none           &none          &none        &none             &mkp MB4      &mkp MB5
+   &kp LHYP &none &kp LCTRL &kp LALT &kp LGUI &kp LSHFT                                                &none           &none          &none        &none             &none         &none
+   &kp LMEH &none &kp RCTRL &kp RALT &kp RGUI &kp RSHFT                                                &none           &none          &none        &none             &mkp MB4      &mkp MB5
                          &none    &none    &none                                                      &mkp RCLK       &mkp LCLK      &mkp MCLK      
                         >;
                 };
@@ -261,13 +267,13 @@
                         label = "NUMPAD";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // | !  |  7  |  8  |  9  | * | / |                                                                                                   |                   |              |                 |           |     |      |
-// | -  |  4  |  5  |  6  | + | ^ |                                                                                                   | RSHFT             | RGUI         | RALT            | RCTRL     |     | HYP  |
-// | .  |  1  |  2  |  3  | , | % |                                                                                                   | LSHFT             | LGUI         | LALT            | LCTRL     |     | MEH  |
+// | -  |  4  |  5  |  6  | + | ^ |                                                                                                   | RSHFT             | RGUI         | RALT            | RCTRL     |     | RHYP  |
+// | .  |  1  |  2  |  3  | , | % |                                                                                                   | LSHFT             | LGUI         | LALT            | LCTRL     |     | RMEH  |
 //                  |  0  | = | ~ |                                                                                                   |                   |              |                 |
                             bindings = <
    &kp KP_EXCLAMATION &lt MISC KP_N7 &kp       KP_N8 &kp        KP_N9   &kp      KP_ASTERISK &kp       KP_SLASH                          &kp       KP_00    &kp KP_000    &none         &none       &none &none
-   &mt HYP KP_MINUS   &kp      KP_N4 &mt LCTRL KP_N5 &mt LALT   KP_N6   &mt LGUI KP_PLUS     &mt LSHFT KP_CARET                          &mt RSHFT KP_D     &mt RGUI KP_E &mt RALT KP_F &kp RCTRL   &none &kp HYP
-   &mt MEH KP_DOT     &kp      KP_N1 &mt RCTRL KP_N2 &mt RALT   KP_N3   &mt RGUI KP_COMMA    &mt RSHFT KP_PERCENT                        &mt LSHFT KP_A     &mt LGUI KP_B &mt LALT KP_C &kp LCTRL   &none &kp MEH
+   &mt LHYP KP_MINUS   &kp      KP_N4 &mt LCTRL KP_N5 &mt LALT   KP_N6   &mt LGUI KP_PLUS     &mt LSHFT KP_CARET                          &mt RSHFT KP_D     &mt RGUI KP_E &mt RALT KP_F &kp RCTRL   &none &kp RHYP
+   &mt LMEH KP_DOT     &kp      KP_N1 &mt RCTRL KP_N2 &mt RALT   KP_N3   &mt RGUI KP_COMMA    &mt RSHFT KP_PERCENT                        &mt LSHFT KP_A     &mt LGUI KP_B &mt LALT KP_C &kp LCTRL   &none &kp RMEH
                                                      &lt NPCTRL KP_N0   &kp      KP_TAB      &kp       KP_SPACE                          &lt NPSYM KP_ENTER &kp KP_NUMLOCK &kp KP_BACKSPACE     
                         >;
                 };
@@ -291,13 +297,13 @@
                         label = "NPSYM";
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |     |      |      |     |      |         |                                                                                                  |        |         |      |           |     |      | 
-// |     |      |      |     |      |         |                                                                                                  | RSHIFT | RGUI    | RALT | RCTRL     |     | HYP  | 
-// |     |      |      |     |      |         |                                                                                                  | LSHFT  | LGUI    | LALT | LCTRL     |     | MEH  | 
+// |     |      |      |     |      |         |                                                                                                  | RSHIFT | RGUI    | RALT | RCTRL     |     | RHYP  | 
+// |     |      |      |     |      |         |                                                                                                  | LSHFT  | LGUI    | LALT | LCTRL     |     | RMEH  | 
 //                     |     |      |         |                                                                                                  |        |         |      |
                          bindings = <
    &kp KP_EXCLAMATION  &kp KP_LPAR       &kp KP_RPAR         &kp KP_PIPE       &kp KP_PIPE_PIPE           &kp KP_PIPE                              &none     &none    &none    &none     &none &none
-   &none               &kp KP_LEFT_BRACE &kp KP_RIGHT_BRACE  &kp KP_XOR        &kp KP_EQUAL               &kp KP_COLON                             &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp HYP
-   &kp KP_HASH         &none             &none               &kp KP_AMPERSAND  &kp KP_AMPERSAND_AMPERSAND &kp KP_EQUAL_AS400                       &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp MEH
+   &none               &kp KP_LEFT_BRACE &kp KP_RIGHT_BRACE  &kp KP_XOR        &kp KP_EQUAL               &kp KP_COLON                             &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp RHYP
+   &kp KP_HASH         &none             &none               &kp KP_AMPERSAND  &kp KP_AMPERSAND_AMPERSAND &kp KP_EQUAL_AS400                       &kp LSHFT &kp LGUI &kp LALT &kp LCTRL &none &kp RMEH
                                                                                &kp KP_LESS_THAN           &kp KP_GREATER_THAN  &kp KP_AT           &none     &none    &none      
                         >;
                 };
@@ -307,13 +313,13 @@
                         label = "MISC";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // | TILDE2        |      |         |             |                | to NUMPAD   |                              | to QWERTY     | to NEO2     | CLEAR       | CLEAR_AGAIN      | NUMLOCK    | NUBS    |
-// | mt HYP NUHS   |      |   LCTRL |     LALT    |   LGUI         | LSHFT       |                              | CAPS WORD     | OUT         | OPER        | EXSEL            | CAPSLOCK   | PIPE2   |
-// | MEH           |      |   RCTRL |     RALT    |   RGUI         | RSHFT       |                              | PAUSE_BREAK   | CRSEL       | PRIOR       | SEPARATOR        | SCROLLLOCK |         |
+// | mt LHYP NUHS   |      |   LCTRL |     LALT    |   LGUI         | LSHFT       |                              | CAPS WORD     | OUT         | OPER        | EXSEL            | CAPSLOCK   | PIPE2   |
+// | LMEH           |      |   RCTRL |     RALT    |   RGUI         | RSHFT       |                              | PAUSE_BREAK   | CRSEL       | PRIOR       | SEPARATOR        | SCROLLLOCK |         |
 //                                  |    SYSREQ   |                | PRINTSCREEN |                              |               | K_CANCEL    | ALT_ERASE   |
                          bindings = <
    &kp TILDE2     &none     &none     &none         &none             &to NUMPAD                                   &to QWERTY      &to NEO2     &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &kp NUBS
-   &mt HYP NUHS   &none     &kp LCTRL &kp LALT      &kp LGUI          &kp LSHFT                                    &caps_word      &kp OUT       &kp OPER       &kp EXSEL       &kp CAPSLOCK   &kp PIPE2
-   &kp MEH        &none     &kp RCTRL &kp RALT      &kp RGUI          &kp RSHFT                                    &kp PAUSE_BREAK &kp CRSEL     &kp PRIOR      &kp SEPARATOR   &kp SCROLLLOCK &none
+   &mt LHYP NUHS   &none     &kp LCTRL &kp LALT      &kp LGUI          &kp LSHFT                                    &caps_word      &kp OUT       &kp OPER       &kp EXSEL       &kp CAPSLOCK   &kp PIPE2
+   &kp LMEH        &none     &kp RCTRL &kp RALT      &kp RGUI          &kp RSHFT                                    &kp PAUSE_BREAK &kp CRSEL     &kp PRIOR      &kp SEPARATOR   &kp SCROLLLOCK &none
                                       &kp SYSREQ    &kp K_EDIT        &kp PRINTSCREEN                              &kp RET2        &kp K_CANCEL  &kp ALT_ERASE 
                         >;
                 };
@@ -371,8 +377,8 @@
 //                                                 |     C_AL_PRESENTATION |     C_AL_PREV_TASK          |      C_AL_NEXT_TASK    |      C_AL_SELECT_TASK     |                        |                              |                                |                                    | 
                          bindings = <
    &kp     C_AL_MY_COMPUTER   &kp C_AL_DOCUMENTS     &kp C_AL_FILE_BROWSER   &kp C_AL_WWW                   &kp K_WWW               &kp  C_AL_CALCULATOR                                 &kp       C_AL_IMAGE_BROWSER   &kp          C_AL_NEWS           &kp      C_AL_TASK_MANAGER         &kp       C_AL_KEYBOARD_LAYOUT   &kp   C_AL_CONTROL_PANEL                      &kp     C_AL_HELP
-   &mt HYP C_AL_EMAIL         &kp C_AL_CALENDAR      &kp C_AL_CONTACTS       &kp C_AL_INSTANT_MESSAGING     &kp C_AL_NETWORK_CHAT   &kp  C_AL_TEXT_EDITOR                                &mt RSHFT C_AL_AUDIO_BROWSER   &mt RGUI     C_AL_VOICEMAIL      &mt RALT C_AL_AV_CAPTURE_PLAYBACK  &mt RCTRL C_AL_THESAURUS         &kp   C_AL_TELEPHONY_DIALER                   &mt HYP K_HELP
-   &mt MEH C_AL_WORD          &kp C_AL_SPREADSHEET   &kp C_AL_PRESENTATION   &kp C_AL_DATABASE              &kp C_AL_JOURNAL        &kp  C_AL_GRAPHICS_EDITOR                            &mt LSHFT C_AL_MOVIE_BROWSER   &mt LGUI     C_AL_FINANCE        &mt LALT C_AL_SPELLCHECK           &mt LCTRL C_AL_GRAMMAR_CHECK     &kp   C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT    &mt MEH C_AL_OEM_FEATURES
+   &mt LHYP C_AL_EMAIL         &kp C_AL_CALENDAR      &kp C_AL_CONTACTS       &kp C_AL_INSTANT_MESSAGING     &kp C_AL_NETWORK_CHAT   &kp  C_AL_TEXT_EDITOR                                &mt RSHFT C_AL_AUDIO_BROWSER   &mt RGUI     C_AL_VOICEMAIL      &mt RALT C_AL_AV_CAPTURE_PLAYBACK  &mt RCTRL C_AL_THESAURUS         &kp   C_AL_TELEPHONY_DIALER                   &mt RHYP K_HELP
+   &mt LMEH C_AL_WORD          &kp C_AL_SPREADSHEET   &kp C_AL_PRESENTATION   &kp C_AL_DATABASE              &kp C_AL_JOURNAL        &kp  C_AL_GRAPHICS_EDITOR                            &mt LSHFT C_AL_MOVIE_BROWSER   &mt LGUI     C_AL_FINANCE        &mt LALT C_AL_SPELLCHECK           &mt LCTRL C_AL_GRAMMAR_CHECK     &kp   C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT    &mt RMEH C_AL_OEM_FEATURES
                                                                              &kp C_AL_PREV_TASK             &kp C_AL_NEXT_TASK      &kp  C_AL_SELECT_TASK                                &kp       C_AL_SCREEN_SAVER    &kp          C_AL_COMMAND_LINE   &none 
                         >;
                 };
