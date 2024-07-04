@@ -67,10 +67,10 @@
 // | GRAVE |  Z  |  X  |  C  |  V  |  B  |                                                                                       |  N  |  M   |  ,   |  .  |  /  |  ' |
 //                     | ESC | SPC | TAB |                                                                                       | RET |  DEL | BSPC |
                         bindings = <
-   &lt CONFIG TILDE &lt MISC  Q &lt DISPLAY W  &lt POWER  E   &kp       R   &lt NPCTRL    T                                        &lt MEHFUN   Y   &lt HYPFUN        U     &lt FUN    I      &lt LANGUAGE O   &lt NPSYM  P    &lt NUMPAD  BACKSLASH
-   &mt LHYP    HASH  &mt LMEH A &mt LGUI    S  &mt LALT   D   &mt LSHFT F   &mt LCTRL     G                                        &mt RCTRL    H   &mt RSHFT         J     &mt RALT   K      &mt RGUI     L   &mt RMEH   SEMI &mt RHYP    DQT
-   &mt RHYP    GRAVE &mt LAG  Z &mt LCG     X  &mt LCA    C   &mt LSA   V   &mt LSC       B                                        &mt RSC      N   &mt RSA           M     &mt RCA    COMMA  &mt RCG      DOT &mt RAG    FSLH &mt LHYP    SQT 
-                                               &lt VOLUME ESC &lt NAV   TAB &lt APPLAUNCH SPACE                                    &lt NUM      RET &lt SYM           DEL   &lt MOUSE  BSPC 
+   &mt RALT TILDE &lt MISC Q &lt DISPLAY W  &lt POWER  E   &lt CONFIG R   &lt NPCTRL       T                                       &lt MEHFUN   Y   &lt HYPFUN        U     &lt FUN    I      &lt LANGUAGE O   &lt NPSYM  P    &lt NUMPAD  BACKSLASH
+   &mt LHYP HASH  &mt LMEH A &mt LGUI    S  &mt LALT   D   &mt LSHFT  F   &mt LCTRL        G                                       &mt RCTRL    H   &mt RSHFT         J     &mt RALT   K      &mt RGUI     L   &mt RMEH   SEMI &mt RHYP    DQT
+   &mt RHYP GRAVE &mt LAG  Z &mt LCG     X  &mt LCA    C   &mt LSA    V   &mt LSC          B                                       &mt RSC      N   &mt RSA           M     &mt RCA    COMMA  &mt RCG      DOT &mt RAG    FSLH &mt LHYP    SQT 
+                                            &lt VOLUME ESC &lt NAV    TAB &lt APPLAUNCH    SPACE                                   &lt NUM      RET &lt SYM           DEL   &lt MOUSE  BSPC 
                         >;
                 };
 
@@ -82,10 +82,10 @@
 // | GRAVE |  /  |  ,  |  "  |  P  |  Z  |                                                                                       |  B  |  M   |  J   |  .  |  Y  |  ' |
 //                     | ESC | SPC | TAB |                                                                                       | RET |  DEL | BSPC |
                         bindings = <
-   &lt CONFIG TILDE  &lt MISC  X       &lt DISPLAY V     &lt POWER     L   &kp       C   &lt NPCTRL    W                          &lt MEHFUN   K   &lt HYPFUN  H  &lt FUN  G      &lt LANGUAGE F   &lt NPSYM  Q    &lt NUMPAD  BACKSLASH
-   &mt LHYP    HASH  &mt LMEH U        &mt LGUI    I     &mt LALT      A   &mt LSHFT E   &mt LCTRL     O                          &mt RCTRL    S   &mt RSHFT   N  &mt RALT R      &mt RGUI     T   &mt RMEH   D    &mt RHYP    DQT
-   &mt RHYP    GRAVE &mt LAG  KP_SLASH &mt LCG     COMMA &mt LCA    SEMI   &mt LSA   P   &mt LSC       Z                          &mt RSC      B   &mt RSA     M  &mt RCA  J      &mt RCG      DOT &mt RAG    Y    &mt LHYP    SQT 
-                                                         &lt VOLUME  ESC   &lt NAV   TAB &lt APPLAUNCH SPACE                      &lt SYM      RET &lt NUM   DEL  &lt MOUSE BSPC 
+   &mt RALT TILDE &lt MISC  X       &lt DISPLAY V     &lt POWER  L    &lt CONFIG C   &lt NPCTRL    W                              &lt MEHFUN   K   &lt HYPFUN  H  &lt FUN  G      &lt LANGUAGE F   &lt NPSYM  Q    &lt NUMPAD  BACKSLASH
+   &mt LHYP HASH  &mt LMEH U        &mt LGUI    I     &mt LALT   A    &mt LSHFT  E   &mt LCTRL     O                              &mt RCTRL    S   &mt RSHFT   N  &mt RALT R      &mt RGUI     T   &mt RMEH   D    &mt RHYP    DQT
+   &mt RHYP GRAVE &mt LAG  KP_SLASH &mt LCG     COMMA &mt LCA    SEMI &mt LSA    P   &mt LSC       Z                              &mt RSC      B   &mt RSA     M  &mt RCA  J      &mt RCG      DOT &mt RAG    Y    &mt LHYP    SQT 
+                                                      &lt VOLUME ESC  &lt NAV    TAB &lt APPLAUNCH SPACE                          &lt SYM      RET &lt NUM   DEL  &lt MOUSE BSPC 
                         >;
                 };
 
