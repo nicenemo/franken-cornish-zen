@@ -113,12 +113,12 @@
 // |    ! |       { |       '   |     "   |       }    |      ?       |                            |             |            |           |             |     LMEH |     LHYP  |
 // |    # |       ^ |       =   |     _   |       $    |      *       |                            |      RCTRL  |      RSHFT |      RALT |       RGUI  |     RMEH |     RHYP  |
 // |    @ |       < |      "|"  |     -   |       >    |      /       |                            |      LCTRL  |      LSHFT |      LALT |       LGUI  |     RAG  |     RCA   |
-//                              |     |   |       .    |      *       |                            |             |            | CAPS WORD |
+//                              | softoff |       .    |      *       |                            |             |            | CAPS WORD |
                        bindings = <
    &kp EXCL  &kp LBRC  &kp SQT   &kp DQT     &kp RBRC    &kp QMARK                                   &none        &none         &none       &none         &kp LMEH   &kp LHYP
    &kp HASH  &kp CARET &kp EQUAL &kp UNDER   &kp DOLLAR  &kp ASTERISK                                &kp   RCTRL  &kp   RSHFT   &kp   RALT  &kp   RGUI    &kp RMEH   &kp RHYP
    &kp AT    &kp LT    &kp PIPE  &kp MINUS   &kp GT      &kp SLASH                                   &kp   LCTRL  &kp   LSHFT   &kp   LALT  &kp   LGUI    &kp RAG    &kp RCA
-                                 &none       &kp DOT     &kp ASTERISK                                &tog  SYM1   &none         &caps_word      
+                                 &softoff    &kp DOT     &kp ASTERISK                                &tog  SYM1   &none         &caps_word      
                         >;
                 };
                 symbols_layer2 {
