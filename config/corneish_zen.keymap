@@ -21,32 +21,34 @@
 
 
 // layers
-#define QWERTY          0
-#define NEO2            1
+#define DEFAULT         0
+#define NGRAM           0
+#define QWERTY          1
 #define NUM             2
-#define SYM             3
-#define NAV             4
-#define VOLUME          5 
-#define FUN             6
-#define HFUN            7
-#define HYPFUN          8
-#define HYPHFUN         9
-#define MEHFUN         10
-#define MEHHFUN        11
-#define MOUSE          12
-#define NUMPAD         13
-#define NPCTRL         14
-#define NPSYM          15
-#define MISC           16
-#define CONFIG         17
-#define POWER          18
-#define INPUT_ASSIST   19
-#define APPLAUNCH      20
-#define CONSUMER       21
-#define DISPLAY        22
-#define MEDIA          23
-#define INTERNATIONAL  24
-#define LANGUAGE       25
+#define SYM1            3
+#define SYM2            4
+#define NAV             5
+#define VOLUME          6 
+#define FUN             7
+#define HFUN            8
+#define HYPFUN          9
+#define HYPHFUN        10
+#define MEHFUN         11
+#define MEHHFUN        12
+#define MOUSE          13
+#define NUMPAD         14
+#define NPCTRL         15
+#define NPSYM          16
+#define MISC           17
+#define CONFIG         18
+#define POWER          19
+#define INPUT_ASSIST   20
+#define APPLAUNCH      21
+#define CONSUMER       22
+#define DISPLAY        23
+#define MEDIA          24
+#define INTERNATIONAL  25
+#define LANGUAGE       26
 
 / {
   chosen {
@@ -60,63 +62,77 @@
                 compatible = "zmk,keymap";
 
                 default_layer {
-                        label = "QWERTY";
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// | TILDE |  Q  |  W  |  E  |  R  |  T  |                                                                                       |  Y  |  U   |  I   |  O  |  P  |  \ |
-// | HASH  |  A  |  S  |  D  |  F  |  G  |                                                                                       |  H  |  J   |  K   |  L  |  ;  |  " |
-// | GRAVE |  Z  |  X  |  C  |  V  |  B  |                                                                                       |  N  |  M   |  ,   |  .  |  /  |  ' |
-//                     | ESC | SPC | TAB |                                                                                       | RET |  DEL | BSPC |
+                        label = "NGRAM";
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |        GRAVE |         B  |            Y  |           O   |            U   |               SQT   |                         |             SEMI |            L   |            D    |              W  |            V  |          Z         |
+// |        HASH  |         C  |            I  |           E   |            A   |               COMMA |                         |             DOT  |            H   |            T    |              S  |            N  |          Q         |
+// |        TILDE |         G  |            X  |           J   |            K   |               MINUS |                         |             FSLH |            R   |            M    |              F  |            P  |          BACKSLASH |       
+//                                             |           ESC |            TAB |               SPACE |                         |             RET  |            DEL |            BSPC |
                         bindings = <
-   &mt RHYP TILDE &lt MISC Q &lt DISPLAY W  &lt POWER  E   &lt CONFIG R   &lt NPCTRL       T                                       &lt MEHFUN   Y   &lt HYPFUN U     &lt FUN    I      &lt LANGUAGE O   &lt NPSYM  P    &mt LHYP BACKSLASH
-   &mt LHYP HASH  &mt LMEH A &mt LGUI    S  &mt LALT   D   &mt LSHFT  F   &mt LCTRL        G                                       &mt RCTRL    H   &mt RSHFT  J     &mt RALT   K      &mt RGUI     L   &mt RMEH   SEMI &mt RHYP DQT
-   &mt LCA  GRAVE &mt LAG  Z &mt RGUI    X  &mt RALT   C   &mt RSHFT  V   &mt RCTRL        B                                       &mt LCTRL    N   &mt LSHFT  M     &mt LALT   COMMA  &mt LGUI     DOT &mt RAG    FSLH &mt RCA  SQT 
-                                            &lt VOLUME ESC &lt NAV    TAB &lt APPLAUNCH    SPACE                                   &lt NUM      RET &lt SYM    DEL   &lt MOUSE  BSPC 
+   &mt RHYP GRAVE  &lt MISC B   &lt DISPLAY Y    &lt POWER  O    &lt CONFIG U     &lt NPCTRL    SQT                               &lt MEHFUN  SEMI   &lt HYPFUN L     &lt FUN    D      &lt LANGUAGE W    &lt NPSYM  V    &mt LHYP Z 
+   &mt LHYP HASH   &mt LMEH C   &mt LGUI    I    &mt LALT   E    &mt LSHFT  A     &mt LCTRL     COMMA                             &mt RCTRL   DOT    &mt RSHFT  H     &mt RALT   T      &mt RGUI     S    &mt RMEH   N    &mt RHYP Q
+   &mt LCA  TILDE  &mt LAG  G   &mt RGUI    X    &mt RALT   J    &mt RSHFT  K     &mt RCTRL     MINUS                             &mt LCTRL   FSLH   &mt LSHFT  R     &mt LALT   M      &mt LGUI     F    &mt RAG    P    &mt RCA  BACKSLASH 
+                                                 &lt VOLUME ESC  &lt NAV    TAB   &lt APPLAUNCH SPACE                             &lt NUM     RET    &lt SYM1   DEL   &lt SYM2   BSPC 
                         >;
                 };
 
-                neo2_layer {
-                        label = "NEO2";
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// | TILDE |  X  |  V  |  L  |  C  |  W  |                                                                                       |  K  |  H   |  G   |  F  |  Q  |  \ |
-// | HASH  |  U  |  I  |  A  |  E  |  O  |                                                                                       |  S  |  N   |  R   |  T  |  D  |  " |
-// | GRAVE |  /  |  ,  |  "  |  P  |  Z  |                                                                                       |  B  |  M   |  J   |  .  |  Y  |  ' |
-//                     | ESC | SPC | TAB |                                                                                       | RET |  DEL | BSPC |
+                qwerty_layer {
+                        label = "QWERTY";
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |        GRAVE |         Q  |            W  |           E   |            R   |               T     |                         |             Y   |            U   |            I    |              O  |            P  |          \        |
+// |        HASH  |         A  |            S  |           D   |            F   |               G     |                         |             H   |            J   |            K    |              L  |            ;  |          "        |
+// |        TILDE |         Z  |            X  |           C   |            V   |               B     |                         |             N   |            M   |            ,    |              .  |            /  |          '        |       
+//                                             |           ESC |            TAB |               SPACE |                         |             RET |            DEL |            BSPC |
                         bindings = <
-   &mt RHYP TILDE &lt MISC  X       &lt DISPLAY V     &lt POWER  L    &lt CONFIG C   &lt NPCTRL    W                              &lt MEHFUN   K   &lt HYPFUN H   &lt FUN  G      &lt LANGUAGE F   &lt NPSYM  Q    &mt LHYP BACKSLASH
-   &mt LHYP HASH  &mt LMEH U        &mt LGUI    I     &mt LALT   A    &mt LSHFT  E   &mt LCTRL     O                              &mt RCTRL    S   &mt RSHFT  N   &mt RALT R      &mt RGUI     T   &mt RMEH   D    &mt RHYP DQT
-   &mt LCA  GRAVE &mt LAG  KP_SLASH &mt RGUI    COMMA &mt RALT   SEMI &mt RSHFT  P   &mt RCTRL     Z                              &mt LCTRL    B   &mt LSHFT  M   &mt LALT J      &mt LGUI     DOT &mt RAG    Y    &mt RCA  SQT 
-                                                      &lt VOLUME ESC  &lt NAV    TAB &lt APPLAUNCH SPACE                          &lt NUM      RET &lt SYM    DEL &lt MOUSE BSPC 
+   &mt RHYP GRAVE  &lt MISC Q   &lt DISPLAY W    &lt POWER  E    &lt CONFIG R     &lt NPCTRL    T                                 &lt MEHFUN  Y     &lt HYPFUN U     &lt FUN    I      &lt LANGUAGE O    &lt NPSYM  P    &mt LHYP BACKSLASH
+   &mt LHYP HASH   &mt LMEH A   &mt LGUI    S    &mt LALT   D    &mt LSHFT  F     &mt LCTRL     G                                 &mt RCTRL   H     &mt RSHFT  J     &mt RALT   K      &mt RGUI     L    &mt RMEH   SEMI &mt RHYP DQT
+   &mt LCA  TILDE  &mt LAG  Z   &mt RGUI    X    &mt RALT   C    &mt RSHFT  V     &mt RCTRL     B                                 &mt LCTRL   N     &mt LSHFT  M     &mt LALT   COMMA  &mt LGUI     DOT  &mt RAG    FSLH &mt RCA  SQT 
+                                                 &lt VOLUME ESC  &lt NAV    TAB   &lt APPLAUNCH SPACE                             &lt NUM     RET   &lt SYM1   DEL   &lt SYM2   BSPC 
                         >;
                 };
 
 
                 number_layer {
                         label = "NUM";
-// -------------------------------------------------------------------------------------------------------------------------------------------------------
-// | !  |  7  |  8  |  9  | * | / |                                                                 |        |         |        |           |     |       |
-// | -  |  4  |  5  |  6  | + | ^ |                                                                 | RSHFT  | RGUI    | RALT   | RCTRL     |     | RHYP  |
-// | .  |  1  |  2  |  3  | , | % |                                                                 | LCTRL  | LSHFT    | LALT   | LGUI     |     | RMEH  |
-//                  |  0  | = | ~ |                                                                 |        |         |        |
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// | !  |  7  |  8  |  9  | * | / |                                                                 |          D      |           E |          F |           |      LMEH |    LHYP  |
+// | -  |  4  |  5  |  6  | + | ^ |                                                                 |          A      |           B |          C |           |      RMEH |    RHYP  |
+// | .  |  1  |  2  |  3  | , | % |                                                                 |                 |             |            |           |      RAG  |    RCA   |
+//                  |  0  | = | ~ |                                                                 |                 |             |            |
                             bindings = <
-   &kp EXCL     &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9   &kp KP_ASTERISK &kp KP_SLASH                &none     &none    &none    &none       &none &none
-   &kp KP_MINUS &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6   &kp KP_PLUS     &kp CARET                   &kp RSHFT &kp RGUI &kp RALT &kp RCTRL   &none &kp RHYP
-   &kp KP_DOT   &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3   &kp KP_COMMA    &kp PERCENT                 &kp LCTRL &kp LSHFT &kp LALT &kp LGUI   &none &kp RMEH
-                                          &kp NUMBER_0   &kp DEL         &kp BSPC                    &none     &kp COPILOT   &kp SOUSCHEF      
+   &kp PERCENT     &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9   &kp COLON    &kp K                       &kp       D        &kp       E   &kp      F    &none       &kp LMEH  &kp LHYP
+   &kp KP_PLUS     &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6   &kp KP_MINUS &kp J                       &mt RCTRL A        &mt RSHFT B   &mt RALT C    &kp RGUI    &kp RMEH  &kp RHYP
+   &kp KP_ASTERISK &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3   &kp KP_SLASH &kp LS(G)                   &mt LCTRL COPILOT  &kp LSHFT     &kp LALT      &kp LGUI    &kp RAG   &kp RCA
+                                             &kp NUMBER_0   &kp COMMA    &kp DOT                     &none              &tog NUM      &kp EQL      
                         >;
                 };
 
-                symbols_layer {
-                        label = "SYM";
-// -----------------------------------------------------------------------------------------------------------------------------------------------------
-// | ! | ( | ) | % | ~   | ^ |                                                                      |        |         |      |           |     |      |
-// | _ | { | } | ^ | +   | : |                                                                      | RSHIFT | RGUI    | RALT | RCTRL     |     | RHYP  |
-// | # | [ | ] | & | "|" | $ |                                                                      | LCTRL  | LSHFT    | LALT | LGUI      |     | RMEH  |
-//             | < | >   | @ |                                                                      |        |         |      |
+                symbols_layer1 {
+                        label = "SYM1";
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |    ! |       { |       '   |     "   |       }    |      ?       |                            |             |            |           |             |     LMEH |     LHYP  |
+// |    # |       ^ |       =   |     _   |       $    |      *       |                            |      RCTRL  |      RSHFT |      RALT |       RGUI  |     RMEH |     RHYP  |
+// |    @ |       < |      "|"  |     -   |       >    |      /       |                            |      LCTRL  |      LSHFT |      LALT |       LGUI  |     RAG  |     RCA   |
+//                              |     |   |       .    |      *       |                            |             |            | CAPS WORD |
                        bindings = <
-   &kp EXCL  &kp LPAR &kp RPAR &kp PERCENT   &kp TILDE        &kp CARET                              &none     &none    &none    &none     &none &none
-   &kp UNDER &kp LBRC &kp RBRC &kp CARET     &kp KP_PLUS      &kp COLON                              &kp RSHFT &kp RGUI &kp RALT &kp RCTRL &none &kp RHYP
-   &kp HASH  &kp LBKT &kp RBKT &kp AMPERSAND &kp PIPE         &kp DOLLAR                             &kp LCTRL &kp LSHFT &kp LALT &kp LGUI  &none &kp RMEH
-                               &kp LESS_THAN &kp GREATER_THAN &kp AT                                 &none     &none    &none      
+   &kp EXCL  &kp LBRC  &kp SQT   &kp DQT     &kp RBRC    &kp QMARK                                   &none        &none         &none       &none         &kp LMEH   &kp LHYP
+   &kp HASH  &kp CARET &kp EQUAL &kp UNDER   &kp DOLLAR  &kp ASTERISK                                &kp   RCTRL  &kp   RSHFT   &kp   RALT  &kp   RGUI    &kp RMEH   &kp RHYP
+   &kp AT    &kp LT    &kp PIPE  &kp MINUS   &kp GT      &kp SLASH                                   &kp   LCTRL  &kp   LSHFT   &kp   LALT  &kp   LGUI    &kp RAG    &kp RCA
+                                 &none       &kp DOT     &kp ASTERISK                                &tog  SYM1   &none         &caps_word      
+                        >;
+                };
+                symbols_layer2 {
+                        label = "SYM2";
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |    ! |       ` |       (   |     )   |       ;    |      ,       |                            |              |             |            |             |    LMEH |    LHYP  |
+// |    # |       ^ |       =   |     _   |       $    |      *       |                            |       RCTRL  |       RSHFT |       RALT |       RGUI  |    RMEH |    RHYP  |
+// |    ~ |       & |       [   |     ]   |       +    |      \       |                            |       LCTRL  |       LSHFT |       LALT |       LGUI  |    RAG  |    RCA   |
+//                              |     %   |       :    |      ;       |                            |              |             |            |
+                       bindings = <
+   &kp EXCL  &kp GRAVE &kp LPAR  &kp RPAR    &kp SEMI    &kp COMMA                                   &none          &none         &none        &none        &kp LMEH  &kp LHYP
+   &kp HASH  &kp CARET &kp EQUAL &kp UNDER   &kp DOLLAR  &kp ASTERISK                                &kp   RCTRL    &kp   RSHFT   &kp   RALT   &kp   RGUI   &kp RMEH  &kp RHYP
+   &kp TILDE &kp AMPS  &kp LBKT  &kp RBKT    &kp PLUS    &kp BACKSLASH                               &kp   LCTRL    &kp   LSHFT   &kp   LALT   &kp   LGUI   &kp RAG   &kp RCA
+                                 &kp PERCENT &kp COLON   &kp SEMI                                    &tog  SYM2     &none         &none      
                         >;
                 };
 
@@ -124,12 +140,12 @@
                         label = "NAV";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |      |     |         |      |      |        |                                                  |     PASTE   |     COPY      |     CUT     |    UNDO    |      REDO   |            INS      |
-// | LHYP  |     |   LGUI  | LALT | LSHFT | LCTRL |                                                 |     LEFT    |     DOWN      |     UP      |    RIGHT   |             |            APS WORD |
+// | LHYP  |     |   LGUI  | LALT | LSHFT | LCTRL |                                                 |     LEFT    |     DOWN      |     UP      |    RIGHT   |             |                     |
 // | LMEH  |     |   RCTRL | RALT | RGUI | RSHFT |                                                  |     HOME    |     PAGE_DOWN |     PAGE_UP |    END     |             |            K_APP    |       
 //                        |      |       | K_APP |                                                  |     RET     |     BSPC      |     DEL     |
                         bindings = <
    &none   &none &none     &none    &none      &none                                                   &kp K_PASTE   &kp K_COPY      &kp   K_CUT   &kp K_UNDO   &kp   K_REDO  &kp        INS
-   &kp LHYP &none &kp LGUI  &kp LALT &kp LSHFT &kp LCTRL                                               &kp LEFT      &kp DOWN        &kp      UP   &kp RIGHT    &none         &caps_word   
+   &kp LHYP &none &kp LGUI  &kp LALT &kp LSHFT &kp LCTRL                                               &kp LEFT      &kp DOWN        &kp      UP   &kp RIGHT    &none         &none
    &kp LMEH &none &kp RCTRL &kp RALT &kp RGUI  &kp RSHFT                                               &kp HOME      &kp PAGE_DOWN   &kp PAGE_UP   &kp END      &none         &kp        K_APP
                            &kp DEL  &none      &kp BSPC                                                &kp RET       &kp DEL         &kp  BSPC      
                         >;
@@ -304,12 +320,12 @@
                 misc_layer {
                         label = "MISC";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// | TILDE2        |      |         |             |                | to NUMPAD   |                              | to QWERTY     | to NEO2     | CLEAR       | CLEAR_AGAIN      | NUMLOCK    | NUBS    |
+// | TILDE2        |      |         |             |                | to NUMPAD   |                              | to QWERTY     | to NGRAM     | CLEAR       | CLEAR_AGAIN      | NUMLOCK    | NUBS    |
 // | mt LHYP NUHS   |      |   LGUI  |     LALT    |   LSHFT         | LCTRL       |                             | CAPS WORD     | OUT         | OPER        | EXSEL            | CAPSLOCK   | PIPE2   |
 // | LMEH           |      |   RCTRL |     RALT    |   RGUI         | RSHFT       |                             | PAUSE_BREAK   | CRSEL       | PRIOR       | SEPARATOR        | SCROLLLOCK |         |
 //                                  |    SYSREQ   |                | PRINTSCREEN |                              |               | K_CANCEL    | ALT_ERASE   |
                          bindings = <
-   &kp TILDE2     &none     &none     &none         &none             &to NUMPAD                                  &to QWERTY      &to NEO2      &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &kp NUBS
+   &kp TILDE2     &none     &none     &none         &none             &to NUMPAD                                  &to QWERTY      &to NGRAM      &kp CLEAR      &kp CLEAR_AGAIN &kp LNLCK      &kp NUBS
    &mt LHYP NUHS   &none     &kp LGUI  &kp LALT      &kp LSHFT          &kp LCTRL                                  &none           &kp OUT       &kp OPER       &kp EXSEL       &kp CAPSLOCK   &kp PIPE2
    &kp LMEH        &none     &kp RCTRL &kp RALT      &kp RGUI          &kp RSHFT                                  &kp PAUSE_BREAK &kp CRSEL     &kp PRIOR      &kp SEPARATOR   &kp SCROLLLOCK &none
                                       &kp SYSREQ    &kp K_EDIT        &kp PRINTSCREEN                             &kp RET2        &kp K_CANCEL  &kp ALT_ERASE 
