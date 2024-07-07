@@ -85,7 +85,7 @@
             bindings = <&tog 3>;
         };
 
-    }
+    };
 
 / {
         keymap {
