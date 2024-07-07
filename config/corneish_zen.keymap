@@ -79,10 +79,10 @@
         	compatible = "zmk,combos";
 
 		combo_symbol1 {
-            		layers = <0 1 3>;
+            		layers = <NGRAM QWERTY SYM1>;
             		timeout-ms = <25>;
             		key-positions = <39 40>;
-            		bindings = <&tog 3>;
+            		bindings = <&tog SYM1>;
         	};
 
     	};
