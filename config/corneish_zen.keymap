@@ -124,7 +124,7 @@
             		layers = <NGRAM QWERTY LANGUAGE>;
             		timeout-ms = <25>;
             		key-positions = <0 11>;
-            		bindings = <&tog DISPLAY>;
+            		bindings = <&tog LANGUAGE>;
         	};
 
 		combo_international {
@@ -529,31 +529,31 @@
 
                 international_layer {
                         label = "INT";
-// ----------------------------------------------------------------------------------------------------------------------------------
-// |     |    INT7 |    INT8 |    INT9  |      |      |                               |         |      |      |      |      |       |
-// |     |    INT4 |    INT5 |    INT6  |      |      |                               |         |      |      |      |      |       | 
-// |     |    INT1 |    INT2 |    INT3  |      |      |                               |         |      |      |      |      |       |
-//                                |     |      |      |                               |         |      |      |
+// --------------------------------------------------------------------------------------------------------------------------------------------
+// |     |    INT7 |    INT8 |    INT9  |      |      |                               |                   |      |      |      |      |       |
+// |     |    INT4 |    INT5 |    INT6  |      |      |                               |                   |      |      |      |      |       | 
+// |     |    INT1 |    INT2 |    INT3  |      |      |                               |                   |      |      |      |      |       |
+//                                |     |      |      |                               |                   |      |      |
                          bindings = <
-   &none  &kp INT7  &kp INT8  &kp INT9   &none      &none                               &none     &none  &none  &none  &none  &none 
-   &none  &kp INT4  &kp INT5  &kp INT6   &none      &none                               &none     &none  &none  &none  &none  &none
-   &none  &kp INT1  &kp INT2  &kp INT3   &none      &none                               &none     &none  &none  &none  &none  &none
-                              &none      &kp   TAB  &kp   SPACE                         &tog INT  &none  &none 
+   &none  &kp INT7  &kp INT8  &kp INT9   &none      &none                               &none               &none  &none  &none  &none  &none 
+   &none  &kp INT4  &kp INT5  &kp INT6   &none      &none                               &none               &none  &none  &none  &none  &none
+   &none  &kp INT1  &kp INT2  &kp INT3   &none      &none                               &none               &none  &none  &none  &none  &none
+                              &none      &kp   TAB  &kp   SPACE                         &tog INTERNATIONAL  &none  &none 
                         >;
                 };
 
                 language_layer {
                         label = "LANG";
-// -----------------------------------------------------------------------------------------------------------------------------------------
-// |     |    LANG7 |    LANG8 |    LANG9  |          |              |                 |          |       |       |        |       |       |
-// |     |    LANG4 |    LANG5 |    LANG6  |          |              |                 |          |       |       |        |       |       | 
-// |     |    LANG1 |    LANG2 |    LANG3  |          |              |                 |          |       |       |        |       |       |
-//                                   |     |          |              |                 |          |       |       |
+// --------------------------------------------------------------------------------------------------------------------------------------------
+// |     |    LANG7 |    LANG8 |    LANG9  |          |              |                 |             |       |       |        |       |       |
+// |     |    LANG4 |    LANG5 |    LANG6  |          |              |                 |             |       |       |        |       |       | 
+// |     |    LANG1 |    LANG2 |    LANG3  |          |              |                 |             |       |       |        |       |       |
+//                                   |     |          |              |                 |             |       |       |
                          bindings = <
-   &none  &kp LANG7  &kp LANG8  &kp LANG9   &none       &none                           &none       &none   &none   &none    &none   &none 
-   &none  &kp LANG4  &kp LANG5  &kp LANG6   &none       &none                           &none       &none   &none   &none    &none   &none
-   &none  &kp LANG1  &kp LANG2  &kp LANG3   &none       &none                           &none       &none   &none   &none    &none   &none
-                                &none       &kp    TAB  &kp   SPACE                     &tog LANG   &none   &none 
+   &none  &kp LANG7  &kp LANG8  &kp LANG9   &none       &none                           &none           &none   &none   &none    &none   &none 
+   &none  &kp LANG4  &kp LANG5  &kp LANG6   &none       &none                           &none           &none   &none   &none    &none   &none
+   &none  &kp LANG1  &kp LANG2  &kp LANG3   &none       &none                           &none           &none   &none   &none    &none   &none
+                                &none       &kp    TAB  &kp   SPACE                     &tog LANGUAGE   &none   &none 
                         >;
                 };
         };
