@@ -85,6 +85,20 @@
             		bindings = <&tog SYM1>;
         	};
 
+		combo_symbol2 {
+            		layers = <NGRAM QWERTY SYM2>;
+            		timeout-ms = <25>;
+            		key-positions = <39 41>;
+            		bindings = <&tog SYM2>;
+        	};
+
+		combo_num {
+            		layers = <NGRAM QWERTY NUM>;
+            		timeout-ms = <25>;
+            		key-positions = <39 9>;
+            		bindings = <&tog NUM>;
+        	};
+
     	};
 
         keymap {
