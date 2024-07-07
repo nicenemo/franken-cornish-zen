@@ -349,16 +349,16 @@
 
                 mouse_layer {
                         label = "MOUSE";
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      |     |          |       |         |            |                                             |          |           |          |           |       |      |
-// | LHYP  |     |   LGUI  |  LALT |   LSHFT | LCTRL      |                                             |      MB1 |       MB3 |     MB4  |       MB5 |       |      |
-// | LMEH  |     |   RCTRL |  RALT |   RGUI  | RSIFT      |                                             |      MB2 |           |          |           |       |      |      
-//                         |       |         |            |                                             |          |           |          |
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |      |     |          |       |         |            |                                             |       |       |           |           |           |          |
+// | LHYP  |     |   LGUI  |  LALT |   LSHFT | LCTRL      |                                             |       |       |       MB1 |       MB3 |       MB4 |      MB5 |
+// | LMEH  |     |   RCTRL |  RALT |   RGUI  | RSIFT      |                                             |       |       |       MB2 |           |           |          |      
+//                         |       |         |            |                                             |       |       |           |
                         bindings = <
-   &none   &none  &none     &none    &none     &none                                                      &none       &none      &none       &none       &none   &none   
-   &kp LHYP &none &kp LGUI  &kp LALT &kp LSHFT &kp   LCTRL                                                &mkp  MB1   &mkp  MB3  &mkp  MB4   &mkp  MB5   &none   &none
-   &kp LMEH &none &kp RCTRL &kp RALT &kp RGUI  &kp   RSHFT                                                &mkp  MB2   &none      &none       &none       &none   &none
-                            &none    &none     &none                                                      &none       &none      &none      
+   &none   &none  &none     &none    &none     &none                                                      &none   &none   &none       &none      &none       &none   
+   &kp LHYP &none &kp LGUI  &kp LALT &kp LSHFT &kp   LCTRL                                                &none   &none   &mkp  MB1   &mkp  MB3  &mkp   MB4  &mkp  MB5
+   &kp LMEH &none &kp RCTRL &kp RALT &kp RGUI  &kp   RSHFT                                                &none   &none   &mkp  MB2   &none      &none       &none
+                            &none    &none     &none                                                      &none   &none   &none      
                         >;
                 };
                 
