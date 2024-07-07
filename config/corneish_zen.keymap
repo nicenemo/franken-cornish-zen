@@ -79,25 +79,12 @@
         compatible = "zmk,combos";
 
 	combo_symbol1 {
-            layers = <NGRAM QUERTY SYM1>;
+            layers = <0 1 3>;
             timeout-ms = <25>;
             key-positions = <39 40>;
-            bindings = <&tog SYM1>;
+            bindings = <&tog 3>;
         };
 
-	combo_symbol2 {
-            layers = <NGRAM QUERTY SYM2>;
-            timeout-ms = <25>;
-            key-positions = <39 41>;
-            bindings = <&tog SYM2>;
-        };
-
-	combo_numbers {
-            layers = <NGRAM QUERTY NUM>;
-            timeout-ms = <25>;
-            key-positions = <39 9>;
-            bindings = <&tog SYM2>;
-        };
     }
 
 / {
