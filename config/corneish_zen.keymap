@@ -57,6 +57,49 @@
   };
 };
 
+/*
+ * Key numbering cheat sheet:
+ * 
+ * 0     1  2  3  4  5    6  7  8  9  10 11
+ * TAB   Q  W  E  R  T    Y  U  I  O  P  BKSP
+ * 
+ * 12    13 14 15 16 17   18 19 20 21 22 23
+ * Ctrl  A  S  D  F  G    H  J  K  L  ;  SQT
+ *  
+ * 24    25 26 27 28 29   30 31 32 33 34 35
+ * Shift Z  X  C  V  B    N  M  ,  .  /  ESQ
+ *
+ *          36  37 38     39     40   41
+ *          Win UP SPC    ENTER  DOWN ALT
+ */
+
+
+ / {
+    combos {
+        compatible = "zmk,combos";
+
+	combo_symbol1 {
+            layers = <NGRAM QUERTY SYM1>;
+            timeout-ms = <25>;
+            key-positions = <39 40>;
+            bindings = <&tog SYM1>;
+        };
+
+	combo_symbol2 {
+            layers = <NGRAM QUERTY SYM2>;
+            timeout-ms = <25>;
+            key-positions = <39 41>;
+            bindings = <&tog SYM2>;
+        };
+
+	combo_numbers {
+            layers = <NGRAM QUERTY NUM>;
+            timeout-ms = <25>;
+            key-positions = <39 9>;
+            bindings = <&tog SYM2>;
+        };
+    }
+
 / {
         keymap {
                 compatible = "zmk,keymap";
@@ -100,10 +143,10 @@
 // | .  |  1  |  2  |  3  | , | % |                                                                 |                 |             |            |           |      RAG  |    RCA   |
 //                  |  0  | = | ~ |                                                                 |                 |             |            |
                             bindings = <
-   &kp PERCENT     &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9   &kp COLON    &kp K                       &kp       D        &kp       E   &kp      F    &none       &kp LMEH  &kp LHYP
+   &kp PERCENT     &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9   &kp COLON    &kp K                       &kp       D        &kp       E   &kp      F    &tog NUM    &kp LMEH  &kp LHYP
    &kp KP_PLUS     &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6   &kp KP_MINUS &kp J                       &mt RCTRL A        &mt RSHFT B   &mt RALT C    &kp RGUI    &kp RMEH  &kp RHYP
    &kp KP_ASTERISK &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3   &kp KP_SLASH &kp LS(G)                   &mt LCTRL COPILOT  &kp LSHFT     &kp LALT      &kp LGUI    &kp RAG   &kp RCA
-                                             &kp NUMBER_0   &kp COMMA    &kp DOT                     &none              &tog NUM      &kp EQL      
+                                             &kp NUMBER_0   &kp COMMA    &kp DOT                     &none              &kp COPILOT   &kp EQL      
                         >;
                 };
 
