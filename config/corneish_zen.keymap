@@ -135,7 +135,7 @@
         	};
 
 		combo_function_keys {
-            		layers = <NGRAM QWERTY HFUN>;
+            		layers = <NGRAM QWERTY FUN>;
             		timeout-ms = <25>;
             		key-positions = <0 30>;
             		bindings = <&tog FUN>;
