@@ -95,7 +95,7 @@
 		combo_num {
             		layers = <NGRAM QWERTY NUM>;
             		timeout-ms = <25>;
-            		key-positions = <39 9>;
+            		key-positions = <39 35>;
             		bindings = <&tog NUM>;
         	};
 		combo_config {
@@ -146,12 +146,12 @@
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // | !  |  7  |  8  |  9  | * | / |                                                                 |          D      |           E |          F |           |      LMEH |    LHYP  |
 // | -  |  4  |  5  |  6  | + | ^ |                                                                 |          A      |           B |          C |           |      RMEH |    RHYP  |
-// | .  |  1  |  2  |  3  | , | % |                                                                 |                 |             |            |           |      RAG  |    RCA   |
+// | .  |  1  |  2  |  3  | , | % |                                                                 |                 |             |            |           |           |          |
 //                  |  0  | = | ~ |                                                                 |                 |             |            |
                             bindings = <
-   &kp PERCENT     &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9   &kp COLON    &kp K                       &kp       D        &kp       E   &kp      F    &tog NUM    &kp LMEH  &kp LHYP
+   &kp PERCENT     &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9   &kp COLON    &kp K                       &mt RAG   D        &mt RSC   E   &mt RCA  F    &kp RCG     &kp LMEH  &kp LHYP
    &kp KP_PLUS     &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6   &kp KP_MINUS &kp J                       &mt RCTRL A        &mt RSHFT B   &mt RALT C    &kp RGUI    &kp RMEH  &kp RHYP
-   &kp KP_ASTERISK &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3   &kp KP_SLASH &kp LS(G)                   &mt LCTRL SOUSCHEF &kp LSHFT     &kp LALT      &kp LGUI    &kp RAG   &kp RCA
+   &kp KP_ASTERISK &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3   &kp KP_SLASH &kp LS(G)                   &mt LCTRL SOUSCHEF &kp LSHFT     &kp LALT      &kp LGUI    &none     &tog NUM
                                              &kp NUMBER_0   &kp COMMA    &kp DOT                     &none              &kp COPILOT   &kp EQL      
                         >;
                 };
