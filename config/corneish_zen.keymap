@@ -259,31 +259,31 @@
 
                 fun_layer {
                         label = "FUN";
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       |   F7 |   F8 |     F9 |           |       |                                             |           |        |        | HFUN    |            |           |
-// |       |   F4 |   F5 |     F6 |           |       |                                             | RSHFT     | RGUI   | RALT   | RCTRL   |            |     RHYP  |
-// |       |   F1 |   F2 |     F3 |           |       |                                             | LCTRL     | LSHFT   | LALT   | LGUI    |            |     RMEH  |
-//                       |    F10 |           |       |                                             |           |        |        |
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |       |     F7 |   F8 |     F9  |         |       |                                          |      RAG    |     RSC   |     RCA  |      RCG  |       LMEH |       LHYP  |
+// |       |     F4 |   F5 |     F6  |         |       |                                          |      RCTRL  |     RSHFT |     RALT |      RGUI |       RMEH |       RHYP  |
+// |       |     F1 |   F2 |     F3  |         |       |                                          |      LCTRL  |     LSHFT |     LALT |      LGUI |            |             |
+//                         |     F10 |         |       |                                          | tog  FUN    |           |          |
                          bindings = <
-   &none     &kp F7 &kp F8 &kp   F9  &none     &none                                                  &none       &none    &none    &mo HFUN  &none        &none
-   &none     &kp F4 &kp F5 &kp   F6  &none     &none                                                  &kp RSHFT   &kp RGUI &kp RALT &kp RCTRL &none        &kp RHYP
-   &none     &kp F1 &kp F2 &kp   F3  &none     &none                                                  &kp LCTRL   &kp LSHFT &kp LALT &kp LGUI  &none        &kp RMEH
-                           &kp   F10 &kp DEL   &kp   BSPC                                             &tog FUN    &none    &none     
+   &none     &kp F7 &kp F8 &kp   F9  &none       &none                                              &kp  RAG     &kp RSC     &kp RCA     &kp RCG    &kp   LMEH   &kp   LHYP
+   &none     &kp F4 &kp F5 &kp   F6  &none       &none                                              &kp  RCTRL   &kp RSHFT   &kp RALT    &kp RGUI   &kp   RMEH   &kp   RHYP
+   &none     &kp F1 &kp F2 &kp   F3  &none       &none                                              &kp  LCTRL   &kp LSHFT   &kp LALT    &kp LGUI   &none        &none
+                           &kp   F10 &kp   DEL   &kp   BSPC                                         &tog FUN    &none       &none     
                         >;
                 };
 
                 hfun_layer {
                         label = "HFUN";
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       |   F17 |   F18 |     F19 |   F23  |    F24 |                                            |           |          |            |             |       |             |
-// |       |   F14 |   F15 |     F16 |   F21  |    F22 |                                            | RSHFT     |     RGUI |       RALT |       RCTRL |       |       RHYP  |
-// |       |   F11 |   F12 |     F13 |        |        |                                            | LCTRL     |     LSHFT |       LALT |       LGUI  |       |       RMEH  |
-//                         |     F20 |        |        |                                            |           |          |            |
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |       |   F17 |     F18 |       F19 |       F23 |       F24 |                                  |     RAG   |    RSC   |       RCA  |       RCG   |      LMEH  |       LHYP  |
+// |       |   F14 |     F15 |       F16 |       F21 |       F22 |                                  |     RCTRL |    RSHFT |       RALT |       RCTRL |      RMEH  |       RHYP  |
+// |       |   F11 |     F12 |       F13 |           |           |                                  |     LCTRL |    LSHFT |       LALT |       LGUI  |            |       RMEH  |
+//                           |       F20 |           |           |                                  | tog HFUN  |          |            |
                          bindings = <
-   &none   &kp F17 &kp F18 &kp   F19 &kp F23   &kp F24                                               &none        &none      &none        &none         &none   &none
-   &none   &kp F14 &kp F15 &kp   F16 &kp F21   &kp F22                                               &kp   RSHFT  &kp RGUI   &kp   RALT   &kp   RCTRL   &none   &kp   RHYP
-   &none   &kp F11 &kp F12 &kp   F13 &none     &none                                                 &kp   LCTRL  &kp LSHFT   &kp   LALT   &kp   LGUI    &none   &kp   RMEH
-                           &kp   F20 &kp DEL   &kp BSPC                                              &tog HFUN    &none      &none     
+   &none   &kp F17   &kp F18   &kp   F19   &kp   F23   &kp   F24                                     &kp  RCA    &kp RSC     &kp   RCA    &kp   RCG     &kp   LMEH   &kp   LHYP
+   &none   &kp F14   &kp F15   &kp   F16   &kp   F21   &kp   F22                                     &kp  RCTRL  &kp RSHFT   &kp   RALT   &kp   RGUI    &kp   RMEH   &kp   RHYP
+   &none   &kp F11   &kp F12   &kp   F13   &none       &none                                         &kp  LCTRL  &kp LSHFT   &kp   LALT   &kp   LGUI    &none        &none
+                           &kp   F20 &kp DEL   &kp BSPC                                              &tog HFUN   &none      &none     
                         >;
                 };
 
