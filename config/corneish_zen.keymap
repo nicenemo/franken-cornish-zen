@@ -188,15 +188,15 @@
                 nav_layer {
                         label = "NAV";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      |     |         |      |      |        |                                                  |     PASTE   |     COPY      |     CUT     |    UNDO    |      REDO   |            INS      |
-// | LHYP  |     |   LGUI  | LALT | LSHFT | LCTRL |                                                 |     LEFT    |     DOWN      |     UP      |    RIGHT   |             |                     |
-// | LMEH  |     |   RCTRL | RALT | RGUI | RSHFT |                                                  |     HOME    |     PAGE_DOWN |     PAGE_UP |    END     |             |            K_APP    |       
-//                        |      |       | K_APP |                                                  |     RET     |     BSPC      |     DEL     |
+// | RHYP   |    RMEH  |     LCG   |     LCA     | LSC   |     LAG   |                                      |     PASTE   |     COPY      |     CUT     |    UNDO    |      REDO   |            INS      |
+// | LHYP   |    LMEH  |     LGUI  |     LALT    | LSHFT |     LCTRL |                                      |     LEFT    |     DOWN      |     UP      |    RIGHT   |             |                     |
+// |        |          |     RGUI  |     RALT    | RSHFT |     RCTRL |                                      |     HOME    |     PAGE_DOWN |     PAGE_UP |    END     |             |            K_APP    |       
+//                            |   DEL   |        | BSPC  |                                                  |     RET     |     BSPC      |     DEL     |
                         bindings = <
-   &none   &none &none     &none    &none      &none                                                   &kp K_PASTE   &kp K_COPY      &kp   K_CUT   &kp K_UNDO   &kp   K_REDO  &kp        INS
-   &kp LHYP &none &kp LGUI  &kp LALT &kp LSHFT &kp LCTRL                                               &kp LEFT      &kp DOWN        &kp      UP   &kp RIGHT    &none         &none
-   &kp LMEH &none &kp RCTRL &kp RALT &kp RGUI  &kp RSHFT                                               &kp HOME      &kp PAGE_DOWN   &kp PAGE_UP   &kp END      &none         &kp        K_APP
-                           &kp DEL  &none      &kp BSPC                                                &kp RET       &kp DEL         &kp  BSPC      
+   &kp RHYP   &kp RMEH   &kp LCG    &kp LCA  &kp   LSC     &kp LAG                                            &kp K_PASTE   &kp K_COPY      &kp   K_CUT   &kp K_UNDO   &kp   K_REDO  &kp        INS
+   &kp LHYP   &kp LMEH   &kp LGUI   &kp LALT &kp   LSHFT   &kp LCTRL                                          &kp LEFT      &kp DOWN        &kp      UP   &kp RIGHT    &none         &none
+   &none      &none      &kp RGUI   &kp RALT &kp   RSHFT   &kp RCTRL                                          &kp HOME      &kp PAGE_DOWN   &kp PAGE_UP   &kp END      &none         &kp        K_APP
+                                    &kp DEL  &none         &kp BSPC                                           &kp RET       &kp DEL         &kp  BSPC      
                         >;
                 };
 
