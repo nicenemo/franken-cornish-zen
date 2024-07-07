@@ -98,6 +98,12 @@
             		key-positions = <39 9>;
             		bindings = <&tog NUM>;
         	};
+		combo_config {
+            		layers = <NGRAM QWERTY CONFIG>;
+            		timeout-ms = <25>;
+            		key-positions = <24 35>;
+            		bindings = <&tog CONFIG>;
+        	};
 
     	};
 
@@ -175,7 +181,7 @@
    &kp EXCL  &kp GRAVE &kp LPAR  &kp RPAR    &kp SEMI    &kp COMMA                                   &none          &none         &none        &none        &kp LMEH  &kp LHYP
    &kp HASH  &kp CARET &kp EQUAL &kp UNDER   &kp DOLLAR  &kp ASTERISK                                &kp   RCTRL    &kp   RSHFT   &kp   RALT   &kp   RGUI   &kp RMEH  &kp RHYP
    &kp TILDE &kp AMPS  &kp LBKT  &kp RBKT    &kp PLUS    &kp BACKSLASH                               &kp   LCTRL    &kp   LSHFT   &kp   LALT   &kp   LGUI   &kp RAG   &kp RCA
-                                 &kp PERCENT &kp COLON   &kp SEMI                                    &tog  SYM2     &none         &none      
+                                 &kp PERCENT &kp COLON   &kp SEMI                                    &tog  SYM2     &none         &caps_word      
                         >;
                 };
 
@@ -376,16 +382,16 @@
                 };
                 config_layer {
                         label = "CONFIG";
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      | left reset      |        |               |               |               |                               |  BT_CLR         | BT_PRV         | BT_NXT     | BT_CLR_AL        |               | right reset      |
-// |      | left bootloader |        |               |               |               |                               |  BT_SEL 1       | BT_SEL 2       | BT_SEL 3   | BT_SEL 4         |               | right bootloader | 
-// |      |                 |        |               |               |               |                               |  BT_DISC 0      | BT_DISC 1      | BT_DISC 2  | BIT_DISC 3       |               |                  |
-//                                   |       OUT_USB |       OUT_BLE |       OUT_TOG |                               |  EP_TOG         | EP_ON          | EP_OFF     |
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// | left reset     |       |        |               |               |                |                               |     BT_CLR      |     BT_PRV      |     BT_NXT    |     BT_CLR_AL   |               | right reset       |
+// | left bootloader|       |        |               |               |                |                               |     BT_SEL 0    |     BT_SEL 1    |     BT_SEL 2  |     BT_SEL 3    |     BT_SEL 4  | right bootloader  | 
+// |                |       |        |               |               |       SOFT OFF |                               |     BT_DISC 0   |     BT_DISC 1   |     BT_DISC 2 |     BIT_DISC 3  |     BT_DISC 4 |            EP_TOG |
+//                                   |       OUT_USB |       OUT_BLE |       OUT_TOG  |                               |     EP_TOG      |     EP_ON       |     EP_OFF    |
                          bindings = <
-   &none       &sys_reset    &none     &none           &none           &none                                            &bt BT_CLR        &bt BT_PRV       &bt BT_NXT    &bt BT_CLR_ALL   &none           &sys_reset 
-   &none       &bootloader   &none     &none           &none           &none                                            &bt BT_SEL 0      &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3     &bt BT_SEL 4    &bootloader
-   &none       &none         &none     &none           &none           &none                                            &bt BT_DISC 0     &bt BT_DISC 1    &bt BT_DISC 2 &bt BT_DISC 3    &bt BT_DISC 4   &none
-                                       &out  OUT_USB   &out  OUT_BLE   &out  OUT_TOG                                    &ext_power EP_TOG &ext_power EP_ON &ext_power EP_OFF      
+   &sys_reset  &none         &none     &none           &none           &none                                            &bt BT_CLR        &bt BT_PRV        &bt BT_NXT      &bt BT_CLR_ALL    &none           &sys_reset 
+   &bootloader &none         &none     &none           &none           &none                                            &bt BT_SEL 0      &bt BT_SEL 1      &bt BT_SEL 2    &bt BT_SEL 3      &bt BT_SEL 4    &bootloader
+   &none       &none         &none     &none           &none           &soft_off                                        &bt BT_DISC 0     &bt BT_DISC 1     &bt BT_DISC 2   &bt BT_DISC 3     &bt BT_DISC 4   &ext_power EP_TOG
+                                       &out  OUT_USB   &out  OUT_BLE   &out  OUT_TOG                                    &tog CONFIG       &ext_power EP_ON  &ext_power EP_OFF      
                         >;
                 };
 
