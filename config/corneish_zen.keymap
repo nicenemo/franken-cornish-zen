@@ -98,11 +98,53 @@
             		key-positions = <39 35>;
             		bindings = <&tog NUM>;
         	};
+
 		combo_config {
             		layers = <NGRAM QWERTY CONFIG>;
             		timeout-ms = <25>;
             		key-positions = <24 35>;
             		bindings = <&tog CONFIG>;
+        	};
+
+		combo_volume {
+            		layers = <NGRAM QWERTY VOLUME>;
+            		timeout-ms = <25>;
+            		key-positions = <24 11>;
+            		bindings = <&tog VOLUME>;
+        	};
+
+		combo_display {
+            		layers = <NGRAM QWERTY DISPLAY>;
+            		timeout-ms = <25>;
+            		key-positions = <24 6>;
+            		bindings = <&tog DISPLAY>;
+        	};
+
+		combo_language {
+            		layers = <NGRAM QWERTY LANGUAGE>;
+            		timeout-ms = <25>;
+            		key-positions = <0 11>;
+            		bindings = <&tog DISPLAY>;
+        	};
+
+		combo_international {
+            		layers = <NGRAM QWERTY INTERNATIONAL>;
+            		timeout-ms = <25>;
+            		key-positions = <0 35>;
+            		bindings = <&tog INTERNATIONAL>;
+        	};
+
+		combo_function_keys {
+            		layers = <NGRAM QWERTY HFUN>;
+            		timeout-ms = <25>;
+            		key-positions = <0 30>;
+            		bindings = <&tog FUN>;
+        	};
+		combo_high_function_keys {
+            		layers = <NGRAM QWERTY HFUN>;
+            		timeout-ms = <25>;
+            		key-positions = <0 6>;
+            		bindings = <&tog HFUN>;
         	};
 
     	};
@@ -113,14 +155,14 @@
                 default_layer {
                         label = "NGRAM";
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |        GRAVE |         B  |            Y  |           O   |            U   |               SQT   |                         |             SEMI |            L   |            D    |              W  |            V  |            Z         |
+// |        DQT   |         B  |            Y  |           O   |            U   |               SQT   |                         |             SEMI |            L   |            D    |              W  |            V  |            Z         |
 // |        HASH  |         C  |            I  |           E   |            A   |               COMMA |                         |             DOT  |            H   |            T    |              S  |            N  |            Q         |
-// |        TILDE |         G  |            X  |           J   |            K   |               MINUS |                         |             FSLH |            R   |            M    |              F  |            P  |            BACKSLASH |       
+// |        GRAVE |         G  |            X  |           J   |            K   |               MINUS |                         |             FSLH |            R   |            M    |              F  |            P  |            BACKSLASH |       
 //                                             |           ESC |            TAB |               SPACE |                         |             RET  |            DEL |            BSPC |
                         bindings = <
-   &mt RHYP GRAVE  &mt RMEH B   &mt LCG     Y    &mt LCA    O    &mt LSC    U     &mt LAG       SQT                               &mt RAG     SEMI   &mt RSC    L     &mt RCA    D      &mt RCG      W    &mt LMEH   V    &mt LHYP   Z 
+   &mt RHYP DQT    &mt RMEH B   &mt LCG     Y    &mt LCA    O    &mt LSC    U     &mt LAG       SQT                               &mt RAG     SEMI   &mt RSC    L     &mt RCA    D      &mt RCG      W    &mt LMEH   V    &mt LHYP   Z 
    &mt LHYP HASH   &mt LMEH C   &mt LGUI    I    &mt LALT   E    &mt LSHFT  A     &mt LCTRL     COMMA                             &mt RCTRL   DOT    &mt RSHFT  H     &mt RALT   T      &mt RGUI     S    &mt RMEH   N    &mt RHYP   Q
-   &kp      TILDE  &kp      G   &mt RGUI    X    &mt RALT   J    &mt RSHFT  K     &mt RCTRL     MINUS                             &mt LCTRL   FSLH   &mt LSHFT  R     &mt LALT   M      &mt LGUI     F    &kp        P    &lt MOUSE  BACKSLASH 
+   &kp      GRAVE  &kp      G   &mt RGUI    X    &mt RALT   J    &mt RSHFT  K     &mt RCTRL     MINUS                             &mt LCTRL   FSLH   &mt LSHFT  R     &mt LALT   M      &mt LGUI     F    &kp        P    &lt MOUSE  BACKSLASH 
                                                  &lt VOLUME ESC  &lt NAV    TAB   &lt APPLAUNCH SPACE                             &lt NUM     RET    &lt SYM1   DEL   &lt SYM2   BSPC 
                         >;
                 };
@@ -128,14 +170,14 @@
                 qwerty_layer {
                         label = "QWERTY";
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |        GRAVE |         Q  |            W  |           E   |            R   |               T     |                         |             Y   |            U   |            I    |              O  |            P  |           \        |
+// |        DQT   |         Q  |            W  |           E   |            R   |               T     |                         |             Y   |            U   |            I    |              O  |            P  |           \        |
 // |        HASH  |         A  |            S  |           D   |            F   |               G     |                         |             H   |            J   |            K    |              L  |            ;  |           "        |
-// |        TILDE |         Z  |            X  |           C   |            V   |               B     |                         |             N   |            M   |            ,    |              .  |            /  |           '        |       
+// |        GRAVE |         Z  |            X  |           C   |            V   |               B     |                         |             N   |            M   |            ,    |              .  |            /  |           '        |       
 //                                             |           ESC |            TAB |               SPACE |                         |             RET |            DEL |            BSPC |
                         bindings = <
-   &mt RHYP GRAVE  &lt MISC Q   &mt LCG     W    &mt LCA    E    &mt LSC    R     &mt LAG       T                                 &mt RAG     Y     &mt RSC    U     &mt RCA    I      &mt RCG      O    &mt LMEH   P    &mt LHYP  BACKSLASH
+   &mt RHYP DQT    &lt MISC Q   &mt LCG     W    &mt LCA    E    &mt LSC    R     &mt LAG       T                                 &mt RAG     Y     &mt RSC    U     &mt RCA    I      &mt RCG      O    &mt LMEH   P    &mt LHYP  BACKSLASH
    &mt LHYP HASH   &mt LMEH A   &mt LGUI    S    &mt LALT   D    &mt LSHFT  F     &mt LCTRL     G                                 &mt RCTRL   H     &mt RSHFT  J     &mt RALT   K      &mt RGUI     L    &mt RMEH   SEMI &mt RHYP  DQT
-   &mt LCA  TILDE  &kp      Z   &mt RGUI    X    &mt RALT   C    &mt RSHFT  V     &mt RCTRL     B                                 &mt LCTRL   N     &mt LSHFT  M     &mt LALT   COMMA  &mt LGUI     DOT  &mt RAG    FSLH &lt MOUSE SQT 
+   &mt LCA  GRAVE  &kp      Z   &mt RGUI    X    &mt RALT   C    &mt RSHFT  V     &mt RCTRL     B                                 &mt LCTRL   N     &mt LSHFT  M     &mt LALT   COMMA  &mt LGUI     DOT  &mt RAG    FSLH &lt MOUSE SQT 
                                                  &lt VOLUME ESC  &lt NAV    TAB   &lt APPLAUNCH SPACE                             &lt NUM     RET   &lt SYM1   DEL   &lt SYM2   BSPC 
                         >;
                 };
@@ -181,7 +223,7 @@
    &kp EXCL  &kp GRAVE &kp LPAR  &kp RPAR    &kp SEMI    &kp COMMA                                   &kp  RAG      &kp   RSC     &kp   RCA    &kp RCG    &kp LMEH  &kp LHYP
    &kp HASH  &kp CARET &kp EQUAL &kp UNDER   &kp DOLLAR  &kp ASTERISK                                &kp  RCTRL    &kp   RSHFT   &kp   RALT   &kp RGUI   &kp RMEH  &kp RHYP
    &kp TILDE &kp AMPS  &kp LBKT  &kp RBKT    &kp PLUS    &kp BACKSLASH                               &kp  LCTRL    &kp   LSHFT   &kp   LALT   &kp LGUI   &kp RAG   &kp RCA
-                                 &kp PERCENT &kp COLON   &kp SEMI                                    &tog SYM2     &none         &caps_word      
+                                 &kp PERCENT &kp COLON   &kp SEMI                                    &tog SYM2     &none         &none      
                         >;
                 };
 
@@ -203,15 +245,15 @@
                 volume_layer {
                         label = "VOLUME";
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      |     |         |        |         |       |                                                 |              |       K_VOLUME_DOWN  |     K_VOlUME_UP  |                     |                 |                |
-// | LHYP  |     |   LGUI  |  LALT |   LSHFT | LCTRL |                                                 | C_BASS_BOOST |       C_VOLUME_DOWN  |     C_VOLUME_UP  |     C_ALT_AUDIO_INC |                 |                |
-// | LMEH  |     |   RCTRL |  RALT |   RGUI  | RSHFT |                                                 |              |       K_VOLUME_DOWN2 |     K_VOlUME_UP2 |                     |                 |                |      
-//                        |        |         |       |                                                 | K_MUTE       |       C_MUTE         |     K_MUTE2      |
+// |   RHYP  | RMEH      |     LCG   |     LCA  |       LSC   |     LAG   |                                  |              |       K_VOLUME_DOWN  |     K_VOlUME_UP  |                     |                 |                |
+// |   LHYP  | LMEH      |     LGUI  |     LALT |       LSHFT |     LCTRL |                                  | C_BASS_BOOST |       C_VOLUME_DOWN  |     C_VOLUME_UP  |     C_ALT_AUDIO_INC |                 |                |
+// |   LMEH  |           |     RCTRL |     RALT |       RGUI  |     RSHFT |                                  |              |       K_VOLUME_DOWN2 |     K_VOlUME_UP2 |                     |                 |                |      
+//                       |                      |             |           |                                  | K_MUTE       |       C_MUTE         |     K_MUTE2      |
                         bindings = <
-   &none     &none &none     &none    &none     &none                                                    &none            &kp K_VOLUME_DOWN    &kp K_VOLUME_UP    &none                 &none                &none 
-   &kp LHYP  &none &kp LGUI  &kp LALT &kp LSHFT &kp LCTRL                                                &kp C_BASS_BOOST &kp C_VOLUME_DOWN    &kp C_VOLUME_UP    &kp C_ALT_AUDIO_INC   &none                &none
-   &kp LMEH  &none &kp RCTRL &kp RALT &kp RGUI  &kp RSHFT                                                &none            &kp K_VOLUME_DOWN2   &kp K_VOLUME_UP2   &none                 &none                &none
-                             &none    &none     &none                                                    &kp K_MUTE       &kp C_MUTE           &kp K_MUTE2
+   &kp RHYP    &kp  RMEH   &kp LCG   &kp   LCA    &kp   LSC   &kp   LAG                                        &none            &kp K_VOLUME_DOWN    &kp K_VOLUME_UP    &none                 &none                &none 
+   &kp LHYP    &kp  LMEH   &kp LGUI  &kp   LALT   &kp   LSHFT &kp   LCTRL                                      &kp C_BASS_BOOST &kp C_VOLUME_DOWN    &kp C_VOLUME_UP    &kp C_ALT_AUDIO_INC   &none                &none
+   &none       &none       &kp RCTRL &kp   RALT   &kp   RGUI  &kp   RSHFT                                      &none            &kp K_VOLUME_DOWN2   &kp K_VOLUME_UP2   &none                 &none                &none
+                                     &none        &none       &none                                            &kp K_MUTE       &kp C_MUTE           &kp K_MUTE2
                         >;
                 };
 
@@ -226,7 +268,7 @@
    &none     &kp F7 &kp F8 &kp   F9  &none     &none                                                  &none       &none    &none    &mo HFUN  &none        &none
    &none     &kp F4 &kp F5 &kp   F6  &none     &none                                                  &kp RSHFT   &kp RGUI &kp RALT &kp RCTRL &none        &kp RHYP
    &none     &kp F1 &kp F2 &kp   F3  &none     &none                                                  &kp LCTRL   &kp LSHFT &kp LALT &kp LGUI  &none        &kp RMEH
-                           &kp   F10 &kp DEL   &kp   BSPC                                             &none       &none    &none     
+                           &kp   F10 &kp DEL   &kp   BSPC                                             &tog FUN    &none    &none     
                         >;
                 };
 
@@ -241,7 +283,7 @@
    &none   &kp F17 &kp F18 &kp   F19 &kp F23   &kp F24                                               &none        &none      &none        &none         &none   &none
    &none   &kp F14 &kp F15 &kp   F16 &kp F21   &kp F22                                               &kp   RSHFT  &kp RGUI   &kp   RALT   &kp   RCTRL   &none   &kp   RHYP
    &none   &kp F11 &kp F12 &kp   F13 &none     &none                                                 &kp   LCTRL  &kp LSHFT   &kp   LALT   &kp   LGUI    &none   &kp   RMEH
-                           &kp   F20 &kp DEL   &kp BSPC                                              &none        &none      &none     
+                           &kp   F20 &kp DEL   &kp BSPC                                              &tog HFUN    &none      &none     
                         >;
                 };
 
@@ -427,16 +469,16 @@
 
                 application_launch_layer {
                         label = "APPL";
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       C_AL_MY_COMPUTER |     C_AL_DOCUMENTS   |     C_AL_FILE_BROWSER |     C_AL_WWW                |      K_WWW             |      C_AL_CALCULATOR      |                        |           C_AL_IMAGE_BROWSER |              C_AL_NEWS         |          C_AL_TASK_MANAGER        |   C_AL_KEYBOARD_LAYOUT  |      C_AL_COMMAND_LINE                          |          C_AL_HELP         |
-// |       C_AL_EMAIL       |     C_AL_CALENDAR    |     C_AL_CONTACTS     |     C_AL_INSTANT_MESSAGING  |      C_AL_NETWORK_CHAT |      C_AL_TEXT_EDITOR     |                        |           C_AL_AUDIO_BROWSER |              C_AL_VOICEMAIL    |          C_AL_AV_CAPTURE_PLAYBACK |   C_AL_THESAURUS        |      C_AL_TELEPHONY_DIALER                      |          K_HELP            |
-// |       C_AL_WORD        |     C_AL_SPREADSHEET |     C_AL_PRESENTATION |     C_AL_DATABASE           |      C_AL_JOURNAL      |      C_AL_GRAPHICS_EDITOR |                        |           C_AL_MOVIE_BROWSER |              C_AL_FINANCE      |          C_AL_SPELLCHECK          |   C_AL_GRAMMAR_CHECK    |      C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT       |          C_AL_OEM_FEATURES |
-//                                                 |     C_AL_PRESENTATION |     C_AL_PREV_TASK          |      C_AL_NEXT_TASK    |                           |                        |                              |                                |          C_AL_SELECT_TASK                         | 
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |        C_AL_MY_COMPUTER |    C_AL_DOCUMENTS   |     C_AL_FILE_BROWSER |     C_AL_WWW                |     K_WWW             |      C_AL_CALCULATOR      |                        |     C_AL_IMAGE_BROWSER |     C_AL_NEWS         |     C_AL_TASK_MANAGER        |    C_AL_KEYBOARD_LAYOUT  |    C_AL_COMMAND_LINE                    |     C_AL_HELP         |
+// |        C_AL_EMAIL       |    C_AL_CALENDAR    |     C_AL_CONTACTS     |     C_AL_INSTANT_MESSAGING  |     C_AL_NETWORK_CHAT |      C_AL_TEXT_EDITOR     |                        |     C_AL_AUDIO_BROWSER |     C_AL_VOICEMAIL    |     C_AL_AV_CAPTURE_PLAYBACK |    C_AL_THESAURUS        |    C_AL_TELEPHONY_DIALER                |     K_HELP            |
+// |        C_AL_WORD        |    C_AL_SPREADSHEET |     C_AL_PRESENTATION |     C_AL_DATABASE           |     C_AL_JOURNAL      |      C_AL_GRAPHICS_EDITOR |                        |     C_AL_MOVIE_BROWSER |     C_AL_FINANCE      |     C_AL_SPELLCHECK          |    C_AL_GRAMMAR_CHECK    |    C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT |     C_AL_OEM_FEATURES |
+//                                                 |     C_AL_PRESENTATION |     C_AL_PREV_TASK          |     C_AL_NEXT_TASK    |                           |                        |     C_AL_SCREEN_SAVER  |     C_AL_COMMAND_LINE |     C_AL_SELECT_TASK         |
                          bindings = <
-   &kp     C_AL_MY_COMPUTER   &kp C_AL_DOCUMENTS     &kp C_AL_FILE_BROWSER   &kp C_AL_WWW                   &kp K_WWW               &kp  C_AL_CALCULATOR                                 &kp       C_AL_IMAGE_BROWSER   &kp          C_AL_NEWS           &kp      C_AL_TASK_MANAGER         &kp       C_AL_KEYBOARD_LAYOUT   &kp   C_AL_CONTROL_PANEL                      &kp     C_AL_HELP
-   &mt LHYP C_AL_EMAIL        &kp C_AL_CALENDAR      &kp C_AL_CONTACTS       &kp C_AL_INSTANT_MESSAGING     &kp C_AL_NETWORK_CHAT   &kp  C_AL_TEXT_EDITOR                                &mt RCTRL C_AL_AUDIO_BROWSER   &mt RSHFT     C_AL_VOICEMAIL      &mt RALT C_AL_AV_CAPTURE_PLAYBACK  &mt RGUI C_AL_THESAURUS         &kp   C_AL_TELEPHONY_DIALER                   &mt RHYP K_HELP
-   &mt LMEH C_AL_WORD         &kp C_AL_SPREADSHEET   &kp C_AL_PRESENTATION   &kp C_AL_DATABASE              &kp C_AL_JOURNAL        &kp  C_AL_GRAPHICS_EDITOR                            &mt LCTRL C_AL_MOVIE_BROWSER   &mt LSHFT     C_AL_FINANCE        &mt LALT C_AL_SPELLCHECK           &mt LGUI  C_AL_GRAMMAR_CHECK     &kp   C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT    &mt RMEH C_AL_OEM_FEATURES
-                                                                             &kp C_AL_PREV_TASK             &kp C_AL_NEXT_TASK      &none                                                &kp       C_AL_SCREEN_SAVER    &kp          C_AL_COMMAND_LINE   &kp      C_AL_SELECT_TASK 
+   &kp      C_AL_MY_COMPUTER  &kp C_AL_DOCUMENTS     &kp C_AL_FILE_BROWSER   &kp C_AL_WWW                  &kp K_WWW               &kp  C_AL_CALCULATOR                                 &kp C_AL_IMAGE_BROWSER   &kp C_AL_NEWS           &kp C_AL_TASK_MANAGER         &kp C_AL_KEYBOARD_LAYOUT   &kp C_AL_CONTROL_PANEL                     &kp C_AL_HELP
+   &mt LHYP C_AL_EMAIL        &kp C_AL_CALENDAR      &kp C_AL_CONTACTS       &kp C_AL_INSTANT_MESSAGING    &kp C_AL_NETWORK_CHAT   &kp  C_AL_TEXT_EDITOR                                &kp C_AL_AUDIO_BROWSER   &kp C_AL_VOICEMAIL      &kp C_AL_AV_CAPTURE_PLAYBACK  &kp C_AL_THESAURUS         &kp C_AL_TELEPHONY_DIALER                  &kp K_HELP
+   &mt LMEH C_AL_WORD         &kp C_AL_SPREADSHEET   &kp C_AL_PRESENTATION   &kp C_AL_DATABASE             &kp C_AL_JOURNAL        &kp  C_AL_GRAPHICS_EDITOR                            &kp C_AL_MOVIE_BROWSER   &kp C_AL_FINANCE        &kp C_AL_SPELLCHECK           &kp C_AL_GRAMMAR_CHECK     &kp C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT   &kp C_AL_OEM_FEATURES
+                                                                             &kp C_AL_PREV_TASK            &kp C_AL_NEXT_TASK      &none                                                &kp C_AL_SCREEN_SAVER    &kp C_AL_COMMAND_LINE   &kp C_AL_SELECT_TASK 
                         >;
                 };
 
@@ -457,61 +499,61 @@
 
                 display_layer {
                         label = "DISPLAY";
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |     |      |      |     |      |         |                                     |               |              |               |             |                |       |
-// |     |      |      |     |      |         |                                     |     C_BRI_MIN |    C_BRI_DEC |     C_BRI_INC |    C_BR_MAX |     C_BRI_AUTO |       | 
-// |     |      |      |     |      |         |                                     |               |              |               |             |                |       |
-//                     |     |      |         |                                     |    C_BKLT_TOG |    C_ASPECT  |     C_PIP     |
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                     | toggle DISPLAY   |                 |                 |               |                |       |
+// |     |      |      |     |      |         |                                     |       C_BRI_MIN  |       C_BRI_DEC |       C_BRI_INC |      C_BR_MAX |     C_BRI_AUTO |       | 
+// |     |      |      |     |      |         |                                     |                  |                 |                 |               |                |       |
+//                     |     |      |         |                                     |       C_BKLT_TOG |       C_ASPECT  |       C_PIP     |
                          bindings = <
-   &none  &none  &none  &none  &none  &none                                           &none          &none           &none          &none          &none           &none 
-   &none  &none  &none  &none  &none  &none                                           &kp C_BRI_MIN  &kp C_BRI_DEC   &kp C_BRI_INC  &kp C_BRI_MAX  &kp C_BRI_AUTO  &none
-   &none  &none  &none  &none  &none  &none                                           &none          &none           &none          &none          &none           &none
-                        &none  &none  &none                                           &kp C_BKLT_TOG &kp C_ASPECT  &kp   C_PIP 
+   &none  &none  &none  &none  &none  &none                                           &tog  DISPLAY      &none             &none             &none            &none           &none 
+   &none  &none  &none  &none  &none  &none                                           &kp   C_BRI_MIN    &kp   C_BRI_DEC   &kp   C_BRI_INC   &kp   C_BRI_MAX  &kp C_BRI_AUTO  &none
+   &none  &none  &none  &none  &none  &none                                           &none              &none             &none             &none            &none           &none
+                        &none  &none  &none                                           &kp   C_BKLT_TOG   &kp   C_ASPECT    &kp   C_PIP 
                         >;
                 };
 
                 media_layer {
                         label = "MEDIA";
-// -----------------------------------------------------------------------------------------------------------------------------
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       | 
-// |     |      |      |     |      |         |                                     |      |      |      |      |      |       |
-//                     |     |      |         |                                     |      |      |      |
+// ------------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                      |      |      |      |      |      |       |
+// |     |      |      |     |      |         |                                      |      |      |      |      |      |       | 
+// |     |      |      |     |      |         |                                      |      |      |      |      |      |       |
+//                     |     |      |         |                                      |      |      |      |
                          bindings = <
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none 
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
-   &none  &none  &none  &none  &none  &none                                           &none  &none  &none  &none  &none  &none
-                        &none  &none  &none                                           &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none
+                        &none  &none  &none                                            &none  &none  &none 
                         >;
                 };
 
                 international_layer {
                         label = "INT";
-// -------------------------------------------------------------------------------------------------------------------------------------
-// |     |    INT7 |    INT8 |    INT9  |      |      |                                     |      |      |      |      |      |       |
-// |     |    INT4 |    INT5 |    INT6  |      |      |                                     |      |      |      |      |      |       | 
-// |     |    INT1 |    INT2 |    INT3  |      |      |                                     |      |      |      |      |      |       |
-//                                |     |      |      |                                     |      |      |      |
+// ----------------------------------------------------------------------------------------------------------------------------------
+// |     |    INT7 |    INT8 |    INT9  |      |      |                               |         |      |      |      |      |       |
+// |     |    INT4 |    INT5 |    INT6  |      |      |                               |         |      |      |      |      |       | 
+// |     |    INT1 |    INT2 |    INT3  |      |      |                               |         |      |      |      |      |       |
+//                                |     |      |      |                               |         |      |      |
                          bindings = <
-   &none  &kp INT7  &kp INT8  &kp INT9   &none      &none                                     &none  &none  &none  &none  &none  &none 
-   &none  &kp INT4  &kp INT5  &kp INT6   &none      &none                                     &none  &none  &none  &none  &none  &none
-   &none  &kp INT1  &kp INT2  &kp INT3   &none      &none                                     &none  &none  &none  &none  &none  &none
-                              &none      &kp   TAB  &kp   SPACE                               &none  &none  &none 
+   &none  &kp INT7  &kp INT8  &kp INT9   &none      &none                               &none     &none  &none  &none  &none  &none 
+   &none  &kp INT4  &kp INT5  &kp INT6   &none      &none                               &none     &none  &none  &none  &none  &none
+   &none  &kp INT1  &kp INT2  &kp INT3   &none      &none                               &none     &none  &none  &none  &none  &none
+                              &none      &kp   TAB  &kp   SPACE                         &tog INT  &none  &none 
                         >;
                 };
 
                 language_layer {
                         label = "LANG";
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------
-// |     |    LANG7 |    LANG8 |    LANG9  |          |              |                            |      |      |                  |        |       |       |
-// |     |    LANG4 |    LANG5 |    LANG6  |          |              |                            |      |      |                  |        |       |       | 
-// |     |    LANG1 |    LANG2 |    LANG3  |          |              |                            |      |      |                  |        |       |       |
-//                                   |     |          |              |                            |      |      |                  |
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// |     |    LANG7 |    LANG8 |    LANG9  |          |              |                 |          |       |       |        |       |       |
+// |     |    LANG4 |    LANG5 |    LANG6  |          |              |                 |          |       |       |        |       |       | 
+// |     |    LANG1 |    LANG2 |    LANG3  |          |              |                 |          |       |       |        |       |       |
+//                                   |     |          |              |                 |          |       |       |
                          bindings = <
-   &none  &kp LANG7  &kp LANG8  &kp LANG9   &none       &none                                      &none  &none  &mo  INTERNATIONAL   &none   &none   &none 
-   &none  &kp LANG4  &kp LANG5  &kp LANG6   &none       &none                                      &none  &none  &none                &none   &none   &none
-   &none  &kp LANG1  &kp LANG2  &kp LANG3   &none       &none                                      &none  &none  &none                &none   &none   &none
-                                &none       &kp    TAB  &kp   SPACE                                &none  &none  &none 
+   &none  &kp LANG7  &kp LANG8  &kp LANG9   &none       &none                           &none       &none   &none   &none    &none   &none 
+   &none  &kp LANG4  &kp LANG5  &kp LANG6   &none       &none                           &none       &none   &none   &none    &none   &none
+   &none  &kp LANG1  &kp LANG2  &kp LANG3   &none       &none                           &none       &none   &none   &none    &none   &none
+                                &none       &kp    TAB  &kp   SPACE                     &tog LANG   &none   &none 
                         >;
                 };
         };
