@@ -118,9 +118,9 @@
 // |        TILDE |         G  |            X  |           J   |            K   |               MINUS |                         |             FSLH |            R   |            M    |              F  |            P  |            BACKSLASH |       
 //                                             |           ESC |            TAB |               SPACE |                         |             RET  |            DEL |            BSPC |
                         bindings = <
-   &mt RHYP GRAVE  &lt MISC B   &lt DISPLAY Y    &lt POWER  O    &lt CONFIG U     &lt NPCTRL    SQT                               &lt MEHFUN  SEMI   &lt HYPFUN L     &lt FUN    D      &lt LANGUAGE W    &lt NPSYM  V    &mt LHYP   Z 
+   &mt RHYP GRAVE  &mt RMEH B   &mt LCG     Y    &mt LCA    O    &mt LSC    U     &mt LAG       SQT                               &mt RAG     SEMI   &mt RSC    L     &mt RCA    D      &mt RCG      W    &mt LMEH   V    &mt LHYP   Z 
    &mt LHYP HASH   &mt LMEH C   &mt LGUI    I    &mt LALT   E    &mt LSHFT  A     &mt LCTRL     COMMA                             &mt RCTRL   DOT    &mt RSHFT  H     &mt RALT   T      &mt RGUI     S    &mt RMEH   N    &mt RHYP   Q
-   &mt LCA  TILDE  &mt LAG  G   &mt RGUI    X    &mt RALT   J    &mt RSHFT  K     &mt RCTRL     MINUS                             &mt LCTRL   FSLH   &mt LSHFT  R     &mt LALT   M      &mt LGUI     F    &mt RAG    P    &lt MOUSE  BACKSLASH 
+   &kp      TILDE  &kp      G   &mt RGUI    X    &mt RALT   J    &mt RSHFT  K     &mt RCTRL     MINUS                             &mt LCTRL   FSLH   &mt LSHFT  R     &mt LALT   M      &mt LGUI     F    &kp        P    &lt MOUSE  BACKSLASH 
                                                  &lt VOLUME ESC  &lt NAV    TAB   &lt APPLAUNCH SPACE                             &lt NUM     RET    &lt SYM1   DEL   &lt SYM2   BSPC 
                         >;
                 };
@@ -133,9 +133,9 @@
 // |        TILDE |         Z  |            X  |           C   |            V   |               B     |                         |             N   |            M   |            ,    |              .  |            /  |           '        |       
 //                                             |           ESC |            TAB |               SPACE |                         |             RET |            DEL |            BSPC |
                         bindings = <
-   &mt RHYP GRAVE  &lt MISC Q   &lt DISPLAY W    &lt POWER  E    &lt CONFIG R     &lt NPCTRL    T                                 &lt MEHFUN  Y     &lt HYPFUN U     &lt FUN    I      &lt LANGUAGE O    &lt NPSYM  P    &mt LHYP  BACKSLASH
+   &mt RHYP GRAVE  &lt MISC Q   &mt LCG     W    &mt LCA    E    &mt LSC    R     &mt LAG       T                                 &mt RAG     Y     &mt RSC    U     &mt RCA    I      &mt RCG      O    &mt LMEH   P    &mt LHYP  BACKSLASH
    &mt LHYP HASH   &mt LMEH A   &mt LGUI    S    &mt LALT   D    &mt LSHFT  F     &mt LCTRL     G                                 &mt RCTRL   H     &mt RSHFT  J     &mt RALT   K      &mt RGUI     L    &mt RMEH   SEMI &mt RHYP  DQT
-   &mt LCA  TILDE  &mt LAG  Z   &mt RGUI    X    &mt RALT   C    &mt RSHFT  V     &mt RCTRL     B                                 &mt LCTRL   N     &mt LSHFT  M     &mt LALT   COMMA  &mt LGUI     DOT  &mt RAG    FSLH &lt MOUSE SQT 
+   &mt LCA  TILDE  &kp      Z   &mt RGUI    X    &mt RALT   C    &mt RSHFT  V     &mt RCTRL     B                                 &mt LCTRL   N     &mt LSHFT  M     &mt LALT   COMMA  &mt LGUI     DOT  &mt RAG    FSLH &lt MOUSE SQT 
                                                  &lt VOLUME ESC  &lt NAV    TAB   &lt APPLAUNCH SPACE                             &lt NUM     RET   &lt SYM1   DEL   &lt SYM2   BSPC 
                         >;
                 };
@@ -151,7 +151,7 @@
                             bindings = <
    &kp PERCENT     &kp NUMBER_7 &kp NUMBER_8 &kp NUMBER_9   &kp COLON    &kp K                       &kp       D        &kp       E   &kp      F    &tog NUM    &kp LMEH  &kp LHYP
    &kp KP_PLUS     &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6   &kp KP_MINUS &kp J                       &mt RCTRL A        &mt RSHFT B   &mt RALT C    &kp RGUI    &kp RMEH  &kp RHYP
-   &kp KP_ASTERISK &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3   &kp KP_SLASH &kp LS(G)                   &mt LCTRL COPILOT  &kp LSHFT     &kp LALT      &kp LGUI    &kp RAG   &kp RCA
+   &kp KP_ASTERISK &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3   &kp KP_SLASH &kp LS(G)                   &mt LCTRL SOUSCHEF &kp LSHFT     &kp LALT      &kp LGUI    &kp RAG   &kp RCA
                                              &kp NUMBER_0   &kp COMMA    &kp DOT                     &none              &kp COPILOT   &kp EQL      
                         >;
                 };
