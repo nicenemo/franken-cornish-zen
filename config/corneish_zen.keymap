@@ -204,12 +204,12 @@
 // |    ! |       { |       '   |     "    |       }    |      ?       |                            |     RAG    |     RSC   |      RCA  |     RCG   |     LMEH |     LHYP  |
 // |    # |       ^ |       =   |     _    |       $    |      *       |                            |     RCTRL  |     RSHFT |      RALT |     RGUI  |     RMEH |     RHYP  |
 // |    @ |       < |      "|"  |     -    |       >    |      /       |                            |     LCTRL  |     LSHFT |      LALT |     LGUI  |     RAG  |     RCA   |
-//                              | soft_off |       .    |      *       |                            |            |           | CAPS WORD |
+//                              |          |       .    |      *       |                            |            |           | CAPS WORD |
                        bindings = <
    &kp EXCL  &kp LBRC  &kp SQT   &kp DQT     &kp RBRC    &kp QMARK                                   &kp  RAG    &kp   RSC     &kp   RCA   &kp RCG      &kp LMEH   &kp LHYP
    &kp HASH  &kp CARET &kp EQUAL &kp UNDER   &kp DOLLAR  &kp ASTERISK                                &kp  RCTRL  &kp   RSHFT   &kp   RALT  &kp RGUI    &kp RMEH   &kp RHYP
    &kp AT    &kp LT    &kp PIPE  &kp MINUS   &kp GT      &kp SLASH                                   &kp  LCTRL  &kp   LSHFT   &kp   LALT  &kp LGUI    &kp RAG    &kp RCA
-                                 &soft_off   &kp DOT     &kp ASTERISK                                &tog SYM1   &none         &caps_word      
+                                 &none       &kp DOT     &kp ASTERISK                                &tog SYM1   &none         &caps_word      
                         >;
                 };
                 symbols_layer2 {
@@ -427,12 +427,12 @@
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // | left reset     |       |        |               |               |                |                               |     BT_CLR      |     BT_PRV      |     BT_NXT    |     BT_CLR_AL   |               | right reset       |
 // | left bootloader|       |        |               |               |                |                               |     BT_SEL 0    |     BT_SEL 1    |     BT_SEL 2  |     BT_SEL 3    |     BT_SEL 4  | right bootloader  | 
-// |                |       |        |               |               |       SOFT OFF |                               |     BT_DISC 0   |     BT_DISC 1   |     BT_DISC 2 |     BIT_DISC 3  |     BT_DISC 4 |            EP_TOG |
+// | soft off       |       |        |               |               |       SOFT OFF |                               |     BT_DISC 0   |     BT_DISC 1   |     BT_DISC 2 |     BIT_DISC 3  |     BT_DISC 4 |            EP_TOG |
 //                                   |       OUT_USB |       OUT_BLE |       OUT_TOG  |                               |     EP_TOG      |     EP_ON       |     EP_OFF    |
                          bindings = <
-   &sys_reset  &none         &none     &none           &none           &none                                            &bt BT_CLR        &bt BT_PRV        &bt BT_NXT      &bt BT_CLR_ALL    &none           &sys_reset 
-   &bootloader &none         &none     &none           &none           &none                                            &bt BT_SEL 0      &bt BT_SEL 1      &bt BT_SEL 2    &bt BT_SEL 3      &bt BT_SEL 4    &bootloader
-   &none       &none         &none     &none           &none           &soft_off                                        &bt BT_DISC 0     &bt BT_DISC 1     &bt BT_DISC 2   &bt BT_DISC 3     &bt BT_DISC 4   &ext_power EP_TOG
+   &sys_reset  &none         &none     &none           &to   QWERTY    &to   NGRAM                                      &bt  BT_CLR       &bt BT_PRV        &bt BT_NXT      &bt BT_CLR_ALL    &none           &sys_reset 
+   &bootloader &none         &none     &none           &none           &none                                            &bt  BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2    &bt BT_SEL 3      &bt BT_SEL 4    &bootloader
+   &soft_off   &none         &none     &none           &none           &soft_off                                        &bt  BT_DISC 0    &bt BT_DISC 1     &bt BT_DISC 2   &bt BT_DISC 3     &bt BT_DISC 4   &ext_power EP_TOG
                                        &out  OUT_USB   &out  OUT_BLE   &out  OUT_TOG                                    &tog CONFIG       &ext_power EP_ON  &ext_power EP_OFF      
                         >;
                 };
