@@ -1,15 +1,15 @@
 // custom modifier combinations
-#define LHYP LS(LC(LA(LGUI)))
-#define LHYPK(key) LS(LC(LA(LG(key))))
+#define LHYPER LS(LC(LA(LGUI)))
+#define LHYP(key) LS(LC(LA(LG(key))))
 
-#define LMEH LS(LC(LALT))
-#define LMEHK(key) LS(LC(LA(key)))
+#define KC_LMEH LS(LC(LALT))
+#define LMEH(key) LS(LC(LA(key)))
 
-#define RHYP RS(RC(RA(RGUI)))
-#define RHYPK(key) RS(RC(RA(RG(key))))
+#define RHYPER RS(RC(RA(RGUI)))
+#define RHYP(key) RS(RC(RA(RG(key))))
 
-#define RMEH RS(RC(RALT))
-#define RMEHK(key) RS(RC(RA(key)))
+#define KC_RMEH RS(RC(RALT))
+#define RMEH(key) RS(RC(RA(key)))
 
 #define LSG LS(LGUI)
 #define LSGK(key) LS(LG(key))
