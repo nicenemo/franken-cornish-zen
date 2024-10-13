@@ -1,4 +1,4 @@
-/*H
+/*
 *
 * Copyright (c) 2024  Hans Kruse
 * Based on a configuration (c) 2023 Darryl deHaan
@@ -67,7 +67,16 @@
  *          36  37 38     39     40   41
  *          Win UP SPC    ENTER  DOWN ALT
  */
+ 
+#define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
+#define KEYS_R 5 6 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35
+#define THUMBS_L 36 37 38
+#define THUMBS_R 39 40 41
 
+#define HM_TAPPING_TERM 200
+#define HM_TAPPING_TERM_FAST 175
+#define HM_PRIOR_IDLE 125
+#define HM_QUICK_TAP 150
 
  / {
     	combos {
@@ -172,6 +181,29 @@
         	};
 
     	};
+	behaviors {
+		hl: homerow_mods_left {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			bindings = <&kp>, <&kp>;
+			flavor = "balanced";
+			tapping-term-ms = <HM_TAPPING_TERM_FAST>;
+			quick-tap-ms = <HM_QUICK_TAP>;
+			require-prior-idle-ms = <HM_PRIOR_IDLE>;
+			hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+	  	};
+		hr: homerow_mods_right {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			bindings = <&kp>, <&kp>;
+			flavor = "balanced";
+			tapping-term-ms = <HM_TAPPING_TERM_FAST>;
+			quick-tap-ms = <HM_QUICK_TAP>;
+			require-prior-idle-ms = <HM_PRIOR_IDLE>;
+			hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+	  	};
+
+	};
 
         keymap {
                 compatible = "zmk,keymap";
@@ -184,9 +216,9 @@
 // |          GRAVE |         G  |            X  |           J   |            K   |               MINUS |                       |             FSLH |            R   |            M    |              F  |            P  |            BACKSLASH |       
 //                                               |           ESC |            TAB |               SPACE |                       |             RET  |            DEL |            BSPC |
                         bindings = <
-   &mt RHYPER DQT    &mt RMEH B   &mt LCG     Y    &mt LCA    O    &mt LSC    U     &mt LAG       SQT                             &mt RAG     SEMI   &mt RSC    L     &mt RCA    D      &mt RCG      W    &mt LMEH   V    &mt LHYPER Z 
-   &mt LHYPER HASH   &mt LMEH C   &mt LGUI    I    &mt LALT   E    &mt LSHFT  A     &mt LCTRL     COMMA                           &mt RCTRL   DOT    &mt RSHFT  H     &mt RALT   T      &mt RGUI     S    &mt RMEH   N    &mt RHYPER Q
-   &kp        GRAVE  &kp      G   &mt RGUI    X    &mt RALT   J    &mt RSHFT  K     &mt RCTRL     MINUS                           &mt LCTRL   FSLH   &mt LSHFT  R     &mt LALT   M      &mt LGUI     F    &kp        P    &lt MOUSE  BACKSLASH 
+   &hl RHYPER DQT    &hl RMEH B   &hl LCG     Y    &hl LCA    O    &hl LSC    U     &hl LAG       SQT                             &hr RAG     SEMI   &hr RSC    L     &hr RCA    D      &hr RCG      W    &hr LMEH   V    &hr LHYPER Z 
+   &hl LHYPER HASH   &hl LMEH C   &hl LGUI    I    &hl LALT   E    &hl LSHFT  A     &hl LCTRL     COMMA                           &hr RCTRL   DOT    &hr RSHFT  H     &hr RALT   T      &hr RGUI     S    &hr RMEH   N    &hr RHYPER Q
+   &kp        GRAVE  &hl LCA  G   &hl RGUI    X    &hl RALT   J    &hl RSHFT  K     &hl RCTRL     MINUS                           &hr LCTRL   FSLH   &hr LSHFT  R     &hr LALT   M      &hr LGUI     F    &hr RCA    P    &lt MOUSE  BACKSLASH 
                                                    &lt VOLUME ESC  &lt NAV    TAB   &lt APPLAUNCH SPACE                           &lt NUM     RET    &lt SYM1   DEL   &lt SYM2   BSPC 
                         >;
                 };
@@ -199,10 +231,10 @@
 // |          GRAVE |         Z  |            X  |           C   |            V   |               B     |                       |             N   |            M   |            ,    |              .  |            /  |            '        |       
 //                                               |           ESC |            TAB |               SPACE |                       |             RET |            DEL |            BSPC |
                         bindings = <
-   &mt RHYPER DQT    &kp      Q   &mt LCG     W    &mt LCA    E    &mt LSC    R     &mt LAG       T                               &mt RAG     Y     &mt RSC    U     &mt RCA    I      &mt RCG      O    &mt LMEH   P    &mt LHYPER BACKSLASH
-   &mt LHYPER HASH   &mt LMEH A   &mt LGUI    S    &mt LALT   D    &mt LSHFT  F     &mt LCTRL     G                               &mt RCTRL   H     &mt RSHFT  J     &mt RALT   K      &mt RGUI     L    &mt RMEH   SEMI &mt RHYPER DQT
-   &mt LCA    GRAVE  &kp      Z   &mt RGUI    X    &mt RALT   C    &mt RSHFT  V     &mt RCTRL     B                               &mt LCTRL   N     &mt LSHFT  M     &mt LALT   COMMA  &mt LGUI     DOT  &mt RAG    FSLH &lt MOUSE  SQT 
-                                                 &lt VOLUME ESC  &lt NAV    TAB   &lt APPLAUNCH SPACE                             &lt NUM     RET   &lt SYM1   DEL   &lt SYM2   BSPC 
+   &hl RHYPER DQT    &hl RMEH Q   &hl LCG     W    &hl LCA    E    &hl LSC    R     &hl LAG       T                               &hr RAG     Y     &hr RSC    U     &hr RCA    I      &hr RCG      O    &hr LMEH   P    &hr LHYPER BACKSLASH
+   &hl LHYPER HASH   &hl LMEH A   &hl LGUI    S    &hl LALT   D    &hl LSHFT  F     &hl LCTRL     G                               &hr RCTRL   H     &hr RSHFT  J     &hr RALT   K      &hr RGUI     L    &hr RMEH   SEMI &hr RHYPER DQT
+   &kp        GRAVE  &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT   COMMA  &hr LGUI     DOT  &hr RCA    FSLH &lt MOUSE  SQT 
+                                                   &lt VOLUME ESC  &lt NAV    TAB   &lt APPLAUNCH SPACE                           &lt NUM     RET   &lt SYM1   DEL   &lt SYM2   BSPC 
                         >;
                 };
 
@@ -215,9 +247,9 @@
 // |   *           |     1        |     2        |     3        |     /        | G        |                                     |          SOUSCHEF |                   |            |           |           |            |
 //                                               |     0        |     ,        | .        |                                     |                   |           COPILOT |          = |
                             bindings = <
-   &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &mt RAG   D          &mt RSC   E          &mt RCA  F    &kp RCG     &kp LMEH  &kp LHYPER
-   &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &mt RCTRL A          &mt RSHFT B          &mt RALT C    &kp RGUI    &kp RMEH  &kp RHYPER
-   &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &mt LCTRL SOUSCHEF   &kp LSHFT            &kp LALT      &kp LGUI    &none     &tog NUM
+   &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &kp RCG     &kp LMEH  &kp LHYPER
+   &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &kp RGUI    &kp RMEH  &kp RHYPER
+   &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL SOUSCHEF   &kp LSHFT            &kp LALT      &kp LGUI    &none     &tog NUM
                                                    &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &kp        COPILOT   &kp      EQL      
                         >;
                 };
@@ -473,8 +505,8 @@
 //                                                 |     C_AL_PRESENTATION |     C_AL_PREV_TASK          |     C_AL_NEXT_TASK    |                           |                        |     C_AL_SCREEN_SAVER  |     C_AL_COMMAND_LINE |     C_AL_SELECT_TASK         |
                          bindings = <
    &kp      C_AL_MY_COMPUTER  &kp C_AL_DOCUMENTS     &kp C_AL_FILE_BROWSER   &kp C_AL_WWW                  &kp K_WWW               &kp  C_AL_CALCULATOR                                 &kp C_AL_IMAGE_BROWSER   &kp C_AL_NEWS           &kp C_AL_TASK_MANAGER         &kp C_AL_KEYBOARD_LAYOUT   &kp C_AL_CONTROL_PANEL                     &kp C_AL_HELP
-   &mt LHYPER C_AL_EMAIL        &kp C_AL_CALENDAR      &kp C_AL_CONTACTS       &kp C_AL_INSTANT_MESSAGING    &kp C_AL_NETWORK_CHAT   &kp  C_AL_TEXT_EDITOR                                &kp C_AL_AUDIO_BROWSER   &kp C_AL_VOICEMAIL      &kp C_AL_AV_CAPTURE_PLAYBACK  &kp C_AL_THESAURUS         &kp C_AL_TELEPHONY_DIALER                  &kp K_HELP
-   &mt LMEH C_AL_WORD         &kp C_AL_SPREADSHEET   &kp C_AL_PRESENTATION   &kp C_AL_DATABASE             &kp C_AL_JOURNAL        &kp  C_AL_GRAPHICS_EDITOR                            &kp C_AL_MOVIE_BROWSER   &kp C_AL_FINANCE        &kp C_AL_SPELLCHECK           &kp C_AL_GRAMMAR_CHECK     &kp C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT   &kp C_AL_OEM_FEATURES
+   &hl LHYPER C_AL_EMAIL        &kp C_AL_CALENDAR      &kp C_AL_CONTACTS       &kp C_AL_INSTANT_MESSAGING    &kp C_AL_NETWORK_CHAT   &kp  C_AL_TEXT_EDITOR                                &kp C_AL_AUDIO_BROWSER   &kp C_AL_VOICEMAIL      &kp C_AL_AV_CAPTURE_PLAYBACK  &kp C_AL_THESAURUS         &kp C_AL_TELEPHONY_DIALER                  &kp K_HELP
+   &hl LMEH C_AL_WORD         &kp C_AL_SPREADSHEET   &kp C_AL_PRESENTATION   &kp C_AL_DATABASE             &kp C_AL_JOURNAL        &kp  C_AL_GRAPHICS_EDITOR                            &kp C_AL_MOVIE_BROWSER   &kp C_AL_FINANCE        &kp C_AL_SPELLCHECK           &kp C_AL_GRAMMAR_CHECK     &kp C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT   &kp C_AL_OEM_FEATURES
                                                                              &kp C_AL_PREV_TASK            &kp C_AL_NEXT_TASK      &none                                                &kp C_AL_SCREEN_SAVER    &kp C_AL_COMMAND_LINE   &kp C_AL_SELECT_TASK 
                         >;
                 };
