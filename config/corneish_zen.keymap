@@ -18,6 +18,8 @@
 
 #define COPILOT  LSGK(F23)
 #define SOUSCHEF RCAK(F24)
+#define LUC      LSCK(U)
+#define WUC      LA(X)
 
 
 // layers
@@ -258,12 +260,12 @@
 // |   %           |     7        |     8        |     9        |     :        | k        |                                     |          D        |           E       |          F |           |      LMEH |          LHYPER  |
 // |   +           |     4        |     5        |     6        |     -        | j        |                                     |          A        |           B       |          C |           |      RMEH |           RHYPER |
 // |   *           |     1        |     2        |     3        |     /        | G        |                                     |          =        |                   |            |           |           |                  |
-//                                               |     0        |     ,        | .        |                                     |                   |                   |            |
+//                                               |     0        |     ,        | .        |                                     |                   |      LUC          |       WUC  |
                             bindings = <
    &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &kp RCG     &kp LMEH       &kp LHYPER
    &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &kp RGUI    &kp RMEH       &kp RHYPER
    &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI    &kp SOUSCHEF   &tog NUM
-                                                   &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &none                &none      
+                                                   &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &kp LUC              &kp WUC      
                         >;
                 };
 
