@@ -227,12 +227,12 @@
 // |          DQT      |         B  |            Y  |           O   |            U   |               SQT   |                       |             SEMI |            L   |               D    |              W  |               V  |            Z         |
 // |          HASH     |         C  |            I  |           E   |            A   |               COMMA |                       |             DOT  |            H   |               T    |              S  |               N  |            Q         |
 // |          GRAVE    |         G  |            X  |           J   |            K   |               MINUS |                       |             FSLH |            R   |               M    |              F  |               P  |            BACKSLASH |       
-//                                               |           ESC |            TAB |               SPACE |                       |             RET  |            DEL |               BSPC |
+//                                                  |           ESC |            TAB |               SPACE |                       |             RET  |            DEL |               BSPC |
                         bindings = <
    &hl RHYPER DQT       &hl RMEH B   &hl LCG     Y    &hl LCA    O    &hl LSC    U     &hl LAG       SQT                             &hr RAG     SEMI   &hr RSC    L     &lt HYPHFUN   D      &lt HYPFUN   W    &lt MEHHFUN   V    &lt MEHFUN Z 
    &hl LHYPER HASH      &hl LMEH C   &hl LGUI    I    &hl LALT   E    &hl LSHFT  A     &hl LCTRL     COMMA                           &hr RCTRL   DOT    &hr RSHFT  H     &hr RALT      T      &hr RGUI     S    &hr RMEH      N    &hr RHYPER Q
    &lt APPLAUNCH GRAVE  &hl LCA  G   &hl RGUI    X    &hl RALT   J    &hl RSHFT  K     &hl RCTRL     MINUS                           &hr LCTRL   FSLH   &hr LSHFT  R     &hr LALT      M      &hr LGUI     F    &lt HFUN      P    &lt FUN    BACKSLASH 
-                                                   &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET    &lt SYM1   DEL   &lt SYM2      BSPC 
+                                                      &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET    &lt SYM1   DEL   &lt SYM2      BSPC 
                         >;
                 };
 
@@ -242,12 +242,12 @@
 // |          DQT      |         Q  |            W  |           E   |            R   |               T     |                       |             Y   |            U   |               I    |              O  |               P  |            \        |
 // |          HASH     |         A  |            S  |           D   |            F   |               G     |                       |             H   |            J   |               K    |              L  |               ;  |            "        |
 // |          GRAVE    |         Z  |            X  |           C   |            V   |               B     |                       |             N   |            M   |               ,    |              .  |               /  |            '        |       
-//                                               |           ESC |            TAB |               SPACE |                       |             RET |            DEL |               BSPC |
+//                                                  |           ESC |            TAB |               SPACE |                       |             RET |            DEL |               BSPC |
                         bindings = <
    &hl RHYPER DQT       &hl RMEH Q   &hl LCG     W    &hl LCA    E    &hl LSC    R     &hl LAG       T                               &hr RAG     Y     &hr RSC    U     &lt HYPHFUN   I      &lt HYPFUN   O    &lt MEHHFUN   P    &lt MEHFUN BACKSLASH
    &hl LHYPER HASH      &hl LMEH A   &hl LGUI    S    &hl LALT   D    &hl LSHFT  F     &hl LCTRL     G                               &hr RCTRL   H     &hr RSHFT  J     &hr RALT      K      &hr RGUI     L    &hr RMEH      SEMI &hr RHYPER DQT
    &lt APPLAUNCH GRAVE  &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT      COMMA  &hr LGUI     DOT  &lt HFUN      FSLH &lt FUN    SQT 
-                                                   &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET   &lt SYM1   DEL   &lt SYM2      BSPC 
+                                                      &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET   &lt SYM1   DEL   &lt SYM2      BSPC 
                         >;
                 };
 
@@ -258,12 +258,12 @@
 // |   %           |     7        |     8        |     9        |     :        | k        |                                     |          D        |           E       |          F |           |      LMEH |          LHYPER  |
 // |   +           |     4        |     5        |     6        |     -        | j        |                                     |          A        |           B       |          C |           |      RMEH |           RHYPER |
 // |   *           |     1        |     2        |     3        |     /        | G        |                                     |          =        |                   |            |           |           |                  |
-//                                               |     0        |     ,        | .        |                                     |                   |           00      |        000 |
+//                                               |     0        |     ,        | .        |                                     |                   |                   |            |
                             bindings = <
    &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &kp RCG     &kp LMEH       &kp LHYPER
    &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &kp RGUI    &kp RMEH       &kp RHYPER
    &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI    &kp SOUSCHEF   &tog NUM
-                                                   &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &double_0            &triple_0      
+                                                   &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &none                &none      
                         >;
                 };
 
@@ -287,12 +287,12 @@
 // |   !    |     `     |      (   |     )       |     ;      |     ,         |                                                 |      RAG    |       RSC   |       RCA  |     RCG   |    LMEH |    LHYPER  |
 // |   #    |     ^     |     =    |     _       |     $      |     *         |                                                 |      RCTRL  |       RSHFT |       RALT |     RGUI  |    RMEH |    RHYPER  |
 // |   ~    |     &     |     [    |     ]       |     +      |     \         |                                                 |      LCTRL  |       LSHFT |       LALT |     LGUI  |    RAG  |    RCA     |
-//                                 |     %       |     :      |     ;         |                                                 |             |             |            |
+//                                 |     %       |     :      |     ;         |                                                 |      00     |       000   |            |
                        bindings = <
    &kp EXCL   &kp GRAVE   &kp LPAR   &kp RPAR      &kp SEMI     &kp COMMA                                                         &kp  RAG      &kp   RSC     &kp   RCA    &kp RCG    &kp LMEH  &kp LHYPER
    &kp HASH   &kp CARET   &kp EQUAL  &kp UNDER     &kp DOLLAR   &kp ASTERISK                                                      &kp  RCTRL    &kp   RSHFT   &kp   RALT   &kp RGUI   &kp RMEH  &kp RHYPER
    &kp TILDE  &kp AMPS    &kp LBKT   &kp RBKT      &kp PLUS     &kp BACKSLASH                                                     &kp  LCTRL    &kp   LSHFT   &kp   LALT   &kp LGUI   &kp RAG   &kp RCA
-                                     &kp PERCENT   &kp COLON    &kp SEMI                                                          &tog SYM2     &none         &none      
+                                     &kp PERCENT   &kp COLON    &kp SEMI                                                          &double_0     &triple_0     &none      
                         >;
                 };
 
