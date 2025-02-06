@@ -27,25 +27,26 @@
 #define NGRAM           0
 #define QWERTY          1
 #define NUM             2
-#define SYM1            3
-#define SYM2            4
-#define NAV             5
-#define VOLUME          6 
-#define FUN             7
-#define HFUN            8
-#define HYPFUN          9
-#define HYPHFUN        10
-#define MEHFUN         11
-#define MEHHFUN        12
-#define MOUSE          13
-#define CONFIG         14
-#define POWER          15
-#define DISPLAY        16
-#define INTERNATIONAL  17
-#define LANGUAGE       18
-#define APPLAUNCH      19
-#define CONSUMER       20
-#define EMPTYLAYER     21
+#define KEYPAD          3
+#define SYM1            4
+#define SYM2            5
+#define NAV             6
+#define VOLUME          7 
+#define FUN             8
+#define HFUN            9
+#define HYPFUN         10
+#define HYPHFUN        11
+#define MEHFUN         12
+#define MEHHFUN        13
+#define MOUSE          14
+#define CONFIG         15
+#define POWER          16
+#define DISPLAY        17
+#define INTERNATIONAL  18
+#define LANGUAGE       19
+#define APPLAUNCH      20
+#define CONSUMER       21
+#define EMPTYLAYER     22
 
 / {
   chosen {
@@ -256,6 +257,21 @@
 
                 number_layer {
                         label = "NUM";
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |   %           |     7        |     8        |     9        |     :        | k        |                                     |          D        |           E       |          F |           |      LMEH |          LHYPER  |
+// |   +           |     4        |     5        |     6        |     -        | j        |                                     |          A        |           B       |          C |           |      RMEH |           RHYPER |
+// |   *           |     1        |     2        |     3        |     /        | G        |                                     |          =        |                   |            |           |           |                  |
+//                                               |     0        |     ,        | .        |                                     |                   |      LUC          |       WUC  |
+                            bindings = <
+   &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &kp RCG     &kp LMEH       &kp LHYPER
+   &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &kp RGUI    &kp RMEH       &kp RHYPER
+   &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI    &kp SOUSCHEF   &tog NUM
+                                                   &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &kp LUC              &kp WUC      
+                        >;
+                };
+
+                keypad_layer {
+                        label = "KEYPAD";
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |   %           |     7        |     8        |     9        |     :        | k        |                                     |          D        |           E       |          F |           |      LMEH |          LHYPER  |
 // |   +           |     4        |     5        |     6        |     -        | j        |                                     |          A        |           B       |          C |           |      RMEH |           RHYPER |
