@@ -270,7 +270,7 @@
                         >;
                 };
 
-                keypad_layer {
+                kepyad_layer {
                         label = "KEYPAD";
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |   %           |     7        |     8        |     9        |     :        | k        |                                     |          D        |           E       |          F |           |      LMEH |          LHYPER  |
@@ -278,12 +278,13 @@
 // |   *           |     1        |     2        |     3        |     /        | G        |                                     |          =        |                   |            |           |           |                  |
 //                                               |     0        |     ,        | .        |                                     |                   |      LUC          |       WUC  |
                             bindings = <
-   &kp PERCENT       &kp KP_7       &kp KP_8       &kp KP_9           &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &kp RCG     &kp LMEH       &kp LHYPER
-   &kp KP_PLUS       &kp KP_4       &kp KP_5       &kp KP_6           &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &kp RGUI    &kp RMEH       &kp RHYPER
-   &kp KP_ASTERISK   &kp KP_1       &kp KP_2       &kp KP_3           &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI    &kp SOUSCHEF   &tog NUM
-                                                   &kp KP_0           &kp COMMA      &kp DOT                                          &none                &kp LUC              &kp WUC      
+   &kp PERCENT       &kp KP_7   &kp KP_8   &kp KP_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &kp RCG     &kp LMEH       &kp LHYPER
+   &kp KP_PLUS       &kp KP_4   &kp KP_5   &kp KP_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &kp RGUI    &kp RMEH       &kp RHYPER
+   &kp KP_ASTERISK   &kp KP_1   &kp KP_2   &kp KP_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI    &kp SOUSCHEF   &tog NUM
+                                                   &kp KP_0   &kp COMMA      &kp DOT                                          &none                &kp LUC              &kp WUC      
                         >;
                 };
+
 
                 symbols_layer1 {
                         label = "SYM1";
