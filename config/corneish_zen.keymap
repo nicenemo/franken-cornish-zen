@@ -27,25 +27,26 @@
 #define NGRAM           0
 #define QWERTY          1
 #define NUM             2
-#define SYM1            3
-#define SYM2            4
-#define NAV             5
-#define VOLUME          6 
-#define FUN             7
-#define HFUN            8
-#define HYPFUN          9
-#define HYPHFUN        10
-#define MEHFUN         11
-#define MEHHFUN        12
-#define MOUSE          13
-#define CONFIG         14
-#define POWER          15
-#define DISPLAY        16
-#define INTERNATIONAL  17
-#define LANGUAGE       18
-#define APPLAUNCH      19
-#define CONSUMER       20
-#define EMPTYLAYER     21
+#define KEYPAD          3
+#define SYM1            4
+#define SYM2            5
+#define NAV             6
+#define VOLUME          7 
+#define FUN             8
+#define HFUN            9
+#define HYPFUN         10
+#define HYPHFUN        11
+#define MEHFUN         12
+#define MEHHFUN        13
+#define MOUSE          14
+#define CONFIG         15
+#define POWER          16
+#define DISPLAY        17
+#define INTERNATIONAL  18
+#define LANGUAGE       19
+#define APPLAUNCH      20
+#define CONSUMER       21
+#define EMPTYLAYER     22
 
 / {
   chosen {
@@ -231,9 +232,9 @@
 // |          GRAVE    |         G  |            X  |           J   |            K   |               MINUS |                       |             FSLH |            R   |               M    |              F  |               P  |            BACKSLASH |       
 //                                                  |           ESC |            TAB |               SPACE |                       |             RET  |            DEL |               BSPC |
                         bindings = <
-   &hl RHYPER DQT       &hl RMEH B   &hl LCG     Y    &hl LCA    O    &hl LSC    U     &hl LAG       SQT                             &hr RAG     SEMI   &hr RSC    L     &lt HYPHFUN   D      &lt HYPFUN   W    &lt MEHHFUN   V    &lt MEHFUN Z 
+   &hl RHYPER DQT       &hl RMEH B   &hl LCG     Y    &hl LCA    O    &hl LSC    U     &hl LAG       SQT                             &hr RAG     SEMI   &hr RSC    L     &lt HYPHFUN   D      &lt HYPFUN   W    &lt HFUN      V    &lt FUN    Z 
    &hl LHYPER HASH      &hl LMEH C   &hl LGUI    I    &hl LALT   E    &hl LSHFT  A     &hl LCTRL     COMMA                           &hr RCTRL   DOT    &hr RSHFT  H     &hr RALT      T      &hr RGUI     S    &hr RMEH      N    &hr RHYPER Q
-   &lt APPLAUNCH GRAVE  &hl LCA  G   &hl RGUI    X    &hl RALT   J    &hl RSHFT  K     &hl RCTRL     MINUS                           &hr LCTRL   FSLH   &hr LSHFT  R     &hr LALT      M      &hr LGUI     F    &lt HFUN      P    &lt FUN    BACKSLASH 
+   &lt APPLAUNCH GRAVE  &hl LCA  G   &hl RGUI    X    &hl RALT   J    &hl RSHFT  K     &hl RCTRL     MINUS                           &hr LCTRL   FSLH   &hr LSHFT  R     &hr LALT      M      &hr LGUI     F    &kp           P    &lt KEYPAD BACKSLASH 
                                                       &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET    &lt SYM1   DEL   &lt SYM2      BSPC 
                         >;
                 };
@@ -246,9 +247,9 @@
 // |          GRAVE    |         Z  |            X  |           C   |            V   |               B     |                       |             N   |            M   |               ,    |              .  |               /  |            '        |       
 //                                                  |           ESC |            TAB |               SPACE |                       |             RET |            DEL |               BSPC |
                         bindings = <
-   &hl RHYPER DQT       &hl RMEH Q   &hl LCG     W    &hl LCA    E    &hl LSC    R     &hl LAG       T                               &hr RAG     Y     &hr RSC    U     &lt HYPHFUN   I      &lt HYPFUN   O    &lt MEHHFUN   P    &lt MEHFUN BACKSLASH
+   &hl RHYPER DQT       &hl RMEH Q   &hl LCG     W    &hl LCA    E    &hl LSC    R     &hl LAG       T                               &hr RAG     Y     &hr RSC    U     &lt HYPHFUN   I      &lt HYPFUN   O    &lt HFUN   P       &lt FUN    BACKSLASH
    &hl LHYPER HASH      &hl LMEH A   &hl LGUI    S    &hl LALT   D    &hl LSHFT  F     &hl LCTRL     G                               &hr RCTRL   H     &hr RSHFT  J     &hr RALT      K      &hr RGUI     L    &hr RMEH      SEMI &hr RHYPER DQT
-   &lt APPLAUNCH GRAVE  &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT      COMMA  &hr LGUI     DOT  &lt HFUN      FSLH &lt FUN    SQT 
+   &lt APPLAUNCH GRAVE  &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT      COMMA  &hr LGUI     DOT  &kp           FSLH &lt KEYPAD SQT 
                                                       &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET   &lt SYM1   DEL   &lt SYM2      BSPC 
                         >;
                 };
@@ -258,16 +259,32 @@
                         label = "NUM";
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |   %           |     7        |     8        |     9        |     :        | k        |                                     |          D        |           E       |          F |           |      LMEH |          LHYPER  |
-// |   +           |     4        |     5        |     6        |     -        | j        |                                     |          A        |           B       |          C |           |      RMEH |           RHYPER |
-// |   *           |     1        |     2        |     3        |     /        | G        |                                     |          =        |                   |            |           |           |                  |
-//                                               |     0        |     ,        | .        |                                     |                   |      LUC          |       WUC  |
+// |   +           |     4        |     5        |     6        |     -        | j        |                                     |          A        |           B       |          C |           |      RMEH |          RHYPER  |
+// |   *           |     1        |     2        |     3        |     /        | G        |                                     |          =        |                   |            |           |      WUC  |                  |
+//                                               |     0        |     ,        | .        |                                     |                   |      UNDER        |       LUC  |
                             bindings = <
    &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &kp RCG     &kp LMEH       &kp LHYPER
    &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &kp RGUI    &kp RMEH       &kp RHYPER
-   &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI    &kp SOUSCHEF   &tog NUM
-                                                   &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &kp LUC              &kp WUC      
+   &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI    &kp WUC        &none
+                                                   &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &kp UNDER            &kp LUC      
                         >;
                 };
+
+                keypad_layer {
+                        label = "KEYPAD";
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |   %           |     7        |     8        |     9        |     :        | k        |                                     |            D       |            E       |           F         |           PIPE    |     PIPE PIPE         |            XOR     |
+// |   +           |     4        |     5        |     6        |     -        | j        |                                     |            A       |            B       |           C         |           AND     |     AND_AND           |            CARET   |
+// |   *           |     1        |     2        |     3        |     /        | G        |                                     |            BIN     |            OCT     |           DEC       |           HEX     |     NUMLOCK           |                    |
+//                                               |     0        |     ,        | .        |                                     |            ENTER   |            UNDER   |           BSPC      |
+                            bindings = <
+   &kp KP_PERCENT    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp COLON      &kp K                                                      &hr RAG   KP_D       &hr RSC   KP_E       &hr RCA  KP_F         &hr RCG  KP_PIPE   &hr LMEH KP_PIPE_PIPE   &hr LHYPER KP_XOR
+   &kp KP_PLUS       &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_MINUS   &kp J                                                      &hr RCTRL KP_A       &hr RSHFT KP_B       &hr RALT KP_C         &hr RGUI KP_AND    &hr RMEH KP_AND_AND     &hr RHYPER KP_CARET
+   &kp KP_ASTERISK   &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_SLASH   &kp LS(G)                                                  &hr LCTRL KP_BIN     &hr LSHFT KP_OCT     &hr LALT KP_DEC       &hr LGUI KP_HEX    &kp KP_NUM              &none
+                                             &kp KP_N0   &kp KP_COMMA   &kp KP_DOT                                                 &kp       KP_ENTER   &kp UNDER            &kp KP_BACKSPACE      
+                        >;
+                };
+
 
                 symbols_layer1 {
                         label = "SYM1";
@@ -520,7 +537,7 @@
 //                                                 |     C_AL_PRESENTATION |     C_AL_PREV_TASK          |     C_AL_NEXT_TASK    |                           |                        |     C_AL_SCREEN_SAVER  |     C_AL_COMMAND_LINE |     C_AL_SELECT_TASK         |
                          bindings = <
    &kp      C_AL_MY_COMPUTER  &kp C_AL_DOCUMENTS     &kp C_AL_FILE_BROWSER   &kp C_AL_WWW                  &kp K_WWW               &kp  C_AL_CALCULATOR                                 &kp C_AL_IMAGE_BROWSER   &kp C_AL_NEWS           &kp C_AL_TASK_MANAGER         &kp C_AL_KEYBOARD_LAYOUT   &kp C_AL_CONTROL_PANEL                     &kp C_AL_HELP
-   &hl LHYPER C_AL_EMAIL        &kp C_AL_CALENDAR      &kp C_AL_CONTACTS       &kp C_AL_INSTANT_MESSAGING    &kp C_AL_NETWORK_CHAT   &kp  C_AL_TEXT_EDITOR                                &kp C_AL_AUDIO_BROWSER   &kp C_AL_VOICEMAIL      &kp C_AL_AV_CAPTURE_PLAYBACK  &kp C_AL_THESAURUS         &kp C_AL_TELEPHONY_DIALER                  &kp K_HELP
+   &hl LHYPER C_AL_EMAIL      &kp C_AL_CALENDAR      &kp C_AL_CONTACTS       &kp C_AL_INSTANT_MESSAGING    &kp C_AL_NETWORK_CHAT   &kp  C_AL_TEXT_EDITOR                                &kp C_AL_AUDIO_BROWSER   &kp C_AL_VOICEMAIL      &kp C_AL_AV_CAPTURE_PLAYBACK  &kp C_AL_THESAURUS         &kp C_AL_TELEPHONY_DIALER                  &kp K_HELP
    &hl LMEH C_AL_WORD         &kp C_AL_SPREADSHEET   &kp C_AL_PRESENTATION   &kp C_AL_DATABASE             &kp C_AL_JOURNAL        &kp  C_AL_GRAPHICS_EDITOR                            &kp C_AL_MOVIE_BROWSER   &kp C_AL_FINANCE        &kp C_AL_SPELLCHECK           &kp C_AL_GRAMMAR_CHECK     &kp C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT   &kp C_AL_OEM_FEATURES
                                                                              &kp C_AL_PREV_TASK            &kp C_AL_NEXT_TASK      &none                                                &kp C_AL_SCREEN_SAVER    &kp C_AL_COMMAND_LINE   &kp C_AL_SELECT_TASK 
                         >;
