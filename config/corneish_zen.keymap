@@ -185,17 +185,28 @@
 
     	};
         macros {
-                double_0: double_0 {
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                bindings = <&macro_tap &kp NUMBER_0 &kp NUMBER_0> ;
+                kpd: kpd {
+                compatible = "zmk,behavior-macro-one-param";
+                #binding-cells = <1>;
+                bindings =
+                           <&macro_param_1to1>
+                         , <&macro_press &kp MACRO_PLACEHOLDER>
+                         , <&macro_param_1to1>
+                         , <&macro_press &kp MACRO_PLACEHOLDER> ;
                 };
 
-                triple_0: triple_0 {
-                compatible = "zmk,behavior-macro";
-                #binding-cells = <0>;
-                bindings = <&macro_tap &kp NUMBER_0 &kp NUMBER_0 &kp NUMBER_0> ;
+                kpt: kpt {
+                compatible = "zmk,behavior-macro-one-param";
+                #binding-cells = <1>;
+                bindings = 
+                           <&macro_param_1to1>
+                         , <&macro_press &kp MACRO_PLACEHOLDER>
+                         , <&macro_param_1to1>
+                         , <&macro_press &kp MACRO_PLACEHOLDER>
+                         , <&macro_param_1to1>
+                         , <&macro_press &kp MACRO_PLACEHOLDER> ;
                 };
+
         };
 	behaviors {
 		hl: homerow_mods_left {
@@ -212,6 +223,28 @@
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
 			bindings = <&kp>, <&kp>;
+			flavor = "balanced";
+			tapping-term-ms = <HM_TAPPING_TERM_FAST>;
+			quick-tap-ms = <HM_QUICK_TAP>;
+			require-prior-idle-ms = <HM_PRIOR_IDLE>;
+			hold-trigger-key-positions = <KEYS_L THUMBS_L>;
+	  	};
+
+		hld: homerow_mods_left_kpd {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			bindings = <&kp>, <&kpd>;
+			flavor = "balanced";
+			tapping-term-ms = <HM_TAPPING_TERM_FAST>;
+			quick-tap-ms = <HM_QUICK_TAP>;
+			require-prior-idle-ms = <HM_PRIOR_IDLE>;
+			hold-trigger-key-positions = <KEYS_R THUMBS_R>;
+	  	};
+
+		hrd: homerow_mods_right_kpd {
+			compatible = "zmk,behavior-hold-tap";
+			#binding-cells = <2>;
+			bindings = <&kp>, <&kpd>;
 			flavor = "balanced";
 			tapping-term-ms = <HM_TAPPING_TERM_FAST>;
 			quick-tap-ms = <HM_QUICK_TAP>;
@@ -263,9 +296,9 @@
 // |   *           |     1        |     2        |     3        |     /        | G        |                                     |          =        |                   |            |           |      WUC  |                  |
 //                                               |     0        |     ,        | .        |                                     |                   |      UNDER        |       LUC  |
                             bindings = <
-   &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &kp RCG     &kp LMEH       &kp LHYPER
-   &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &kp RGUI    &kp RMEH       &kp RHYPER
-   &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI    &kp WUC        &none
+   &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &hr RCG PIPE   &hrd LMEH PIPE   &kp LHYPER
+   &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &hr RGUI AMPS  &hrd RMEH AMPS   &kp RHYPER
+   &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI       &kp  WUC         &none
                                                    &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &kp UNDER            &kp LUC      
                         >;
                 };
@@ -311,7 +344,7 @@
    &kp EXCL   &kp GRAVE   &kp LPAR   &kp RPAR      &kp SEMI     &kp COMMA                                                         &kp  RAG      &kp   RSC     &kp   RCA    &kp RCG    &kp LMEH  &kp LHYPER
    &kp HASH   &kp CARET   &kp EQUAL  &kp UNDER     &kp DOLLAR   &kp ASTERISK                                                      &kp  RCTRL    &kp   RSHFT   &kp   RALT   &kp RGUI   &kp RMEH  &kp RHYPER
    &kp TILDE  &kp AMPS    &kp LBKT   &kp RBKT      &kp PLUS     &kp BACKSLASH                                                     &kp  LCTRL    &kp   LSHFT   &kp   LALT   &kp LGUI   &kp RAG   &kp RCA
-                                     &kp PERCENT   &kp COLON    &kp SEMI                                                          &double_0     &triple_0     &none      
+                                     &kp PERCENT   &kp COLON    &kp SEMI                                                          &kpd NUM_0    &kpt  NUM_0   &none      
                         >;
                 };
 
