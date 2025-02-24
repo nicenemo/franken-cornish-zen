@@ -16,6 +16,8 @@
 #include "consumer_extra_keys.h"
 #include "custom_modifiers.h"
 
+#define HOST_OS 1
+
 #include "zmk-helpers/helper.h"
 #include "zmk-helpers/key-labels/42.h"
 
