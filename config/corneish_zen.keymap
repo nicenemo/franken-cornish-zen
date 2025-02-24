@@ -598,22 +598,6 @@
                         >;
                 };
 
-                math_layer {
-                        label = "math";
-// ------------------------------------------------------------------------------------------------------------------------------
-// |     |      |      |     |      |         |                                      |      |      |      |      |      |       |
-// |     |      |      |     |      |         |                                      |      |      |      |      |      |       | 
-// |     |      |      |     |      |         |                                      |      |      |      |      |      |       |
-//                     |     |      |         |                                      |      |      |      |
-                         bindings = <
-   &math_for_each  &math_there_exists  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none 
-   &none  &none  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none
-   &none  &none  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none
-                        &none  &none  &none                                            &none  &none  &none 
-                        >;
-                };
-        };
-};
                 empty_layer {
                         label = "empty";
 // ------------------------------------------------------------------------------------------------------------------------------
