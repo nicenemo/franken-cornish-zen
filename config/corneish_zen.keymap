@@ -21,6 +21,8 @@
 #include "zmk-helpers/helper.h"
 #include "zmk-helpers/key-labels/42.h"
 
+#include "math.dtsi"
+
 #define COPILOT  LSGK(F23)
 #define SOUSCHEF RCAK(F24)
 #define LUC      LSCK(U)
@@ -596,6 +598,22 @@
                         >;
                 };
 
+                math_layer {
+                        label = "math";
+// ------------------------------------------------------------------------------------------------------------------------------
+// |     |      |      |     |      |         |                                      |      |      |      |      |      |       |
+// |     |      |      |     |      |         |                                      |      |      |      |      |      |       | 
+// |     |      |      |     |      |         |                                      |      |      |      |      |      |       |
+//                     |     |      |         |                                      |      |      |      |
+                         bindings = <
+   &math_for_each  &math_there_exists  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none 
+   &none  &none  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none
+   &none  &none  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none
+                        &none  &none  &none                                            &none  &none  &none 
+                        >;
+                };
+        };
+};
                 empty_layer {
                         label = "empty";
 // ------------------------------------------------------------------------------------------------------------------------------

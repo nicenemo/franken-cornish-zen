@@ -1,0 +1,3 @@
+/* APL */
+ZMK_UNICODE_SINGLE(math_for_all, N2, N2, N0, N0)
+ZMK_UNICODE_SINGLE(math_there_exists, N2, N2, N0, N3)
