@@ -274,7 +274,7 @@
 
                 qwerty_layer {
                         label = "QWERTY";
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |          DQT      |         Q  |            W  |           E   |            R   |               T     |                       |             Y   |            U   |               I    |              O  |               P  |            \        |
 // |          HASH     |         A  |            S  |           D   |            F   |               G     |                       |             H   |            J   |               K    |              L  |               ;  |            "        |
 // |          GRAVE    |         Z  |            X  |           C   |            V   |               B     |                       |             N   |            M   |               ,    |              .  |               /  |            '        |       
@@ -321,30 +321,30 @@
 
                 symbols_layer1 {
                         label = "SYM1";
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |   !    |     {    |     '    |     "     |           }    |      ?       |                                                |      RAG    |     RSC   |      RCA  |     RCG   |     LMEH |     LHYPER  |
-// |   #    |     ^    |     =    |     _     |           $    |      *       |                                                |      RCTRL  |     RSHFT |      RALT |     RGUI  |     RMEH |     RHYPER  |
-// |   @    |     <    |    "|"   |     -     |           >    |      /       |                                                |      LCTRL  |     LSHFT |      LALT |     LGUI  |     RAG  |     RCA     |
-//                                |     €     |           .    |      *       |                                                |             |           | CAPS WORD |
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |   !    |     {    |     '    |     "     |           }    |      ?       |                                                |      RAG          |     RSC   |      RCA  |     RCG   |     LMEH |     LHYPER  |
+// |   #    |     ^    |     =    |     _     |           $    |      *       |                                                |           TILDE2  |     RSHFT |      RALT |     RGUI  |     RMEH |     RHYPER  |
+// |   @    |     <    |    "|"   |     -     |           >    |      /       |                                                |           NUHS    |     LSHFT |      LALT |     LGUI  |     RAG  |     RCA     |
+//                                |     €     |           .    |      *       |                                                |                   |             | CAPS WORD |
                        bindings = <
-   &kp EXCL   &kp LBRC   &kp SQT    &kp DQT           &kp RBRC    &kp QMARK                                                      &kp  RAG    &kp   RSC     &kp   RCA   &kp RCG     &kp LMEH   &kp LHYPER
-   &kp HASH   &kp CARET  &kp EQUAL  &kp UNDER         &kp DOLLAR  &kp ASTERISK                                                   &kp  RCTRL  &kp   RSHFT   &kp   RALT  &kp RGUI    &kp RMEH   &kp RHYPER
-   &kp AT     &kp LT     &kp PIPE   &kp MINUS         &kp GT      &kp SLASH                                                      &kp  LCTRL  &kp   LSHFT   &kp   LALT  &kp LGUI    &kp RAG    &kp RCA
-                                    &kp RA(NUMBER_5)  &kp DOT     &kp ASTERISK                                                   &tog SYM1   &none         &caps_word      
+   &kp EXCL   &kp LBRC   &kp SQT    &kp DQT           &kp RBRC    &kp QMARK                                                      &kp  RAG           &kp   RSC     &kp   RCA   &kp RCG     &kp LMEH   &kp LHYPER
+   &kp HASH   &kp CARET  &kp EQUAL  &kp UNDER         &kp DOLLAR  &kp ASTERISK                                                   &hr  RCTRL TILDE2  &kp   RSHFT   &kp   RALT  &kp RGUI    &kp RMEH   &kp RHYPER
+   &kp AT     &kp LT     &kp PIPE   &kp MINUS         &kp GT      &kp SLASH                                                      &hr  LCTRL NUHS    &kp   LSHFT   &kp   LALT  &kp LGUI    &kp RAG    &kp RCA
+                                    &kp RA(NUMBER_5)  &kp DOT     &kp ASTERISK                                                   &tog SYM1          &none         &caps_word      
                         >;
                 };
                 symbols_layer2 {
                         label = "SYM2";
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |   !    |     `     |      (   |     )       |     ;      |     ,         |                                                 |      RAG    |       RSC   |       RCA  |     RCG   |    LMEH |    LHYPER  |
-// |   #    |     ^     |     =    |     _       |     $      |     *         |                                                 |      RCTRL  |       RSHFT |       RALT |     RGUI  |    RMEH |    RHYPER  |
-// |   ~    |     &     |     [    |     ]       |     +      |     \         |                                                 |      LCTRL  |       LSHFT |       LALT |     LGUI  |    RAG  |    RCA     |
-//                                 |     %       |     :      |     ;         |                                                 |      00     |       000   |            |
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |   !    |     `     |      (   |     )       |     ;      |     ,         |                                                 |      RAG         |        RSC   |       RCA  |     RCG   |    LMEH |    LHYPER  |
+// |   #    |     ^     |     =    |     _       |     $      |     *         |                                                 |            PIPE2 |        RSHFT |       RALT |     RGUI  |    RMEH |    RHYPER  |
+// |   ~    |     &     |     [    |     ]       |     +      |     \         |                                                 |      LCTRL       |        LSHFT |       LALT |     LGUI  |    RAG  |    RCA     |
+//                                 |     %       |     :      |     ;         |                                                 |      00          |        000   |            |
                        bindings = <
-   &kp EXCL   &kp GRAVE   &kp LPAR   &kp RPAR      &kp SEMI     &kp COMMA                                                         &kp  RAG      &kp   RSC     &kp   RCA    &kp RCG    &kp LMEH  &kp LHYPER
-   &kp HASH   &kp CARET   &kp EQUAL  &kp UNDER     &kp DOLLAR   &kp ASTERISK                                                      &kp  RCTRL    &kp   RSHFT   &kp   RALT   &kp RGUI   &kp RMEH  &kp RHYPER
-   &kp TILDE  &kp AMPS    &kp LBKT   &kp RBKT      &kp PLUS     &kp BACKSLASH                                                     &kp  LCTRL    &kp   LSHFT   &kp   LALT   &kp LGUI   &kp RAG   &kp RCA
-                                     &kp PERCENT   &kp COLON    &kp SEMI                                                          &kpd NUM_0    &kpt  NUM_0   &none      
+   &kp EXCL   &kp GRAVE   &kp LPAR   &kp RPAR      &kp SEMI     &kp COMMA                                                         &kp  RAG            &kp   RSC     &kp   RCA    &kp RCG    &kp LMEH  &kp LHYPER
+   &kp HASH   &kp CARET   &kp EQUAL  &kp UNDER     &kp DOLLAR   &kp ASTERISK                                                      &kp  RCTRL          &kp   RSHFT   &kp   RALT   &kp RGUI   &kp RMEH  &kp RHYPER
+   &kp TILDE  &kp AMPS    &kp LBKT   &kp RBKT      &kp PLUS     &kp BACKSLASH                                                     &hr  LCTRL PIPE2    &kp   LSHFT   &kp   LALT   &kp LGUI   &kp RAG   &kp RCA
+                                     &kp PERCENT   &kp COLON    &kp SEMI                                                          &kpd NUM_0          &kpt  NUM_0   &none      
                         >;
                 };
 
