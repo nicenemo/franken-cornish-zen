@@ -17,7 +17,9 @@
 #include "custom_modifiers.h"
 
 #define COPILOT  LSGK(F23)
+// linux unicode input
 #define LUC      LSCK(U)
+// Windows unicode input
 #define WUC      LA(X)
 
 
