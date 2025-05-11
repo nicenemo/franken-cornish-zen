@@ -17,7 +17,6 @@
 #include "custom_modifiers.h"
 
 #define COPILOT  LSGK(F23)
-#define SOUSCHEF RCAK(F24)
 #define LUC      LSCK(U)
 #define WUC      LA(X)
 
@@ -42,11 +41,9 @@
 #define CONFIG         15
 #define POWER          16
 #define DISPLAY        17
-#define INTERNATIONAL  18
-#define LANGUAGE       19
-#define APPLAUNCH      20
-#define CONSUMER       21
-#define EMPTYLAYER     22
+#define APPLAUNCH      18
+#define CONSUMER       19
+#define EMPTYLAYER     21
 
 / {
   chosen {
@@ -85,19 +82,6 @@
     	combos {
         	compatible = "zmk,combos";
 
-		combo_symbol1 {
-            		layers = <NGRAM QWERTY SYM1>;
-            		timeout-ms = <25>;
-            		key-positions = <39 40>;
-            		bindings = <&tog SYM1>;
-        	};
-
-		combo_symbol2 {
-            		layers = <NGRAM QWERTY SYM2>;
-            		timeout-ms = <25>;
-            		key-positions = <39 41>;
-            		bindings = <&tog SYM2>;
-        	};
 
 		combo_num {
             		layers = <NGRAM QWERTY NUM>;
@@ -111,76 +95,6 @@
             		timeout-ms = <25>;
             		key-positions = <24 35>;
             		bindings = <&tog CONFIG>;
-        	};
-
-		combo_volume {
-            		layers = <NGRAM QWERTY VOLUME>;
-            		timeout-ms = <25>;
-            		key-positions = <24 11>;
-            		bindings = <&tog VOLUME>;
-        	};
-
-		combo_display {
-            		layers = <NGRAM QWERTY DISPLAY>;
-            		timeout-ms = <25>;
-            		key-positions = <24 6>;
-            		bindings = <&tog DISPLAY>;
-        	};
-
-		combo_language {
-            		layers = <NGRAM QWERTY LANGUAGE>;
-            		timeout-ms = <25>;
-            		key-positions = <0 11>;
-            		bindings = <&tog LANGUAGE>;
-        	};
-
-		combo_international {
-            		layers = <NGRAM QWERTY INTERNATIONAL>;
-            		timeout-ms = <25>;
-            		key-positions = <0 35>;
-            		bindings = <&tog INTERNATIONAL>;
-        	};
-
-		combo_function_keys {
-            		layers = <NGRAM QWERTY FUN>;
-            		timeout-ms = <25>;
-            		key-positions = <0 30>;
-            		bindings = <&tog FUN>;
-        	};
-
-		combo_high_function_keys {
-            		layers = <NGRAM QWERTY HFUN>;
-            		timeout-ms = <25>;
-            		key-positions = <0 18>;
-            		bindings = <&tog HFUN>;
-        	};
-
-		combo_hyper_function_keys {
-            		layers = <NGRAM QWERTY HYPFUN>;
-            		timeout-ms = <25>;
-            		key-positions = <12 31>;
-            		bindings = <&tog HYPFUN>;
-        	};
-
-		combo_hyper_high_function_keys {
-            		layers = <NGRAM QWERTY HYPHFUN>;
-            		timeout-ms = <25>;
-            		key-positions = <12 19>;
-            		bindings = <&tog HYPHFUN>;
-        	};
-
-		combo_meh_function_keys {
-            		layers = <NGRAM QWERTY MEHFUN>;
-            		timeout-ms = <25>;
-            		key-positions = <24 32>;
-            		bindings = <&tog MEHFUN>;
-        	};
-
-		combo_meh_high_function_keys {
-            		layers = <NGRAM QWERTY MEHHFUN>;
-            		timeout-ms = <25>;
-            		key-positions = <24 20>;
-            		bindings = <&tog MEHHFUN>;
         	};
 
     	};
@@ -527,37 +441,6 @@
      &none   &none   &none   &none   &none   &none                                                                                &kp   C_BRI_MIN    &kp    C_BRI_DEC   &kp    C_BRI_INC   &kp    C_BRI_MAX   &kp   C_BRI_AUTO   &none
      &none   &none   &none   &none   &none   &none                                                                                &none              &none              &none              &none              &none              &none
                              &none   &none   &none                                                                                &kp   C_BKLT_TOG   &kp    C_ASPECT    &kp    C_PIP 
-                        >;
-                };
-
-
-                international_layer {
-                        label = "INT";
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       |     INT7 |     INT8 |        INT9  |          |             |                                                      |       RAG         |        RSC    |      RCA  |      RCG  |       LMEH |       LHYPER  |
-// |       |     INT4 |     INT5 |        INT6  |          |             |                                                      |       RCTRL       |        RSHFT  |      RALT |      RGUI |       RMEH |       RHYPER  |
-// |       |     INT1 |     INT2 |        INT3  |          |             |                                                      |       LCTRL       |        LSHFT  |      LALT |      LGUI |            |               |
-//                               |              |      TAB |       SPACE |                                                      |                   |               |           |
-                         bindings = < 
-     &none   &kp INT7   &kp INT8    &kp   INT9   &none       &none                                                                &kp   RAG            &kp   RSC     &kp   RCA     &kp RCG    &kp   LMEH   &kp   LHYPER
-     &none   &kp INT4   &kp INT5    &kp   INT6   &none       &none                                                                &kp   RCTRL          &kp   RSHFT   &kp   RALT    &kp RGUI   &kp   RMEH   &kp   RHYPER
-     &none   &kp INT1   &kp INT2    &kp   INT3   &none       &none                                                                &kp   LCTRL          &kp   LSHFT   &kp   LALT    &kp LGUI   &none        &none
-                                    &none        &kp   TAB   &kp   SPACE                                                          &tog  INTERNATIONAL  &none         &none 
-                        >;
-                };
-
-                language_layer {
-                        label = "LANG";
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------
-// |       |     LANG7 |     LANG8 |       LANG9  |            |             |                                                  |       RAG      |       RSC   |       RCA  |      RCG  |       LMEH |       LHYPER  |
-// |       |     LANG4 |     LANG5 |       LANG6  |            |             |                                                  |       RCTRL    |       RSHFT |       RALT |      RGUI |       RMEH |       RHYPER  |
-// |       |     LANG1 |     LANG2 |       LANG3  |            |             |                                                  |       LCTRL    |       LSHFT |       LALT |      LGUI |            |               |
-//                                 |              |        TAB |             |                                                  |                |             |       |
-                         bindings = <
-     &none   &kp LANG7   &kp LANG8   &kp   LANG9     &none       &none                                                            &kp   RAG        &kp   RSC     &kp   RCA     &kp RCG    &kp   LMEH   &kp   LHYPER
-     &none   &kp LANG4   &kp LANG5   &kp   LANG6     &none       &none                                                            &kp   RCTRL      &kp   RSHFT   &kp   RALT    &kp RGUI   &kp   RMEH   &kp   RHYPER
-     &none   &kp LANG1   &kp LANG2   &kp   LANG3     &none       &none                                                            &kp   LCTRL      &kp   LSHFT   &kp   LALT    &kp LGUI   &none        &none
-                                     &none           &kp   TAB   &kp   SPACE                                                      &tog  LANGUAGE   &none         &none 
                         >;
                 };
 
