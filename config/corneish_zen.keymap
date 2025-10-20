@@ -25,8 +25,8 @@
 
 // layers
 #define DEFAULT         0
+#define QWERTY          0
 #define NGRAM           0
-#define QWERTY          1
 #define NUM             2
 #define KEYPAD          3
 #define SYM1            4
@@ -173,20 +173,6 @@
         keymap {
                 compatible = "zmk,keymap";
 
-                default_layer {
-                        label = "NGRAM";
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |          DQT      |         B  |            Y  |           O   |            U   |               SQT   |                       |             SEMI |            L   |               D    |              W  |               V  |            Z         |
-// |          HASH     |         C  |            I  |           E   |            A   |               COMMA |                       |             DOT  |            H   |               T    |              S  |               N  |            Q         |
-// |          GRAVE    |         G  |            X  |           J   |            K   |               MINUS |                       |             FSLH |            R   |               M    |              F  |               P  |            BACKSLASH |       
-//                                                  |           ESC |            TAB |               SPACE |                       |             RET  |            DEL |               BSPC |
-                        bindings = <
-   &hl RHYPER DQT       &hl RMEH B   &hl LCG     Y    &hl LCA    O    &hl LSC    U     &hl LAG       SQT                             &hr RAG     SEMI   &hr RSC    L     &lt HYPHFUN   D      &lt HYPFUN   W    &lt HFUN      V    &lt FUN    Z 
-   &hl LHYPER HASH      &hl LMEH C   &hl LGUI    I    &hl LALT   E    &hl LSHFT  A     &hl LCTRL     COMMA                           &hr RCTRL   DOT    &hr RSHFT  H     &hr RALT      T      &hr RGUI     S    &hr RMEH      N    &hr RHYPER Q
-   &lt APPLAUNCH GRAVE  &hl LCA  G   &hl RGUI    X    &hl RALT   J    &hl RSHFT  K     &hl RCTRL     MINUS                           &hr LCTRL   FSLH   &hr LSHFT  R     &hr LALT      M      &hr LGUI     F    &kp           P    &lt KEYPAD BACKSLASH 
-                                                      &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET    &lt SYM1   DEL   &lt SYM2      BSPC 
-                        >;
-                };
 
                 qwerty_layer {
                         label = "QWERTY";
@@ -200,6 +186,21 @@
    &hl LHYPER HASH      &hl LMEH A   &hl LGUI    S    &hl LALT   D    &hl LSHFT  F     &hl LCTRL     G                               &hr RCTRL   H     &hr RSHFT  J     &hr RALT      K      &hr RGUI     L    &hr RMEH      SEMI &hr RHYPER DQT
    &lt APPLAUNCH GRAVE  &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT      COMMA  &hr LGUI     DOT  &kp           FSLH &lt KEYPAD SQT 
                                                       &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET   &lt SYM1   DEL   &lt SYM2      BSPC 
+                        >;
+                };
+
+                ngram_layer {
+                        label = "NGRAM";
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |          DQT      |         B  |            Y  |           O   |            U   |               SQT   |                       |             SEMI |            L   |               D    |              W  |               V  |            Z         |
+// |          HASH     |         C  |            I  |           E   |            A   |               COMMA |                       |             DOT  |            H   |               T    |              S  |               N  |            Q         |
+// |          GRAVE    |         G  |            X  |           J   |            K   |               MINUS |                       |             FSLH |            R   |               M    |              F  |               P  |            BACKSLASH |       
+//                                                  |           ESC |            TAB |               SPACE |                       |             RET  |            DEL |               BSPC |
+                        bindings = <
+   &hl RHYPER DQT       &hl RMEH B   &hl LCG     Y    &hl LCA    O    &hl LSC    U     &hl LAG       SQT                             &hr RAG     SEMI   &hr RSC    L     &lt HYPHFUN   D      &lt HYPFUN   W    &lt HFUN      V    &lt FUN    Z 
+   &hl LHYPER HASH      &hl LMEH C   &hl LGUI    I    &hl LALT   E    &hl LSHFT  A     &hl LCTRL     COMMA                           &hr RCTRL   DOT    &hr RSHFT  H     &hr RALT      T      &hr RGUI     S    &hr RMEH      N    &hr RHYPER Q
+   &lt APPLAUNCH GRAVE  &hl LCA  G   &hl RGUI    X    &hl RALT   J    &hl RSHFT  K     &hl RCTRL     MINUS                           &hr LCTRL   FSLH   &hr LSHFT  R     &hr LALT      M      &hr LGUI     F    &kp           P    &lt KEYPAD BACKSLASH 
+                                                      &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET    &lt SYM1   DEL   &lt SYM2      BSPC 
                         >;
                 };
 
