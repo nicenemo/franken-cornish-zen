@@ -26,7 +26,7 @@
 // layers
 #define DEFAULT         0
 #define QWERTY          0
-#define NGRAM           0
+#define NGRAM           1
 #define NUM             2
 #define KEYPAD          3
 #define SYM1            4
@@ -45,7 +45,7 @@
 #define DISPLAY        17
 #define APPLAUNCH      18
 #define CONSUMER       19
-#define EMPTYLAYER     21
+#define EMPTYLAYER     20
 
 / {
   chosen {
