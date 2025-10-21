@@ -106,9 +106,9 @@
                 #binding-cells = <1>;
                 bindings =
                            <&macro_param_1to1>
-                         , <&macro_press &kp MACRO_PLACEHOLDER>
+                         , <&kp MACRO_PLACEHOLDER>
                          , <&macro_param_1to1>
-                         , <&macro_press &kp MACRO_PLACEHOLDER> ;
+                         , <&kp MACRO_PLACEHOLDER> ;
                 };
 
                 kpt: kpt {
@@ -116,11 +116,11 @@
                 #binding-cells = <1>;
                 bindings = 
                            <&macro_param_1to1>
-                         , <&macro_press &kp MACRO_PLACEHOLDER>
+                         , <&kp MACRO_PLACEHOLDER>
                          , <&macro_param_1to1>
-                         , <&macro_press &kp MACRO_PLACEHOLDER>
+                         , <&kp MACRO_PLACEHOLDER>
                          , <&macro_param_1to1>
-                         , <&macro_press &kp MACRO_PLACEHOLDER> ;
+                         , <&kp MACRO_PLACEHOLDER> ;
                 };
 
         };
