@@ -25,8 +25,8 @@
 
 // layers
 #define DEFAULT         0
-#define QWERTY          0
-#define NGRAM           1
+#define NGRAM           0
+#define QWERTY          1
 #define NUM             2
 #define KEYPAD          3
 #define SYM1            4
@@ -173,22 +173,6 @@
         keymap {
                 compatible = "zmk,keymap";
 
-
-                qwerty_layer {
-                        label = "QWERTY";
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |          DQT      |         Q  |            W  |           E   |            R   |               T     |                       |             Y   |            U   |               I    |              O  |               P  |            \        |
-// |          HASH     |         A  |            S  |           D   |            F   |               G     |                       |             H   |            J   |               K    |              L  |               ;  |            "        |
-// |          GRAVE    |         Z  |            X  |           C   |            V   |               B     |                       |             N   |            M   |               ,    |              .  |               /  |            '        |       
-//                                                  |           ESC |            TAB |               SPACE |                       |             RET |            DEL |               BSPC |
-                        bindings = <
-   &hl RHYPER DQT       &hl RMEH Q   &hl LCG     W    &hl LCA    E    &hl LSC    R     &hl LAG       T                               &hr RAG     Y     &hr RSC    U     &lt HYPHFUN   I      &lt HYPFUN   O    &lt HFUN   P       &lt FUN    BACKSLASH
-   &hl LHYPER HASH      &hl LMEH A   &hl LGUI    S    &hl LALT   D    &hl LSHFT  F     &hl LCTRL     G                               &hr RCTRL   H     &hr RSHFT  J     &hr RALT      K      &hr RGUI     L    &hr RMEH      SEMI &hr RHYPER DQT
-   &lt APPLAUNCH GRAVE  &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT      COMMA  &hr LGUI     DOT  &kp           FSLH &lt KEYPAD SQT 
-                                                      &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET   &lt SYM1   DEL   &lt SYM2      BSPC 
-                        >;
-                };
-
                 ngram_layer {
                         label = "NGRAM";
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -204,6 +188,20 @@
                         >;
                 };
 
+                qwerty_layer {
+                        label = "QWERTY";
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// |          DQT      |         Q  |            W  |           E   |            R   |               T     |                       |             Y   |            U   |               I    |              O  |               P  |            \        |
+// |          HASH     |         A  |            S  |           D   |            F   |               G     |                       |             H   |            J   |               K    |              L  |               ;  |            "        |
+// |          GRAVE    |         Z  |            X  |           C   |            V   |               B     |                       |             N   |            M   |               ,    |              .  |               /  |            '        |       
+//                                                  |           ESC |            TAB |               SPACE |                       |             RET |            DEL |               BSPC |
+                        bindings = <
+   &hl RHYPER DQT       &hl RMEH Q   &hl LCG     W    &hl LCA    E    &hl LSC    R     &hl LAG       T                               &hr RAG     Y     &hr RSC    U     &lt HYPHFUN   I      &lt HYPFUN   O    &lt HFUN   P       &lt FUN    BACKSLASH
+   &hl LHYPER HASH      &hl LMEH A   &hl LGUI    S    &hl LALT   D    &hl LSHFT  F     &hl LCTRL     G                               &hr RCTRL   H     &hr RSHFT  J     &hr RALT      K      &hr RGUI     L    &hr RMEH      SEMI &hr RHYPER DQT
+   &lt APPLAUNCH GRAVE  &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT      COMMA  &hr LGUI     DOT  &kp           FSLH &lt KEYPAD SQT 
+                                                      &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET   &lt SYM1   DEL   &lt SYM2      BSPC 
+                        >;
+                };
 
                 number_layer {
                         label = "NUM";
