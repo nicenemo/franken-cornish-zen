@@ -16,6 +16,7 @@
 #include "keys/numpad_extra_keys.h"
 #include "keys/consumer_extra_keys.h"
 #include "keys/custom_modifiers.h"
+#include "keys/shavian_manual.h"
 
 #define COPILOT  LSGK(F23)
 // linux unicode input
@@ -46,7 +47,8 @@
 #define DISPLAY        17
 #define APPLAUNCH      18
 #define CONSUMER       19
-#define EMPTYLAYER     20
+#define SHAVIAN        20
+#define EMPTYLAYER     21
 
 / {
   chosen {
@@ -475,6 +477,23 @@
                                 &none  &none  &none                                          &none  &none  &none 
                         >;
                 };
+		shavian_layer {
+                        label = "SHAVIAN";
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// LEFT HAND (SHAWL Consonants: Base=Voiceless/Primary, Shift=Voiced/Secondary)                                                                                                                                                                    // RIGHT HAND (SHAWL Vowels/Diphthongs: Base=Short/Primary, Shift=Long/Secondary)
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// | RHYPER DQT        |                PEEP_BIB  |                 TOT_DEAD     |                  KICK_GAG     |                  FEE_VOW      |                 THIGH_THEY   |                     |     RAG   SEMI |                IF_EAT          |             EGG_AGE            |            ASH_ICE       |      ADO_AH     |        ON_AWE     |
+// | LHYPER HASH       |                SO_ZOO    |                 SURE_MEASURE |                  CHURCH_JUDGE |                 YEA_WOE       |                 HUNG_HAHA    |                     |     RCTRL DOT  |                WOOL_OOZE       |             OUT_OAK            |            OIL_ARE       |      OR_AIR     |        ERR_ARRAY  |
+// | APPLAUNCH GRAVE   |                LOLL_ROAR |                 MIME_NUN     |                  &none        |                  &none        |                 &none        |                     |     LCTRL FSLH |                EAR_IAN         |             YEW                |                          |                 |                   |
+//                                                                               |     VOLUME       ESC          |   NAV            TAB          |     MOUSE       SPACE        |                     |     NUM   RET  |     SYM1       DEL             |      SYM2          BSPC        |
+                         bindings = <
+   &hl RHYPER    DQT     &uc      UC_SH_PEEP_BIB     &uc      UC_SH_TOT_DEAD       &uc        UC_SH_KICK_GAG        &uc       UC_SH_FEE_VOW        &uc       UC_SH_THIGH_THEY                           &hr RAG   SEMI      &uc    UC_SH_IF_EAT            &uc         UC_SH_EGG_AGE       &uc   UC_SH_ASH_ICE   &uc UC_SH_ADO_AH    &uc UC_SH_ON_AWE
+   &hl LHYPER    HASH    &uc      UC_SH_SO_ZOO       &uc      UC_SH_SURE_MEASURE   &uc        UC_SH_CHURCH_JUDGE    &uc       UC_SH_YEA_WOE        &uc       UC_SH_HUNG_HAHA                            &hr RCTRL DOT       &uc    UC_SH_WOOL_OOZE         &uc         UC_SH_OUT_OAK       &uc   UC_SH_OIL_ARE   &uc UC_SH_OR_AIR    &uc UC_SH_ERR_ARRAY
+   &lt APPLAUNCH GRAVE   &uc      UC_SH_LOLL_ROAR    &uc      UC_SH_MIME_NUN       &none                            &none                          &none                                                &hr LCTRL FSLH      &uc    UC_SH_EAR_IAN           &uc         UC_SH_YEW           &none                 &none               &none
+                                                                                   &lt VOLUME ESC                   &lt NAV         TAB            &lt MOUSE       SPACE                                &lt NUM   RET       &lt SYM1     DEL               &lt SYM2          BSPC
+                        >;
+                };
+
 
                 empty_layer {
                         label = "empty";
