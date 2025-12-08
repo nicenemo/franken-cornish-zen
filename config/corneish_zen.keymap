@@ -149,28 +149,6 @@
 			hold-trigger-key-positions = <KEYS_L THUMBS_L>;
 	  	};
 
-		hld: homerow_mods_left_kpd {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			bindings = <&kp>, <&kpd>;
-			flavor = "balanced";
-			tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-			quick-tap-ms = <HM_QUICK_TAP>;
-			require-prior-idle-ms = <HM_PRIOR_IDLE>;
-			hold-trigger-key-positions = <KEYS_R THUMBS_R>;
-	  	};
-
-		hrd: homerow_mods_right_kpd {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			bindings = <&kp>, <&kpd>;
-			flavor = "balanced";
-			tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-			quick-tap-ms = <HM_QUICK_TAP>;
-			require-prior-idle-ms = <HM_PRIOR_IDLE>;
-			hold-trigger-key-positions = <KEYS_L THUMBS_L>;
-	  	};
-
 	};
 
         keymap {
@@ -214,8 +192,8 @@
 // |   *           |     1        |     2        |     3        |     /        | G        |                                     |          =        |                   |            |           |      WUC  |                  |
 //                                               |     0        |     ,        | .        |                                     |                   |      UNDER        |       LUC  |
                             bindings = <
-   &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &hr RCG PIPE   &hrd LMEH PIPE   &kp LHYPER
-   &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &hr RGUI AMPS  &hrd RMEH AMPS   &kp RHYPER
+   &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &hr RCG PIPE   &hr LMEH PIPE   &kp LHYPER
+   &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &hr RGUI AMPS  &hr RMEH AMPS   &kp RHYPER
    &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI       &kp  WUC         &none
                                                    &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &kp UNDER            &kp LUC      
                         >;
