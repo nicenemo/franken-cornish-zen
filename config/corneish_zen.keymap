@@ -13,9 +13,9 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/ext_power.h>
-#include "numpad_extra_keys.h"
-#include "consumer_extra_keys.h"
-#include "custom_modifiers.h"
+#include "keys/numpad_extra_keys.h"
+#include "keys/consumer_extra_keys.h"
+#include "keys/custom_modifiers.h"
 
 #define COPILOT  LSGK(F23)
 // linux unicode input
