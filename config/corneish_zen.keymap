@@ -55,7 +55,7 @@
 #define APL_BQN    20  
 #define LOGIC_SETS 21  
 #define MATH_ANLS  22  
-#define GRMODERN   23  
+#define GR_MODERN   23  
 #define GRARCH     24  
 #define GRCOPT     25
 #define PUNC_TYP   26
