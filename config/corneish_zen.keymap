@@ -123,7 +123,7 @@
 		combo_sticky_greek {
                        timeout-ms = <50>;
                        key-positions = <24 29>; 
-                       bindings = <&tog APL_BQN>;
+                       bindings = <&tog GR_MODERN>;
                 };
 
 
@@ -135,7 +135,7 @@
 
 		combo_sticky_supplemental_punctuation {
                        timeout-ms = <50>;
-                       key-positions = <1 5>; 
+                       key-positions = <0 5>; 
                        bindings = <&tog SUP_EDT>;
                 };
     	};
