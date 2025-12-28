@@ -43,7 +43,7 @@ The **Leader Key** allows for mnemonic sequences to input complex Unicode symbol
 | **Chess** | `H` | Pieces and board game symbols |
 | **Miscellaneous** | `M` | Food, weather, objects, and pictographs |
 
-[Leader cheatsheet](leader_cheatsheet.md)
+[leader cheat_sheet](leader_cheat_sheet.md)
 
 ---
 
