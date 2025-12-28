@@ -1833,12 +1833,12 @@
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |       RHYPER  |       RMEH   |     LCG   |     LCA  |       LSC   |     LAG   |                                            |     PASTE   |     COPY      |     CUT     |     UNDO   |       REDO      |            INS         |
 // |       LHYPER  |       LMEH   |     LGUI  |     LALT |       LSHFT |     LCTRL |                                            |     LEFT    |     DOWN      |     UP      |     RIGHT  |       F7        |            PRINTSCREEN |
-// |               |              |     RGUI  |     RALT |       RSHFT |     RCTRL |                                            |     HOME    |     PAGE_DOWN |     PAGE_UP |     END    |      SCROLLLOCK |            K_APP       |
+// |       CAPS    |       Leader |     RGUI  |     RALT |       RSHFT |     RCTRL |                                            |     HOME    |     PAGE_DOWN |     PAGE_UP |     END    |      SCROLLLOCK |            K_APP       |
 //                                            |     DEL  |             |     BSPC  |                                            |     RET     |     DEL       |     BSPC    |
                         bindings = <
      &kp   RHYPER    &kp   RMEH     &kp LCG     &kp LCA    &kp   LSC     &kp LAG                                                  &kp K_PASTE   &kp K_COPY      &kp K_CUT     &kp K_UNDO   &kp   K_REDO      &kp        INS
      &kp   LHYPER    &kp   LMEH     &kp LGUI    &kp LALT   &kp   LSHFT   &kp LCTRL                                                &kp LEFT      &kp DOWN        &kp UP        &kp RIGHT    &kp   F7          &kp        PRINTSCREEN
-     &leader         &none          &kp RGUI    &kp RALT   &kp   RSHFT   &kp RCTRL                                                &kp HOME      &kp PAGE_DOWN   &kp PAGE_UP   &kp END      &kp   SCROLLLOCK  &kp        K_APP
+     &kp   CAPS      &leader        &kp RGUI    &kp RALT   &kp   RSHFT   &kp RCTRL                                                &kp HOME      &kp PAGE_DOWN   &kp PAGE_UP   &kp END      &kp   SCROLLLOCK  &kp        K_APP
                                                 &kp DEL    &none         &kp BSPC                                                 &kp RET       &kp DEL         &kp BSPC      
                         >;
                 };
