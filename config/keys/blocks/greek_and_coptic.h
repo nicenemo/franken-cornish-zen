@@ -65,16 +65,14 @@
 
 #define UC_GRC_HETA                              0x0371 0x0370  // ͱ/Ͱ
 #define UC_GRC_ARCHAIC_SAMPI                     0x0373 0x0372  // ͳ/Ͳ
-#define UC_GRC_NUMERAL_SIGN                      0x0374 0  // ʹ
-#define UC_GRC_LOWER_NUMERAL_SIGN                0x0375 0  // ͵
+#define UC_GRC_NUMERAL_SIGN                      0x0374 0x375   // ʹ/͵
 #define UC_GRC_PAMPHYLIAN_DIGAMMA                0x0377 0x0376  // ͷ/Ͷ
 #define UC_GRC_YPOGEGRAMMENI                     0x037A 0  // ͺ
 #define UC_GRC_REVERSED_LUNATE_SIGMA             0x037B 0x03FD  // ͻ/Ͻ
 #define UC_GRC_DOTTED_LUNATE_SIGMA               0x037C 0x03FE  // ͼ/Ͼ
 #define UC_GRC_REVERSED_DOTTED_LUNATE_SIGMA      0x037D 0x03FF  // ͽ/Ͽ
 #define UC_GRC_QUESTION_MARK                     0x037E 0  // ;
-#define UC_GRC_TONOS                             0x0384 0  // ΄
-#define UC_GRC_DIALYTIKA_TONOS                   0x0385 0  // ΅
+#define UC_GRC_TONOS                             0x0384 0x0385  // ΄/΅
 #define UC_GRC_ANO_TELEIA                        0x0387 0  // ·
 #define UC_GRC_SMALL_IOTA_DIALYTIKA_AND_TONOS    0x0390 0  // ΐ
 #define UC_GRC_ALPHA_TONOS                       0x03AC 0x0386  // ά/Ά

@@ -17,6 +17,12 @@
 #include "keys/consumer_extra_keys.h"
 #include "keys/custom_modifiers.h"
 
+#include "keys/keys.h"
+
+#include "keys/combined_punctuation.h"
+#include "keys/combined_supplemental_punctuation.h"
+#include "keys/ulti_math.h"
+
 #define COPILOT  LSGK(F23)
 // linux unicode input
 #define LUC      LSCK(U)
@@ -25,28 +31,38 @@
 
 
 // layers
-#define DEFAULT         0
-#define NGRAM           0
-#define QWERTY          1
-#define NUM             2
-#define KEYPAD          3
-#define SYM1            4
-#define SYM2            5
-#define NAV             6
-#define VOLUME          7 
-#define FUN             8
-#define HFUN            9
-#define HYPFUN         10
-#define HYPHFUN        11
-#define MEHFUN         12
-#define MEHHFUN        13
-#define MOUSE          14
-#define CONFIG         15
-#define POWER          16
-#define DISPLAY        17
-#define APPLAUNCH      18
-#define CONSUMER       19
-#define EMPTYLAYER     20
+#define DEFAULT     0
+#define NGRAM       0
+#define QWERTY      1
+#define NUM         2
+#define KEYPAD      3
+#define SYM1        4
+#define SYM2        5
+#define NAV         6
+#define VOLUME      7 
+#define FUN         8
+#define HFUN        9
+#define HYPFUN     10
+#define HYPHFUN    11
+#define MEHFUN     12
+#define MEHHFUN    13
+#define MOUSE      14
+#define CONFIG     15
+#define POWER      16
+#define DISPLAY    17
+#define APPLAUNCH  18
+#define CONSUMER   19
+#define APL_BQN    20  
+#define LOGIC_SETS 21  
+#define MATH_ANLS  22  
+#define GRMODERN   23  
+#define GRARCH     24  
+#define GRCOPT     25
+#define PUNC_TYP   26
+#define PUNC_TEC   27
+#define SUP_EDT    28
+#define SUP_HIS    29
+#define EMPTYLAYER 30
 
 / {
   chosen {
@@ -82,25 +98,48 @@
 #define HM_QUICK_TAP 150
 
  / {
-    	combos {
+	combos {
         	compatible = "zmk,combos";
+		
+		combo_leader {
+    			timeout-ms = <50>;
+    			key-positions = <36 38>; 
+    			bindings = <&leader>;
+		};
 
-
-		combo_num {
-            		layers = <NGRAM QWERTY NUM>;
-            		timeout-ms = <25>;
-            		key-positions = <39 35>;
-            		bindings = <&tog NUM>;
-        	};
-
-		combo_config {
+		combo_sticky_config {
             		layers = <NGRAM QWERTY CONFIG>;
             		timeout-ms = <25>;
             		key-positions = <24 35>;
             		bindings = <&tog CONFIG>;
         	};
 
+		combo_sticky_math {
+                       timeout-ms = <50>;
+                       key-positions = <30 35>; 
+                       bindings = <&tog APL_BQN>;
+                };
+
+		combo_sticky_greek {
+                       timeout-ms = <50>;
+                       key-positions = <24 29>; 
+                       bindings = <&tog APL_BQN>;
+                };
+
+
+		combo_sticky_punctuation {
+                       timeout-ms = <50>;
+                       key-positions = <6 11>; 
+                       bindings = <&tog PUNC_TYP>;
+                };
+
+		combo_sticky_supplemental_punctuation {
+                       timeout-ms = <50>;
+                       key-positions = <1 5>; 
+                       bindings = <&tog SUP_EDT>;
+                };
     	};
+
         macros {
                 kpd: kpd {
                 compatible = "zmk,behavior-macro-one-param";
@@ -126,6 +165,1560 @@
 
         };
 	behaviors {
+		leader: leader {
+			compatible = "zmk,behavior-leader-key";
+			#binding-cells = <0>;
+			/* --- EMOTICONS.H --- */
+			grinning_face { sequence = <S G F>; bindings = <&uc UC_EMJ_GRINNING_FACE>; };
+			grinning_face_smiling_eyes { sequence = <S G F S E>; bindings = <&uc UC_EMJ_GRINNING_FACE_SMILING_EYES>; };
+			face_tears_of_joy { sequence = <S F T O J>; bindings = <&uc UC_EMJ_FACE_TEARS_OF_JOY>; };
+			smiling_face_open_mouth { sequence = <S S F O M>; bindings = <&uc UC_EMJ_SMILING_FACE_OPEN_MOUTH>; };
+			smiling_face_open_mouth_and_smiling_eyes { sequence = <S S F O M A S E>; bindings = <&uc UC_EMJ_SMILING_FACE_OPEN_MOUTH_AND_SMILING_EYES>; };
+			smiling_face_open_mouth_and_cold_sweat { sequence = <S S F O M A C S>; bindings = <&uc UC_EMJ_SMILING_FACE_OPEN_MOUTH_AND_COLD_SWEAT>; };
+			smiling_face_open_mouth_and_tightly_closed_eyes { sequence = <S S F O M A T C E>; bindings = <&uc UC_EMJ_SMILING_FACE_OPEN_MOUTH_AND_TIGHTLY_CLOSED_EYES>; };
+			smiling_face_halo { sequence = <S S F H>; bindings = <&uc UC_EMJ_SMILING_FACE_HALO>; };
+			smiling_face_horns { sequence = <S S F H A>; bindings = <&uc UC_EMJ_SMILING_FACE_HORNS>; };
+			winking_face { sequence = <S W F>; bindings = <&uc UC_EMJ_WINKING_FACE>; };
+			smiling_face_smiling_eyes { sequence = <S S F S E>; bindings = <&uc UC_EMJ_SMILING_FACE_SMILING_EYES>; };
+			face_savouring_delicious_food { sequence = <S F S D F>; bindings = <&uc UC_EMJ_FACE_SAVOURING_DELICIOUS_FOOD>; };
+			relieved_face { sequence = <S R F>; bindings = <&uc UC_EMJ_RELIEVED_FACE>; };
+			smiling_face_heart_shaped_eyes { sequence = <S S F H S E>; bindings = <&uc UC_EMJ_SMILING_FACE_HEART_SHAPED_EYES>; };
+			smiling_face_sunglasses { sequence = <S S F S>; bindings = <&uc UC_EMJ_SMILING_FACE_SUNGLASSES>; };
+			smirking_face { sequence = <S S F>; bindings = <&uc UC_EMJ_SMIRKING_FACE>; };
+			neutral_face { sequence = <S N F>; bindings = <&uc UC_EMJ_NEUTRAL_FACE>; };
+			expressionless_face { sequence = <S E F>; bindings = <&uc UC_EMJ_EXPRESSIONLESS_FACE>; };
+			unamused_face { sequence = <S U F>; bindings = <&uc UC_EMJ_UNAMUSED_FACE>; };
+			face_cold_sweat { sequence = <S F C S>; bindings = <&uc UC_EMJ_FACE_COLD_SWEAT>; };
+			pensive_face { sequence = <S P F>; bindings = <&uc UC_EMJ_PENSIVE_FACE>; };
+			confused_face { sequence = <S C F>; bindings = <&uc UC_EMJ_CONFUSED_FACE>; };
+			confounded_face { sequence = <S C F A>; bindings = <&uc UC_EMJ_CONFOUNDED_FACE>; };
+			kissing_face { sequence = <S K F>; bindings = <&uc UC_EMJ_KISSING_FACE>; };
+			face_throwing_a_kiss { sequence = <S F T A K>; bindings = <&uc UC_EMJ_FACE_THROWING_A_KISS>; };
+			kissing_face_smiling_eyes { sequence = <S K F S E>; bindings = <&uc UC_EMJ_KISSING_FACE_SMILING_EYES>; };
+			kissing_face_closed_eyes { sequence = <S K F C E>; bindings = <&uc UC_EMJ_KISSING_FACE_CLOSED_EYES>; };
+			face_stuck_out_tongue { sequence = <S F S O T>; bindings = <&uc UC_EMJ_FACE_STUCK_OUT_TONGUE>; };
+			face_stuck_out_tongue_and_winking_eye { sequence = <S F S O T A W E>; bindings = <&uc UC_EMJ_FACE_STUCK_OUT_TONGUE_AND_WINKING_EYE>; };
+			face_stuck_out_tongue_and_tightly_closed_eyes { sequence = <S F S O T A T C E>; bindings = <&uc UC_EMJ_FACE_STUCK_OUT_TONGUE_AND_TIGHTLY_CLOSED_EYES>; };
+			disappointed_face { sequence = <S D F>; bindings = <&uc UC_EMJ_DISAPPOINTED_FACE>; };
+			worried_face { sequence = <S W F A>; bindings = <&uc UC_EMJ_WORRIED_FACE>; };
+			angry_face { sequence = <S A F>; bindings = <&uc UC_EMJ_ANGRY_FACE>; };
+			pouting_face { sequence = <S P F A>; bindings = <&uc UC_EMJ_POUTING_FACE>; };
+			crying_face { sequence = <S C F E>; bindings = <&uc UC_EMJ_CRYING_FACE>; };
+			persevering_face { sequence = <S P F E>; bindings = <&uc UC_EMJ_PERSEVERING_FACE>; };
+			face_look_of_triumph { sequence = <S F L O T>; bindings = <&uc UC_EMJ_FACE_LOOK_OF_TRIUMPH>; };
+			disappointed_but_relieved_face { sequence = <S D B R F>; bindings = <&uc UC_EMJ_DISAPPOINTED_BUT_RELIEVED_FACE>; };
+			frowning_face_open_mouth { sequence = <S F F O M>; bindings = <&uc UC_EMJ_FROWNING_FACE_OPEN_MOUTH>; };
+			anguished_face { sequence = <S A F A>; bindings = <&uc UC_EMJ_ANGUISHED_FACE>; };
+			fearful_face { sequence = <S F F>; bindings = <&uc UC_EMJ_FEARFUL_FACE>; };
+			weary_face { sequence = <S W F E>; bindings = <&uc UC_EMJ_WEARY_FACE>; };
+			sleepy_face { sequence = <S S F A>; bindings = <&uc UC_EMJ_SLEEPY_FACE>; };
+			tired_face { sequence = <S T F>; bindings = <&uc UC_EMJ_TIRED_FACE>; };
+			grimacing_face { sequence = <S G F A>; bindings = <&uc UC_EMJ_GRIMACING_FACE>; };
+			loudly_crying_face { sequence = <S L C F>; bindings = <&uc UC_EMJ_LOUDLY_CRYING_FACE>; };
+			face_open_mouth_2 { sequence = <S F O M>; bindings = <&uc UC_EMJ_FACE_OPEN_MOUTH>; };
+			hushed_face { sequence = <S H F>; bindings = <&uc UC_EMJ_HUSHED_FACE>; };
+			face_open_mouth_and_cold_sweat_2 { sequence = <S F O M A C S>; bindings = <&uc UC_EMJ_FACE_OPEN_MOUTH_AND_COLD_SWEAT>; };
+			face_screaming_in_fear { sequence = <S F S I F>; bindings = <&uc UC_EMJ_FACE_SCREAMING_IN_FEAR>; };
+			astonished_face { sequence = <S A F E>; bindings = <&uc UC_EMJ_ASTONISHED_FACE>; };
+			flushed_face { sequence = <S F F A>; bindings = <&uc UC_EMJ_FLUSHED_FACE>; };
+			sleeping_face { sequence = <S S F E>; bindings = <&uc UC_EMJ_SLEEPING_FACE>; };
+			dizzy_face { sequence = <S D F A>; bindings = <&uc UC_EMJ_DIZZY_FACE>; };
+			face_without_mouth { sequence = <S F W M>; bindings = <&uc UC_EMJ_FACE_WITHOUT_MOUTH>; };
+			face_medical_mask { sequence = <S F M M>; bindings = <&uc UC_EMJ_FACE_MEDICAL_MASK>; };
+			grinning_cat_face_smiling_eyes { sequence = <S G C F S E>; bindings = <&uc UC_EMJ_GRINNING_CAT_FACE_SMILING_EYES>; };
+			cat_face_tears_of_joy { sequence = <S C F T O J>; bindings = <&uc UC_EMJ_CAT_FACE_TEARS_OF_JOY>; };
+			smiling_cat_face_open_mouth { sequence = <S S C F O M>; bindings = <&uc UC_EMJ_SMILING_CAT_FACE_OPEN_MOUTH>; };
+			smiling_cat_face_heart_shaped_eyes { sequence = <S S C F H S E>; bindings = <&uc UC_EMJ_SMILING_CAT_FACE_HEART_SHAPED_EYES>; };
+			cat_face_wry_smile { sequence = <S C F W S>; bindings = <&uc UC_EMJ_CAT_FACE_WRY_SMILE>; };
+			kissing_cat_face_closed_eyes { sequence = <S K C F C E>; bindings = <&uc UC_EMJ_KISSING_CAT_FACE_CLOSED_EYES>; };
+			pouting_cat_face { sequence = <S P C F>; bindings = <&uc UC_EMJ_POUTING_CAT_FACE>; };
+			crying_cat_face { sequence = <S C C F>; bindings = <&uc UC_EMJ_CRYING_CAT_FACE>; };
+			weary_cat_face { sequence = <S W C F>; bindings = <&uc UC_EMJ_WEARY_CAT_FACE>; };
+			slightly_frowning_face { sequence = <S S F F>; bindings = <&uc UC_EMJ_SLIGHTLY_FROWNING_FACE>; };
+			slightly_smiling_face { sequence = <S S S F>; bindings = <&uc UC_EMJ_SLIGHTLY_SMILING_FACE>; };
+			upside_down_face { sequence = <S U D F>; bindings = <&uc UC_EMJ_UPSIDE_DOWN_FACE>; };
+			face_rolling_eyes { sequence = <S F R E>; bindings = <&uc UC_EMJ_FACE_ROLLING_EYES>; };
+			face_no_good_gesture { sequence = <S F N G G>; bindings = <&uc UC_EMJ_FACE_NO_GOOD_GESTURE>; };
+			face_ok_gesture { sequence = <S F O G>; bindings = <&uc UC_EMJ_FACE_OK_GESTURE>; };
+			person_bowing_deeply { sequence = <S P B D>; bindings = <&uc UC_EMJ_PERSON_BOWING_DEEPLY>; };
+			see_no_evil_monkey { sequence = <S S N E M>; bindings = <&uc UC_EMJ_SEE_NO_EVIL_MONKEY>; };
+			hear_no_evil_monkey { sequence = <S H N E M>; bindings = <&uc UC_EMJ_HEAR_NO_EVIL_MONKEY>; };
+			speak_no_evil_monkey { sequence = <S S N E M A>; bindings = <&uc UC_EMJ_SPEAK_NO_EVIL_MONKEY>; };
+			happy_person_raising_one_hand { sequence = <S H P R O H>; bindings = <&uc UC_EMJ_HAPPY_PERSON_RAISING_ONE_HAND>; };
+			person_raising_both_hands_in_celebration { sequence = <S P R B H I C>; bindings = <&uc UC_EMJ_PERSON_RAISING_BOTH_HANDS_IN_CELEBRATION>; };
+			person_frowning { sequence = <S P F I>; bindings = <&uc UC_EMJ_PERSON_FROWNING>; };
+			person_pouting_face { sequence = <S P P F>; bindings = <&uc UC_EMJ_PERSON_POUTING_FACE>; };
+			person_folded_hands { sequence = <S P F H>; bindings = <&uc UC_EMJ_PERSON_FOLDED_HANDS>; };
+
+			/* --- TRANSPORT_AND_MAP_SYMBOLS.H --- */
+			rocket { sequence = <T R>; bindings = <&uc UC_TMS_ROCKET>; };
+			helicopter { sequence = <T H>; bindings = <&uc UC_TMS_HELICOPTER>; };
+			steam_locomotive { sequence = <T S L>; bindings = <&uc UC_TMS_STEAM_LOCOMOTIVE>; };
+			railway_car { sequence = <T R C>; bindings = <&uc UC_TMS_RAILWAY_CAR>; };
+			high_speed_train { sequence = <T H S T>; bindings = <&uc UC_TMS_HIGH_SPEED_TRAIN>; };
+			high_speed_train_bullet_nose { sequence = <T H S T B N>; bindings = <&uc UC_TMS_HIGH_SPEED_TRAIN_BULLET_NOSE>; };
+			train_2 { sequence = <T T>; bindings = <&uc UC_TMS_TRAIN>; };
+			metro { sequence = <T M>; bindings = <&uc UC_TMS_METRO>; };
+			light_rail { sequence = <T L R>; bindings = <&uc UC_TMS_LIGHT_RAIL>; };
+			station { sequence = <T S>; bindings = <&uc UC_TMS_STATION>; };
+			tram { sequence = <T T A>; bindings = <&uc UC_TMS_TRAM>; };
+			tram_car { sequence = <T T C>; bindings = <&uc UC_TMS_TRAM_CAR>; };
+			bus { sequence = <T B>; bindings = <&uc UC_TMS_BUS>; };
+			oncoming_bus { sequence = <T O B>; bindings = <&uc UC_TMS_ONCOMING_BUS>; };
+			trolleybus { sequence = <T T E>; bindings = <&uc UC_TMS_TROLLEYBUS>; };
+			bus_stop { sequence = <T B S>; bindings = <&uc UC_TMS_BUS_STOP>; };
+			minibus { sequence = <T M A>; bindings = <&uc UC_TMS_MINIBUS>; };
+			ambulance { sequence = <T A>; bindings = <&uc UC_TMS_AMBULANCE>; };
+			fire_engine { sequence = <T F E>; bindings = <&uc UC_TMS_FIRE_ENGINE>; };
+			police_car { sequence = <T P C>; bindings = <&uc UC_TMS_POLICE_CAR>; };
+			oncoming_police_car { sequence = <T O P C>; bindings = <&uc UC_TMS_ONCOMING_POLICE_CAR>; };
+			taxi { sequence = <T T I>; bindings = <&uc UC_TMS_TAXI>; };
+			oncoming_taxi { sequence = <T O T>; bindings = <&uc UC_TMS_ONCOMING_TAXI>; };
+			automobile { sequence = <T A A>; bindings = <&uc UC_TMS_AUTOMOBILE>; };
+			oncoming_automobile { sequence = <T O A>; bindings = <&uc UC_TMS_ONCOMING_AUTOMOBILE>; };
+			recreational_vehicle { sequence = <T R V>; bindings = <&uc UC_TMS_RECREATIONAL_VEHICLE>; };
+			delivery_truck { sequence = <T D T>; bindings = <&uc UC_TMS_DELIVERY_TRUCK>; };
+			articulated_lorry { sequence = <T A L>; bindings = <&uc UC_TMS_ARTICULATED_LORRY>; };
+			tractor { sequence = <T T O>; bindings = <&uc UC_TMS_TRACTOR>; };
+			monorail { sequence = <T M E>; bindings = <&uc UC_TMS_MONORAIL>; };
+			mountain_railway { sequence = <T M R>; bindings = <&uc UC_TMS_MOUNTAIN_RAILWAY>; };
+			suspension_railway { sequence = <T S R>; bindings = <&uc UC_TMS_SUSPENSION_RAILWAY>; };
+			mountain_cableway { sequence = <T M C>; bindings = <&uc UC_TMS_MOUNTAIN_CABLEWAY>; };
+			aerial_tramway { sequence = <T A T>; bindings = <&uc UC_TMS_AERIAL_TRAMWAY>; };
+			ship { sequence = <T S A>; bindings = <&uc UC_TMS_SHIP>; };
+			rowboat { sequence = <T R A>; bindings = <&uc UC_TMS_ROWBOAT>; };
+			speedboat { sequence = <T S E>; bindings = <&uc UC_TMS_SPEEDBOAT>; };
+			horizontal_traffic_light { sequence = <T H T L>; bindings = <&uc UC_TMS_HORIZONTAL_TRAFFIC_LIGHT>; };
+			vertical_traffic_light { sequence = <T V T L>; bindings = <&uc UC_TMS_VERTICAL_TRAFFIC_LIGHT>; };
+			construction_sign { sequence = <T C S>; bindings = <&uc UC_TMS_CONSTRUCTION_SIGN>; };
+			police_cars_revolving_light { sequence = <T P C R L>; bindings = <&uc UC_TMS_POLICE_CARS_REVOLVING_LIGHT>; };
+			triangular_flag_on_post { sequence = <T T F O P>; bindings = <&uc UC_TMS_TRIANGULAR_FLAG_ON_POST>; };
+			door { sequence = <T D>; bindings = <&uc UC_TMS_DOOR>; };
+			no_entry_sign { sequence = <T N E S>; bindings = <&uc UC_TMS_NO_ENTRY_SIGN>; };
+			smoking { sequence = <T S I>; bindings = <&uc UC_TMS_SMOKING>; };
+			no_smoking { sequence = <T N S>; bindings = <&uc UC_TMS_NO_SMOKING>; };
+			put_litter_in_its_place { sequence = <T P L I I P>; bindings = <&uc UC_TMS_PUT_LITTER_IN_ITS_PLACE>; };
+			do_not_litter { sequence = <T D N L>; bindings = <&uc UC_TMS_DO_NOT_LITTER>; };
+			potable_water { sequence = <T P W>; bindings = <&uc UC_TMS_POTABLE_WATER>; };
+			non_potable_water { sequence = <T N P W>; bindings = <&uc UC_TMS_NON_POTABLE_WATER>; };
+			bicycle { sequence = <T B A>; bindings = <&uc UC_TMS_BICYCLE>; };
+			no_bicycles { sequence = <T N B>; bindings = <&uc UC_TMS_NO_BICYCLES>; };
+			bicyclist { sequence = <T B E>; bindings = <&uc UC_TMS_BICYCLIST>; };
+			mountain_bicyclist { sequence = <T M B>; bindings = <&uc UC_TMS_MOUNTAIN_BICYCLIST>; };
+			pedestrian { sequence = <T P>; bindings = <&uc UC_TMS_PEDESTRIAN>; };
+			no_pedestrians { sequence = <T N P>; bindings = <&uc UC_TMS_NO_PEDESTRIANS>; };
+			children_crossing { sequence = <T C C>; bindings = <&uc UC_TMS_CHILDREN_CROSSING>; };
+			mens { sequence = <T M I>; bindings = <&uc UC_TMS_MENS>; };
+			womens { sequence = <T W>; bindings = <&uc UC_TMS_WOMENS>; };
+			restroom { sequence = <T R E>; bindings = <&uc UC_TMS_RESTROOM>; };
+			baby { sequence = <T B I>; bindings = <&uc UC_TMS_BABY>; };
+			toilet { sequence = <T T U>; bindings = <&uc UC_TMS_TOILET>; };
+			water_closet { sequence = <T W C>; bindings = <&uc UC_TMS_WATER_CLOSET>; };
+			shower { sequence = <T S O>; bindings = <&uc UC_TMS_SHOWER>; };
+			bath { sequence = <T B O>; bindings = <&uc UC_TMS_BATH>; };
+			bathtub { sequence = <T B U>; bindings = <&uc UC_TMS_BATHTUB>; };
+			passport_control { sequence = <T P C A>; bindings = <&uc UC_TMS_PASSPORT_CONTROL>; };
+			customs { sequence = <T C>; bindings = <&uc UC_TMS_CUSTOMS>; };
+			baggage_claim { sequence = <T B C>; bindings = <&uc UC_TMS_BAGGAGE_CLAIM>; };
+			left_luggage { sequence = <T L L>; bindings = <&uc UC_TMS_LEFT_LUGGAGE>; };
+			triangle_rounded_corners { sequence = <T T R C>; bindings = <&uc UC_TMS_TRIANGLE_ROUNDED_CORNERS>; };
+			prohibited_sign { sequence = <T P S>; bindings = <&uc UC_TMS_PROHIBITED_SIGN>; };
+			c_information_source { sequence = <T C I S>; bindings = <&uc UC_TMS_C_INFORMATION_SOURCE>; };
+			boys { sequence = <T B N1>; bindings = <&uc UC_TMS_BOYS>; };
+			girls { sequence = <T G>; bindings = <&uc UC_TMS_GIRLS>; };
+			couch_and_lamp { sequence = <T C A L>; bindings = <&uc UC_TMS_COUCH_AND_LAMP>; };
+			sleeping_accommodation { sequence = <T S A A>; bindings = <&uc UC_TMS_SLEEPING_ACCOMMODATION>; };
+			shopping_bags { sequence = <T S B>; bindings = <&uc UC_TMS_SHOPPING_BAGS>; };
+			bellhop_bell { sequence = <T B B>; bindings = <&uc UC_TMS_BELLHOP_BELL>; };
+			bed { sequence = <T B D>; bindings = <&uc UC_TMS_BED>; };
+			place_of_worship { sequence = <T P O W>; bindings = <&uc UC_TMS_PLACE_OF_WORSHIP>; };
+			octagonal_sign { sequence = <T O S>; bindings = <&uc UC_TMS_OCTAGONAL_SIGN>; };
+			shopping_trolley { sequence = <T S T>; bindings = <&uc UC_TMS_SHOPPING_TROLLEY>; };
+			stupa { sequence = <T S U>; bindings = <&uc UC_TMS_STUPA>; };
+			pagoda { sequence = <T P A>; bindings = <&uc UC_TMS_PAGODA>; };
+			hindu_temple { sequence = <T H T>; bindings = <&uc UC_TMS_HINDU_TEMPLE>; };
+			hut { sequence = <T H A>; bindings = <&uc UC_TMS_HUT>; };
+			elevator { sequence = <T E>; bindings = <&uc UC_TMS_ELEVATOR>; };
+			landslide { sequence = <T L>; bindings = <&uc UC_TMS_LANDSLIDE>; };
+			wireless { sequence = <T W A>; bindings = <&uc UC_TMS_WIRELESS>; };
+			playground_slide { sequence = <T P S A>; bindings = <&uc UC_TMS_PLAYGROUND_SLIDE>; };
+			wheel { sequence = <T W E>; bindings = <&uc UC_TMS_WHEEL>; };
+			ring_buoy { sequence = <T R B>; bindings = <&uc UC_TMS_RING_BUOY>; };
+			hammer_and_wrench { sequence = <T H A W>; bindings = <&uc UC_TMS_HAMMER_AND_WRENCH>; };
+			shield { sequence = <T S D>; bindings = <&uc UC_TMS_SHIELD>; };
+			oil_drum { sequence = <T O D>; bindings = <&uc UC_TMS_OIL_DRUM>; };
+			motorway { sequence = <T M O>; bindings = <&uc UC_TMS_MOTORWAY>; };
+			railway_track { sequence = <T R T>; bindings = <&uc UC_TMS_RAILWAY_TRACK>; };
+			motor_boat { sequence = <T M B A>; bindings = <&uc UC_TMS_MOTOR_BOAT>; };
+			up_pointing_military_airplane { sequence = <T U P M A>; bindings = <&uc UC_TMS_UP_POINTING_MILITARY_AIRPLANE>; };
+			up_pointing_airplane { sequence = <T U P A>; bindings = <&uc UC_TMS_UP_POINTING_AIRPLANE>; };
+			up_pointing_small_airplane { sequence = <T U P S A>; bindings = <&uc UC_TMS_UP_POINTING_SMALL_AIRPLANE>; };
+			small_airplane_2 { sequence = <T S A E>; bindings = <&uc UC_TMS_SMALL_AIRPLANE>; };
+			northeast_pointing_airplane { sequence = <T N P A>; bindings = <&uc UC_TMS_NORTHEAST_POINTING_AIRPLANE>; };
+			airplane_departure { sequence = <T A D>; bindings = <&uc UC_TMS_AIRPLANE_DEPARTURE>; };
+			airplane_arriving { sequence = <T A A A>; bindings = <&uc UC_TMS_AIRPLANE_ARRIVING>; };
+			satellite { sequence = <T S N1>; bindings = <&uc UC_TMS_SATELLITE>; };
+			oncoming_fire_engine { sequence = <T O F E>; bindings = <&uc UC_TMS_ONCOMING_FIRE_ENGINE>; };
+			diesel_locomotive { sequence = <T D L>; bindings = <&uc UC_TMS_DIESEL_LOCOMOTIVE>; };
+			passenger_ship { sequence = <T P S E>; bindings = <&uc UC_TMS_PASSENGER_SHIP>; };
+			scooter { sequence = <T S N2>; bindings = <&uc UC_TMS_SCOOTER>; };
+			motor_scooter { sequence = <T M S>; bindings = <&uc UC_TMS_MOTOR_SCOOTER>; };
+			canoe { sequence = <T C A>; bindings = <&uc UC_TMS_CANOE>; };
+			sled { sequence = <T S N3>; bindings = <&uc UC_TMS_SLED>; };
+			flying_saucer { sequence = <T F S>; bindings = <&uc UC_TMS_FLYING_SAUCER>; };
+			skateboard { sequence = <T S N4>; bindings = <&uc UC_TMS_SKATEBOARD>; };
+			auto_rickshaw { sequence = <T A R>; bindings = <&uc UC_TMS_AUTO_RICKSHAW>; };
+			pickup_truck { sequence = <T P T>; bindings = <&uc UC_TMS_PICKUP_TRUCK>; };
+			roller_skate { sequence = <T R S>; bindings = <&uc UC_TMS_ROLLER_SKATE>; };
+
+			/* --- CURRENCY_SYMBOLS.H --- */
+			euro_currency_sign { sequence = <C E C S>; bindings = <&uc UC_CUR_EURO_CURRENCY_SIGN>; };
+			colon_sign { sequence = <C C S>; bindings = <&uc UC_CUR_COLON_SIGN>; };
+			cruzeiro_sign { sequence = <C C S A>; bindings = <&uc UC_CUR_CRUZEIRO_SIGN>; };
+			french_franc_sign { sequence = <C F F S>; bindings = <&uc UC_CUR_FRENCH_FRANC_SIGN>; };
+			lira_sign { sequence = <C L S>; bindings = <&uc UC_CUR_LIRA_SIGN>; };
+			mill_sign { sequence = <C M S>; bindings = <&uc UC_CUR_MILL_SIGN>; };
+			naira_sign { sequence = <C N S>; bindings = <&uc UC_CUR_NAIRA_SIGN>; };
+			peseta_sign { sequence = <C P S>; bindings = <&uc UC_CUR_PESETA_SIGN>; };
+			rupee_sign { sequence = <C R S>; bindings = <&uc UC_CUR_RUPEE_SIGN>; };
+			won_sign { sequence = <C W S>; bindings = <&uc UC_CUR_WON_SIGN>; };
+			new_sheqel_sign { sequence = <C N S S>; bindings = <&uc UC_CUR_NEW_SHEQEL_SIGN>; };
+			dong_sign { sequence = <C D S>; bindings = <&uc UC_CUR_DONG_SIGN>; };
+			euro_sign { sequence = <C E S>; bindings = <&uc UC_CUR_EURO_SIGN>; };
+			kip_sign { sequence = <C K S>; bindings = <&uc UC_CUR_KIP_SIGN>; };
+			tugrik_sign { sequence = <C T S>; bindings = <&uc UC_CUR_TUGRIK_SIGN>; };
+			drachma_sign { sequence = <C D S A>; bindings = <&uc UC_CUR_DRACHMA_SIGN>; };
+			german_penny_sign { sequence = <C G P S>; bindings = <&uc UC_CUR_GERMAN_PENNY_SIGN>; };
+			peso_sign { sequence = <C P S A>; bindings = <&uc UC_CUR_PESO_SIGN>; };
+			guarani_sign { sequence = <C G S>; bindings = <&uc UC_CUR_GUARANI_SIGN>; };
+			austral_sign { sequence = <C A S>; bindings = <&uc UC_CUR_AUSTRAL_SIGN>; };
+			hryvnia_sign { sequence = <C H S>; bindings = <&uc UC_CUR_HRYVNIA_SIGN>; };
+			cedi_sign { sequence = <C C S E>; bindings = <&uc UC_CUR_CEDI_SIGN>; };
+			livre_tournois_sign { sequence = <C L T S>; bindings = <&uc UC_CUR_LIVRE_TOURNOIS_SIGN>; };
+			spesmilo_sign { sequence = <C S S>; bindings = <&uc UC_CUR_SPESMILO_SIGN>; };
+			tenge_sign { sequence = <C T S A>; bindings = <&uc UC_CUR_TENGE_SIGN>; };
+			indian_rupee_sign { sequence = <C I R S>; bindings = <&uc UC_CUR_INDIAN_RUPEE_SIGN>; };
+			turkish_lira_sign { sequence = <C T L S>; bindings = <&uc UC_CUR_TURKISH_LIRA_SIGN>; };
+			nordic_mark_sign { sequence = <C N M S>; bindings = <&uc UC_CUR_NORDIC_MARK_SIGN>; };
+			manat_sign { sequence = <C M S A>; bindings = <&uc UC_CUR_MANAT_SIGN>; };
+			ruble_sign { sequence = <C R S A>; bindings = <&uc UC_CUR_RUBLE_SIGN>; };
+			lari_sign { sequence = <C L S A>; bindings = <&uc UC_CUR_LARI_SIGN>; };
+			bitcoin_sign { sequence = <C B S>; bindings = <&uc UC_CUR_BITCOIN_SIGN>; };
+			som_sign { sequence = <C S S A>; bindings = <&uc UC_CUR_SOM_SIGN>; };
+			saudi_riyal_sign { sequence = <C S R S>; bindings = <&uc UC_CUR_SAUDI_RIYAL_SIGN>; };
+
+			/* --- DINGBATS.H --- */
+			black_safety_scissors { sequence = <D B S S>; bindings = <&uc UC_DB_BLACK_SAFETY_SCISSORS>; };
+			upper_blade_scissors { sequence = <D U B S>; bindings = <&uc UC_DB_UPPER_BLADE_SCISSORS>; };
+			black_scissors { sequence = <D B S>; bindings = <&uc UC_DB_BLACK_SCISSORS>; };
+			lower_blade_scissors { sequence = <D L B S>; bindings = <&uc UC_DB_LOWER_BLADE_SCISSORS>; };
+			white_scissors { sequence = <D W S>; bindings = <&uc UC_DB_WHITE_SCISSORS>; };
+			white_heavy_check_mark { sequence = <D W H C M>; bindings = <&uc UC_DB_WHITE_HEAVY_CHECK_MARK>; };
+			telephone_location_sign { sequence = <D T L S>; bindings = <&uc UC_DB_TELEPHONE_LOCATION_SIGN>; };
+			tape_drive { sequence = <D T D>; bindings = <&uc UC_DB_TAPE_DRIVE>; };
+			airplane_3 { sequence = <D A>; bindings = <&uc UC_DB_AIRPLANE>; };
+			envelope { sequence = <D E>; bindings = <&uc UC_DB_ENVELOPE>; };
+			raised_fist { sequence = <D R F>; bindings = <&uc UC_DB_RAISED_FIST>; };
+			raised_hand { sequence = <D R H>; bindings = <&uc UC_DB_RAISED_HAND>; };
+			victory_hand { sequence = <D V H>; bindings = <&uc UC_DB_VICTORY_HAND>; };
+			writing_hand { sequence = <D W H>; bindings = <&uc UC_DB_WRITING_HAND>; };
+			lower_right_pencil { sequence = <D L R P>; bindings = <&uc UC_DB_LOWER_RIGHT_PENCIL>; };
+			pencil_2 { sequence = <D P>; bindings = <&uc UC_DB_PENCIL>; };
+			upper_right_pencil { sequence = <D U R P>; bindings = <&uc UC_DB_UPPER_RIGHT_PENCIL>; };
+			white_nib { sequence = <D W N>; bindings = <&uc UC_DB_WHITE_NIB>; };
+			black_nib { sequence = <D B N>; bindings = <&uc UC_DB_BLACK_NIB>; };
+			check_mark_2 { sequence = <D C M>; bindings = <&uc UC_DB_CHECK_MARK>; };
+			heavy_check_mark_2 { sequence = <D H C M>; bindings = <&uc UC_DB_HEAVY_CHECK_MARK>; };
+			multiplication_x { sequence = <D M X>; bindings = <&uc UC_DB_MULTIPLICATION_X>; };
+			heavy_multiplication_x { sequence = <D H M X>; bindings = <&uc UC_DB_HEAVY_MULTIPLICATION_X>; };
+			ballot_x { sequence = <D B X>; bindings = <&uc UC_DB_BALLOT_X>; };
+			heavy_ballot_x { sequence = <D H B X>; bindings = <&uc UC_DB_HEAVY_BALLOT_X>; };
+			outlined_cross { sequence = <D O C>; bindings = <&uc UC_DB_OUTLINED_CROSS>; };
+			heavy_cross { sequence = <D H C>; bindings = <&uc UC_DB_HEAVY_CROSS>; };
+			open_centre_cross { sequence = <D O C C>; bindings = <&uc UC_DB_OPEN_CENTRE_CROSS>; };
+			heavy_open_centre_cross { sequence = <D H O C C>; bindings = <&uc UC_DB_HEAVY_OPEN_CENTRE_CROSS>; };
+			cross_2 { sequence = <D C>; bindings = <&uc UC_DB_CROSS>; };
+			shadowed_white_cross { sequence = <D S W C>; bindings = <&uc UC_DB_SHADOWED_WHITE_CROSS>; };
+			latin_cross { sequence = <D L C>; bindings = <&uc UC_OUTLINED_LATIN_CROSS>; };
+			maltese_cross { sequence = <D M C>; bindings = <&uc UC_DB_MALTESE_CROSS>; };
+			star_of_david { sequence = <D S O D>; bindings = <&uc UC_DB_STAR_OF_DAVID>; };
+			four_teardrop_spoked_asterisk { sequence = <D F T S A>; bindings = <&uc UC_DB_FOUR_TEARDROP_SPOKED_ASTERISK>; };
+			four_balloon_spoked_asterisk { sequence = <D F B S A>; bindings = <&uc UC_DB_FOUR_BALLOON_SPOKED_ASTERISK>; };
+			heavy_four_balloon_spoked_asterisk { sequence = <D H F B S A>; bindings = <&uc UC_DB_HEAVY_FOUR_BALLOON_SPOKED_ASTERISK>; };
+			four_club_spoked_asterisk { sequence = <D F C S A>; bindings = <&uc UC_DB_FOUR_CLUB_SPOKED_ASTERISK>; };
+			black_four_pointed_star { sequence = <D B F P S>; bindings = <&uc UC_DB_BLACK_FOUR_POINTED_STAR>; };
+			white_four_pointed_star { sequence = <D W F P S>; bindings = <&uc UC_DB_WHITE_FOUR_POINTED_STAR>; };
+			sparkles { sequence = <D S>; bindings = <&uc UC_DB_SPARKLES>; };
+			stress_outlined_white_star { sequence = <D S O W S>; bindings = <&uc UC_DB_STRESS_OUTLINED_WHITE_STAR>; };
+			c_white_star { sequence = <D C W S>; bindings = <&uc UC_DB_C_WHITE_STAR>; };
+			open_centre_black_star { sequence = <D O C B S>; bindings = <&uc UC_DB_OPEN_CENTRE_BLACK_STAR>; };
+			black_centre_white_star { sequence = <D B C W S>; bindings = <&uc UC_DB_BLACK_CENTRE_WHITE_STAR>; };
+			outlined_black_star { sequence = <D O B S>; bindings = <&uc UC_DB_OUTLINED_BLACK_STAR>; };
+			heavy_outlined_black_star { sequence = <D H O B S>; bindings = <&uc UC_DB_HEAVY_OUTLINED_BLACK_STAR>; };
+			pinwheel_star { sequence = <D P S>; bindings = <&uc UC_DB_PINWHEEL_STAR>; };
+			shadowed_white_star { sequence = <D S W S>; bindings = <&uc UC_DB_SHADOWED_WHITE_STAR>; };
+			heavy_asterisk { sequence = <D H A>; bindings = <&uc UC_DB_HEAVY_ASTERISK>; };
+			open_centre_asterisk { sequence = <D O C A>; bindings = <&uc UC_DB_OPEN_CENTRE_ASTERISK>; };
+			eight_spoked_asterisk { sequence = <D E S A>; bindings = <&uc UC_DB_EIGHT_SPOKED_ASTERISK>; };
+			eight_pointed_black_star { sequence = <D E P B S>; bindings = <&uc UC_DB_EIGHT_POINTED_BLACK_STAR>; };
+			eight_pointed_pinwheel_star { sequence = <D E P P S>; bindings = <&uc UC_DB_EIGHT_POINTED_PINWHEEL_STAR>; };
+			six_pointed_black_star { sequence = <D S P B S>; bindings = <&uc UC_DB_SIX_POINTED_BLACK_STAR>; };
+			eight_pointed_rectilinear_black_star { sequence = <D E P R B S>; bindings = <&uc UC_DB_EIGHT_POINTED_RECTILINEAR_BLACK_STAR>; };
+			heavy_eight_pointed_rectilinear_black_star { sequence = <D H E P R B S>; bindings = <&uc UC_DB_HEAVY_EIGHT_POINTED_RECTILINEAR_BLACK_STAR>; };
+			twelve_pointed_black_star { sequence = <D T P B S>; bindings = <&uc UC_DB_TWELVE_POINTED_BLACK_STAR>; };
+			sixteen_pointed_asterisk { sequence = <D S P A>; bindings = <&uc UC_DB_SIXTEEN_POINTED_ASTERISK>; };
+			teardrop_spoked_asterisk_2 { sequence = <D T S A>; bindings = <&uc UC_DB_TEARDROP_SPOKED_ASTERISK>; };
+			open_centre_teardrop_spoked_asterisk { sequence = <D O C T S A>; bindings = <&uc UC_DB_OPEN_CENTRE_TEARDROP_SPOKED_ASTERISK>; };
+			heavy_teardrop_spoked_asterisk { sequence = <D H T S A>; bindings = <&uc UC_DB_HEAVY_TEARDROP_SPOKED_ASTERISK>; };
+			six_petalled_black_and_white_florette { sequence = <D S P B A W F>; bindings = <&uc UC_DB_SIX_PETALLED_BLACK_AND_WHITE_FLORETTE>; };
+			black_florette { sequence = <D B F>; bindings = <&uc UC_DB_BLACK_FLORETTE>; };
+			white_florette_2 { sequence = <D W F>; bindings = <&uc UC_DB_WHITE_FLORETTE>; };
+			eight_petalled_outlined_black_florette { sequence = <D E P O B F>; bindings = <&uc UC_DB_EIGHT_PETALLED_OUTLINED_BLACK_FLORETTE>; };
+			c_open_centre_eight_pointed_star { sequence = <D C O C E P S>; bindings = <&uc UC_DB_C_OPEN_CENTRE_EIGHT_POINTED_STAR>; };
+			heavy_teardrop_spoked_pinwheel_asterisk { sequence = <D H T S P A>; bindings = <&uc UC_DB_HEAVY_TEARDROP_SPOKED_PINWHEEL_ASTERISK>; };
+			snowflake { sequence = <D S A>; bindings = <&uc UC_DB_SNOWFLAKE>; };
+			tight_trifoliate_snowflake { sequence = <D T T S>; bindings = <&uc UC_DB_TIGHT_TRIFOLIATE_SNOWFLAKE>; };
+			heavy_chevron_snowflake { sequence = <D H C S>; bindings = <&uc UC_DB_HEAVY_CHEVRON_SNOWFLAKE>; };
+			sparkle_2 { sequence = <D S E>; bindings = <&uc UC_DB_SPARKLE>; };
+			heavy_sparkle { sequence = <D H S>; bindings = <&uc UC_DB_HEAVY_SPARKLE>; };
+			balloon_spoked_asterisk_2 { sequence = <D B S A>; bindings = <&uc UC_DB_BALLOON_SPOKED_ASTERISK>; };
+			eight_teardrop_spoked_propeller_asterisk { sequence = <D E T S P A>; bindings = <&uc UC_DB_EIGHT_TEARDROP_SPOKED_PROPELLER_ASTERISK>; };
+			heavy_eight_teardrop_spoked_propeller_asterisk { sequence = <D H E T S P A>; bindings = <&uc UC_DB_HEAVY_EIGHT_TEARDROP_SPOKED_PROPELLER_ASTERISK>; };
+			cross_mark { sequence = <D C M A>; bindings = <&uc UC_DB_CROSS_MARK>; };
+			shadowed_white_circle { sequence = <D S W C A>; bindings = <&uc UC_DB_SHADOWED_WHITE_CIRCLE>; };
+			negative_squared_cross_mark { sequence = <D N S C M>; bindings = <&uc UC_DB_NEGATIVE_SQUARED_CROSS_MARK>; };
+			lower_right_drop_shadowed_white_square { sequence = <D L R D S W S>; bindings = <&uc UC_DB_LOWER_RIGHT_DROP_SHADOWED_WHITE_SQUARE>; };
+			upper_right_drop_shadowed_white_square { sequence = <D U R D S W S>; bindings = <&uc UC_DB_UPPER_RIGHT_DROP_SHADOWED_WHITE_SQUARE>; };
+			lower_right_shadowed_white_square { sequence = <D L R S W S>; bindings = <&uc UC_DB_LOWER_RIGHT_SHADOWED_WHITE_SQUARE>; };
+			upper_right_shadowed_white_square { sequence = <D U R S W S>; bindings = <&uc UC_DB_UPPER_RIGHT_SHADOWED_WHITE_SQUARE>; };
+			black_question_mark_ornament { sequence = <D B Q M O>; bindings = <&uc UC_DB_BLACK_QUESTION_MARK_ORNAMENT>; };
+			white_question_mark_ornament { sequence = <D W Q M O>; bindings = <&uc UC_DB_WHITE_QUESTION_MARK_ORNAMENT>; };
+			white_exclamation_mark_ornament { sequence = <D W E M O>; bindings = <&uc UC_DB_WHITE_EXCLAMATION_MARK_ORNAMENT>; };
+			black_diamond_minus_white_x { sequence = <D B D M W X>; bindings = <&uc UC_DB_BLACK_DIAMOND_MINUS_WHITE_X>; };
+			heavy_exclamation_mark { sequence = <D H E M>; bindings = <&uc UC_DB_HEAVY_EXCLAMATION_MARK>; };
+			light_vertical_bar { sequence = <D L V B>; bindings = <&uc UC_DB_LIGHT_VERTICAL_BAR>; };
+			medium_vertical_bar { sequence = <D M V B>; bindings = <&uc UC_DB_MEDIUM_VERTICAL_BAR>; };
+			heavy_vertical_bar { sequence = <D H V B>; bindings = <&uc UC_DB_HEAVY_VERTICAL_BAR>; };
+			heavy_single_turned_quotation_mark_ornament { sequence = <D H S T Q M O>; bindings = <&uc UC_DB_HEAVY_SINGLE_TURNED_QUOTATION_MARK_ORNAMENT>; };
+			heavy_single_quotation_mark_ornament { sequence = <D H S Q M O>; bindings = <&uc UC_DB_HEAVY_SINGLE_QUOTATION_MARK_ORNAMENT>; };
+			heavy_double_turned_quotation_mark_ornament { sequence = <D H D T Q M O>; bindings = <&uc UC_DB_HEAVY_DOUBLE_TURNED_QUOTATION_MARK_ORNAMENT>; };
+			heavy_double_quotation_mark_ornament { sequence = <D H D Q M O>; bindings = <&uc UC_DB_HEAVY_DOUBLE_QUOTATION_MARK_ORNAMENT>; };
+			heavy_low_single_quotation_mark_ornament { sequence = <D H L S Q M O>; bindings = <&uc UC_DB_HEAVY_LOW_SINGLE_QUOTATION_MARK_ORNAMENT>; };
+			heavy_low_double_quotation_mark_ornament { sequence = <D H L D Q M O>; bindings = <&uc UC_DB_HEAVY_LOW_DOUBLE_QUOTATION_MARK_ORNAMENT>; };
+			curved_stem_paragraph_sign_ornament { sequence = <D C S P S O>; bindings = <&uc UC_DB_CURVED_STEM_PARAGRAPH_SIGN_ORNAMENT>; };
+			heavy_exclamation_mark_ornament { sequence = <D H E M O>; bindings = <&uc UC_DB_HEAVY_EXCLAMATION_MARK_ORNAMENT>; };
+			heavy_heart_exclamation_mark_ornament { sequence = <D H H E M O>; bindings = <&uc UC_DB_HEAVY_HEART_EXCLAMATION_MARK_ORNAMENT>; };
+			heavy_black_heart { sequence = <D H B H>; bindings = <&uc UC_DB_HEAVY_BLACK_HEART>; };
+			rotated_heavy_black_heart_bullet { sequence = <D R H B H B>; bindings = <&uc UC_DB_ROTATED_HEAVY_BLACK_HEART_BULLET>; };
+			floral_heart { sequence = <D F H>; bindings = <&uc UC_DB_FLORAL_HEART>; };
+			rotated_floral_heart_bullet { sequence = <D R F H B>; bindings = <&uc UC_DB_ROTATED_FLORAL_HEART_BULLET>; };
+			medium_left_parenthesis_ornament { sequence = <D M L P O>; bindings = <&uc UC_DB_MEDIUM_LEFT_PARENTHESIS_ORNAMENT>; };
+			medium_right_parenthesis_ornament { sequence = <D M R P O>; bindings = <&uc UC_DB_MEDIUM_RIGHT_PARENTHESIS_ORNAMENT>; };
+			medium_flattened_left_parenthesis_ornament { sequence = <D M F L P O>; bindings = <&uc UC_DB_MEDIUM_FLATTENED_LEFT_PARENTHESIS_ORNAMENT>; };
+			medium_flattened_right_parenthesis_ornament { sequence = <D M F R P O>; bindings = <&uc UC_DB_MEDIUM_FLATTENED_RIGHT_PARENTHESIS_ORNAMENT>; };
+			medium_left_pointing_angle_bracket_ornament { sequence = <D M L P A B O>; bindings = <&uc UC_DB_MEDIUM_LEFT_POINTING_ANGLE_BRACKET_ORNAMENT>; };
+			medium_right_pointing_angle_bracket_ornament { sequence = <D M R P A B O>; bindings = <&uc UC_DB_MEDIUM_RIGHT_POINTING_ANGLE_BRACKET_ORNAMENT>; };
+			heavy_left_pointing_angle_quotation_mark_ornament { sequence = <D H L P A Q M O>; bindings = <&uc UC_DB_HEAVY_LEFT_POINTING_ANGLE_QUOTATION_MARK_ORNAMENT>; };
+			heavy_right_pointing_angle_quotation_mark_ornament { sequence = <D H R P A Q M O>; bindings = <&uc UC_DB_HEAVY_RIGHT_POINTING_ANGLE_QUOTATION_MARK_ORNAMENT>; };
+			heavy_left_pointing_angle_bracket_ornament { sequence = <D H L P A B O>; bindings = <&uc UC_DB_HEAVY_LEFT_POINTING_ANGLE_BRACKET_ORNAMENT>; };
+			heavy_right_pointing_angle_bracket_ornament { sequence = <D H R P A B O>; bindings = <&uc UC_DB_HEAVY_RIGHT_POINTING_ANGLE_BRACKET_ORNAMENT>; };
+			light_left_tortoise_shell_bracket_ornament { sequence = <D L L T S B O>; bindings = <&uc UC_DB_LIGHT_LEFT_TORTOISE_SHELL_BRACKET_ORNAMENT>; };
+			light_right_tortoise_shell_bracket_ornament { sequence = <D L R T S B O>; bindings = <&uc UC_DB_LIGHT_RIGHT_TORTOISE_SHELL_BRACKET_ORNAMENT>; };
+			medium_left_curly_bracket_ornament { sequence = <D M L C B O>; bindings = <&uc UC_DB_MEDIUM_LEFT_CURLY_BRACKET_ORNAMENT>; };
+			medium_right_curly_bracket_ornament { sequence = <D M R C B O>; bindings = <&uc UC_DB_MEDIUM_RIGHT_CURLY_BRACKET_ORNAMENT>; };
+			dingbat_negative_c_one { sequence = <D D N C O>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_ONE>; };
+			dingbat_negative_c_two { sequence = <D D N C T>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_TWO>; };
+			dingbat_negative_c_three { sequence = <D D N C T A>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_THREE>; };
+			dingbat_negative_c_four { sequence = <D D N C F>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_FOUR>; };
+			dingbat_negative_c_five { sequence = <D D N C F A>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_FIVE>; };
+			dingbat_negative_c_six { sequence = <D D N C S>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SIX>; };
+			dingbat_negative_c_seven { sequence = <D D N C S A>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SEVEN>; };
+			dingbat_negative_c_eight { sequence = <D D N C E>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_EIGHT>; };
+			dingbat_negative_c_nine { sequence = <D D N C N>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_NINE>; };
+			dingbat_negative_c_ten { sequence = <D D N C T E>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_TEN>; };
+			dingbat_c_ss_one { sequence = <D D C S O>; bindings = <&uc UC_DB_DINGBAT_C_SS_ONE>; };
+			dingbat_c_ss_two { sequence = <D D C S T>; bindings = <&uc UC_DB_DINGBAT_C_SS_TWO>; };
+			dingbat_c_ss_three { sequence = <D D C S T A>; bindings = <&uc UC_DB_DINGBAT_C_SS_THREE>; };
+			dingbat_c_ss_four { sequence = <D D C S F>; bindings = <&uc UC_DB_DINGBAT_C_SS_FOUR>; };
+			dingbat_c_ss_five { sequence = <D D C S F A>; bindings = <&uc UC_DB_DINGBAT_C_SS_FIVE>; };
+			dingbat_c_ss_six { sequence = <D D C S S>; bindings = <&uc UC_DB_DINGBAT_C_SS_SIX>; };
+			dingbat_c_ss_seven { sequence = <D D C S S A>; bindings = <&uc UC_DB_DINGBAT_C_SS_SEVEN>; };
+			dingbat_c_ss_eight { sequence = <D D C S E>; bindings = <&uc UC_DB_DINGBAT_C_SS_EIGHT>; };
+			dingbat_c_ss_nine { sequence = <D D C S N>; bindings = <&uc UC_DB_DINGBAT_C_SS_NINE>; };
+			dingbat_c_ss_ten { sequence = <D D C S T E>; bindings = <&uc UC_DB_DINGBAT_C_SS_TEN>; };
+			dingbat_negative_c_ss_one { sequence = <D D N C S O>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SS_ONE>; };
+			dingbat_negative_c_ss_two { sequence = <D D N C S T>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SS_TWO>; };
+			dingbat_negative_c_ss_three { sequence = <D D N C S T A>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SS_THREE>; };
+			dingbat_negative_c_ss_four { sequence = <D D N C S F>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SS_FOUR>; };
+			dingbat_negative_c_ss_five { sequence = <D D N C S F A>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SS_FIVE>; };
+			dingbat_negative_c_ss_six { sequence = <D D N C S S>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SS_SIX>; };
+			dingbat_negative_c_ss_seven { sequence = <D D N C S S A>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SS_SEVEN>; };
+			dingbat_negative_c_ss_eight { sequence = <D D N C S E>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SS_EIGHT>; };
+			dingbat_negative_c_ss_nine { sequence = <D D N C S N>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SS_NINE>; };
+			dingbat_negative_c_ss_ten { sequence = <D D N C S T E>; bindings = <&uc UC_DB_DINGBAT_NEGATIVE_C_SS_TEN>; };
+			heavy_wide_headed_rightwards_arrow { sequence = <D H W H R A>; bindings = <&uc UC_DB_HEAVY_WIDE_HEADED_RIGHTWARDS_ARROW>; };
+			heavy_plus_sign { sequence = <D H P S>; bindings = <&uc UC_DB_HEAVY_PLUS_SIGN>; };
+			heavy_minus_sign { sequence = <D H M S>; bindings = <&uc UC_DB_HEAVY_MINUS_SIGN>; };
+			heavy_division_sign { sequence = <D H D S>; bindings = <&uc UC_DB_HEAVY_DIVISION_SIGN>; };
+			heavy_south_east_arrow { sequence = <D H S E A>; bindings = <&uc UC_DB_HEAVY_SOUTH_EAST_ARROW>; };
+			heavy_rightwards_arrow { sequence = <D H R A>; bindings = <&uc UC_DB_HEAVY_RIGHTWARDS_ARROW>; };
+			heavy_north_east_arrow { sequence = <D H N E A>; bindings = <&uc UC_DB_HEAVY_NORTH_EAST_ARROW>; };
+			drafting_point_rightwards_arrow { sequence = <D D P R A>; bindings = <&uc UC_DB_DRAFTING_POINT_RIGHTWARDS_ARROW>; };
+			heavy_round_tipped_rightwards_arrow { sequence = <D H R T R A>; bindings = <&uc UC_DB_HEAVY_ROUND_TIPPED_RIGHTWARDS_ARROW>; };
+			triangle_headed_rightwards_arrow { sequence = <D T H R A>; bindings = <&uc UC_DB_TRIANGLE_HEADED_RIGHTWARDS_ARROW>; };
+			heavy_triangle_headed_rightwards_arrow { sequence = <D H T H R A>; bindings = <&uc UC_DB_HEAVY_TRIANGLE_HEADED_RIGHTWARDS_ARROW>; };
+			dashed_triangle_headed_rightwards_arrow { sequence = <D D T H R A>; bindings = <&uc UC_DB_DASHED_TRIANGLE_HEADED_RIGHTWARDS_ARROW>; };
+			heavy_dashed_triangle_headed_rightwards_arrow { sequence = <D H D T H R A>; bindings = <&uc UC_DB_HEAVY_DASHED_TRIANGLE_HEADED_RIGHTWARDS_ARROW>; };
+			black_rightwards_arrow { sequence = <D B R A>; bindings = <&uc UC_DB_BLACK_RIGHTWARDS_ARROW>; };
+			three_d_top_lighted_rightwards_arrowhead { sequence = <D T D T L R A>; bindings = <&uc UC_DB_THREE_D_TOP_LIGHTED_RIGHTWARDS_ARROWHEAD>; };
+			three_d_bottom_lighted_rightwards_arrowhead { sequence = <D T D B L R A>; bindings = <&uc UC_DB_THREE_D_BOTTOM_LIGHTED_RIGHTWARDS_ARROWHEAD>; };
+			black_rightwards_arrowhead { sequence = <D B R A A>; bindings = <&uc UC_DB_BLACK_RIGHTWARDS_ARROWHEAD>; };
+			heavy_black_curved_downwards_and_rightwards_arrow { sequence = <D H B C D A R A>; bindings = <&uc UC_DB_HEAVY_BLACK_CURVED_DOWNWARDS_AND_RIGHTWARDS_ARROW>; };
+			heavy_black_curved_upwards_and_rightwards_arrow { sequence = <D H B C U A R A>; bindings = <&uc UC_DB_HEAVY_BLACK_CURVED_UPWARDS_AND_RIGHTWARDS_ARROW>; };
+			squat_black_rightwards_arrow { sequence = <D S B R A>; bindings = <&uc UC_DB_SQUAT_BLACK_RIGHTWARDS_ARROW>; };
+			heavy_concave_pointed_black_rightwards_arrow { sequence = <D H C P B R A>; bindings = <&uc UC_DB_HEAVY_CONCAVE_POINTED_BLACK_RIGHTWARDS_ARROW>; };
+			right_shaded_white_rightwards_arrow { sequence = <D R S W R A>; bindings = <&uc UC_DB_RIGHT_SHADED_WHITE_RIGHTWARDS_ARROW>; };
+			left_shaded_white_rightwards_arrow { sequence = <D L S W R A>; bindings = <&uc UC_DB_LEFT_SHADED_WHITE_RIGHTWARDS_ARROW>; };
+			back_tilted_shadowed_white_rightwards_arrow { sequence = <D B T S W R A>; bindings = <&uc UC_DB_BACK_TILTED_SHADOWED_WHITE_RIGHTWARDS_ARROW>; };
+			front_tilted_shadowed_white_rightwards_arrow { sequence = <D F T S W R A>; bindings = <&uc UC_DB_FRONT_TILTED_SHADOWED_WHITE_RIGHTWARDS_ARROW>; };
+			heavy_lower_right_shadowed_white_rightwards_arrow { sequence = <D H L R S W R A>; bindings = <&uc UC_DB_HEAVY_LOWER_RIGHT_SHADOWED_WHITE_RIGHTWARDS_ARROW>; };
+			heavy_upper_right_shadowed_white_rightwards_arrow { sequence = <D H U R S W R A>; bindings = <&uc UC_DB_HEAVY_UPPER_RIGHT_SHADOWED_WHITE_RIGHTWARDS_ARROW>; };
+			notched_lower_right_shadowed_white_rightwards_arrow { sequence = <D N L R S W R A>; bindings = <&uc UC_DB_NOTCHED_LOWER_RIGHT_SHADOWED_WHITE_RIGHTWARDS_ARROW>; };
+			curly_loop { sequence = <D C L>; bindings = <&uc UC_DB_CURLY_LOOP>; };
+			notched_upper_right_shadowed_white_rightwards_arrow { sequence = <D N U R S W R A>; bindings = <&uc UC_DB_NOTCHED_UPPER_RIGHT_SHADOWED_WHITE_RIGHTWARDS_ARROW>; };
+			c_heavy_white_rightwards_arrow { sequence = <D C H W R A>; bindings = <&uc UC_DB_C_HEAVY_WHITE_RIGHTWARDS_ARROW>; };
+			white_feathered_rightwards_arrow { sequence = <D W F R A>; bindings = <&uc UC_DB_WHITE_FEATHERED_RIGHTWARDS_ARROW>; };
+			black_feathered_south_east_arrow { sequence = <D B F S E A>; bindings = <&uc UC_DB_BLACK_FEATHERED_SOUTH_EAST_ARROW>; };
+			black_feathered_rightwards_arrow { sequence = <D B F R A>; bindings = <&uc UC_DB_BLACK_FEATHERED_RIGHTWARDS_ARROW>; };
+			black_feathered_north_east_arrow { sequence = <D B F N E A>; bindings = <&uc UC_DB_BLACK_FEATHERED_NORTH_EAST_ARROW>; };
+			heavy_black_feathered_south_east_arrow { sequence = <D H B F S E A>; bindings = <&uc UC_DB_HEAVY_BLACK_FEATHERED_SOUTH_EAST_ARROW>; };
+			heavy_black_feathered_rightwards_arrow { sequence = <D H B F R A>; bindings = <&uc UC_DB_HEAVY_BLACK_FEATHERED_RIGHTWARDS_ARROW>; };
+			heavy_black_feathered_north_east_arrow { sequence = <D H B F N E A>; bindings = <&uc UC_DB_HEAVY_BLACK_FEATHERED_NORTH_EAST_ARROW>; };
+			teardrop_barbed_rightwards_arrow { sequence = <D T B R A>; bindings = <&uc UC_DB_TEARDROP_BARBED_RIGHTWARDS_ARROW>; };
+			heavy_teardrop_shanked_rightwards_arrow { sequence = <D H T S R A>; bindings = <&uc UC_DB_HEAVY_TEARDROP_SHANKED_RIGHTWARDS_ARROW>; };
+			wedge_tailed_rightwards_arrow { sequence = <D W T R A>; bindings = <&uc UC_DB_WEDGE_TAILED_RIGHTWARDS_ARROW>; };
+			heavy_wedge_tailed_rightwards_arrow { sequence = <D H W T R A>; bindings = <&uc UC_DB_HEAVY_WEDGE_TAILED_RIGHTWARDS_ARROW>; };
+			open_outlined_rightwards_arrow { sequence = <D O O R A>; bindings = <&uc UC_DB_OPEN_OUTLINED_RIGHTWARDS_ARROW>; };
+			double_curly_loop { sequence = <D D C L>; bindings = <&uc UC_DB_DOUBLE_CURLY_LOOP>; };
+
+			/* --- MAHJONG_TILES.H --- */
+			tile_east_wind { sequence = <J T E W>; bindings = <&uc UC_MAHJONG_TILE_EAST_WIND>; };
+			tile_south_wind { sequence = <J T S W>; bindings = <&uc UC_MAHJONG_TILE_SOUTH_WIND>; };
+			tile_west_wind { sequence = <J T W W>; bindings = <&uc UC_MAHJONG_TILE_WEST_WIND>; };
+			tile_north_wind { sequence = <J T N W>; bindings = <&uc UC_MAHJONG_TILE_NORTH_WIND>; };
+			tile_red_dragon { sequence = <J T R D>; bindings = <&uc UC_MAHJONG_TILE_RED_DRAGON>; };
+			tile_green_dragon { sequence = <J T G D>; bindings = <&uc UC_MAHJONG_TILE_GREEN_DRAGON>; };
+			tile_white_dragon { sequence = <J T W D>; bindings = <&uc UC_MAHJONG_TILE_WHITE_DRAGON>; };
+			tile_one_of_characters { sequence = <J T O O C>; bindings = <&uc UC_MAHJONG_TILE_ONE_OF_CHARACTERS>; };
+			tile_two_of_characters { sequence = <J T T O C>; bindings = <&uc UC_MAHJONG_TILE_TWO_OF_CHARACTERS>; };
+			tile_three_of_characters { sequence = <J T T O C A>; bindings = <&uc UC_MAHJONG_TILE_THREE_OF_CHARACTERS>; };
+			tile_four_of_characters { sequence = <J T F O C>; bindings = <&uc UC_MAHJONG_TILE_FOUR_OF_CHARACTERS>; };
+			tile_five_of_characters { sequence = <J T F O C A>; bindings = <&uc UC_MAHJONG_TILE_FIVE_OF_CHARACTERS>; };
+			tile_six_of_characters { sequence = <J T S O C>; bindings = <&uc UC_MAHJONG_TILE_SIX_OF_CHARACTERS>; };
+			tile_seven_of_characters { sequence = <J T S O C A>; bindings = <&uc UC_MAHJONG_TILE_SEVEN_OF_CHARACTERS>; };
+			tile_eight_of_characters { sequence = <J T E O C>; bindings = <&uc UC_MAHJONG_TILE_EIGHT_OF_CHARACTERS>; };
+			tile_nine_of_characters { sequence = <J T N O C>; bindings = <&uc UC_MAHJONG_TILE_NINE_OF_CHARACTERS>; };
+			tile_one_of_bamboos { sequence = <J T O O B>; bindings = <&uc UC_MAHJONG_TILE_ONE_OF_BAMBOOS>; };
+			tile_two_of_bamboos { sequence = <J T T O B>; bindings = <&uc UC_MAHJONG_TILE_TWO_OF_BAMBOOS>; };
+			tile_three_of_bamboos { sequence = <J T T O B A>; bindings = <&uc UC_MAHJONG_TILE_THREE_OF_BAMBOOS>; };
+			tile_four_of_bamboos { sequence = <J T F O B>; bindings = <&uc UC_MAHJONG_TILE_FOUR_OF_BAMBOOS>; };
+			tile_five_of_bamboos { sequence = <J T F O B A>; bindings = <&uc UC_MAHJONG_TILE_FIVE_OF_BAMBOOS>; };
+			tile_six_of_bamboos { sequence = <J T S O B>; bindings = <&uc UC_MAHJONG_TILE_SIX_OF_BAMBOOS>; };
+			tile_seven_of_bamboos { sequence = <J T S O B A>; bindings = <&uc UC_MAHJONG_TILE_SEVEN_OF_BAMBOOS>; };
+			tile_eight_of_bamboos { sequence = <J T E O B>; bindings = <&uc UC_MAHJONG_TILE_EIGHT_OF_BAMBOOS>; };
+			tile_nine_of_bamboos { sequence = <J T N O B>; bindings = <&uc UC_MAHJONG_TILE_NINE_OF_BAMBOOS>; };
+			tile_one_of_circles { sequence = <J T O O C A>; bindings = <&uc UC_MAHJONG_TILE_ONE_OF_CIRCLES>; };
+			tile_two_of_circles { sequence = <J T T O C E>; bindings = <&uc UC_MAHJONG_TILE_TWO_OF_CIRCLES>; };
+			tile_three_of_circles { sequence = <J T T O C I>; bindings = <&uc UC_MAHJONG_TILE_THREE_OF_CIRCLES>; };
+			tile_four_of_circles { sequence = <J T F O C E>; bindings = <&uc UC_MAHJONG_TILE_FOUR_OF_CIRCLES>; };
+			tile_five_of_circles { sequence = <J T F O C I>; bindings = <&uc UC_MAHJONG_TILE_FIVE_OF_CIRCLES>; };
+			tile_six_of_circles { sequence = <J T S O C E>; bindings = <&uc UC_MAHJONG_TILE_SIX_OF_CIRCLES>; };
+			tile_seven_of_circles { sequence = <J T S O C I>; bindings = <&uc UC_MAHJONG_TILE_SEVEN_OF_CIRCLES>; };
+			tile_eight_of_circles { sequence = <J T E O C A>; bindings = <&uc UC_MAHJONG_TILE_EIGHT_OF_CIRCLES>; };
+			tile_nine_of_circles { sequence = <J T N O C A>; bindings = <&uc UC_MAHJONG_TILE_NINE_OF_CIRCLES>; };
+			tile_plum { sequence = <J T P>; bindings = <&uc UC_MAHJONG_TILE_PLUM>; };
+			tile_orchid { sequence = <J T O>; bindings = <&uc UC_MAHJONG_TILE_ORCHID>; };
+			tile_bamboo { sequence = <J T B>; bindings = <&uc UC_MAHJONG_TILE_BAMBOO>; };
+			tile_chrysanthemum { sequence = <J T C>; bindings = <&uc UC_MAHJONG_TILE_CHRYSANTHEMUM>; };
+			tile_spring { sequence = <J T S>; bindings = <&uc UC_MAHJONG_TILE_SPRING>; };
+			tile_summer { sequence = <J T S A>; bindings = <&uc UC_MAHJONG_TILE_SUMMER>; };
+			tile_autumn { sequence = <J T A>; bindings = <&uc UC_MAHJONG_TILE_AUTUMN>; };
+			tile_winter { sequence = <J T W>; bindings = <&uc UC_MAHJONG_TILE_WINTER>; };
+			tile_joker { sequence = <J T J>; bindings = <&uc UC_MAHJONG_TILE_JOKER>; };
+			tile_back { sequence = <J T B A>; bindings = <&uc UC_MAHJONG_TILE_BACK>; };
+
+			/* --- DOMINO_TILES.H --- */
+			tile_horizontal_back { sequence = <O T H B>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_BACK>; };
+			tile_horizontal_00_00 { sequence = <O T H 0 0>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_00_00>; };
+			tile_horizontal_00_01 { sequence = <O T H 0 0 A>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_00_01>; };
+			tile_horizontal_00_02 { sequence = <O T H 0 0 E>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_00_02>; };
+			tile_horizontal_00_03 { sequence = <O T H 0 0 I>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_00_03>; };
+			tile_horizontal_00_04 { sequence = <O T H 0 0 O>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_00_04>; };
+			tile_horizontal_00_05 { sequence = <O T H 0 0 U>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_00_05>; };
+			tile_horizontal_00_06 { sequence = <O T H 0 0 6>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_00_06>; };
+			tile_horizontal_01_00 { sequence = <O T H 0 0 0>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_01_00>; };
+			tile_horizontal_01_01 { sequence = <O T H 0 0 1>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_01_01>; };
+			tile_horizontal_01_02 { sequence = <O T H 0 0 2>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_01_02>; };
+			tile_horizontal_01_03 { sequence = <O T H 0 0 3>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_01_03>; };
+			tile_horizontal_01_04 { sequence = <O T H 0 0 4>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_01_04>; };
+			tile_horizontal_01_05 { sequence = <O T H 0 0 5>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_01_05>; };
+			tile_horizontal_01_06 { sequence = <O T H 0 0 N1>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_01_06>; };
+			tile_horizontal_02_00 { sequence = <O T H 0 0 N2>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_02_00>; };
+			tile_horizontal_02_01 { sequence = <O T H 0 0 N3>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_02_01>; };
+			tile_horizontal_02_02 { sequence = <O T H 0 0 N4>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_02_02>; };
+			tile_horizontal_02_03 { sequence = <O T H 0 0 N5>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_02_03>; };
+			tile_horizontal_02_04 { sequence = <O T H 0 0 N6>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_02_04>; };
+			tile_horizontal_02_05 { sequence = <O T H 0 0 N7>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_02_05>; };
+			tile_horizontal_02_06 { sequence = <O T H 0 0 N8>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_02_06>; };
+			tile_horizontal_03_00 { sequence = <O T H 0 0 N9>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_03_00>; };
+			tile_horizontal_03_01 { sequence = <O T H 0 0 N1 N0>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_03_01>; };
+			tile_horizontal_03_02 { sequence = <O T H 0 0 N1 N1>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_03_02>; };
+			tile_horizontal_03_03 { sequence = <O T H 0 0 N1 N2>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_03_03>; };
+			tile_horizontal_03_04 { sequence = <O T H 0 0 N1 N3>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_03_04>; };
+			tile_horizontal_03_05 { sequence = <O T H 0 0 N1 N4>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_03_05>; };
+			tile_horizontal_03_06 { sequence = <O T H 0 0 N1 N5>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_03_06>; };
+			tile_horizontal_04_00 { sequence = <O T H 0 0 N1 N6>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_04_00>; };
+			tile_horizontal_04_01 { sequence = <O T H 0 0 N1 N7>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_04_01>; };
+			tile_horizontal_04_02 { sequence = <O T H 0 0 N1 N8>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_04_02>; };
+			tile_horizontal_04_03 { sequence = <O T H 0 0 N1 N9>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_04_03>; };
+			tile_horizontal_04_04 { sequence = <O T H 0 0 N2 N0>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_04_04>; };
+			tile_horizontal_04_05 { sequence = <O T H 0 0 N2 N1>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_04_05>; };
+			tile_horizontal_04_06 { sequence = <O T H 0 0 N2 N2>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_04_06>; };
+			tile_horizontal_05_00 { sequence = <O T H 0 0 N2 N3>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_05_00>; };
+			tile_horizontal_05_01 { sequence = <O T H 0 0 N2 N4>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_05_01>; };
+			tile_horizontal_05_02 { sequence = <O T H 0 0 N2 N5>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_05_02>; };
+			tile_horizontal_05_03 { sequence = <O T H 0 0 N2 N6>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_05_03>; };
+			tile_horizontal_05_04 { sequence = <O T H 0 0 N2 N7>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_05_04>; };
+			tile_horizontal_05_05 { sequence = <O T H 0 0 N2 N8>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_05_05>; };
+			tile_horizontal_05_06 { sequence = <O T H 0 0 N2 N9>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_05_06>; };
+			tile_horizontal_06_00 { sequence = <O T H 0 0 N3 N0>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_06_00>; };
+			tile_horizontal_06_01 { sequence = <O T H 0 0 N3 N1>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_06_01>; };
+			tile_horizontal_06_02 { sequence = <O T H 0 0 N3 N2>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_06_02>; };
+			tile_horizontal_06_03 { sequence = <O T H 0 0 N3 N3>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_06_03>; };
+			tile_horizontal_06_04 { sequence = <O T H 0 0 N3 N4>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_06_04>; };
+			tile_horizontal_06_05 { sequence = <O T H 0 0 N3 N5>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_06_05>; };
+			tile_horizontal_06_06 { sequence = <O T H 0 0 N3 N6>; bindings = <&uc UC_DOMINO_TILE_HORIZONTAL_06_06>; };
+			tile_vertical_back { sequence = <O T V B>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_BACK>; };
+			tile_vertical_00_00 { sequence = <O T V 0 0>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_00_00>; };
+			tile_vertical_00_01 { sequence = <O T V 0 0 A>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_00_01>; };
+			tile_vertical_00_02 { sequence = <O T V 0 0 E>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_00_02>; };
+			tile_vertical_00_03 { sequence = <O T V 0 0 I>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_00_03>; };
+			tile_vertical_00_04 { sequence = <O T V 0 0 O>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_00_04>; };
+			tile_vertical_00_05 { sequence = <O T V 0 0 U>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_00_05>; };
+			tile_vertical_00_06 { sequence = <O T V 0 0 6>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_00_06>; };
+			tile_vertical_01_00 { sequence = <O T V 0 0 0>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_01_00>; };
+			tile_vertical_01_01 { sequence = <O T V 0 0 1>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_01_01>; };
+			tile_vertical_01_02 { sequence = <O T V 0 0 2>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_01_02>; };
+			tile_vertical_01_03 { sequence = <O T V 0 0 3>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_01_03>; };
+			tile_vertical_01_04 { sequence = <O T V 0 0 4>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_01_04>; };
+			tile_vertical_01_05 { sequence = <O T V 0 0 5>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_01_05>; };
+			tile_vertical_01_06 { sequence = <O T V 0 0 N1>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_01_06>; };
+			tile_vertical_02_00 { sequence = <O T V 0 0 N2>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_02_00>; };
+			tile_vertical_02_01 { sequence = <O T V 0 0 N3>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_02_01>; };
+			tile_vertical_02_02 { sequence = <O T V 0 0 N4>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_02_02>; };
+			tile_vertical_02_03 { sequence = <O T V 0 0 N5>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_02_03>; };
+			tile_vertical_02_04 { sequence = <O T V 0 0 N6>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_02_04>; };
+			tile_vertical_02_05 { sequence = <O T V 0 0 N7>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_02_05>; };
+			tile_vertical_02_06 { sequence = <O T V 0 0 N8>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_02_06>; };
+			tile_vertical_03_00 { sequence = <O T V 0 0 N9>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_03_00>; };
+			tile_vertical_03_01 { sequence = <O T V 0 0 N1 N0>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_03_01>; };
+			tile_vertical_03_02 { sequence = <O T V 0 0 N1 N1>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_03_02>; };
+			tile_vertical_03_03 { sequence = <O T V 0 0 N1 N2>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_03_03>; };
+			tile_vertical_03_04 { sequence = <O T V 0 0 N1 N3>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_03_04>; };
+			tile_vertical_03_05 { sequence = <O T V 0 0 N1 N4>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_03_05>; };
+			tile_vertical_03_06 { sequence = <O T V 0 0 N1 N5>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_03_06>; };
+			tile_vertical_04_00 { sequence = <O T V 0 0 N1 N6>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_04_00>; };
+			tile_vertical_04_01 { sequence = <O T V 0 0 N1 N7>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_04_01>; };
+			tile_vertical_04_02 { sequence = <O T V 0 0 N1 N8>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_04_02>; };
+			tile_vertical_04_03 { sequence = <O T V 0 0 N1 N9>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_04_03>; };
+			tile_vertical_04_04 { sequence = <O T V 0 0 N2 N0>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_04_04>; };
+			tile_vertical_04_05 { sequence = <O T V 0 0 N2 N1>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_04_05>; };
+			tile_vertical_04_06 { sequence = <O T V 0 0 N2 N2>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_04_06>; };
+			tile_vertical_05_00 { sequence = <O T V 0 0 N2 N3>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_05_00>; };
+			tile_vertical_05_01 { sequence = <O T V 0 0 N2 N4>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_05_01>; };
+			tile_vertical_05_02 { sequence = <O T V 0 0 N2 N5>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_05_02>; };
+			tile_vertical_05_03 { sequence = <O T V 0 0 N2 N6>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_05_03>; };
+			tile_vertical_05_04 { sequence = <O T V 0 0 N2 N7>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_05_04>; };
+			tile_vertical_05_05 { sequence = <O T V 0 0 N2 N8>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_05_05>; };
+			tile_vertical_05_06 { sequence = <O T V 0 0 N2 N9>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_05_06>; };
+			tile_vertical_06_00 { sequence = <O T V 0 0 N3 N0>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_06_00>; };
+			tile_vertical_06_01 { sequence = <O T V 0 0 N3 N1>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_06_01>; };
+			tile_vertical_06_02 { sequence = <O T V 0 0 N3 N2>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_06_02>; };
+			tile_vertical_06_03 { sequence = <O T V 0 0 N3 N3>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_06_03>; };
+			tile_vertical_06_04 { sequence = <O T V 0 0 N3 N4>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_06_04>; };
+			tile_vertical_06_05 { sequence = <O T V 0 0 N3 N5>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_06_05>; };
+			tile_vertical_06_06 { sequence = <O T V 0 0 N3 N6>; bindings = <&uc UC_DOMINO_TILE_VERTICAL_06_06>; };
+
+			/* --- PLAYING_CARDS.H --- */
+			card_back { sequence = <K C B>; bindings = <&uc UC_PLAYING_CARD_BACK>; };
+			card_ace_of_spades { sequence = <K C A O S>; bindings = <&uc UC_PLAYING_CARD_ACE_OF_SPADES>; };
+			card_two_of_spades { sequence = <K C T O S>; bindings = <&uc UC_PLAYING_CARD_TWO_OF_SPADES>; };
+			card_three_of_spades { sequence = <K C T O S A>; bindings = <&uc UC_PLAYING_CARD_THREE_OF_SPADES>; };
+			card_four_of_spades { sequence = <K C F O S>; bindings = <&uc UC_PLAYING_CARD_FOUR_OF_SPADES>; };
+			card_five_of_spades { sequence = <K C F O S A>; bindings = <&uc UC_PLAYING_CARD_FIVE_OF_SPADES>; };
+			card_six_of_spades { sequence = <K C S O S>; bindings = <&uc UC_PLAYING_CARD_SIX_OF_SPADES>; };
+			card_seven_of_spades { sequence = <K C S O S A>; bindings = <&uc UC_PLAYING_CARD_SEVEN_OF_SPADES>; };
+			card_eight_of_spades { sequence = <K C E O S>; bindings = <&uc UC_PLAYING_CARD_EIGHT_OF_SPADES>; };
+			card_nine_of_spades { sequence = <K C N O S>; bindings = <&uc UC_PLAYING_CARD_NINE_OF_SPADES>; };
+			card_ten_of_spades { sequence = <K C T O S E>; bindings = <&uc UC_PLAYING_CARD_TEN_OF_SPADES>; };
+			card_jack_of_spades { sequence = <K C J O S>; bindings = <&uc UC_PLAYING_CARD_JACK_OF_SPADES>; };
+			card_knight_of_spades { sequence = <K C K O S>; bindings = <&uc UC_PLAYING_CARD_KNIGHT_OF_SPADES>; };
+			card_queen_of_spades { sequence = <K C Q O S>; bindings = <&uc UC_PLAYING_CARD_QUEEN_OF_SPADES>; };
+			card_king_of_spades { sequence = <K C K O S A>; bindings = <&uc UC_PLAYING_CARD_KING_OF_SPADES>; };
+			card_ace_of_hearts { sequence = <K C A O H>; bindings = <&uc UC_PLAYING_CARD_ACE_OF_HEARTS>; };
+			card_two_of_hearts { sequence = <K C T O H>; bindings = <&uc UC_PLAYING_CARD_TWO_OF_HEARTS>; };
+			card_three_of_hearts { sequence = <K C T O H A>; bindings = <&uc UC_PLAYING_CARD_THREE_OF_HEARTS>; };
+			card_four_of_hearts { sequence = <K C F O H>; bindings = <&uc UC_PLAYING_CARD_FOUR_OF_HEARTS>; };
+			card_five_of_hearts { sequence = <K C F O H A>; bindings = <&uc UC_PLAYING_CARD_FIVE_OF_HEARTS>; };
+			card_six_of_hearts { sequence = <K C S O H>; bindings = <&uc UC_PLAYING_CARD_SIX_OF_HEARTS>; };
+			card_seven_of_hearts { sequence = <K C S O H A>; bindings = <&uc UC_PLAYING_CARD_SEVEN_OF_HEARTS>; };
+			card_eight_of_hearts { sequence = <K C E O H>; bindings = <&uc UC_PLAYING_CARD_EIGHT_OF_HEARTS>; };
+			card_nine_of_hearts { sequence = <K C N O H>; bindings = <&uc UC_PLAYING_CARD_NINE_OF_HEARTS>; };
+			card_ten_of_hearts { sequence = <K C T O H E>; bindings = <&uc UC_PLAYING_CARD_TEN_OF_HEARTS>; };
+			card_jack_of_hearts { sequence = <K C J O H>; bindings = <&uc UC_PLAYING_CARD_JACK_OF_HEARTS>; };
+			card_knight_of_hearts { sequence = <K C K O H>; bindings = <&uc UC_PLAYING_CARD_KNIGHT_OF_HEARTS>; };
+			card_queen_of_hearts { sequence = <K C Q O H>; bindings = <&uc UC_PLAYING_CARD_QUEEN_OF_HEARTS>; };
+			card_king_of_hearts { sequence = <K C K O H A>; bindings = <&uc UC_PLAYING_CARD_KING_OF_HEARTS>; };
+			card_red_joker { sequence = <K C R J>; bindings = <&uc UC_PLAYING_CARD_RED_JOKER>; };
+			card_ace_of_diamonds { sequence = <K C A O D>; bindings = <&uc UC_PLAYING_CARD_ACE_OF_DIAMONDS>; };
+			card_two_of_diamonds { sequence = <K C T O D>; bindings = <&uc UC_PLAYING_CARD_TWO_OF_DIAMONDS>; };
+			card_three_of_diamonds { sequence = <K C T O D A>; bindings = <&uc UC_PLAYING_CARD_THREE_OF_DIAMONDS>; };
+			card_four_of_diamonds { sequence = <K C F O D>; bindings = <&uc UC_PLAYING_CARD_FOUR_OF_DIAMONDS>; };
+			card_five_of_diamonds { sequence = <K C F O D A>; bindings = <&uc UC_PLAYING_CARD_FIVE_OF_DIAMONDS>; };
+			card_six_of_diamonds { sequence = <K C S O D>; bindings = <&uc UC_PLAYING_CARD_SIX_OF_DIAMONDS>; };
+			card_seven_of_diamonds { sequence = <K C S O D A>; bindings = <&uc UC_PLAYING_CARD_SEVEN_OF_DIAMONDS>; };
+			card_eight_of_diamonds { sequence = <K C E O D>; bindings = <&uc UC_PLAYING_CARD_EIGHT_OF_DIAMONDS>; };
+			card_nine_of_diamonds { sequence = <K C N O D>; bindings = <&uc UC_PLAYING_CARD_NINE_OF_DIAMONDS>; };
+			card_ten_of_diamonds { sequence = <K C T O D E>; bindings = <&uc UC_PLAYING_CARD_TEN_OF_DIAMONDS>; };
+			card_jack_of_diamonds { sequence = <K C J O D>; bindings = <&uc UC_PLAYING_CARD_JACK_OF_DIAMONDS>; };
+			card_knight_of_diamonds { sequence = <K C K O D>; bindings = <&uc UC_PLAYING_CARD_KNIGHT_OF_DIAMONDS>; };
+			card_queen_of_diamonds { sequence = <K C Q O D>; bindings = <&uc UC_PLAYING_CARD_QUEEN_OF_DIAMONDS>; };
+			card_king_of_diamonds { sequence = <K C K O D A>; bindings = <&uc UC_PLAYING_CARD_KING_OF_DIAMONDS>; };
+			card_black_joker { sequence = <K C B J>; bindings = <&uc UC_PLAYING_CARD_BLACK_JOKER>; };
+			card_ace_of_clubs { sequence = <K C A O C>; bindings = <&uc UC_PLAYING_CARD_ACE_OF_CLUBS>; };
+			card_two_of_clubs { sequence = <K C T O C>; bindings = <&uc UC_PLAYING_CARD_TWO_OF_CLUBS>; };
+			card_three_of_clubs { sequence = <K C T O C A>; bindings = <&uc UC_PLAYING_CARD_THREE_OF_CLUBS>; };
+			card_four_of_clubs { sequence = <K C F O C>; bindings = <&uc UC_PLAYING_CARD_FOUR_OF_CLUBS>; };
+			card_five_of_clubs { sequence = <K C F O C A>; bindings = <&uc UC_PLAYING_CARD_FIVE_OF_CLUBS>; };
+			card_six_of_clubs { sequence = <K C S O C>; bindings = <&uc UC_PLAYING_CARD_SIX_OF_CLUBS>; };
+			card_seven_of_clubs { sequence = <K C S O C A>; bindings = <&uc UC_PLAYING_CARD_SEVEN_OF_CLUBS>; };
+			card_eight_of_clubs { sequence = <K C E O C>; bindings = <&uc UC_PLAYING_CARD_EIGHT_OF_CLUBS>; };
+			card_nine_of_clubs { sequence = <K C N O C>; bindings = <&uc UC_PLAYING_CARD_NINE_OF_CLUBS>; };
+			card_ten_of_clubs { sequence = <K C T O C E>; bindings = <&uc UC_PLAYING_CARD_TEN_OF_CLUBS>; };
+			card_jack_of_clubs { sequence = <K C J O C>; bindings = <&uc UC_PLAYING_CARD_JACK_OF_CLUBS>; };
+			card_knight_of_clubs { sequence = <K C K O C>; bindings = <&uc UC_PLAYING_CARD_KNIGHT_OF_CLUBS>; };
+			card_queen_of_clubs { sequence = <K C Q O C>; bindings = <&uc UC_PLAYING_CARD_QUEEN_OF_CLUBS>; };
+			card_king_of_clubs { sequence = <K C K O C A>; bindings = <&uc UC_PLAYING_CARD_KING_OF_CLUBS>; };
+			card_white_joker { sequence = <K C W J>; bindings = <&uc UC_PLAYING_CARD_WHITE_JOKER>; };
+			card_fool { sequence = <K C F>; bindings = <&uc UC_PLAYING_CARD_FOOL>; };
+			card_trump_1 { sequence = <K C T 1>; bindings = <&uc UC_PLAYING_CARD_TRUMP_1>; };
+			card_trump_2 { sequence = <K C T 2>; bindings = <&uc UC_PLAYING_CARD_TRUMP_2>; };
+			card_trump_3 { sequence = <K C T 3>; bindings = <&uc UC_PLAYING_CARD_TRUMP_3>; };
+			card_trump_4 { sequence = <K C T 4>; bindings = <&uc UC_PLAYING_CARD_TRUMP_4>; };
+			card_trump_5 { sequence = <K C T 5>; bindings = <&uc UC_PLAYING_CARD_TRUMP_5>; };
+			card_trump_6 { sequence = <K C T 6>; bindings = <&uc UC_PLAYING_CARD_TRUMP_6>; };
+			card_trump_7 { sequence = <K C T 7>; bindings = <&uc UC_PLAYING_CARD_TRUMP_7>; };
+			card_trump_8 { sequence = <K C T 8>; bindings = <&uc UC_PLAYING_CARD_TRUMP_8>; };
+			card_trump_9 { sequence = <K C T 9>; bindings = <&uc UC_PLAYING_CARD_TRUMP_9>; };
+			card_trump_10 { sequence = <K C T 1 A>; bindings = <&uc UC_PLAYING_CARD_TRUMP_10>; };
+			card_trump_11 { sequence = <K C T 1 E>; bindings = <&uc UC_PLAYING_CARD_TRUMP_11>; };
+			card_trump_12 { sequence = <K C T 1 I>; bindings = <&uc UC_PLAYING_CARD_TRUMP_12>; };
+			card_trump_13 { sequence = <K C T 1 O>; bindings = <&uc UC_PLAYING_CARD_TRUMP_13>; };
+			card_trump_14 { sequence = <K C T 1 U>; bindings = <&uc UC_PLAYING_CARD_TRUMP_14>; };
+			card_trump_15 { sequence = <K C T 1 5>; bindings = <&uc UC_PLAYING_CARD_TRUMP_15>; };
+			card_trump_16 { sequence = <K C T 1 6>; bindings = <&uc UC_PLAYING_CARD_TRUMP_16>; };
+			card_trump_17 { sequence = <K C T 1 7>; bindings = <&uc UC_PLAYING_CARD_TRUMP_17>; };
+			card_trump_18 { sequence = <K C T 1 8>; bindings = <&uc UC_PLAYING_CARD_TRUMP_18>; };
+			card_trump_19 { sequence = <K C T 1 9>; bindings = <&uc UC_PLAYING_CARD_TRUMP_19>; };
+			card_trump_20 { sequence = <K C T 2 A>; bindings = <&uc UC_PLAYING_CARD_TRUMP_20>; };
+			card_trump_21 { sequence = <K C T 2 E>; bindings = <&uc UC_PLAYING_CARD_TRUMP_21>; };
+
+			/* --- CHESS_SYMBOLS.H --- */
+			chess_king { sequence = <H C K>; bindings = <&uc UC_NEUTRAL_CHESS_KING>; };
+			chess_queen { sequence = <H C Q>; bindings = <&uc UC_NEUTRAL_CHESS_QUEEN>; };
+			chess_rook { sequence = <H C R>; bindings = <&uc UC_NEUTRAL_CHESS_ROOK>; };
+			chess_bishop { sequence = <H C B>; bindings = <&uc UC_NEUTRAL_CHESS_BISHOP>; };
+			chess_knight { sequence = <H C K A>; bindings = <&uc UC_NEUTRAL_CHESS_KNIGHT>; };
+			chess_pawn { sequence = <H C P>; bindings = <&uc UC_NEUTRAL_CHESS_PAWN>; };
+			chess_knight_rotated_forty_five_degrees { sequence = <H C K R F F D>; bindings = <&uc UC_WHITE_CHESS_KNIGHT_ROTATED_FORTY_FIVE_DEGREES>; };
+			chess_knight_rotated_forty_five_degrees_2 { sequence = <H C K R F F D A>; bindings = <&uc UC_BLACK_CHESS_KNIGHT_ROTATED_FORTY_FIVE_DEGREES>; };
+			chess_knight_rotated_forty_five_degrees_3 { sequence = <H C K R F F D E>; bindings = <&uc UC_NEUTRAL_CHESS_KNIGHT_ROTATED_FORTY_FIVE_DEGREES>; };
+			chess_king_rotated_ninety_degrees { sequence = <H C K R N D>; bindings = <&uc UC_WHITE_CHESS_KING_ROTATED_NINETY_DEGREES>; };
+			chess_queen_rotated_ninety_degrees { sequence = <H C Q R N D>; bindings = <&uc UC_WHITE_CHESS_QUEEN_ROTATED_NINETY_DEGREES>; };
+			chess_rook_rotated_ninety_degrees { sequence = <H C R R N D>; bindings = <&uc UC_WHITE_CHESS_ROOK_ROTATED_NINETY_DEGREES>; };
+			chess_bishop_rotated_ninety_degrees { sequence = <H C B R N D>; bindings = <&uc UC_WHITE_CHESS_BISHOP_ROTATED_NINETY_DEGREES>; };
+			chess_knight_rotated_ninety_degrees { sequence = <H C K R N D A>; bindings = <&uc UC_WHITE_CHESS_KNIGHT_ROTATED_NINETY_DEGREES>; };
+			chess_pawn_rotated_ninety_degrees { sequence = <H C P R N D>; bindings = <&uc UC_WHITE_CHESS_PAWN_ROTATED_NINETY_DEGREES>; };
+			chess_king_rotated_ninety_degrees_2 { sequence = <H C K R N D E>; bindings = <&uc UC_BLACK_CHESS_KING_ROTATED_NINETY_DEGREES>; };
+			chess_queen_rotated_ninety_degrees_2 { sequence = <H C Q R N D A>; bindings = <&uc UC_BLACK_CHESS_QUEEN_ROTATED_NINETY_DEGREES>; };
+			chess_rook_rotated_ninety_degrees_2 { sequence = <H C R R N D A>; bindings = <&uc UC_BLACK_CHESS_ROOK_ROTATED_NINETY_DEGREES>; };
+			chess_bishop_rotated_ninety_degrees_2 { sequence = <H C B R N D A>; bindings = <&uc UC_BLACK_CHESS_BISHOP_ROTATED_NINETY_DEGREES>; };
+			chess_knight_rotated_ninety_degrees_2 { sequence = <H C K R N D I>; bindings = <&uc UC_BLACK_CHESS_KNIGHT_ROTATED_NINETY_DEGREES>; };
+			chess_pawn_rotated_ninety_degrees_2 { sequence = <H C P R N D A>; bindings = <&uc UC_BLACK_CHESS_PAWN_ROTATED_NINETY_DEGREES>; };
+			chess_king_rotated_ninety_degrees_3 { sequence = <H C K R N D O>; bindings = <&uc UC_NEUTRAL_CHESS_KING_ROTATED_NINETY_DEGREES>; };
+			chess_queen_rotated_ninety_degrees_3 { sequence = <H C Q R N D E>; bindings = <&uc UC_NEUTRAL_CHESS_QUEEN_ROTATED_NINETY_DEGREES>; };
+			chess_rook_rotated_ninety_degrees_3 { sequence = <H C R R N D E>; bindings = <&uc UC_NEUTRAL_CHESS_ROOK_ROTATED_NINETY_DEGREES>; };
+			chess_bishop_rotated_ninety_degrees_3 { sequence = <H C B R N D E>; bindings = <&uc UC_NEUTRAL_CHESS_BISHOP_ROTATED_NINETY_DEGREES>; };
+			chess_knight_rotated_ninety_degrees_3 { sequence = <H C K R N D U>; bindings = <&uc UC_NEUTRAL_CHESS_KNIGHT_ROTATED_NINETY_DEGREES>; };
+			chess_pawn_rotated_ninety_degrees_3 { sequence = <H C P R N D E>; bindings = <&uc UC_NEUTRAL_CHESS_PAWN_ROTATED_NINETY_DEGREES>; };
+			chess_knight_rotated_one_hundred_thirty_five_degrees { sequence = <H C K R O H T F D>; bindings = <&uc UC_WHITE_CHESS_KNIGHT_ROTATED_ONE_HUNDRED_THIRTY_FIVE_DEGREES>; };
+			chess_knight_rotated_one_hundred_thirty_five_degrees_2 { sequence = <H C K R O H T F D A>; bindings = <&uc UC_BLACK_CHESS_KNIGHT_ROTATED_ONE_HUNDRED_THIRTY_FIVE_DEGREES>; };
+			chess_knight_rotated_one_hundred_thirty_five_degrees_3 { sequence = <H C K R O H T F D E>; bindings = <&uc UC_NEUTRAL_CHESS_KNIGHT_ROTATED_ONE_HUNDRED_THIRTY_FIVE_DEGREES>; };
+			chess_turned_king { sequence = <H C T K>; bindings = <&uc UC_WHITE_CHESS_TURNED_KING>; };
+			chess_turned_queen { sequence = <H C T Q>; bindings = <&uc UC_WHITE_CHESS_TURNED_QUEEN>; };
+			chess_turned_rook { sequence = <H C T R>; bindings = <&uc UC_WHITE_CHESS_TURNED_ROOK>; };
+			chess_turned_bishop { sequence = <H C T B>; bindings = <&uc UC_WHITE_CHESS_TURNED_BISHOP>; };
+			chess_turned_knight { sequence = <H C T K A>; bindings = <&uc UC_WHITE_CHESS_TURNED_KNIGHT>; };
+			chess_turned_pawn { sequence = <H C T P>; bindings = <&uc UC_WHITE_CHESS_TURNED_PAWN>; };
+			chess_turned_king_2 { sequence = <H C T K E>; bindings = <&uc UC_BLACK_CHESS_TURNED_KING>; };
+			chess_turned_queen_2 { sequence = <H C T Q A>; bindings = <&uc UC_BLACK_CHESS_TURNED_QUEEN>; };
+			chess_turned_rook_2 { sequence = <H C T R A>; bindings = <&uc UC_BLACK_CHESS_TURNED_ROOK>; };
+			chess_turned_bishop_2 { sequence = <H C T B A>; bindings = <&uc UC_BLACK_CHESS_TURNED_BISHOP>; };
+			chess_turned_knight_2 { sequence = <H C T K I>; bindings = <&uc UC_BLACK_CHESS_TURNED_KNIGHT>; };
+			chess_turned_pawn_2 { sequence = <H C T P A>; bindings = <&uc UC_BLACK_CHESS_TURNED_PAWN>; };
+			chess_turned_king_3 { sequence = <H C T K O>; bindings = <&uc UC_NEUTRAL_CHESS_TURNED_KING>; };
+			chess_turned_queen_3 { sequence = <H C T Q E>; bindings = <&uc UC_NEUTRAL_CHESS_TURNED_QUEEN>; };
+			chess_turned_rook_3 { sequence = <H C T R E>; bindings = <&uc UC_NEUTRAL_CHESS_TURNED_ROOK>; };
+			chess_turned_bishop_3 { sequence = <H C T B E>; bindings = <&uc UC_NEUTRAL_CHESS_TURNED_BISHOP>; };
+			chess_turned_knight_3 { sequence = <H C T K U>; bindings = <&uc UC_NEUTRAL_CHESS_TURNED_KNIGHT>; };
+			chess_turned_pawn_3 { sequence = <H C T P E>; bindings = <&uc UC_NEUTRAL_CHESS_TURNED_PAWN>; };
+			chess_knight_rotated_two_hundred_twenty_five_degrees { sequence = <H C K R T H T F D>; bindings = <&uc UC_WHITE_CHESS_KNIGHT_ROTATED_TWO_HUNDRED_TWENTY_FIVE_DEGREES>; };
+			chess_knight_rotated_two_hundred_twenty_five_degrees_2 { sequence = <H C K R T H T F D A>; bindings = <&uc UC_BLACK_CHESS_KNIGHT_ROTATED_TWO_HUNDRED_TWENTY_FIVE_DEGREES>; };
+			chess_knight_rotated_two_hundred_twenty_five_degrees_3 { sequence = <H C K R T H T F D E>; bindings = <&uc UC_NEUTRAL_CHESS_KNIGHT_ROTATED_TWO_HUNDRED_TWENTY_FIVE_DEGREES>; };
+			chess_king_rotated_two_hundred_seventy_degrees { sequence = <H C K R T H S D>; bindings = <&uc UC_WHITE_CHESS_KING_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_queen_rotated_two_hundred_seventy_degrees { sequence = <H C Q R T H S D>; bindings = <&uc UC_WHITE_CHESS_QUEEN_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_rook_rotated_two_hundred_seventy_degrees { sequence = <H C R R T H S D>; bindings = <&uc UC_WHITE_CHESS_ROOK_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_bishop_rotated_two_hundred_seventy_degrees { sequence = <H C B R T H S D>; bindings = <&uc UC_WHITE_CHESS_BISHOP_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_knight_rotated_two_hundred_seventy_degrees { sequence = <H C K R T H S D A>; bindings = <&uc UC_WHITE_CHESS_KNIGHT_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_pawn_rotated_two_hundred_seventy_degrees { sequence = <H C P R T H S D>; bindings = <&uc UC_WHITE_CHESS_PAWN_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_king_rotated_two_hundred_seventy_degrees_2 { sequence = <H C K R T H S D E>; bindings = <&uc UC_BLACK_CHESS_KING_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_queen_rotated_two_hundred_seventy_degrees_2 { sequence = <H C Q R T H S D A>; bindings = <&uc UC_BLACK_CHESS_QUEEN_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_rook_rotated_two_hundred_seventy_degrees_2 { sequence = <H C R R T H S D A>; bindings = <&uc UC_BLACK_CHESS_ROOK_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_bishop_rotated_two_hundred_seventy_degrees_2 { sequence = <H C B R T H S D A>; bindings = <&uc UC_BLACK_CHESS_BISHOP_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_knight_rotated_two_hundred_seventy_degrees_2 { sequence = <H C K R T H S D I>; bindings = <&uc UC_BLACK_CHESS_KNIGHT_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_pawn_rotated_two_hundred_seventy_degrees_2 { sequence = <H C P R T H S D A>; bindings = <&uc UC_BLACK_CHESS_PAWN_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_king_rotated_two_hundred_seventy_degrees_3 { sequence = <H C K R T H S D O>; bindings = <&uc UC_NEUTRAL_CHESS_KING_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_queen_rotated_two_hundred_seventy_degrees_3 { sequence = <H C Q R T H S D E>; bindings = <&uc UC_NEUTRAL_CHESS_QUEEN_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_rook_rotated_two_hundred_seventy_degrees_3 { sequence = <H C R R T H S D E>; bindings = <&uc UC_NEUTRAL_CHESS_ROOK_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_bishop_rotated_two_hundred_seventy_degrees_3 { sequence = <H C B R T H S D E>; bindings = <&uc UC_NEUTRAL_CHESS_BISHOP_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_knight_rotated_two_hundred_seventy_degrees_3 { sequence = <H C K R T H S D U>; bindings = <&uc UC_NEUTRAL_CHESS_KNIGHT_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_pawn_rotated_two_hundred_seventy_degrees_3 { sequence = <H C P R T H S D E>; bindings = <&uc UC_NEUTRAL_CHESS_PAWN_ROTATED_TWO_HUNDRED_SEVENTY_DEGREES>; };
+			chess_knight_rotated_three_hundred_fifteen_degrees { sequence = <H C K R T H F D>; bindings = <&uc UC_WHITE_CHESS_KNIGHT_ROTATED_THREE_HUNDRED_FIFTEEN_DEGREES>; };
+			chess_knight_rotated_three_hundred_fifteen_degrees_2 { sequence = <H C K R T H F D A>; bindings = <&uc UC_BLACK_CHESS_KNIGHT_ROTATED_THREE_HUNDRED_FIFTEEN_DEGREES>; };
+			chess_knight_rotated_three_hundred_fifteen_degrees_3 { sequence = <H C K R T H F D E>; bindings = <&uc UC_NEUTRAL_CHESS_KNIGHT_ROTATED_THREE_HUNDRED_FIFTEEN_DEGREES>; };
+			chess_equihopper { sequence = <H C E>; bindings = <&uc UC_WHITE_CHESS_EQUIHOPPER>; };
+			chess_equihopper_2 { sequence = <H C E A>; bindings = <&uc UC_BLACK_CHESS_EQUIHOPPER>; };
+			chess_equihopper_3 { sequence = <H C E E>; bindings = <&uc UC_NEUTRAL_CHESS_EQUIHOPPER>; };
+			chess_equihopper_rotated_ninety_degrees { sequence = <H C E R N D>; bindings = <&uc UC_WHITE_CHESS_EQUIHOPPER_ROTATED_NINETY_DEGREES>; };
+			chess_equihopper_rotated_ninety_degrees_2 { sequence = <H C E R N D A>; bindings = <&uc UC_BLACK_CHESS_EQUIHOPPER_ROTATED_NINETY_DEGREES>; };
+			chess_equihopper_rotated_ninety_degrees_3 { sequence = <H C E R N D E>; bindings = <&uc UC_NEUTRAL_CHESS_EQUIHOPPER_ROTATED_NINETY_DEGREES>; };
+			chess_knight_queen { sequence = <H C K Q>; bindings = <&uc UC_WHITE_CHESS_KNIGHT_QUEEN>; };
+			chess_knight_rook { sequence = <H C K R>; bindings = <&uc UC_WHITE_CHESS_KNIGHT_ROOK>; };
+			chess_knight_bishop { sequence = <H C K B>; bindings = <&uc UC_WHITE_CHESS_KNIGHT_BISHOP>; };
+			chess_knight_queen_2 { sequence = <H C K Q A>; bindings = <&uc UC_BLACK_CHESS_KNIGHT_QUEEN>; };
+			chess_knight_rook_2 { sequence = <H C K R A>; bindings = <&uc UC_BLACK_CHESS_KNIGHT_ROOK>; };
+			chess_knight_bishop_2 { sequence = <H C K B A>; bindings = <&uc UC_BLACK_CHESS_KNIGHT_BISHOP>; };
+			chess_ferz { sequence = <H C F>; bindings = <&uc UC_WHITE_CHESS_FERZ>; };
+			chess_alfil { sequence = <H C A>; bindings = <&uc UC_WHITE_CHESS_ALFIL>; };
+			chess_ferz_2 { sequence = <H C F A>; bindings = <&uc UC_BLACK_CHESS_FERZ>; };
+			chess_alfil_2 { sequence = <H C A A>; bindings = <&uc UC_BLACK_CHESS_ALFIL>; };
+			red_general { sequence = <H R G>; bindings = <&uc UC_XIANGQI_RED_GENERAL>; };
+			red_mandarin { sequence = <H R M>; bindings = <&uc UC_XIANGQI_RED_MANDARIN>; };
+			red_elephant { sequence = <H R E>; bindings = <&uc UC_XIANGQI_RED_ELEPHANT>; };
+			red_horse { sequence = <H R H>; bindings = <&uc UC_XIANGQI_RED_HORSE>; };
+			red_chariot { sequence = <H R C>; bindings = <&uc UC_XIANGQI_RED_CHARIOT>; };
+			red_cannon { sequence = <H R C A>; bindings = <&uc UC_XIANGQI_RED_CANNON>; };
+			red_soldier { sequence = <H R S>; bindings = <&uc UC_XIANGQI_RED_SOLDIER>; };
+			black_general { sequence = <H B G>; bindings = <&uc UC_XIANGQI_BLACK_GENERAL>; };
+			black_mandarin { sequence = <H B M>; bindings = <&uc UC_XIANGQI_BLACK_MANDARIN>; };
+			black_elephant { sequence = <H B E>; bindings = <&uc UC_XIANGQI_BLACK_ELEPHANT>; };
+			black_horse { sequence = <H B H>; bindings = <&uc UC_XIANGQI_BLACK_HORSE>; };
+			black_chariot { sequence = <H B C>; bindings = <&uc UC_XIANGQI_BLACK_CHARIOT>; };
+			black_cannon { sequence = <H B C A>; bindings = <&uc UC_XIANGQI_BLACK_CANNON>; };
+			black_soldier { sequence = <H B S>; bindings = <&uc UC_XIANGQI_BLACK_SOLDIER>; };
+
+			/* --- MISCELLANEOUS_SYMBOLS_AND_PICTOGRAPHS.H --- */
+			cyclone { sequence = <M C>; bindings = <&uc UC_CYCLONE>; };
+			foggy { sequence = <M F>; bindings = <&uc UC_FOGGY>; };
+			umbrella { sequence = <M U>; bindings = <&uc UC_CLOSED_UMBRELLA>; };
+			stars { sequence = <M S>; bindings = <&uc UC_NIGHT_STARS>; };
+			over_mountains { sequence = <M O M>; bindings = <&uc UC_SUNRISE_OVER_MOUNTAINS>; };
+			sunrise { sequence = <M S A>; bindings = <&uc UC_SUNRISE>; };
+			at_dusk { sequence = <M A D>; bindings = <&uc UC_CITYSCAPE_AT_DUSK>; };
+			over_buildings { sequence = <M O B>; bindings = <&uc UC_SUNSET_OVER_BUILDINGS>; };
+			rainbow { sequence = <M R>; bindings = <&uc UC_RAINBOW>; };
+			at_night { sequence = <M A N>; bindings = <&uc UC_BRIDGE_AT_NIGHT>; };
+			wave { sequence = <M W>; bindings = <&uc UC_WATER_WAVE>; };
+			volcano { sequence = <M V>; bindings = <&uc UC_VOLCANO>; };
+			way_2 { sequence = <M W A>; bindings = <&uc UC_MILKY_WAY>; };
+			globe_europe_africa { sequence = <M G E A>; bindings = <&uc UC_EARTH_GLOBE_EUROPE_AFRICA>; };
+			globe_americas { sequence = <M G A>; bindings = <&uc UC_EARTH_GLOBE_AMERICAS>; };
+			globe_asia_australia { sequence = <M G A A>; bindings = <&uc UC_EARTH_GLOBE_ASIA_AUSTRALIA>; };
+			meridians { sequence = <M M>; bindings = <&uc UC_GLOBE_MERIDIANS>; };
+			moon { sequence = <M M A>; bindings = <&uc UC_NEW_MOON>; };
+			crescent_moon { sequence = <M C M>; bindings = <&uc UC_WAXING_CRESCENT_MOON>; };
+			quarter_moon { sequence = <M Q M>; bindings = <&uc UC_FIRST_QUARTER_MOON>; };
+			gibbous_moon { sequence = <M G M>; bindings = <&uc UC_WAXING_GIBBOUS_MOON>; };
+			moon_2 { sequence = <M M E>; bindings = <&uc UC_FULL_MOON>; };
+			gibbous_moon_2 { sequence = <M G M A>; bindings = <&uc UC_WANING_GIBBOUS_MOON>; };
+			quarter_moon_2 { sequence = <M Q M A>; bindings = <&uc UC_LAST_QUARTER_MOON>; };
+			crescent_moon_2 { sequence = <M C M A>; bindings = <&uc UC_WANING_CRESCENT_MOON>; };
+			moon_3 { sequence = <M M I>; bindings = <&uc UC_CRESCENT_MOON>; };
+			moon_face { sequence = <M M F>; bindings = <&uc UC_NEW_MOON_FACE>; };
+			quarter_moon_face { sequence = <M Q M F>; bindings = <&uc UC_FIRST_QUARTER_MOON_FACE>; };
+			quarter_moon_face_2 { sequence = <M Q M F A>; bindings = <&uc UC_LAST_QUARTER_MOON_FACE>; };
+			moon_face_3 { sequence = <M M F A>; bindings = <&uc UC_FULL_MOON_FACE>; };
+			face_4 { sequence = <M F A>; bindings = <&uc UC_SUN_FACE>; };
+			star_2 { sequence = <M S E>; bindings = <&uc UC_GLOWING_STAR>; };
+			star_3 { sequence = <M S I>; bindings = <&uc UC_SHOOTING_STAR>; };
+			thermometer { sequence = <M T>; bindings = <&uc UC_THERMOMETER>; };
+			droplet { sequence = <M D>; bindings = <&uc UC_BLACK_DROPLET>; };
+			sun_2 { sequence = <M S O>; bindings = <&uc UC_WHITE_SUN>; };
+			sun_small_cloud { sequence = <M S S C>; bindings = <&uc UC_WHITE_SUN_SMALL_CLOUD>; };
+			sun_behind_cloud { sequence = <M S B C>; bindings = <&uc UC_WHITE_SUN_BEHIND_CLOUD>; };
+			sun_behind_cloud_rain { sequence = <M S B C R>; bindings = <&uc UC_WHITE_SUN_BEHIND_CLOUD_RAIN>; };
+			rain_3 { sequence = <M R A>; bindings = <&uc UC_CLOUD_RAIN>; };
+			snow_2 { sequence = <M S U>; bindings = <&uc UC_CLOUD_SNOW>; };
+			lightning { sequence = <M L>; bindings = <&uc UC_CLOUD_LIGHTNING>; };
+			tornado { sequence = <M T A>; bindings = <&uc UC_CLOUD_TORNADO>; };
+			fog_2 { sequence = <M F E>; bindings = <&uc UC_FOG>; };
+			blowing_face { sequence = <M B F>; bindings = <&uc UC_WIND_BLOWING_FACE>; };
+			dog { sequence = <M D A>; bindings = <&uc UC_HOT_DOG>; };
+			taco { sequence = <M T E>; bindings = <&uc UC_TACO>; };
+			burrito { sequence = <M B>; bindings = <&uc UC_BURRITO>; };
+			chestnut { sequence = <M C A>; bindings = <&uc UC_CHESTNUT>; };
+			seedling { sequence = <M S G>; bindings = <&uc UC_SEEDLING>; };
+			tree { sequence = <M T I>; bindings = <&uc UC_EVERGREEN_TREE>; };
+			tree_2 { sequence = <M T O>; bindings = <&uc UC_DECIDUOUS_TREE>; };
+			tree_3 { sequence = <M T U>; bindings = <&uc UC_PALM_TREE>; };
+			cactus { sequence = <M C E>; bindings = <&uc UC_CACTUS>; };
+			pepper { sequence = <M P>; bindings = <&uc UC_HOT_PEPPER>; };
+			tulip { sequence = <M T P>; bindings = <&uc UC_TULIP>; };
+			blossom { sequence = <M B A>; bindings = <&uc UC_CHERRY_BLOSSOM>; };
+			rose { sequence = <M R E>; bindings = <&uc UC_ROSE>; };
+			hibiscus { sequence = <M H>; bindings = <&uc UC_HIBISCUS>; };
+			sunflower { sequence = <M S R>; bindings = <&uc UC_SUNFLOWER>; };
+			blossom_2 { sequence = <M B E>; bindings = <&uc UC_BLOSSOM>; };
+			of_maize { sequence = <M O M A>; bindings = <&uc UC_EAR_OF_MAIZE>; };
+			of_rice { sequence = <M O R>; bindings = <&uc UC_EAR_OF_RICE>; };
+			herb { sequence = <M H A>; bindings = <&uc UC_HERB>; };
+			leaf_clover { sequence = <M L C>; bindings = <&uc UC_FOUR_LEAF_CLOVER>; };
+			leaf_2 { sequence = <M L A>; bindings = <&uc UC_MAPLE_LEAF>; };
+			leaf_3 { sequence = <M L E>; bindings = <&uc UC_FALLEN_LEAF>; };
+			fluttering_in_wind { sequence = <M F I W>; bindings = <&uc UC_LEAF_FLUTTERING_IN_WIND>; };
+			mushroom { sequence = <M M O>; bindings = <&uc UC_MUSHROOM>; };
+			tomato { sequence = <M T N1>; bindings = <&uc UC_TOMATO>; };
+			aubergine { sequence = <M A>; bindings = <&uc UC_AUBERGINE>; };
+			grapes { sequence = <M G>; bindings = <&uc UC_GRAPES>; };
+			melon { sequence = <M M U>; bindings = <&uc UC_MELON>; };
+			watermelon { sequence = <M W E>; bindings = <&uc UC_WATERMELON>; };
+			tangerine { sequence = <M T N2>; bindings = <&uc UC_TANGERINE>; };
+			lemon { sequence = <M L I>; bindings = <&uc UC_LEMON>; };
+			banana { sequence = <M B I>; bindings = <&uc UC_BANANA>; };
+			pineapple { sequence = <M P A>; bindings = <&uc UC_PINEAPPLE>; };
+			apple_2 { sequence = <M A A>; bindings = <&uc UC_RED_APPLE>; };
+			apple_3 { sequence = <M A E>; bindings = <&uc UC_GREEN_APPLE>; };
+			pear { sequence = <M P E>; bindings = <&uc UC_PEAR>; };
+			peach { sequence = <M P I>; bindings = <&uc UC_PEACH>; };
+			cherries { sequence = <M C I>; bindings = <&uc UC_CHERRIES>; };
+			u1f353 { sequence = <M U A>; bindings = <&uc UC_STRAWBERRY_U1F353>; };
+			hamburger { sequence = <M H E>; bindings = <&uc UC_HAMBURGER>; };
+			of_pizza { sequence = <M O P>; bindings = <&uc UC_SLICE_OF_PIZZA>; };
+			on_bone { sequence = <M O B A>; bindings = <&uc UC_MEAT_ON_BONE>; };
+			leg { sequence = <M L O>; bindings = <&uc UC_POULTRY_LEG>; };
+			cracker { sequence = <M C O>; bindings = <&uc UC_RICE_CRACKER>; };
+			ball_2 { sequence = <M B O>; bindings = <&uc UC_RICE_BALL>; };
+			rice_2 { sequence = <M R I>; bindings = <&uc UC_COOKED_RICE>; };
+			and_rice { sequence = <M A R>; bindings = <&uc UC_CURRY_AND_RICE>; };
+			bowl { sequence = <M B U>; bindings = <&uc UC_STEAMING_BOWL>; };
+			spaghetti { sequence = <M S N1>; bindings = <&uc UC_SPAGHETTI>; };
+			bread { sequence = <M B D>; bindings = <&uc UC_BREAD>; };
+			fries { sequence = <M F I>; bindings = <&uc UC_FRENCH_FRIES>; };
+			sweet_potato { sequence = <M S P>; bindings = <&uc UC_ROASTED_SWEET_POTATO>; };
+			dango { sequence = <M D E>; bindings = <&uc UC_DANGO>; };
+			oden { sequence = <M O>; bindings = <&uc UC_ODEN>; };
+			sushi { sequence = <M S N2>; bindings = <&uc UC_SUSHI>; };
+			shrimp { sequence = <M S N3>; bindings = <&uc UC_FRIED_SHRIMP>; };
+			cake_swirl_design { sequence = <M C S D>; bindings = <&uc UC_FISH_CAKE_SWIRL_DESIGN>; };
+			ice_cream { sequence = <M I C>; bindings = <&uc UC_SOFT_ICE_CREAM>; };
+			ice_3 { sequence = <M I>; bindings = <&uc UC_SHAVED_ICE>; };
+			cream_2 { sequence = <M C U>; bindings = <&uc UC_ICE_CREAM>; };
+			doughnut { sequence = <M D I>; bindings = <&uc UC_DOUGHNUT>; };
+			cookie { sequence = <M C N1>; bindings = <&uc UC_COOKIE>; };
+			bar_2 { sequence = <M B R>; bindings = <&uc UC_CHOCOLATE_BAR>; };
+			candy { sequence = <M C Y>; bindings = <&uc UC_CANDY>; };
+			lollipop { sequence = <M L U>; bindings = <&uc UC_LOLLIPOP>; };
+			custard { sequence = <M C D>; bindings = <&uc UC_CUSTARD>; };
+			pot_2 { sequence = <M P O>; bindings = <&uc UC_HONEY_POT>; };
+			shortcake { sequence = <M S N4>; bindings = <&uc UC_SHORTCAKE>; };
+			box { sequence = <M B X>; bindings = <&uc UC_BENTO_BOX>; };
+			of_food { sequence = <M O F>; bindings = <&uc UC_POT_OF_FOOD>; };
+			cooking { sequence = <M C G>; bindings = <&uc UC_COOKING>; };
+			and_knife { sequence = <M A K>; bindings = <&uc UC_FORK_AND_KNIFE>; };
+			without_handle { sequence = <M W H>; bindings = <&uc UC_TEACUP_WITHOUT_HANDLE>; };
+			bottle_and_cup { sequence = <M B A C>; bindings = <&uc UC_SAKE_BOTTLE_AND_CUP>; };
+			glass_2 { sequence = <M G E>; bindings = <&uc UC_WINE_GLASS>; };
+			glass_3 { sequence = <M G I>; bindings = <&uc UC_COCKTAIL_GLASS>; };
+			drink { sequence = <M D O>; bindings = <&uc UC_TROPICAL_DRINK>; };
+			mug { sequence = <M M G>; bindings = <&uc UC_BEER_MUG>; };
+			beer_mugs { sequence = <M B M>; bindings = <&uc UC_CLINKING_BEER_MUGS>; };
+			bottle_2 { sequence = <M B N1>; bindings = <&uc UC_BABY_BOTTLE>; };
+			and_knife_plate { sequence = <M A K P>; bindings = <&uc UC_FORK_AND_KNIFE_PLATE>; };
+			popping_cork { sequence = <M P C>; bindings = <&uc UC_BOTTLE_POPPING_CORK>; };
+			popcorn { sequence = <M P U>; bindings = <&uc UC_POPCORN>; };
+			ribbon { sequence = <M R O>; bindings = <&uc UC_RIBBON>; };
+			present { sequence = <M P T>; bindings = <&uc UC_WRAPPED_PRESENT>; };
+			cake_2 { sequence = <M C N2>; bindings = <&uc UC_BIRTHDAY_CAKE>; };
+			o_lantern { sequence = <M O L>; bindings = <&uc UC_JACK_O_LANTERN>; };
+			tree_4 { sequence = <M T N3>; bindings = <&uc UC_CHRISTMAS_TREE>; };
+			christmas { sequence = <M C S>; bindings = <&uc UC_FATHER_CHRISTMAS>; };
+			fireworks { sequence = <M F O>; bindings = <&uc UC_FIREWORKS>; };
+			sparkler { sequence = <M S N5>; bindings = <&uc UC_FIREWORK_SPARKLER>; };
+			balloon_2 { sequence = <M B N>; bindings = <&uc UC_BALLOON>; };
+			popper { sequence = <M P R>; bindings = <&uc UC_PARTY_POPPER>; };
+			ball_3 { sequence = <M B L>; bindings = <&uc UC_CONFETTI_BALL>; };
+			tree_5 { sequence = <M T N4>; bindings = <&uc UC_TANABATA_TREE>; };
+			flags { sequence = <M F U>; bindings = <&uc UC_CROSSED_FLAGS>; };
+			decoration { sequence = <M D U>; bindings = <&uc UC_PINE_DECORATION>; };
+			dolls { sequence = <M D S>; bindings = <&uc UC_JAPANESE_DOLLS>; };
+			streamer { sequence = <M S N6>; bindings = <&uc UC_CARP_STREAMER>; };
+			chime { sequence = <M C N3>; bindings = <&uc UC_WIND_CHIME>; };
+			viewing_ceremony { sequence = <M V C>; bindings = <&uc UC_MOON_VIEWING_CEREMONY>; };
+			satchel { sequence = <M S L>; bindings = <&uc UC_SCHOOL_SATCHEL>; };
+			cap { sequence = <M C P>; bindings = <&uc UC_GRADUATION_CAP>; };
+			tip_on_the_left { sequence = <M T O T L>; bindings = <&uc UC_HEART_TIP_ON_THE_LEFT>; };
+			of_flowers { sequence = <M O F A>; bindings = <&uc UC_BOUQUET_OF_FLOWERS>; };
+			medal { sequence = <M M L>; bindings = <&uc UC_MILITARY_MEDAL>; };
+			ribbon_2 { sequence = <M R U>; bindings = <&uc UC_REMINDER_RIBBON>; };
+			keyboard_jacks { sequence = <M K J>; bindings = <&uc UC_MUSICAL_KEYBOARD_JACKS>; };
+			microphone { sequence = <M M N1>; bindings = <&uc UC_STUDIO_MICROPHONE>; };
+			slider { sequence = <M S N7>; bindings = <&uc UC_LEVEL_SLIDER>; };
+			knobs { sequence = <M K>; bindings = <&uc UC_CONTROL_KNOBS>; };
+			ascending_musical_notes { sequence = <M A M N>; bindings = <&uc UC_BEAMED_ASCENDING_MUSICAL_NOTES>; };
+			descending_musical_notes { sequence = <M D M N>; bindings = <&uc UC_BEAMED_DESCENDING_MUSICAL_NOTES>; };
+			frames { sequence = <M F S>; bindings = <&uc UC_FILM_FRAMES>; };
+			tickets { sequence = <M T S>; bindings = <&uc UC_ADMISSION_TICKETS>; };
+			horse_2 { sequence = <M H I>; bindings = <&uc UC_CAROUSEL_HORSE>; };
+			wheel_2 { sequence = <M W I>; bindings = <&uc UC_FERRIS_WHEEL>; };
+			coaster { sequence = <M C R>; bindings = <&uc UC_ROLLER_COASTER>; };
+			pole_and_fish { sequence = <M P A F>; bindings = <&uc UC_FISHING_POLE_AND_FISH>; };
+			microphone_2 { sequence = <M M N2>; bindings = <&uc UC_MICROPHONE>; };
+			camera { sequence = <M C N4>; bindings = <&uc UC_MOVIE_CAMERA>; };
+			cinema { sequence = <M C N5>; bindings = <&uc UC_CINEMA>; };
+			headphone { sequence = <M H O>; bindings = <&uc UC_HEADPHONE>; };
+			palette { sequence = <M P N1>; bindings = <&uc UC_ARTIST_PALETTE>; };
+			hat { sequence = <M H U>; bindings = <&uc UC_TOP_HAT>; };
+			tent { sequence = <M T T>; bindings = <&uc UC_CIRCUS_TENT>; };
+			ticket_2 { sequence = <M T N5>; bindings = <&uc UC_TICKET>; };
+			board_2 { sequence = <M B N2>; bindings = <&uc UC_CLAPPER_BOARD>; };
+			arts_2 { sequence = <M A I>; bindings = <&uc UC_PERFORMING_ARTS>; };
+			game { sequence = <M G O>; bindings = <&uc UC_VIDEO_GAME>; };
+			hit_2 { sequence = <M H T>; bindings = <&uc UC_DIRECT_HIT>; };
+			machine { sequence = <M M N3>; bindings = <&uc UC_SLOT_MACHINE>; };
+			billiards { sequence = <M B S>; bindings = <&uc UC_BILLIARDS>; };
+			die_2 { sequence = <M D N1>; bindings = <&uc UC_GAME_DIE>; };
+			bowling { sequence = <M B G>; bindings = <&uc UC_BOWLING>; };
+			playing_cards { sequence = <M P C A>; bindings = <&uc UC_FLOWER_PLAYING_CARDS>; };
+			note_2 { sequence = <M N>; bindings = <&uc UC_MUSICAL_NOTE>; };
+			musical_notes_2 { sequence = <M M N>; bindings = <&uc UC_MULTIPLE_MUSICAL_NOTES>; };
+			saxophone { sequence = <M S N8>; bindings = <&uc UC_SAXOPHONE>; };
+			guitar { sequence = <M G U>; bindings = <&uc UC_GUITAR>; };
+			keyboard_2 { sequence = <M K A>; bindings = <&uc UC_MUSICAL_KEYBOARD>; };
+			trumpet { sequence = <M T N6>; bindings = <&uc UC_TRUMPET>; };
+			violin { sequence = <M V A>; bindings = <&uc UC_VIOLIN>; };
+			score { sequence = <M S N9>; bindings = <&uc UC_MUSICAL_SCORE>; };
+			shirt_sash { sequence = <M S S>; bindings = <&uc UC_RUNNING_SHIRT_SASH>; };
+			racquet_and_ball { sequence = <M R A B>; bindings = <&uc UC_TENNIS_RACQUET_AND_BALL>; };
+			and_ski_boot { sequence = <M A S B>; bindings = <&uc UC_SKI_AND_SKI_BOOT>; };
+			and_hoop { sequence = <M A H>; bindings = <&uc UC_BASKETBALL_AND_HOOP>; };
+			flag_2 { sequence = <M F G>; bindings = <&uc UC_CHEQUERED_FLAG>; };
+			snowboarder { sequence = <M S N1 N0>; bindings = <&uc UC_SNOWBOARDER>; };
+			runner { sequence = <M R R>; bindings = <&uc UC_RUNNER>; };
+			surfer { sequence = <M S N1 N1>; bindings = <&uc UC_SURFER>; };
+			medal_2 { sequence = <M M N4>; bindings = <&uc UC_SPORTS_MEDAL>; };
+			trophy { sequence = <M T Y>; bindings = <&uc UC_TROPHY>; };
+			racing { sequence = <M R G>; bindings = <&uc UC_HORSE_RACING>; };
+			football { sequence = <M F L>; bindings = <&uc UC_AMERICAN_FOOTBALL>; };
+			football_2 { sequence = <M F N1>; bindings = <&uc UC_RUGBY_FOOTBALL>; };
+			swimmer { sequence = <M S N1 N2>; bindings = <&uc UC_SWIMMER>; };
+			lifter { sequence = <M L R>; bindings = <&uc UC_WEIGHT_LIFTER>; };
+			golfer { sequence = <M G R>; bindings = <&uc UC_GOLFER>; };
+			motorcycle { sequence = <M M N5>; bindings = <&uc UC_RACING_MOTORCYCLE>; };
+			car_2 { sequence = <M C N6>; bindings = <&uc UC_RACING_CAR>; };
+			bat_and_ball { sequence = <M B A B>; bindings = <&uc UC_CRICKET_BAT_AND_BALL>; };
+			volleyball { sequence = <M V E>; bindings = <&uc UC_VOLLEYBALL>; };
+			hockey_stick_and_ball { sequence = <M H S A B>; bindings = <&uc UC_FIELD_HOCKEY_STICK_AND_BALL>; };
+			hockey_stick_and_puck { sequence = <M H S A P>; bindings = <&uc UC_ICE_HOCKEY_STICK_AND_PUCK>; };
+			tennis_paddle_and_ball { sequence = <M T P A B>; bindings = <&uc UC_TABLE_TENNIS_PADDLE_AND_BALL>; };
+			capped_mountain { sequence = <M C M E>; bindings = <&uc UC_SNOW_CAPPED_MOUNTAIN>; };
+			camping { sequence = <M C N7>; bindings = <&uc UC_CAMPING>; };
+			umbrella_2 { sequence = <M U E>; bindings = <&uc UC_BEACH_UMBRELLA>; };
+			construction_2 { sequence = <M C N>; bindings = <&uc UC_BUILDING_CONSTRUCTION>; };
+			buildings_2 { sequence = <M B N3>; bindings = <&uc UC_HOUSE_BUILDINGS>; };
+			cityscape { sequence = <M C N8>; bindings = <&uc UC_CITYSCAPE>; };
+			house_building { sequence = <M H B>; bindings = <&uc UC_DERELICT_HOUSE_BUILDING>; };
+			building_2 { sequence = <M B N4>; bindings = <&uc UC_CLASSICAL_BUILDING>; };
+			desert { sequence = <M D T>; bindings = <&uc UC_DESERT>; };
+			island { sequence = <M I A>; bindings = <&uc UC_DESERT_ISLAND>; };
+			park_2 { sequence = <M P K>; bindings = <&uc UC_NATIONAL_PARK>; };
+			stadium { sequence = <M S M>; bindings = <&uc UC_STADIUM>; };
+			building_3 { sequence = <M B N5>; bindings = <&uc UC_HOUSE_BUILDING>; };
+			garden { sequence = <M G N>; bindings = <&uc UC_HOUSE_GARDEN>; };
+			building_u1f3e2 { sequence = <M B U A>; bindings = <&uc UC_OFFICE_BUILDING_U1F3E2>; };
+			post_office { sequence = <M P O A>; bindings = <&uc UC_JAPANESE_POST_OFFICE>; };
+			post_office_2 { sequence = <M P O E>; bindings = <&uc UC_EUROPEAN_POST_OFFICE>; };
+			hospital { sequence = <M H L>; bindings = <&uc UC_HOSPITAL>; };
+			bank { sequence = <M B K>; bindings = <&uc UC_BANK>; };
+			teller_machine { sequence = <M T M>; bindings = <&uc UC_AUTOMATED_TELLER_MACHINE>; };
+			hotel { sequence = <M H N1>; bindings = <&uc UC_HOTEL>; };
+			hotel_2 { sequence = <M H N2>; bindings = <&uc UC_LOVE_HOTEL>; };
+			store { sequence = <M S N1 N3>; bindings = <&uc UC_CONVENIENCE_STORE>; };
+			school { sequence = <M S N1 N4>; bindings = <&uc UC_SCHOOL>; };
+			store_2 { sequence = <M S N1 N5>; bindings = <&uc UC_DEPARTMENT_STORE>; };
+			factory { sequence = <M F Y>; bindings = <&uc UC_FACTORY>; };
+			lantern_2 { sequence = <M L N>; bindings = <&uc UC_IZAKAYA_LANTERN>; };
+			castle { sequence = <M C N9>; bindings = <&uc UC_JAPANESE_CASTLE>; };
+			castle_2 { sequence = <M C N1 N0>; bindings = <&uc UC_EUROPEAN_CASTLE>; };
+			pennant { sequence = <M P N2>; bindings = <&uc UC_WHITE_PENNANT>; };
+			pennant_2 { sequence = <M P N3>; bindings = <&uc UC_BLACK_PENNANT>; };
+			white_flag { sequence = <M W F>; bindings = <&uc UC_WAVING_WHITE_FLAG>; };
+			black_flag { sequence = <M B F A>; bindings = <&uc UC_WAVING_BLACK_FLAG>; };
+			rosette { sequence = <M R N1>; bindings = <&uc UC_ROSETTE>; };
+			rosette_2 { sequence = <M R N2>; bindings = <&uc UC_BLACK_ROSETTE>; };
+			label { sequence = <M L L>; bindings = <&uc UC_LABEL>; };
+			racquet_and_shuttlecock { sequence = <M R A S>; bindings = <&uc UC_BADMINTON_RACQUET_AND_SHUTTLECOCK>; };
+			and_arrow { sequence = <M A A A>; bindings = <&uc UC_BOW_AND_ARROW>; };
+			amphora { sequence = <M A O>; bindings = <&uc UC_AMPHORA>; };
+			fitzpatrick_type_1_2 { sequence = <M F T 1 2>; bindings = <&uc UC_MODIFIER_FITZPATRICK_TYPE_1_2>; };
+			fitzpatrick_type_3 { sequence = <M F T 3>; bindings = <&uc UC_MODIFIER_FITZPATRICK_TYPE_3>; };
+			fitzpatrick_type_4 { sequence = <M F T 4>; bindings = <&uc UC_MODIFIER_FITZPATRICK_TYPE_4>; };
+			fitzpatrick_type_5 { sequence = <M F T 5>; bindings = <&uc UC_MODIFIER_FITZPATRICK_TYPE_5>; };
+			fitzpatrick_type_6 { sequence = <M F T 6>; bindings = <&uc UC_MODIFIER_FITZPATRICK_TYPE_6>; };
+			rat_2 { sequence = <M R T>; bindings = <&uc UC_RAT>; };
+			mouse { sequence = <M M N6>; bindings = <&uc UC_MOUSE>; };
+			ox_2 { sequence = <M O A>; bindings = <&uc UC_OX>; };
+			buffalo { sequence = <M B N6>; bindings = <&uc UC_WATER_BUFFALO>; };
+			cow { sequence = <M C W>; bindings = <&uc UC_COW>; };
+			tiger { sequence = <M T R>; bindings = <&uc UC_TIGER>; };
+			leopard { sequence = <M L D>; bindings = <&uc UC_LEOPARD>; };
+			rabbit { sequence = <M R N3>; bindings = <&uc UC_RABBIT>; };
+			cat_2 { sequence = <M C T>; bindings = <&uc UC_CAT>; };
+			dragon_2 { sequence = <M D N>; bindings = <&uc UC_DRAGON>; };
+			crocodile { sequence = <M C N1 N1>; bindings = <&uc UC_CROCODILE>; };
+			whale { sequence = <M W O>; bindings = <&uc UC_WHALE>; };
+			snail { sequence = <M S N1 N6>; bindings = <&uc UC_SNAIL>; };
+			u1f40d { sequence = <M U I>; bindings = <&uc UC_SNAKE_U1F40D>; };
+			horse_3 { sequence = <M H N3>; bindings = <&uc UC_HORSE>; };
+			ram_2 { sequence = <M R M>; bindings = <&uc UC_RAM>; };
+			goat { sequence = <M G T>; bindings = <&uc UC_GOAT>; };
+			sheep { sequence = <M S N1 N7>; bindings = <&uc UC_SHEEP>; };
+			monkey_2 { sequence = <M M Y>; bindings = <&uc UC_MONKEY>; };
+			rooster { sequence = <M R N4>; bindings = <&uc UC_ROOSTER>; };
+			chicken { sequence = <M C N1 N2>; bindings = <&uc UC_CHICKEN>; };
+			dog_2 { sequence = <M D G>; bindings = <&uc UC_DOG>; };
+			pig { sequence = <M P G>; bindings = <&uc UC_PIG>; };
+			boar_2 { sequence = <M B N7>; bindings = <&uc UC_BOAR>; };
+			elephant_2 { sequence = <M E>; bindings = <&uc UC_ELEPHANT>; };
+			octopus { sequence = <M O E>; bindings = <&uc UC_OCTOPUS>; };
+			shell_2 { sequence = <M S N1 N8>; bindings = <&uc UC_SPIRAL_SHELL>; };
+			bug { sequence = <M B N8>; bindings = <&uc UC_BUG>; };
+			ant_3 { sequence = <M A U>; bindings = <&uc UC_ANT>; };
+			honeybee { sequence = <M H N4>; bindings = <&uc UC_HONEYBEE>; };
+			beetle { sequence = <M B N9>; bindings = <&uc UC_LADY_BEETLE>; };
+			fish_2 { sequence = <M F H>; bindings = <&uc UC_FISH>; };
+			fish_3 { sequence = <M F N2>; bindings = <&uc UC_TROPICAL_FISH>; };
+			blowfish { sequence = <M B H>; bindings = <&uc UC_BLOWFISH>; };
+			turtle { sequence = <M T N7>; bindings = <&uc UC_TURTLE>; };
+			chick_2 { sequence = <M C K>; bindings = <&uc UC_HATCHING_CHICK>; };
+			chick_3 { sequence = <M C N1 N3>; bindings = <&uc UC_BABY_CHICK>; };
+			facing_baby_chick { sequence = <M F B C>; bindings = <&uc UC_FRONT_FACING_BABY_CHICK>; };
+			bird { sequence = <M B N1 N0>; bindings = <&uc UC_BIRD>; };
+			penguin { sequence = <M P N>; bindings = <&uc UC_PENGUIN>; };
+			koala { sequence = <M K E>; bindings = <&uc UC_KOALA>; };
+			poodle { sequence = <M P N4>; bindings = <&uc UC_POODLE>; };
+			camel { sequence = <M C L>; bindings = <&uc UC_DROMEDARY_CAMEL>; };
+			camel_2 { sequence = <M C N1 N4>; bindings = <&uc UC_BACTRIAN_CAMEL>; };
+			dolphin { sequence = <M D N2>; bindings = <&uc UC_DOLPHIN>; };
+			face_5 { sequence = <M F N3>; bindings = <&uc UC_MOUSE_FACE>; };
+			face_6 { sequence = <M F N4>; bindings = <&uc UC_COW_FACE>; };
+			face_7 { sequence = <M F N5>; bindings = <&uc UC_TIGER_FACE>; };
+			face_8 { sequence = <M F N6>; bindings = <&uc UC_RABBIT_FACE>; };
+			face_9 { sequence = <M F N7>; bindings = <&uc UC_CAT_FACE>; };
+			face_10 { sequence = <M F N8>; bindings = <&uc UC_DRAGON_FACE>; };
+			whale_2 { sequence = <M W U>; bindings = <&uc UC_SPOUTING_WHALE>; };
+			face_11 { sequence = <M F N9>; bindings = <&uc UC_HORSE_FACE>; };
+			face_12 { sequence = <M F N1 N0>; bindings = <&uc UC_MONKEY_FACE>; };
+			face_13 { sequence = <M F N1 N1>; bindings = <&uc UC_DOG_FACE>; };
+			face_14 { sequence = <M F N1 N2>; bindings = <&uc UC_PIG_FACE>; };
+			face_15 { sequence = <M F N1 N3>; bindings = <&uc UC_FROG_FACE>; };
+			face_16 { sequence = <M F N1 N4>; bindings = <&uc UC_HAMSTER_FACE>; };
+			face_17 { sequence = <M F N1 N5>; bindings = <&uc UC_WOLF_FACE>; };
+			face_18 { sequence = <M F N1 N6>; bindings = <&uc UC_BEAR_FACE>; };
+			face_19 { sequence = <M F N1 N7>; bindings = <&uc UC_PANDA_FACE>; };
+			nose_2 { sequence = <M N A>; bindings = <&uc UC_PIG_NOSE>; };
+			prints { sequence = <M P S>; bindings = <&uc UC_PAW_PRINTS>; };
+			chipmunk { sequence = <M C N1 N5>; bindings = <&uc UC_CHIPMUNK>; };
+			eyes_2 { sequence = <M E A>; bindings = <&uc UC_EYES>; };
+			eye_2 { sequence = <M E E>; bindings = <&uc UC_EYE>; };
+			ear_2 { sequence = <M E I>; bindings = <&uc UC_EAR>; };
+			u1f443 { sequence = <M U O>; bindings = <&uc UC_NOSE_U1F443>; };
+			mouth_3 { sequence = <M M H>; bindings = <&uc UC_MOUTH>; };
+			tongue_2 { sequence = <M T N8>; bindings = <&uc UC_TONGUE>; };
+			up_pointing_backhand_index { sequence = <M U P B I>; bindings = <&uc UC_WHITE_UP_POINTING_BACKHAND_INDEX>; };
+			down_pointing_backhand_index { sequence = <M D P B I>; bindings = <&uc UC_WHITE_DOWN_POINTING_BACKHAND_INDEX>; };
+			left_pointing_backhand_index { sequence = <M L P B I>; bindings = <&uc UC_WHITE_LEFT_POINTING_BACKHAND_INDEX>; };
+			right_pointing_backhand_index { sequence = <M R P B I>; bindings = <&uc UC_WHITE_RIGHT_POINTING_BACKHAND_INDEX>; };
+			hand_sign { sequence = <M H S>; bindings = <&uc UC_FISTED_HAND_SIGN>; };
+			hand_sign_2 { sequence = <M H S A>; bindings = <&uc UC_WAVING_HAND_SIGN>; };
+			hand_sign_3 { sequence = <M H S E>; bindings = <&uc UC_OK_HAND_SIGN>; };
+			up_sign { sequence = <M U S>; bindings = <&uc UC_THUMBS_UP_SIGN>; };
+			down_sign { sequence = <M D S A>; bindings = <&uc UC_THUMBS_DOWN_SIGN>; };
+			hands_sign { sequence = <M H S I>; bindings = <&uc UC_CLAPPING_HANDS_SIGN>; };
+			hands_sign_2 { sequence = <M H S O>; bindings = <&uc UC_OPEN_HANDS_SIGN>; };
+			crown { sequence = <M C N1 N6>; bindings = <&uc UC_CROWN>; };
+			hat_2 { sequence = <M H N5>; bindings = <&uc UC_WOMANS_HAT>; };
+			eyeglasses { sequence = <M E O>; bindings = <&uc UC_EYEGLASSES>; };
+			necktie { sequence = <M N E>; bindings = <&uc UC_NECKTIE>; };
+			shirt_2 { sequence = <M S T>; bindings = <&uc UC_T_SHIRT>; };
+			jeans { sequence = <M J>; bindings = <&uc UC_JEANS>; };
+			dress { sequence = <M D N3>; bindings = <&uc UC_DRESS>; };
+			kimono { sequence = <M K I>; bindings = <&uc UC_KIMONO>; };
+			bikini { sequence = <M B N1 N1>; bindings = <&uc UC_BIKINI>; };
+			clothes { sequence = <M C N1 N7>; bindings = <&uc UC_WOMANS_CLOTHES>; };
+			purse { sequence = <M P N5>; bindings = <&uc UC_PURSE>; };
+			handbag { sequence = <M H G>; bindings = <&uc UC_HANDBAG>; };
+			pouch { sequence = <M P H>; bindings = <&uc UC_POUCH>; };
+			shoe { sequence = <M S N1 N9>; bindings = <&uc UC_MANS_SHOE>; };
+			shoe_2 { sequence = <M S N2 N0>; bindings = <&uc UC_ATHLETIC_SHOE>; };
+			heeled_shoe { sequence = <M H S U>; bindings = <&uc UC_HIGH_HEELED_SHOE>; };
+			sandal { sequence = <M S N2 N1>; bindings = <&uc UC_WOMANS_SANDAL>; };
+			boots { sequence = <M B N1 N2>; bindings = <&uc UC_WOMANS_BOOTS>; };
+			footprints { sequence = <M F N1 N8>; bindings = <&uc UC_FOOTPRINTS>; };
+			in_silhouette { sequence = <M I S>; bindings = <&uc UC_BUST_IN_SILHOUETTE>; };
+			in_silhouette_2 { sequence = <M I S A>; bindings = <&uc UC_BUSTS_IN_SILHOUETTE>; };
+			boy_2 { sequence = <M B Y>; bindings = <&uc UC_BOY>; };
+			girl_2 { sequence = <M G L>; bindings = <&uc UC_GIRL>; };
+			man_2 { sequence = <M M N7>; bindings = <&uc UC_MAN>; };
+			woman { sequence = <M W N>; bindings = <&uc UC_WOMAN>; };
+			family { sequence = <M F N1 N9>; bindings = <&uc UC_FAMILY>; };
+			and_woman_holding_hands { sequence = <M A W H H>; bindings = <&uc UC_MAN_AND_WOMAN_HOLDING_HANDS>; };
+			men_holding_hands { sequence = <M M H H>; bindings = <&uc UC_TWO_MEN_HOLDING_HANDS>; };
+			women_holding_hands { sequence = <M W H H>; bindings = <&uc UC_TWO_WOMEN_HOLDING_HANDS>; };
+			officer { sequence = <M O I>; bindings = <&uc UC_POLICE_OFFICER>; };
+			bunny_ears { sequence = <M B E A>; bindings = <&uc UC_WOMAN_BUNNY_EARS>; };
+			veil { sequence = <M V I>; bindings = <&uc UC_BRIDE_VEIL>; };
+			blond_hair { sequence = <M B H A>; bindings = <&uc UC_PERSON_BLOND_HAIR>; };
+			gua_pi_mao { sequence = <M G P M>; bindings = <&uc UC_MAN_GUA_PI_MAO>; };
+			turban { sequence = <M T N>; bindings = <&uc UC_MAN_TURBAN>; };
+			man_3 { sequence = <M M N8>; bindings = <&uc UC_OLDER_MAN>; };
+			woman_2 { sequence = <M W N1>; bindings = <&uc UC_OLDER_WOMAN>; };
+			baby_2 { sequence = <M B N1 N3>; bindings = <&uc UC_BABY>; };
+			worker { sequence = <M W R>; bindings = <&uc UC_CONSTRUCTION_WORKER>; };
+			princess { sequence = <M P N6>; bindings = <&uc UC_PRINCESS>; };
+			ogre { sequence = <M O O>; bindings = <&uc UC_JAPANESE_OGRE>; };
+			goblin { sequence = <M G N1>; bindings = <&uc UC_JAPANESE_GOBLIN>; };
+			ghost { sequence = <M G N2>; bindings = <&uc UC_GHOST>; };
+			angel { sequence = <M A L>; bindings = <&uc UC_BABY_ANGEL>; };
+			alien { sequence = <M A N1>; bindings = <&uc UC_EXTRATERRESTRIAL_ALIEN>; };
+			monster { sequence = <M M R>; bindings = <&uc UC_ALIEN_MONSTER>; };
+			imp_2 { sequence = <M I E>; bindings = <&uc UC_IMP>; };
+			skull { sequence = <M S N2 N2>; bindings = <&uc UC_SKULL>; };
+			desk_person { sequence = <M D P>; bindings = <&uc UC_INFORMATION_DESK_PERSON>; };
+			guardsman { sequence = <M G N3>; bindings = <&uc UC_GUARDSMAN>; };
+			dancer { sequence = <M D R>; bindings = <&uc UC_DANCER>; };
+			lipstick { sequence = <M L K>; bindings = <&uc UC_LIPSTICK>; };
+			polish { sequence = <M P N7>; bindings = <&uc UC_NAIL_POLISH>; };
+			massage { sequence = <M M N9>; bindings = <&uc UC_FACE_MASSAGE>; };
+			haircut { sequence = <M H N6>; bindings = <&uc UC_HAIRCUT>; };
+			pole_2 { sequence = <M P N8>; bindings = <&uc UC_BARBER_POLE>; };
+			syringe { sequence = <M S N2 N3>; bindings = <&uc UC_SYRINGE>; };
+			pill { sequence = <M P L>; bindings = <&uc UC_PILL>; };
+			mark_3 { sequence = <M M K>; bindings = <&uc UC_KISS_MARK>; };
+			love_2 { sequence = <M L N1>; bindings = <&uc UC_LOVE>; };
+			u1f48d { sequence = <M U U>; bindings = <&uc UC_RING_U1F48D>; };
+			stone { sequence = <M S N2 N4>; bindings = <&uc UC_GEM_STONE>; };
+			kiss_2 { sequence = <M K O>; bindings = <&uc UC_KISS>; };
+			bouquet { sequence = <M B T>; bindings = <&uc UC_BOUQUET>; };
+			heart_2 { sequence = <M H N7>; bindings = <&uc UC_COUPLE_HEART>; };
+			wedding { sequence = <M W G>; bindings = <&uc UC_WEDDING>; };
+			heart_3 { sequence = <M H N8>; bindings = <&uc UC_BEATING_HEART>; };
+			heart_4 { sequence = <M H N9>; bindings = <&uc UC_BROKEN_HEART>; };
+			hearts_2 { sequence = <M H N1 N0>; bindings = <&uc UC_TWO_HEARTS>; };
+			heart_5 { sequence = <M H N1 N1>; bindings = <&uc UC_SPARKLING_HEART>; };
+			heart_6 { sequence = <M H N1 N2>; bindings = <&uc UC_GROWING_HEART>; };
+			arrow_2 { sequence = <M A W>; bindings = <&uc UC_HEART_ARROW>; };
+			heart_7 { sequence = <M H N1 N3>; bindings = <&uc UC_BLUE_HEART>; };
+			heart_8 { sequence = <M H N1 N4>; bindings = <&uc UC_GREEN_HEART>; };
+			heart_9 { sequence = <M H N1 N5>; bindings = <&uc UC_YELLOW_HEART>; };
+			heart_10 { sequence = <M H N1 N6>; bindings = <&uc UC_PURPLE_HEART>; };
+			ribbon_3 { sequence = <M R N>; bindings = <&uc UC_HEART_RIBBON>; };
+			hearts_3 { sequence = <M H N1 N7>; bindings = <&uc UC_REVOLVING_HEARTS>; };
+			decoration_2 { sequence = <M D N4>; bindings = <&uc UC_HEART_DECORATION>; };
+			shape_a_dot_inside { sequence = <M S A D I>; bindings = <&uc UC_DIAMOND_SHAPE_A_DOT_INSIDE>; };
+			light_bulb { sequence = <M L B>; bindings = <&uc UC_ELECTRIC_LIGHT_BULB>; };
+			anger_2 { sequence = <M A N2>; bindings = <&uc UC_ANGER>; };
+			bomb { sequence = <M B B>; bindings = <&uc UC_BOMB>; };
+			sleeping_2 { sequence = <M S N2 N5>; bindings = <&uc UC_SLEEPING>; };
+			collision { sequence = <M C N1 N8>; bindings = <&uc UC_COLLISION>; };
+			sweat_3 { sequence = <M S N2 N6>; bindings = <&uc UC_SPLASHING_SWEAT>; };
+			droplet_2 { sequence = <M D N5>; bindings = <&uc UC_DROPLET>; };
+			dash_2 { sequence = <M D H>; bindings = <&uc UC_DASH>; };
+			of_poo { sequence = <M O P A>; bindings = <&uc UC_PILE_OF_POO>; };
+			biceps { sequence = <M B N1 N4>; bindings = <&uc UC_FLEXED_BICEPS>; };
+			dizzy_2 { sequence = <M D Y>; bindings = <&uc UC_DIZZY>; };
+			balloon_3 { sequence = <M B N1 N5>; bindings = <&uc UC_SPEECH_BALLOON>; };
+			balloon_4 { sequence = <M B N1 N6>; bindings = <&uc UC_THOUGHT_BALLOON>; };
+			flower_2 { sequence = <M F R>; bindings = <&uc UC_WHITE_FLOWER>; };
+			points { sequence = <M P N9>; bindings = <&uc UC_HUNDRED_POINTS>; };
+			bag_2 { sequence = <M B N1 N7>; bindings = <&uc UC_MONEY_BAG>; };
+			exchange { sequence = <M E U>; bindings = <&uc UC_CURRENCY_EXCHANGE>; };
+			dollar_sign { sequence = <M D S E>; bindings = <&uc UC_HEAVY_DOLLAR_SIGN>; };
+			card_2 { sequence = <M C N1 N9>; bindings = <&uc UC_CREDIT_CARD>; };
+			yen_sign { sequence = <M Y S>; bindings = <&uc UC_BANKNOTE_YEN_SIGN>; };
+			dollar_sign_2 { sequence = <M D S I>; bindings = <&uc UC_BANKNOTE_DOLLAR_SIGN>; };
+			euro_sign_2 { sequence = <M E S>; bindings = <&uc UC_BANKNOTE_EURO_SIGN>; };
+			pound_sign { sequence = <M P S A>; bindings = <&uc UC_BANKNOTE_POUND_SIGN>; };
+			wings { sequence = <M W S>; bindings = <&uc UC_MONEY_WINGS>; };
+			upwards_trend_and_yen_sign { sequence = <M U T A Y S>; bindings = <&uc UC_CHART_UPWARDS_TREND_AND_YEN_SIGN>; };
+			seat { sequence = <M S N2 N7>; bindings = <&uc UC_SEAT>; };
+			computer { sequence = <M C N2 N0>; bindings = <&uc UC_PERSONAL_COMPUTER>; };
+			briefcase { sequence = <M B N1 N8>; bindings = <&uc UC_BRIEFCASE>; };
+			minidisc { sequence = <M M C>; bindings = <&uc UC_MINIDISC>; };
+			disk { sequence = <M D K>; bindings = <&uc UC_FLOPPY_DISK>; };
+			disc_2 { sequence = <M D C>; bindings = <&uc UC_OPTICAL_DISC>; };
+			dvd { sequence = <M D D>; bindings = <&uc UC_DVD>; };
+			folder { sequence = <M F N2 N0>; bindings = <&uc UC_FILE_FOLDER>; };
+			file_folder { sequence = <M F F>; bindings = <&uc UC_OPEN_FILE_FOLDER>; };
+			curl_2 { sequence = <M C N2 N1>; bindings = <&uc UC_PAGE_CURL>; };
+			facing_up { sequence = <M F U A>; bindings = <&uc UC_PAGE_FACING_UP>; };
+			calendar { sequence = <M C N2 N2>; bindings = <&uc UC_CALENDAR>; };
+			off_calendar { sequence = <M O C>; bindings = <&uc UC_TEAR_OFF_CALENDAR>; };
+			index_2 { sequence = <M I I>; bindings = <&uc UC_CARD_INDEX>; };
+			upwards_trend_2 { sequence = <M U T>; bindings = <&uc UC_CHART_UPWARDS_TREND>; };
+			downwards_trend { sequence = <M D T A>; bindings = <&uc UC_CHART_DOWNWARDS_TREND>; };
+			chart { sequence = <M C N2 N3>; bindings = <&uc UC_BAR_CHART>; };
+			clipboard { sequence = <M C N2 N4>; bindings = <&uc UC_CLIPBOARD>; };
+			pushpin { sequence = <M P N1 N0>; bindings = <&uc UC_PUSHPIN>; };
+			pushpin_2 { sequence = <M P N1 N1>; bindings = <&uc UC_ROUND_PUSHPIN>; };
+			paperclip { sequence = <M P P>; bindings = <&uc UC_PAPERCLIP>; };
+			ruler { sequence = <M R N5>; bindings = <&uc UC_STRAIGHT_RULER>; };
+			ruler_2 { sequence = <M R N6>; bindings = <&uc UC_TRIANGULAR_RULER>; };
+			tabs { sequence = <M T N9>; bindings = <&uc UC_BOOKMARK_TABS>; };
+			ledger { sequence = <M L N2>; bindings = <&uc UC_LEDGER>; };
+			notebook { sequence = <M N I>; bindings = <&uc UC_NOTEBOOK>; };
+			decorative_cover { sequence = <M D C A>; bindings = <&uc UC_NOTEBOOK_DECORATIVE_COVER>; };
+			book_2 { sequence = <M B N1 N9>; bindings = <&uc UC_CLOSED_BOOK>; };
+			book_3 { sequence = <M B N2 N0>; bindings = <&uc UC_OPEN_BOOK>; };
+			book_4 { sequence = <M B N2 N1>; bindings = <&uc UC_GREEN_BOOK>; };
+			book_5 { sequence = <M B N2 N2>; bindings = <&uc UC_BLUE_BOOK>; };
+			book_6 { sequence = <M B N2 N3>; bindings = <&uc UC_ORANGE_BOOK>; };
+			books { sequence = <M B N2 N4>; bindings = <&uc UC_BOOKS>; };
+			badge { sequence = <M B N2 N5>; bindings = <&uc UC_NAME_BADGE>; };
+			scroll { sequence = <M S N2 N8>; bindings = <&uc UC_SCROLL>; };
+			memo { sequence = <M M N1 N0>; bindings = <&uc UC_MEMO>; };
+			receiver { sequence = <M R N7>; bindings = <&uc UC_TELEPHONE_RECEIVER>; };
+			pager { sequence = <M P N1 N2>; bindings = <&uc UC_PAGER>; };
+			machine_2 { sequence = <M M N1 N1>; bindings = <&uc UC_FAX_MACHINE>; };
+			antenna { sequence = <M A N3>; bindings = <&uc UC_SATELLITE_ANTENNA>; };
+			address_loudspeaker { sequence = <M A L A>; bindings = <&uc UC_PUBLIC_ADDRESS_LOUDSPEAKER>; };
+			megaphone { sequence = <M M N1 N2>; bindings = <&uc UC_CHEERING_MEGAPHONE>; };
+			tray { sequence = <M T N1 N0>; bindings = <&uc UC_OUTBOX_TRAY>; };
+			tray_2 { sequence = <M T N1 N1>; bindings = <&uc UC_INBOX_TRAY>; };
+			package { sequence = <M P N1 N3>; bindings = <&uc UC_PACKAGE>; };
+			mail { sequence = <M M N1 N3>; bindings = <&uc UC_E_MAIL>; };
+			envelope_2 { sequence = <M E N1>; bindings = <&uc UC_INCOMING_ENVELOPE>; };
+			downwards_arrow_above { sequence = <M D A A>; bindings = <&uc UC_ENVELOPE_DOWNWARDS_ARROW_ABOVE>; };
+			mailbox_lowered_flag { sequence = <M M L F>; bindings = <&uc UC_CLOSED_MAILBOX_LOWERED_FLAG>; };
+			mailbox_raised_flag { sequence = <M M R F>; bindings = <&uc UC_CLOSED_MAILBOX_RAISED_FLAG>; };
+			mailbox_raised_flag_2 { sequence = <M M R F A>; bindings = <&uc UC_OPEN_MAILBOX_RAISED_FLAG>; };
+			mailbox_lowered_flag_2 { sequence = <M M L F A>; bindings = <&uc UC_OPEN_MAILBOX_LOWERED_FLAG>; };
+			postbox { sequence = <M P X>; bindings = <&uc UC_POSTBOX>; };
+			horn_2 { sequence = <M H N>; bindings = <&uc UC_POSTAL_HORN>; };
+			newspaper { sequence = <M N O>; bindings = <&uc UC_NEWSPAPER>; };
+			phone_3 { sequence = <M P N1 N4>; bindings = <&uc UC_MOBILE_PHONE>; };
+			phone_rightwards_arrow_at_left { sequence = <M P R A A L>; bindings = <&uc UC_MOBILE_PHONE_RIGHTWARDS_ARROW_AT_LEFT>; };
+			mode { sequence = <M M N1 N4>; bindings = <&uc UC_VIBRATION_MODE>; };
+			phone_off { sequence = <M P O I>; bindings = <&uc UC_MOBILE_PHONE_OFF>; };
+			mobile_phones { sequence = <M M P>; bindings = <&uc UC_NO_MOBILE_PHONES>; };
+			bars { sequence = <M B N2 N6>; bindings = <&uc UC_ANTENNA_BARS>; };
+			camera_2 { sequence = <M C N2 N5>; bindings = <&uc UC_CAMERA>; };
+			flash { sequence = <M F N2 N1>; bindings = <&uc UC_CAMERA_FLASH>; };
+			camera_3 { sequence = <M C N2 N6>; bindings = <&uc UC_VIDEO_CAMERA>; };
+			television { sequence = <M T N1 N2>; bindings = <&uc UC_TELEVISION>; };
+			radio { sequence = <M R N8>; bindings = <&uc UC_RADIO>; };
+			videocassette { sequence = <M V O>; bindings = <&uc UC_VIDEOCASSETTE>; };
+			projector { sequence = <M P N1 N5>; bindings = <&uc UC_FILM_PROJECTOR>; };
+			stereo { sequence = <M S N2 N9>; bindings = <&uc UC_PORTABLE_STEREO>; };
+			beads { sequence = <M B N2 N7>; bindings = <&uc UC_PRAYER_BEADS>; };
+			rightwards_arrows { sequence = <M R A A>; bindings = <&uc UC_TWISTED_RIGHTWARDS_ARROWS>; };
+			rightwards_and_leftwards_open_circle_arrows { sequence = <M R A L O C A>; bindings = <&uc UC_CLOCKWISE_RIGHTWARDS_AND_LEFTWARDS_OPEN_CIRCLE_ARROWS>; };
+			rightwards_and_leftwards_open_circle_arrows_c_one_overlay { sequence = <M R A L O C A C O O>; bindings = <&uc UC_CLOCKWISE_RIGHTWARDS_AND_LEFTWARDS_OPEN_CIRCLE_ARROWS_C_ONE_OVERLAY>; };
+			downwards_and_upwards_open_circle_arrows { sequence = <M D A U O C A>; bindings = <&uc UC_CLOCKWISE_DOWNWARDS_AND_UPWARDS_OPEN_CIRCLE_ARROWS>; };
+			downwards_and_upwards_open_circle_arrows_2 { sequence = <M D A U O C A A>; bindings = <&uc UC_ANTICLOCKWISE_DOWNWARDS_AND_UPWARDS_OPEN_CIRCLE_ARROWS>; };
+			brightness { sequence = <M B N2 N8>; bindings = <&uc UC_LOW_BRIGHTNESS>; };
+			brightness_2 { sequence = <M B N2 N9>; bindings = <&uc UC_HIGH_BRIGHTNESS>; };
+			cancellation_stroke { sequence = <M C S A>; bindings = <&uc UC_SPEAKER_CANCELLATION_STROKE>; };
+			speaker_2 { sequence = <M S N3 N0>; bindings = <&uc UC_SPEAKER>; };
+			one_sound_wave { sequence = <M O S W>; bindings = <&uc UC_SPEAKER_ONE_SOUND_WAVE>; };
+			three_sound_waves { sequence = <M T S W>; bindings = <&uc UC_SPEAKER_THREE_SOUND_WAVES>; };
+			battery { sequence = <M B N3 N0>; bindings = <&uc UC_BATTERY>; };
+			plug { sequence = <M P N1 N6>; bindings = <&uc UC_ELECTRIC_PLUG>; };
+			pointing_magnifying_glass { sequence = <M P M G>; bindings = <&uc UC_LEFT_POINTING_MAGNIFYING_GLASS>; };
+			pointing_magnifying_glass_2 { sequence = <M P M G A>; bindings = <&uc UC_RIGHT_POINTING_MAGNIFYING_GLASS>; };
+			ink_pen { sequence = <M I P>; bindings = <&uc UC_LOCK_INK_PEN>; };
+			lock_key { sequence = <M L K A>; bindings = <&uc UC_CLOSED_LOCK_KEY>; };
+			key_3 { sequence = <M K U>; bindings = <&uc UC_KEY>; };
+			lock_2 { sequence = <M L N3>; bindings = <&uc UC_LOCK>; };
+			lock_3 { sequence = <M L N4>; bindings = <&uc UC_OPEN_LOCK>; };
+			u1f514 { sequence = <M U 4>; bindings = <&uc UC_BELL_U1F514>; };
+			cancellation_stroke_2 { sequence = <M C S E>; bindings = <&uc UC_BELL_CANCELLATION_STROKE>; };
+			bookmark { sequence = <M B N3 N1>; bindings = <&uc UC_BOOKMARK>; };
+			link { sequence = <M L N5>; bindings = <&uc UC_LINK>; };
+			button { sequence = <M B N3 N2>; bindings = <&uc UC_RADIO_BUTTON>; };
+			leftwards_arrow_above { sequence = <M L A A>; bindings = <&uc UC_BACK_LEFTWARDS_ARROW_ABOVE>; };
+			leftwards_arrow_above_2 { sequence = <M L A A A>; bindings = <&uc UC_END_LEFTWARDS_ARROW_ABOVE>; };
+			exclamation_mark_left_right_arrow_above { sequence = <M E M L R A A>; bindings = <&uc UC_ON_EXCLAMATION_MARK_LEFT_RIGHT_ARROW_ABOVE>; };
+			rightwards_arrow_above { sequence = <M R A A A>; bindings = <&uc UC_SOON_RIGHTWARDS_ARROW_ABOVE>; };
+			upwards_arrow_above { sequence = <M U A A>; bindings = <&uc UC_TOP_UPWARDS_ARROW_ABOVE>; };
+			one_under_eighteen { sequence = <M O U E>; bindings = <&uc UC_NO_ONE_UNDER_EIGHTEEN>; };
+			ten_2 { sequence = <M T N1 N3>; bindings = <&uc UC_KEYCAP_TEN>; };
+			for_capital_letters { sequence = <M F C L>; bindings = <&uc UC_INPUT_FOR_CAPITAL_LETTERS>; };
+			for_small_letters { sequence = <M F S L>; bindings = <&uc UC_INPUT_FOR_SMALL_LETTERS>; };
+			for_numbers { sequence = <M F N>; bindings = <&uc UC_INPUT_FOR_NUMBERS>; };
+			for_symbols { sequence = <M F S A>; bindings = <&uc UC_INPUT_FOR_SYMBOLS>; };
+			for_letters { sequence = <M F L A>; bindings = <&uc UC_INPUT_FOR_LETTERS>; };
+			fire_2 { sequence = <M F N2 N2>; bindings = <&uc UC_FIRE>; };
+			torch { sequence = <M T H>; bindings = <&uc UC_ELECTRIC_TORCH>; };
+			wrench_2 { sequence = <M W N2>; bindings = <&uc UC_WRENCH>; };
+			hammer_2 { sequence = <M H R>; bindings = <&uc UC_HAMMER>; };
+			and_bolt { sequence = <M A B>; bindings = <&uc UC_NUT_AND_BOLT>; };
+			hocho { sequence = <M H N1 N8>; bindings = <&uc UC_HOCHO>; };
+			pistol { sequence = <M P N1 N7>; bindings = <&uc UC_PISTOL>; };
+			microscope { sequence = <M M N1 N5>; bindings = <&uc UC_MICROSCOPE>; };
+			telescope { sequence = <M T N1 N4>; bindings = <&uc UC_TELESCOPE>; };
+			ball_4 { sequence = <M B N3 N3>; bindings = <&uc UC_CRYSTAL_BALL>; };
+			pointed_star_middle_dot { sequence = <M P S M D>; bindings = <&uc UC_SIX_POINTED_STAR_MIDDLE_DOT>; };
+			for_beginner { sequence = <M F B>; bindings = <&uc UC_JAPANESE_FOR_BEGINNER>; };
+			emblem { sequence = <M E M>; bindings = <&uc UC_TRIDENT_EMBLEM>; };
+			square_button { sequence = <M S B>; bindings = <&uc UC_BLACK_SQUARE_BUTTON>; };
+			square_button_2 { sequence = <M S B A>; bindings = <&uc UC_WHITE_SQUARE_BUTTON>; };
+			red_circle { sequence = <M R C>; bindings = <&uc UC_LARGE_RED_CIRCLE>; };
+			blue_circle { sequence = <M B C>; bindings = <&uc UC_LARGE_BLUE_CIRCLE>; };
+			orange_diamond { sequence = <M O D>; bindings = <&uc UC_LARGE_ORANGE_DIAMOND>; };
+			blue_diamond { sequence = <M B D A>; bindings = <&uc UC_LARGE_BLUE_DIAMOND>; };
+			orange_diamond_2 { sequence = <M O D A>; bindings = <&uc UC_SMALL_ORANGE_DIAMOND>; };
+			blue_diamond_2 { sequence = <M B D E>; bindings = <&uc UC_SMALL_BLUE_DIAMOND>; };
+			pointing_red_triangle { sequence = <M P R T>; bindings = <&uc UC_UP_POINTING_RED_TRIANGLE>; };
+			pointing_red_triangle_2 { sequence = <M P R T A>; bindings = <&uc UC_DOWN_POINTING_RED_TRIANGLE>; };
+			pointing_small_red_triangle { sequence = <M P S R T>; bindings = <&uc UC_UP_POINTING_SMALL_RED_TRIANGLE>; };
+			pointing_small_red_triangle_2 { sequence = <M P S R T A>; bindings = <&uc UC_DOWN_POINTING_SMALL_RED_TRIANGLE>; };
+			right_shadowed_white_circle { sequence = <M R S W C>; bindings = <&uc UC_LOWER_RIGHT_SHADOWED_WHITE_CIRCLE>; };
+			right_shadowed_white_circle_2 { sequence = <M R S W C A>; bindings = <&uc UC_UPPER_RIGHT_SHADOWED_WHITE_CIRCLE>; };
+			cross_pommee { sequence = <M C P A>; bindings = <&uc UC_C_CROSS_POMMEE>; };
+			pommee_half_circle_below { sequence = <M P H C B>; bindings = <&uc UC_CROSS_POMMEE_HALF_CIRCLE_BELOW>; };
+			pommee_2 { sequence = <M P N1 N8>; bindings = <&uc UC_CROSS_POMMEE>; };
+			left_semicircle_three_dots { sequence = <M L S T D>; bindings = <&uc UC_NOTCHED_LEFT_SEMICIRCLE_THREE_DOTS>; };
+			right_semicircle_three_dots { sequence = <M R S T D>; bindings = <&uc UC_NOTCHED_RIGHT_SEMICIRCLE_THREE_DOTS>; };
+			marks_chapter { sequence = <M M C A>; bindings = <&uc UC_FOR_MARKS_CHAPTER>; };
+			cross_3 { sequence = <M C N2 N7>; bindings = <&uc UC_WHITE_CROSS>; };
+			cross_4 { sequence = <M C N2 N8>; bindings = <&uc UC_HEAVY_CROSS>; };
+			cross_5 { sequence = <M C N2 N9>; bindings = <&uc UC_CELTIC_CROSS>; };
+			om_3 { sequence = <M O U>; bindings = <&uc UC_OM>; };
+			of_peace { sequence = <M O P E>; bindings = <&uc UC_DOVE_OF_PEACE>; };
+			kaaba { sequence = <M K N1>; bindings = <&uc UC_KAABA>; };
+			mosque { sequence = <M M N1 N6>; bindings = <&uc UC_MOSQUE>; };
+			synagogue { sequence = <M S N3 N1>; bindings = <&uc UC_SYNAGOGUE>; };
+			nine_branches { sequence = <M N B>; bindings = <&uc UC_MENORAH_NINE_BRANCHES>; };
+			of_hygieia { sequence = <M O H>; bindings = <&uc UC_BOWL_OF_HYGIEIA>; };
+			face_one_oclock { sequence = <M F O O>; bindings = <&uc UC_CLOCK_FACE_ONE_OCLOCK>; };
+			face_two_oclock { sequence = <M F T O>; bindings = <&uc UC_CLOCK_FACE_TWO_OCLOCK>; };
+			face_three_oclock { sequence = <M F T O A>; bindings = <&uc UC_CLOCK_FACE_THREE_OCLOCK>; };
+			face_four_oclock { sequence = <M F F O>; bindings = <&uc UC_CLOCK_FACE_FOUR_OCLOCK>; };
+			face_five_oclock { sequence = <M F F O A>; bindings = <&uc UC_CLOCK_FACE_FIVE_OCLOCK>; };
+			face_six_oclock { sequence = <M F S O>; bindings = <&uc UC_CLOCK_FACE_SIX_OCLOCK>; };
+			face_seven_oclock { sequence = <M F S O A>; bindings = <&uc UC_CLOCK_FACE_SEVEN_OCLOCK>; };
+			face_eight_oclock { sequence = <M F E O>; bindings = <&uc UC_CLOCK_FACE_EIGHT_OCLOCK>; };
+			face_nine_oclock { sequence = <M F N O>; bindings = <&uc UC_CLOCK_FACE_NINE_OCLOCK>; };
+			face_ten_oclock { sequence = <M F T O E>; bindings = <&uc UC_CLOCK_FACE_TEN_OCLOCK>; };
+			face_eleven_oclock { sequence = <M F E O A>; bindings = <&uc UC_CLOCK_FACE_ELEVEN_OCLOCK>; };
+			face_twelve_oclock { sequence = <M F T O I>; bindings = <&uc UC_CLOCK_FACE_TWELVE_OCLOCK>; };
+			face_one_thirty { sequence = <M F O T>; bindings = <&uc UC_CLOCK_FACE_ONE_THIRTY>; };
+			face_two_thirty { sequence = <M F T T>; bindings = <&uc UC_CLOCK_FACE_TWO_THIRTY>; };
+			face_three_thirty { sequence = <M F T T A>; bindings = <&uc UC_CLOCK_FACE_THREE_THIRTY>; };
+			face_four_thirty { sequence = <M F F T>; bindings = <&uc UC_CLOCK_FACE_FOUR_THIRTY>; };
+			face_five_thirty { sequence = <M F F T A>; bindings = <&uc UC_CLOCK_FACE_FIVE_THIRTY>; };
+			face_six_thirty { sequence = <M F S T>; bindings = <&uc UC_CLOCK_FACE_SIX_THIRTY>; };
+			face_seven_thirty { sequence = <M F S T A>; bindings = <&uc UC_CLOCK_FACE_SEVEN_THIRTY>; };
+			face_eight_thirty { sequence = <M F E T>; bindings = <&uc UC_CLOCK_FACE_EIGHT_THIRTY>; };
+			face_nine_thirty { sequence = <M F N T>; bindings = <&uc UC_CLOCK_FACE_NINE_THIRTY>; };
+			face_ten_thirty { sequence = <M F T T E>; bindings = <&uc UC_CLOCK_FACE_TEN_THIRTY>; };
+			face_eleven_thirty { sequence = <M F E T A>; bindings = <&uc UC_CLOCK_FACE_ELEVEN_THIRTY>; };
+			face_twelve_thirty { sequence = <M F T T I>; bindings = <&uc UC_CLOCK_FACE_TWELVE_THIRTY>; };
+			speaker_3 { sequence = <M S N3 N2>; bindings = <&uc UC_RIGHT_SPEAKER>; };
+			speaker_one_sound_wave { sequence = <M S O S W>; bindings = <&uc UC_RIGHT_SPEAKER_ONE_SOUND_WAVE>; };
+			speaker_three_sound_waves { sequence = <M S T S W>; bindings = <&uc UC_RIGHT_SPEAKER_THREE_SOUND_WAVES>; };
+			bullhorn { sequence = <M B N3 N4>; bindings = <&uc UC_BULLHORN>; };
+			sound_waves_2 { sequence = <M S W>; bindings = <&uc UC_BULLHORN_SOUND_WAVES>; };
+			bell_2 { sequence = <M B N3 N5>; bindings = <&uc UC_RINGING_BELL>; };
+			book_7 { sequence = <M B N3 N6>; bindings = <&uc UC_BOOK>; };
+			candle { sequence = <M C N3 N0>; bindings = <&uc UC_CANDLE>; };
+			clock_2 { sequence = <M C N3 N1>; bindings = <&uc UC_MANTELPIECE_CLOCK>; };
+			skull_and_crossbones { sequence = <M S A C>; bindings = <&uc UC_BLACK_SKULL_AND_CROSSBONES>; };
+			piracy { sequence = <M P Y>; bindings = <&uc UC_NO_PIRACY>; };
+			hole { sequence = <M H N1 N9>; bindings = <&uc UC_HOLE>; };
+			in_business_suit_levitating { sequence = <M I B S L>; bindings = <&uc UC_MAN_IN_BUSINESS_SUIT_LEVITATING>; };
+			or_spy { sequence = <M O S>; bindings = <&uc UC_SLEUTH_OR_SPY>; };
+			sunglasses_2 { sequence = <M S N3 N3>; bindings = <&uc UC_DARK_SUNGLASSES>; };
+			spider { sequence = <M S N3 N4>; bindings = <&uc UC_SPIDER>; };
+			web { sequence = <M W B>; bindings = <&uc UC_SPIDER_WEB>; };
+			joystick { sequence = <M J A>; bindings = <&uc UC_JOYSTICK>; };
+			dancing { sequence = <M D N6>; bindings = <&uc UC_MAN_DANCING>; };
+			hand_telephone_receiver { sequence = <M H T R>; bindings = <&uc UC_LEFT_HAND_TELEPHONE_RECEIVER>; };
+			receiver_page { sequence = <M R P>; bindings = <&uc UC_TELEPHONE_RECEIVER_PAGE>; };
+			hand_telephone_receiver_2 { sequence = <M H T R A>; bindings = <&uc UC_RIGHT_HAND_TELEPHONE_RECEIVER>; };
+			touchtone_telephone { sequence = <M T T A>; bindings = <&uc UC_WHITE_TOUCHTONE_TELEPHONE>; };
+			touchtone_telephone_2 { sequence = <M T T E>; bindings = <&uc UC_BLACK_TOUCHTONE_TELEPHONE>; };
+			on_top_of_modem { sequence = <M O T O M>; bindings = <&uc UC_TELEPHONE_ON_TOP_OF_MODEM>; };
+			mobile_phone_2 { sequence = <M M P A>; bindings = <&uc UC_CLAMSHELL_MOBILE_PHONE>; };
+			of_envelope { sequence = <M O E A>; bindings = <&uc UC_BACK_OF_ENVELOPE>; };
+			envelope_3 { sequence = <M E N2>; bindings = <&uc UC_STAMPED_ENVELOPE>; };
+			lightning_2 { sequence = <M L G>; bindings = <&uc UC_ENVELOPE_LIGHTNING>; };
+			envelope_4 { sequence = <M E N3>; bindings = <&uc UC_FLYING_ENVELOPE>; };
+			over_stamped_envelope { sequence = <M O S E>; bindings = <&uc UC_PEN_OVER_STAMPED_ENVELOPE>; };
+			paperclips { sequence = <M P N1 N9>; bindings = <&uc UC_LINKED_PAPERCLIPS>; };
+			pushpin_3 { sequence = <M P N2 N0>; bindings = <&uc UC_BLACK_PUSHPIN>; };
+			left_pencil { sequence = <M L P>; bindings = <&uc UC_LOWER_LEFT_PENCIL>; };
+			left_ballpoint_pen { sequence = <M L B P>; bindings = <&uc UC_LOWER_LEFT_BALLPOINT_PEN>; };
+			left_fountain_pen { sequence = <M L F P>; bindings = <&uc UC_LOWER_LEFT_FOUNTAIN_PEN>; };
+			left_paintbrush { sequence = <M L P A>; bindings = <&uc UC_LOWER_LEFT_PAINTBRUSH>; };
+			left_crayon { sequence = <M L C A>; bindings = <&uc UC_LOWER_LEFT_CRAYON>; };
+			writing_hand_2 { sequence = <M W H A>; bindings = <&uc UC_LEFT_WRITING_HAND>; };
+			ok_hand_sign { sequence = <M O H S>; bindings = <&uc UC_TURNED_OK_HAND_SIGN>; };
+			hand_fingers_splayed { sequence = <M H F S>; bindings = <&uc UC_RAISED_HAND_FINGERS_SPLAYED>; };
+			raised_hand_fingers_splayed { sequence = <M R H F S>; bindings = <&uc UC_REVERSED_RAISED_HAND_FINGERS_SPLAYED>; };
+			thumbs_up_sign { sequence = <M T U S>; bindings = <&uc UC_REVERSED_THUMBS_UP_SIGN>; };
+			thumbs_down_sign { sequence = <M T D S>; bindings = <&uc UC_REVERSED_THUMBS_DOWN_SIGN>; };
+			victory_hand_2 { sequence = <M V H>; bindings = <&uc UC_REVERSED_VICTORY_HAND>; };
+			hand_middle_finger { sequence = <M H M F>; bindings = <&uc UC_REVERSED_HAND_MIDDLE_FINGER>; };
+			hand_part_between_middle_and_ring_fingers { sequence = <M H P B M A R F>; bindings = <&uc UC_RAISED_HAND_PART_BETWEEN_MIDDLE_AND_RING_FINGERS>; };
+			down_pointing_left_hand_index { sequence = <M D P L H I>; bindings = <&uc UC_WHITE_DOWN_POINTING_LEFT_HAND_INDEX>; };
+			white_left_pointing_index { sequence = <M W L P I>; bindings = <&uc UC_SIDEWAYS_WHITE_LEFT_POINTING_INDEX>; };
+			white_right_pointing_index { sequence = <M W R P I>; bindings = <&uc UC_SIDEWAYS_WHITE_RIGHT_POINTING_INDEX>; };
+			black_left_pointing_index { sequence = <M B L P I>; bindings = <&uc UC_SIDEWAYS_BLACK_LEFT_POINTING_INDEX>; };
+			black_right_pointing_index { sequence = <M B R P I>; bindings = <&uc UC_SIDEWAYS_BLACK_RIGHT_POINTING_INDEX>; };
+			left_pointing_backhand_index_2 { sequence = <M L P B I A>; bindings = <&uc UC_BLACK_LEFT_POINTING_BACKHAND_INDEX>; };
+			right_pointing_backhand_index_2 { sequence = <M R P B I A>; bindings = <&uc UC_BLACK_RIGHT_POINTING_BACKHAND_INDEX>; };
+			white_up_pointing_index { sequence = <M W U P I>; bindings = <&uc UC_SIDEWAYS_WHITE_UP_POINTING_INDEX>; };
+			white_down_pointing_index { sequence = <M W D P I>; bindings = <&uc UC_SIDEWAYS_WHITE_DOWN_POINTING_INDEX>; };
+			black_up_pointing_index { sequence = <M B U P I>; bindings = <&uc UC_SIDEWAYS_BLACK_UP_POINTING_INDEX>; };
+			black_down_pointing_index { sequence = <M B D P I>; bindings = <&uc UC_SIDEWAYS_BLACK_DOWN_POINTING_INDEX>; };
+			up_pointing_backhand_index_2 { sequence = <M U P B I A>; bindings = <&uc UC_BLACK_UP_POINTING_BACKHAND_INDEX>; };
+			down_pointing_backhand_index_2 { sequence = <M D P B I A>; bindings = <&uc UC_BLACK_DOWN_POINTING_BACKHAND_INDEX>; };
+			heart_11 { sequence = <M H N2 N0>; bindings = <&uc UC_BLACK_HEART>; };
+			computer_2 { sequence = <M C N3 N2>; bindings = <&uc UC_DESKTOP_COMPUTER>; };
+			and_mouse { sequence = <M A M>; bindings = <&uc UC_KEYBOARD_AND_MOUSE>; };
+			networked_computers { sequence = <M N C>; bindings = <&uc UC_THREE_NETWORKED_COMPUTERS>; };
+			printer { sequence = <M P N2 N1>; bindings = <&uc UC_PRINTER>; };
+			calculator { sequence = <M C N3 N3>; bindings = <&uc UC_POCKET_CALCULATOR>; };
+			hard_shell_floppy_disk { sequence = <M H S F D>; bindings = <&uc UC_BLACK_HARD_SHELL_FLOPPY_DISK>; };
+			hard_shell_floppy_disk_2 { sequence = <M H S F D A>; bindings = <&uc UC_WHITE_HARD_SHELL_FLOPPY_DISK>; };
+			shell_floppy_disk_3 { sequence = <M S F D>; bindings = <&uc UC_SOFT_SHELL_FLOPPY_DISK>; };
+			cartridge { sequence = <M C N3 N4>; bindings = <&uc UC_TAPE_CARTRIDGE>; };
+			keyboard_3 { sequence = <M K D>; bindings = <&uc UC_WIRED_KEYBOARD>; };
+			button_mouse { sequence = <M B M A>; bindings = <&uc UC_ONE_BUTTON_MOUSE>; };
+			button_mouse_2 { sequence = <M B M E>; bindings = <&uc UC_TWO_BUTTON_MOUSE>; };
+			button_mouse_3 { sequence = <M B M I>; bindings = <&uc UC_THREE_BUTTON_MOUSE>; };
+			trackball { sequence = <M T L>; bindings = <&uc UC_TRACKBALL>; };
+			personal_computer { sequence = <M P C E>; bindings = <&uc UC_OLD_PERSONAL_COMPUTER>; };
+			disk_4 { sequence = <M D N7>; bindings = <&uc UC_HARD_DISK>; };
+			screen { sequence = <M S N>; bindings = <&uc UC_SCREEN>; };
+			icon { sequence = <M I O>; bindings = <&uc UC_PRINTER_ICON>; };
+			icon_2 { sequence = <M I U>; bindings = <&uc UC_FAX_ICON>; };
+			disc_icon { sequence = <M D I A>; bindings = <&uc UC_OPTICAL_DISC_ICON>; };
+			text { sequence = <M T N1 N5>; bindings = <&uc UC_DOCUMENT_TEXT>; };
+			text_and_picture { sequence = <M T A P>; bindings = <&uc UC_DOCUMENT_TEXT_AND_PICTURE>; };
+			picture_2 { sequence = <M P N2 N2>; bindings = <&uc UC_DOCUMENT_PICTURE>; };
+			picture_3 { sequence = <M P N2 N3>; bindings = <&uc UC_FRAME_PICTURE>; };
+			tiles { sequence = <M T N1 N6>; bindings = <&uc UC_FRAME_TILES>; };
+			an_x { sequence = <M A X>; bindings = <&uc UC_FRAME_AN_X>; };
+			folder_2 { sequence = <M F N2 N3>; bindings = <&uc UC_BLACK_FOLDER>; };
+			folder_3 { sequence = <M F N2 N4>; bindings = <&uc UC_FOLDER>; };
+			folder_4 { sequence = <M F N2 N5>; bindings = <&uc UC_OPEN_FOLDER>; };
+			index_dividers { sequence = <M I D>; bindings = <&uc UC_CARD_INDEX_DIVIDERS>; };
+			file_box { sequence = <M F B A>; bindings = <&uc UC_CARD_FILE_BOX>; };
+			cabinet { sequence = <M C N3 N5>; bindings = <&uc UC_FILE_CABINET>; };
+			note_3 { sequence = <M N U>; bindings = <&uc UC_EMPTY_NOTE>; };
+			note_page { sequence = <M N P>; bindings = <&uc UC_EMPTY_NOTE_PAGE>; };
+			note_pad { sequence = <M N P A>; bindings = <&uc UC_EMPTY_NOTE_PAD>; };
+			note_4 { sequence = <M N N1>; bindings = <&uc UC_NOTE>; };
+			page_2 { sequence = <M P N2 N4>; bindings = <&uc UC_NOTE_PAGE>; };
+			pad_2 { sequence = <M P D>; bindings = <&uc UC_NOTE_PAD>; };
+			document { sequence = <M D N8>; bindings = <&uc UC_EMPTY_DOCUMENT>; };
+			page_3 { sequence = <M P N2 N5>; bindings = <&uc UC_EMPTY_PAGE>; };
+			pages { sequence = <M P N2 N6>; bindings = <&uc UC_EMPTY_PAGES>; };
+			document_2 { sequence = <M D N9>; bindings = <&uc UC_DOCUMENT>; };
+			page_4 { sequence = <M P N2 N7>; bindings = <&uc UC_PAGE>; };
+			pages_2 { sequence = <M P N2 N8>; bindings = <&uc UC_PAGES>; };
+			wastebasket { sequence = <M W T>; bindings = <&uc UC_WASTEBASKET>; };
+			note_pad_2 { sequence = <M N P E>; bindings = <&uc UC_SPIRAL_NOTE_PAD>; };
+			calendar_pad { sequence = <M C P E>; bindings = <&uc UC_SPIRAL_CALENDAR_PAD>; };
+			window { sequence = <M W W>; bindings = <&uc UC_DESKTOP_WINDOW>; };
+			minimize { sequence = <M M N1 N7>; bindings = <&uc UC_MINIMIZE>; };
+			maximize { sequence = <M M N1 N8>; bindings = <&uc UC_MAXIMIZE>; };
+			overlap { sequence = <M O N1>; bindings = <&uc UC_OVERLAP>; };
+			right_and_left_semicircle_arrows { sequence = <M R A L S A>; bindings = <&uc UC_CLOCKWISE_RIGHT_AND_LEFT_SEMICIRCLE_ARROWS>; };
+			x_3 { sequence = <M X>; bindings = <&uc UC_CANCELLATION_X>; };
+			font_size { sequence = <M F S E>; bindings = <&uc UC_INCREASE_FONT_SIZE>; };
+			font_size_2 { sequence = <M F S I>; bindings = <&uc UC_DECREASE_FONT_SIZE>; };
+			compression { sequence = <M C N3 N6>; bindings = <&uc UC_COMPRESSION>; };
+			key_4 { sequence = <M K Y>; bindings = <&uc UC_OLD_KEY>; };
+			up_newspaper { sequence = <M U N>; bindings = <&uc UC_ROLLED_UP_NEWSPAPER>; };
+			c_text { sequence = <M C T A>; bindings = <&uc UC_PAGE_C_TEXT>; };
+			chart_2 { sequence = <M C N3 N7>; bindings = <&uc UC_STOCK_CHART>; };
+			knife_2 { sequence = <M K N2>; bindings = <&uc UC_DAGGER_KNIFE>; };
+			lips_2 { sequence = <M L S>; bindings = <&uc UC_LIPS>; };
+			head_in_silhouette { sequence = <M H I S>; bindings = <&uc UC_SPEAKING_HEAD_IN_SILHOUETTE>; };
+			rays_above { sequence = <M R A E>; bindings = <&uc UC_THREE_RAYS_ABOVE>; };
+			rays_below { sequence = <M R B>; bindings = <&uc UC_THREE_RAYS_BELOW>; };
+			rays_left { sequence = <M R L>; bindings = <&uc UC_THREE_RAYS_LEFT>; };
+			rays_right { sequence = <M R R A>; bindings = <&uc UC_THREE_RAYS_RIGHT>; };
+			speech_bubble { sequence = <M S B E>; bindings = <&uc UC_LEFT_SPEECH_BUBBLE>; };
+			speech_bubble_2 { sequence = <M S B I>; bindings = <&uc UC_RIGHT_SPEECH_BUBBLE>; };
+			speech_bubbles { sequence = <M S B O>; bindings = <&uc UC_TWO_SPEECH_BUBBLES>; };
+			speech_bubbles_2 { sequence = <M S B U>; bindings = <&uc UC_THREE_SPEECH_BUBBLES>; };
+			thought_bubble { sequence = <M T B>; bindings = <&uc UC_LEFT_THOUGHT_BUBBLE>; };
+			thought_bubble_2 { sequence = <M T B A>; bindings = <&uc UC_RIGHT_THOUGHT_BUBBLE>; };
+			anger_bubble { sequence = <M A B A>; bindings = <&uc UC_LEFT_ANGER_BUBBLE>; };
+			anger_bubble_2 { sequence = <M A B E>; bindings = <&uc UC_RIGHT_ANGER_BUBBLE>; };
+			bubble_3 { sequence = <M B N3 N7>; bindings = <&uc UC_MOOD_BUBBLE>; };
+			mood_bubble { sequence = <M M B>; bindings = <&uc UC_LIGHTNING_MOOD_BUBBLE>; };
+			mood_2 { sequence = <M M D>; bindings = <&uc UC_LIGHTNING_MOOD>; };
+			box_ballot { sequence = <M B B A>; bindings = <&uc UC_BALLOT_BOX_BALLOT>; };
+			sc_x { sequence = <M S X>; bindings = <&uc UC_BALLOT_SC_X>; };
+			box_sc_x { sequence = <M B S X>; bindings = <&uc UC_BALLOT_BOX_SC_X>; };
+			bold_sc_x { sequence = <M B S X A>; bindings = <&uc UC_BALLOT_BOLD_SC_X>; };
+			box_bold_sc_x { sequence = <M B B S X>; bindings = <&uc UC_BALLOT_BOX_BOLD_SC_X>; };
+			check_mark_3 { sequence = <M C M I>; bindings = <&uc UC_LIGHT_CHECK_MARK>; };
+			box_bold_check { sequence = <M B B C>; bindings = <&uc UC_BALLOT_BOX_BOLD_CHECK>; };
+			map { sequence = <M M N1 N9>; bindings = <&uc UC_WORLD_MAP>; };
+			fuji { sequence = <M F N2 N6>; bindings = <&uc UC_MOUNT_FUJI>; };
+			tower { sequence = <M T N1 N7>; bindings = <&uc UC_TOKYO_TOWER>; };
+			of_liberty { sequence = <M O L A>; bindings = <&uc UC_STATUE_OF_LIBERTY>; };
+			of_japan { sequence = <M O J>; bindings = <&uc UC_SILHOUETTE_OF_JAPAN>; };
+			moyai { sequence = <M M N2 N0>; bindings = <&uc UC_MOYAI>; };
+
+                };
+
+		lt {
+                        tapping-term-ms = <200>;
+                        quick-tap-ms = <150>;
+                        flavor = "tap-preferred";
+        	};
+
+		sl {
+    			release-after-ms = <500>;
+		};
+
 		hl: homerow_mods_left {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
@@ -146,36 +1739,13 @@
 			require-prior-idle-ms = <HM_PRIOR_IDLE>;
 			hold-trigger-key-positions = <KEYS_L THUMBS_L>;
 	  	};
-
-		hld: homerow_mods_left_kpd {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			bindings = <&kp>, <&kpd>;
-			flavor = "balanced";
-			tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-			quick-tap-ms = <HM_QUICK_TAP>;
-			require-prior-idle-ms = <HM_PRIOR_IDLE>;
-			hold-trigger-key-positions = <KEYS_R THUMBS_R>;
-	  	};
-
-		hrd: homerow_mods_right_kpd {
-			compatible = "zmk,behavior-hold-tap";
-			#binding-cells = <2>;
-			bindings = <&kp>, <&kpd>;
-			flavor = "balanced";
-			tapping-term-ms = <HM_TAPPING_TERM_FAST>;
-			quick-tap-ms = <HM_QUICK_TAP>;
-			require-prior-idle-ms = <HM_PRIOR_IDLE>;
-			hold-trigger-key-positions = <KEYS_L THUMBS_L>;
-	  	};
-
 	};
 
         keymap {
                 compatible = "zmk,keymap";
 
                 ngram_layer {
-                        label = "NGRAM";
+                        display-name = "NGRAM";
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |          DQT      |         B  |            Y  |           O   |            U   |               SQT   |                       |             SEMI |            L   |               D    |              W  |               V  |            Z         |
 // |          HASH     |         C  |            I  |           E   |            A   |               COMMA |                       |             DOT  |            H   |               T    |              S  |               N  |            Q         |
@@ -190,7 +1760,7 @@
                 };
 
                 qwerty_layer {
-                        label = "QWERTY";
+                        display-name = "QWERTY";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |          DQT      |         Q  |            W  |           E   |            R   |               T     |                       |             Y   |            U   |               I    |              O  |               P  |            \        |
 // |          HASH     |         A  |            S  |           D   |            F   |               G     |                       |             H   |            J   |               K    |              L  |               ;  |            "        |
@@ -205,22 +1775,22 @@
                 };
 
                 number_layer {
-                        label = "NUM";
+                        display-name = "NUM";
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |   %           |     7        |     8        |     9        |     :        | k        |                                     |          D        |           E       |          F |           |      LMEH |          LHYPER  |
 // |   +           |     4        |     5        |     6        |     -        | j        |                                     |          A        |           B       |          C |           |      RMEH |          RHYPER  |
 // |   *           |     1        |     2        |     3        |     /        | G        |                                     |          =        |                   |            |           |      WUC  |                  |
 //                                               |     0        |     ,        | .        |                                     |                   |      UNDER        |       LUC  |
                             bindings = <
-   &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &hr RCG PIPE   &hrd LMEH PIPE   &kp LHYPER
-   &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &hr RGUI AMPS  &hrd RMEH AMPS   &kp RHYPER
+   &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &hr RCG PIPE   &hr LMEH PIPE   &kp LHYPER
+   &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &hr RGUI AMPS  &hr RMEH AMPS   &kp RHYPER
    &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI       &kp  WUC         &none
                                                    &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &kp UNDER            &kp LUC      
                         >;
                 };
 
                 keypad_layer {
-                        label = "KEYPAD";
+                        display-name = "KEYPAD";
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |   %           |     7        |     8        |     9        |     :        | k        |                                     |            D       |            E       |           F         |           PIPE    |     PIPE PIPE         |            XOR     |
 // |   +           |     4        |     5        |     6        |     -        | j        |                                     |            A       |            B       |           C         |           AND     |     AND_AND           |            CARET   |
@@ -236,7 +1806,7 @@
 
 
                 symbols_layer1 {
-                        label = "SYM1";
+                        display-name = "SYM1";
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |   !    |     {    |     '    |     "     |           }    |      ?       |                                                |      RAG          |     RSC   |      RCA  |     RCG   |     LMEH |     LHYPER  |
 // |   #    |     ^    |     =    |     _     |           $    |      *       |                                                |           TILDE2  |     RSHFT |      RALT |     RGUI  |     RMEH |     RHYPER  |
@@ -250,7 +1820,7 @@
                         >;
                 };
                 symbols_layer2 {
-                        label = "SYM2";
+                        display-name = "SYM2";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |   !    |     `     |      (   |     )       |     ;      |     ,         |                                                 |      RAG         |        RSC   |       RCA  |     RCG   |    LMEH |    LHYPER  |
 // |   #    |     ^     |     =    |     _       |     $      |     *         |                                                 |            PIPE2 |        RSHFT |       RALT |     RGUI  |    RMEH |    RHYPER  |
@@ -265,7 +1835,7 @@
                 };
 
                 nav_layer {
-                        label = "NAV";
+                        display-name = "NAV";
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |       RHYPER  |       RMEH   |     LCG   |     LCA  |       LSC   |     LAG   |                                            |     PASTE   |     COPY      |     CUT     |     UNDO   |       REDO      |            INS         |
 // |       LHYPER  |       LMEH   |     LGUI  |     LALT |       LSHFT |     LCTRL |                                            |     LEFT    |     DOWN      |     UP      |     RIGHT  |       F7        |            PRINTSCREEN |
@@ -274,13 +1844,13 @@
                         bindings = <
      &kp   RHYPER    &kp   RMEH     &kp LCG     &kp LCA    &kp   LSC     &kp LAG                                                  &kp K_PASTE   &kp K_COPY      &kp K_CUT     &kp K_UNDO   &kp   K_REDO      &kp        INS
      &kp   LHYPER    &kp   LMEH     &kp LGUI    &kp LALT   &kp   LSHFT   &kp LCTRL                                                &kp LEFT      &kp DOWN        &kp UP        &kp RIGHT    &kp   F7          &kp        PRINTSCREEN
-     &none           &none          &kp RGUI    &kp RALT   &kp   RSHFT   &kp RCTRL                                                &kp HOME      &kp PAGE_DOWN   &kp PAGE_UP   &kp END      &kp   SCROLLLOCK  &kp        K_APP
+     &leader         &none          &kp RGUI    &kp RALT   &kp   RSHFT   &kp RCTRL                                                &kp HOME      &kp PAGE_DOWN   &kp PAGE_UP   &kp END      &kp   SCROLLLOCK  &kp        K_APP
                                                 &kp DEL    &none         &kp BSPC                                                 &kp RET       &kp DEL         &kp BSPC      
                         >;
                 };
 
                 volume_layer {
-                        label = "VOLUME";
+                        display-name = "VOLUME";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |       RHYPER |      RMEH |     LCG   |       LCA  |       LSC   |     LAG   |                                              |                    |     K_VOLUME_DOWN  |     K_VOlUME_UP  |                       |              |                |
 // |       LHYPER |      LMEH |     LGUI  |       LALT |       LSHFT |     LCTRL |                                              |       C_BASS_BOOST |     C_VOLUME_DOWN  |     C_VOLUME_UP  |       C_ALT_AUDIO_INC |              |                |
@@ -295,7 +1865,7 @@
                 };
 
                 fun_layer {
-                        label = "FUN";
+                        display-name = "FUN";
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |       |     F7 |   F8 |     F9  |         |            |                                                                   |      RAG    |       RSC   |     RCA  |      RCG  |       LMEH |       LHYPER  |
 // |       |     F4 |   F5 |     F6  |         |            |                                                                   |      RCTRL  |       RSHFT |     RALT |      RGUI |       RMEH |       RHYPER  |
@@ -310,7 +1880,7 @@
                 };
 
                 hfun_layer {
-                        label = "HFUN";
+                        display-name = "HFUN";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |       |     F17 |     F18 |       F19 |       F23  |       F24  |                                                          |      RAG    |       RSC   |       RCA  |      RCG  |       LMEH |       LHYPER  |
 // |       |     F14 |     F15 |       F16 |       F21  |       F22  |                                                          |      RCTRL  |       RSHFT |       RALT |      RGUI |       RMEH |       RHYPER  |
@@ -325,7 +1895,7 @@
                 };
 
                 hypfun_layer {
-                        label = "HPR FUN";
+                        display-name = "HPR FUN";
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |       |        F7  |        F8  |        F9  |          |            |                                                     |       RAG    |       RSC   |       RCA  |      RCG  |       LMEH |       LHYPER  |
 // |       |        F4  |        F5  |        F6  |          |            |                                                     |       RCTRL  |       RSHFT |       RALT |      RGUI |       RMEH |       RHYPER  |
@@ -340,7 +1910,7 @@
                 };
 
                 hyphfun_layer {
-                        label = "HHPR FUN";
+                        display-name = "HHPR FUN";
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |       |        F17  |        F18 |        F19 |          F23 |           F24 |                                             |       RAG     |      RSC   |     RCA  |      RCG  |       LMEH |       LHYPER  |
 // |       |        F14  |        F15 |        F16 |          F21 |           F22 |                                             |       RCTRL   |      RSHFT |     RALT |      RGUI |       RMEH |       RHYPER  |
@@ -355,7 +1925,7 @@
                 };
 
                 mehfun_layer {
-                        label = "LMEH FUN";
+                        display-name = "LMEH FUN";
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |      |         F7  |        F8  |        F9   |           |           |                                                     |      RAG    |       RSC   |       RCA  |      RCG  |       LMEH |       LHYPER  |
 // |      |         F4  |        F5  |        F6   |           |           |                                                     |      RCTRL  |       RSHFT |       RALT |      RGUI |       RMEH |       RHYPER  |
@@ -370,7 +1940,7 @@
                 };
 
                 mehhfun_layer {
-                        label = "HLMEH FUN";
+                        display-name = "HLMEH FUN";
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
 // |       |        F17  |        F18  |        F19  |          F23  |          F24  |                                          |       RAG     |       RSC    |       RCA  |      RCG  |       LMEH |       LHYPER  |
 // |       |        F14  |        F15  |        F16  |          F21  |          F22  |                                          |       RCTRL   |       RSHFT  |       RALT |      RGUI |       RMEH |       RHYPER  |
@@ -385,7 +1955,7 @@
                 };
 
                 mouse_layer {
-                        label = "MOUSE";
+                        display-name = "MOUSE";
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |            |       |            |             |             |            |                                                    |                 |       MB4       |       MB5     |                  |       |       |
 // |     LHYPER |       |      LGUI  |        LALT |       LSHFT | LCTRL      |                                                    |       MOVE_LEFT |       MOVE_DOWN |       MOVE_UP |       MOVE_RIGHT |       |       |
@@ -400,7 +1970,7 @@
                 };
                 
                 config_layer {
-                        label = "CONFIG";
+                        display-name = "CONFIG";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // | left reset     |                 |                    |               |                      |                        |         |      BT_CLR      |     BT_PRV      |     BT_NXT    |     BT_CLR_AL   |               | right reset       |
 // | left bootloader|                 |                    |               |                      |                        |         |      BT_SEL 0    |     BT_SEL 1    |     BT_SEL 2  |     BT_SEL 3    |     BT_SEL 4  | right bootloader  | 
@@ -415,7 +1985,7 @@
                 };
 
                 power_layer {
-                        label = "POWER";
+                        display-name = "POWER";
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |       |       |       |      |       |         |                                                                           |     C_RESET      |     K_POWER   |    C_POWER     |      |      |       |
 // |       |       |       |      |       |         |                                                                           |     C_SLEEP_MODE |     K_SLEEP   |    C_SLEEP     |      |      |       | 
@@ -432,7 +2002,7 @@
 
 
                 display_layer {
-                        label = "DISPLAY";
+                        display-name = "DISPLAY";
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |       |       |       |       |       |       |                                                                            | toggle DISPLAY   |                  |                  |                  |                  |       |
 // |       |       |       |       |       |       |                                                                            |       C_BRI_MIN  |        C_BRI_DEC |        C_BRI_INC |        C_BR_MAX  |       C_BRI_AUTO |       | 
@@ -447,7 +2017,7 @@
                 };
 
                 application_launch_layer {
-                        label = "APPL";
+                        display-name = "APPL";
 // -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |        C_AL_MY_COMPUTER |    C_AL_DOCUMENTS   |     C_AL_FILE_BROWSER |     C_AL_WWW                |     K_WWW             |      C_AL_CALCULATOR      |                        |     C_AL_IMAGE_BROWSER |     C_AL_NEWS         |     C_AL_TASK_MANAGER        |    C_AL_KEYBOARD_LAYOUT  |    C_AL_COMMAND_LINE                    |     C_AL_HELP         |
 // |        C_AL_EMAIL       |    C_AL_CALENDAR    |     C_AL_CONTACTS     |     C_AL_INSTANT_MESSAGING  |     C_AL_NETWORK_CHAT |      C_AL_TEXT_EDITOR     |                        |     C_AL_AUDIO_BROWSER |     C_AL_VOICEMAIL    |     C_AL_AV_CAPTURE_PLAYBACK |    C_AL_THESAURUS        |    C_AL_TELEPHONY_DIALER                |     K_HELP            |
@@ -462,7 +2032,7 @@
                 };
 
                 consumer_layer {
-                        label = "CONSUMER";
+                        display-name = "CONSUMER";
 // ----------------------------     ---------------------------------------------------------------------------------------------------
 // |       |      |      |     |      |         |                                          |      |      |      |      |      |       |
 // |       |      |      |     |      |         |                                          |      |      |      |      |      |       | 
@@ -476,8 +2046,164 @@
                         >;
                 };
 
+
+		apl_bqn_layer {
+                        display-name = "APL/BQN";
+// ------------------------------------------------------------------------------------------------------------------------------
+// | ⍝/⋆ | ⌈/⌊ | ⍎/⍣ | ⊥/⊤ | ⍀/⌿ | ⍐/⍗ |                |  Ξ/θ  |  ⁀/↾  |  ℙ/𝔽  |  ⊕/∣  |  ⨾/↔  |  ⋅/′  |
+// | ⍳/⍴ | ⎕/○ | ⍺/⍵ | ⍶/⍹ | ⍤/⌸ | ⌷/⍬ |                |  ↰/↱  |  ⩤/⩥  |  ↣/↠  |  ⤖/⇸  |  ⋿/⦉  |  ⟦/⟧  |
+// | ∘/. | ⊣/⊢ | ∣/⍰ | ⍨/⋄ | ∇/Δ | ⎵/⎴ |                |  ⇐/⇒  |  ‿/·  |  ⌹/⍞  |  ⍇/⍈  |  ⍬/⌻  |  ⌾/⍢  |
+//                     |LOGIC | SHFT | MATH |                | MATH | SHFT |LOGIC |
+                         bindings = <
+   &uc UC_A_LAMP_STAR     &uc UC_A_EP_UP_DN      &uc UC_A_EXEC_PROMPT   &uc UC_A_BASE_DECODE   &uc UC_A_QD_SLOPE_BAR  &uc UC_A_QD_UP_DN          &uc UC_Z_XI_THETA      &uc UC_Z_SEQ_CONCAT    &uc UC_Z_POWER_FINITE  &uc UC_Z_OVERRIDE_PIPE &uc UC_Z_COMP_REL      &uc UC_Z_SPOT_PRIME
+   &uc UC_A_IOTA_RHO      &uc UC_A_QUAD_CIRCLE   &uc UC_A_ALPHA_OMEGA   &uc UC_A_U_ALPHA_OMEGA &uc UC_A_RANK_KEY      &uc UC_A_SQUAD_ZILDE       &uc UC_Z_DOM_RAN_RES   &uc UC_Z_DOM_RAN_SUB   &uc UC_Z_INJ_SURJ      &uc UC_Z_BIJECT_PARTIAL &uc UC_Z_BAG_MEMB_BRACK &uc UC_Z_SEMANTIC_L_R
+   &uc UC_A_JOT_DOT       &uc UC_A_TACK_LEFT_RIGHT &uc UC_A_STILE_QUERY   &uc UC_A_TILDE_DIAMOND &uc UC_A_DEL_DELTA     &uc UC_B_UNDER_TRANS       &uc UC_B_GET_SET       &uc UC_B_STRAND_NULL   &uc UC_A_QD_DIV_QUOTE  &uc UC_A_QD_READ_WRITE &uc UC_A_QD_PLUS_MINUS &uc UC_A_QD_CIRC_PLUS
+                                         &sl LOGIC_SETS     &kp LSHIFT         &sl MATH_ANLS                                 &sl MATH_ANLS      &kp RSHIFT         &sl LOGIC_SETS
+                        >;
+                };
+
+                logic_sets_layer {
+                        display-name = "LOGIC";
+// ------------------------------------------------------------------------------------------------------------------------------
+// | ⊬/⊭ | ⌜/⌝ | ⌞/⌟ | ◻/◊ | ⊻/⇔ | ¬/∼ |                |  ℵ/ℶ  |  ℷ/ℸ  |  ω/ε  |  ⋯/⋮  |  ∅/⌀  |  ≈/∼  |
+// | ∀/∃ | ∃!/∄ | ⊢/⊨ | ∨/∧ | ⊤/⊥ | ↑/⊽ |                |  ℕ/ℤ  |  ℚ/ℝ  |  ℂ/𝔹  |  ∪/∩  |  ⊂/⊆  |  ∈/∉  |
+// | none| none| none| none| none| none|                |  none |  none |  none |  none |  none |  none |
+//                     | APL  | SHFT | MATH |                | MATH | SHFT | APL  |
+                         bindings = <
+   &uc UC_L_NPROVE_NENTAIL &uc UC_L_QUINE_UPPER   &uc UC_L_QUINE_LOWER   &uc UC_L_NEC_POSS      &uc UC_L_XOR_IFF       &uc UC_L_NOT_REVERSE       &uc UC_N_ALEPH_BETH    &uc UC_N_GIMEL_DALET   &uc UC_N_OMEGA_EPS     &uc UC_N_SUP_INF       &uc UC_N_EMPTY_NULL    &uc UC_N_ALMOST_ASYMP
+   &uc UC_L_FORALL_EXISTS  &uc UC_L_UNIQUE_NEXIST &uc UC_L_PROVE_ENTAIL  &uc UC_L_JOIN_MEET     &uc UC_L_TOP_BOTTOM    &uc UC_L_SHEFFER_NOR       &uc UC_N_NAT_INT       &uc UC_N_RAT_REAL      &uc UC_N_COMP_BOOL     &uc UC_N_UNION_ISECT   &uc UC_N_SUB_SUBEQ     &uc UC_N_MEMB_NOT
+   &none                   &none                  &none                  &none                  &none                  &none                      &none                  &none                  &none                  &none                  &none                  &none
+                                          &trans       &kp LSHIFT         &trans                                 &trans      &kp RSHIFT         &trans
+                        >;
+                };
+
+                math_analysis_layer {
+                        display-name = "MATH";
+// ------------------------------------------------------------------------------------------------------------------------------
+// | ∇/Δ | ∂/∞ | →/≅ | ℘/ℏ | ℱ/ℒ | ℨ/∗ |                |  ≡/%  |  ≠/∝  |  ≪/≫  |  ∣/∤  |  ⌈/⌊  |  !/^  |
+// | ∫/∮ | ∬/∯ | ∭/∰ | ⨌/Ш | ∑/∏ | ⋅/⨯ |                |  ≤/≥  |  ±/∓  |  √/∛  |  ℙ/ℙ  |  ℝ/ℑ  |  ⊥/∥  |
+// | π/τ | °/㎭ | ∠/ϕ | ∡/ℯ | none| none|                |  none |  none |  none |  none |  none |  none |
+//                     | APL  | SHFT | LOGIC|                | LOGIC| SHFT | APL  |
+                         bindings = <
+   &uc UC_C_NABLA_LAPLACE  &uc UC_C_PARTIAL_INF   &uc UC_C_LIMIT_APPROX  &uc UC_C_WEIERSTRASS_PLANCK &uc UC_S_FOURIER_LAPLACE &uc UC_S_ZTRANS_CONV       &uc UC_M_CONG_MOD      &uc UC_M_NEQ_PROP      &uc UC_M_MUCH_L_G      &uc UC_M_DIV_NDIV      &uc UC_M_CEIL_FLOOR    &uc UC_M_FACT_EXP
+   &uc UC_C_INT_OINT       &uc UC_C_INT_DBL_CONT  &uc UC_C_INT_TRP_VOL   &uc UC_C_INT_QUAD_SHA  &uc UC_C_SUM_PROD      &uc UC_V_DOT_CROSS         &uc UC_M_LESS_GREATER_EQ &uc UC_M_PL_MIN_MIN_PL &uc UC_M_SQUARE_ROOT   &uc UC_M_PRIME_SET     &uc UC_S_REAL_IMAG     &uc UC_S_PERP_PARALLEL
+   &uc UC_S_PI_TAU         &uc UC_S_DEGREE_RAD    &uc UC_S_PHASE_ARG     &uc UC_S_ANGLE_MEAS    &none                  &none                      &none                  &none                  &none                  &none                  &none                  &none
+                                          &trans       &kp LSHIFT         &trans                                &trans     &kp RSHIFT         &trans
+                        >;
+                };
+
+		modern_greek_layer {
+                        display-name = "Greek";
+// -----------------------------------------------------------------------------------------
+// |  ;   |  ς   |  ε   |  ρ   |  τ   |  υ   | |  θ   |  ι   |  ο   |  π   |      |      |
+// |  α   |  σ   |  δ   |  φ   |  γ   |  η   | |  ξ   |  κ   |  λ   |      |  ·   | SHIFT|
+// |  ζ   |  χ   |  ψ   |  ω   |  β   |  ν   | |  μ   |  ,   |  .   |  /   |  ΄   |      |
+//                   | ESC  | TAB  | SPACE | | RET  | DEL  | BSPC |
+                         bindings = <
+   &uc UC_GRC_QUESTION_MARK &uc UC_GRC_FINAL_SIGMA &uc UC_GRC_EPSILON &uc UC_GRC_RHO   &uc UC_GRC_TAU   &uc UC_GRC_UPSILON &uc UC_GRC_THETA &uc UC_GRC_IOTA   &uc UC_GRC_OMICRON &uc UC_GRC_PI    &none            &none
+   &uc UC_GRC_ALPHA         &uc UC_GRC_SMALL_SIGMA &uc UC_GRC_DELTA   &uc UC_GRC_PHI   &uc UC_GRC_GAMMA &uc UC_GRC_ETA     &uc UC_GRC_XI    &uc UC_GRC_KAPPA  &uc UC_GRC_LAMDA   &none            &uc UC_GRC_ANO_TELEIA &kp RSHFT
+   &uc UC_GRC_ZETA          &uc UC_GRC_CHI         &uc UC_GRC_PSI     &uc UC_GRC_OMEGA &uc UC_GRC_BETA  &uc UC_GRC_NU      &uc UC_GRC_MU    &kp COMMA         &kp DOT            &kp SLASH        &uc UC_GRC_TONOS &none
+                                                       &lt VOLUME ESC     &lt NAV TAB      &lt MOUSE SPACE                                       &lt NUM RET       &lt GRARCH DEL       &lt GRCOPT BSPC 
+                        >;
+                };
+
+		archaic_greek_layer {
+                        display-name = "GRArch";
+// -----------------------------------------------------------------------------------------
+// |  ϐ   |  ϑ   |  ϒ   |  ϓ   |  ϔ   |  ϕ   | |  ϖ   |  ϰ   |  ϱ   |  ͱ   |  ͳ   |  ͷ   |
+// |  Ά   |  Έ   |  Ή   |  Ί   |  Ό   |  Ύ   | |  Ώ   |  ΐ   |  ΰ   |  ͺ   |      | SHIFT|
+// |  ϗ   |  ϙ   |  ϛ   |  ϝ   |  ϟ   |  ϡ   | |  ϳ   |      |      |  ʹ   |      |      |
+//                   | ESC  | TAB  | SPACE | | RET  | DEL  | BSPC |
+                         bindings = <
+   &uc UC_GREEK_BETA_SYMBOL  &uc UC_GREEK_THETA_SYMBOL &uc UC_GRC_UPSILON_HOOK &uc UC_GRC_UPSILON_ACUTE_AND_HOOK &uc UC_GRC_UPSILON_DIAERESIS_AND_HOOK &uc UC_GREEK_PHI_SYMBOL &uc UC_GREEK_PI_SYMBOL &uc UC_GREEK_KAPPA_SYMBOL &uc UC_GREEK_RHO_SYMBOL &uc UC_GRC_HETA &uc UC_GRC_ARCHAIC_SAMPI &uc UC_GRC_PAMPHYLIAN_DIGAMMA
+   &uc UC_GRC_ALPHA_TONOS     &uc UC_GRC_EPSILON_TONOS  &uc UC_GRC_ETA_TONOS   &uc UC_GRC_IOTA_TONOS              &uc UC_GRC_OMICRON_TONOS              &uc UC_GRC_UPSILON_TONOS &uc UC_GRC_OMEGA_TONOS &uc UC_GRC_SMALL_IOTA_DIALYTIKA_AND_TONOS &uc UC_GRC_SMALL_UPSILON_DIALYTIKA_AND_TONOS &uc UC_GRC_YPOGEGRAMMENI &none &kp RSHFT
+   &uc UC_GRC_KAI             &uc UC_GRC_ARCHAIC_KOPPA  &uc UC_GRC_STIGMA      &uc UC_GRC_DIGAMMA                 &uc UC_GRC_KOPPA                      &uc UC_GRC_SAMPI         &uc UC_GRC_YOT        &none                 &none                 &uc UC_GRC_NUMERAL_SIGN &none &none
+                                                       &none     &none      &none                                       &none       &none       &none 
+                        >;
+                };
+
+		greek_coptic_layer {
+                        display-name = "Coptic";
+// -----------------------------------------------------------------------------------------
+// |  ϣ   |  ϥ   |  ϧ   |  ϩ   |  ϫ   |  ϭ   | |  ϯ   |  ϊ   |  ϋ   |  ϶   |  ϸ   |  ϻ   |
+// |  ϼ   |  Ͻ   |  Ͼ   |  Ͽ   |  ϲ   |  ϵ   | |  ϴ   |      |      |      |      | SHIFT|
+// |      |      |      |      |      |      | |      |      |      |      |      |      |
+//                   | ESC  | TAB  | SPACE | | RET  | DEL  | BSPC |
+                         bindings = <
+   &uc UC_GRC_SHEI           &uc UC_GRC_FEI            &uc UC_GRC_KHEI           &uc UC_GRC_HORI             &uc UC_GRC_GANGIA           &uc UC_GRC_SHIMA            &uc UC_GRC_DEI           &uc UC_GRC_IOTA_DIALYTIKA &uc UC_GRC_UPSILON_DIALYTIKA &uc UC_GRC_REVERSED_LUNATE_EPSILON &uc UC_GRC_SHO &uc UC_GRC_SAN
+   &uc UC_GRC_RHO_STROKE     &uc UC_GRC_REVERSED_LUNATE_SIGMA &uc UC_GRC_DOTTED_LUNATE_SIGMA &uc UC_GRC_REVERSED_DOTTED_LUNATE_SIGMA &uc UC_GRC_LUNATE_SIGMA     &uc UC_GRC_LUNATE_EPSILON   &uc UC_GRC_CAPITAL_THETA &none                     &none                        &none                              &none          &kp RSHFT
+   &none                     &none                     &none                     &none                       &none                       &none                       &none                    &none                     &none                        &none                              &none          &none
+                                                       &none     &none      &none                                       &none       &none       &none 
+                        >;
+                };
+
+	punc_type_layer {
+                        display-name = "P.Typ";
+// ------------------------------------------------------------------------------------------------------------------------------
+// | EN/EM Q | EN/EM S | 3/4 EM | 6/FIG     | P/THIN | H/ZWSP |                | NB/MMS |  - / ‑ |  ‒ / – |  — / ― |  ‖ / ‗ |  ‾ / ‿ |
+// |  ‘ / ’  |  “ / ”  |  ‚ / ‛ |  „ / ‟    |  ‹ / › |  ⁀ / ⁁ |                |  † / ‡ |  • / ‣ |  ′ / ″ |  ‴ / ‵ |  ‶ / ‷ |  ‰ / ‱ |
+// |  ․ / ‥  |  … / ‧  |  ‼ / ‽ |  ⁂ / ⁃    |  ⁈ / ⁉ |  ⁌ / ⁍ |                |        |        |        |        |        |        |
+//                              |  PUNC_TEC |        |        |                |        |        |        |
+                         bindings = <
+   &uc UC_COMB_PUN_EN_EM_QUAD           &uc UC_COMB_PUN_EN_EM_SPACE          &uc UC_COMB_PUN_THREE_FOUR_PER_EM_SPACE  &uc UC_COMB_PUN_SIX_PER_EM_FIGURE_SPACE  &uc UC_COMB_PUN_PUNCTUATION_THIN_SPACE  &uc UC_COMB_PUN_HAIR_SPACE_ZWSP             &uc UC_COMB_PUN_NNBSP_MMS               &uc UC_COMB_HYPHEN_NON_BREAKING_HYPHEN  &uc UC_COMB_FIGURE_DASH_EN_DASH  &uc UC_COMB_EM_DASH_HORIZONTAL_BAR  &uc UC_COMB_DOUBLE_VERTICAL_LINE_LOW_LINE  &uc UC_COMB_OVERLINE_UNDERTIE
+   &uc UC_COMB_SINGLE_QUOTATION_MARKS   &uc UC_COMB_DOUBLE_QUOTATION_MARKS   &uc UC_COMB_SINGLE_LOW_HIGH_REV_QUOTES   &uc UC_COMB_DOUBLE_LOW_HIGH_REV_QUOTES   &uc UC_COMB_SINGLE_GUILLEMETS           &uc UC_COMB_CHARACTER_TIE_CARET_INSERTION   &uc UC_COMB_DAGGER_DOUBLE_DAGGER        &uc UC_COMB_BULLET_TRIANGULAR_BULLET    &uc UC_COMB_PRIME_DOUBLE_PRIME   &uc UC_COMB_TRIPLE_REVERSED_PRIME   &uc UC_COMB_REVERSED_DOUBLE_TRIPLE_PRIME   &uc UC_COMB_PER_MILLE_TEN_THOUSAND
+   &uc UC_COMB_ONE_TWO_DOT_LEADER       &uc UC_COMB_HORIZONTAL_ELLIPSIS_HYPHEN_POINT  &uc UC_COMB_DOUBLE_EXCLAMATION_INTERROBANG  &uc UC_COMB_ASTERISM_HYPHEN_BULLET  &uc UC_COMB_QUESTION_EXCLAM_EXCLAM_QUESTION  &uc UC_COMB_BLACK_LEFT_RIGHT_BULLET  &none  &none  &none  &none  &none  &none
+                                                                             &sl PUNC_TEC  &kp LSHIFT  &trans                                                                                                                                 &trans  &kp RSHIFT  &trans
+                        >;
+                };
+
+		punc_tech_layer {
+                        display-name = "P.Tec";
+// ------------------------------------------------------------------------------------------------------------------------------
+// | ZWNJ/J  | LRM/RLM | LRE/RLE | PDF/LRO | RLO/PDI | LRI/RLI |                | FSI/LS | WJ/FUN | IT/IS  | IP/CAR | ISS/ASS| IAFS/AA|
+// | NAD/NOD |  ⁄ / ※  |  ⁅ / ⁆  |  ⁇ / ⁊  |  ⁋ / ⁏  |  ⁎ / ⁐  |                |  ⁑ / ⁒ |  ⁓ / ⁔ |  ⁕ / ⁖ |  ⁗ / ⁘ |  ⁙ / ⁚ |  ⁛ / ⁜ |
+// |  ⁝ / ⁞  |         |         |         |         |         |                |        |        |        |        |        |        |
+//                     |        |        |        |                        |        |        |        |
+                         bindings = <
+   &uc UC_COMB_PUN_ZW_NON_JOINER_JOINER  &uc UC_COMB_PUN_LTR_RTL_MARK         &uc UC_COMB_PUN_LTR_RTL_EMBEDDING  &uc UC_COMB_PUN_PDF_LTR_OVERRIDE  &uc UC_COMB_PUN_RLO_PDI           &uc UC_COMB_PUN_LTR_RTL_ISOLATE  &uc UC_COMB_PUN_FSI_LINE_PARA_SEP         &uc UC_COMB_PUN_WORD_JOINER_FUNC_APPL  &uc UC_COMB_PUN_INV_TIMES_SEP  &uc UC_COMB_PUN_INV_PLUS_CARET  &uc UC_COMB_PUN_ISS_ASS  &uc UC_COMB_PUN_IAFS_AAFS
+   &uc UC_COMB_PUN_NADS_NODS             &uc UC_COMB_FRACTION_SLASH_REF_MARK  &uc UC_COMB_LEFT_RIGHT_SQUARE_QUILL &uc UC_COMB_DOUBLE_QUES_TIRONIAN_ET &uc UC_COMB_REV_PILCROW_REV_SEMICOLON &uc UC_COMB_LOW_AST_CLOSE_UP &uc UC_COMB_TWO_DOT_ONE_DOT_COMM_MINUS  &uc UC_COMB_SWUNG_DASH_INV_UNDERTIE     &uc UC_COMB_FLOWER_PUNC_THREE_DOT_PUNC &uc UC_COMB_QUAD_PRIME_FOUR_DOT_PUNC &uc UC_COMB_FIVE_DOT_TWO_DOT_PUNC &uc UC_COMB_FOUR_DOT_MARK_DOTTED_CROSS
+   &uc UC_COMB_TRICOLON_VERT_FOUR_DOTS   &none  &none  &none  &none  &none                                                                        &none  &none  &none  &none  &none  &none
+                                                                             &trans  &kp LSHIFT  &trans                                                                                                             &trans  &kp RSHIFT  &trans
+                        >;
+                };
+
+
+		sup_editorial_layer {
+                        display-name = "S.EDT";
+// ------------------------------------------------------------------------------------------------------------------------------
+// |  ⸀ / ⸁  |  ⸂ / ⸄  |  ⸃ / ⸅  |  ⸆ / ⸇  |  ⸈ / ⸋  |  ⸉ / ⸊  |                |  ⸌ / ⸍  |  ⸎ / ⸏  |  ⸐ / ⸑  |  ⸒ / ⸓  |  ⸔ / ⸕  |  ⸖ / ⸗  |
+// |  ⸘ / ⸙  |  ⸜ / ⸝  |  ⸠ / ⸡  |  ⸢ / ⸣  |  ⸤ / ⸥  |  ⸦ / ⸧  |                |  ⸨ / ⸩  |  ⹕ / ⹖  |  ⹗ / ⹘  |  ⹙ / ⹚  |  ⹛ / ⹜  |  ⸚ / ⸛  |
+// |  ⸞ / ⸟  |         |         |         |         |         |                |         |         |         |         |         |         |
+//                     | SUP_OLD | LSHIFT  |  trans  |                        |  trans  | RSHIFT  |  trans  |
+                         bindings = <
+   &uc UC_COMB_SUP_SUBST_MARK_DOTTED               &uc UC_COMB_SUP_SUBST_BRACK_LEFT             &uc UC_COMB_SUP_SUBST_BRACK_RIGHT    &uc UC_COMB_SUP_INTERP_MARK_DOTTED    &uc UC_COMB_SUP_TRANSP_MARK_DOTTED    &uc UC_COMB_SUP_TRANSP_BRACK_LEFT_RIGHT
+   &uc UC_COMB_SUP_OMISS_BRACK_LEFT_RIGHT          &uc UC_COMB_SUP_EDITORIAL_CORONIS_PARAGRAPHOS &uc UC_COMB_SUP_FORKED_PARAGRAPHOS_REV &uc UC_COMB_SUP_HYPODIASTOLE_OBELOS &uc UC_COMB_SUP_ANCORA_DOWN_UP       &uc UC_COMB_SUP_RIGHT_ANGLE_DOTTED_OBLIQUE_HYPHEN
+   &uc UC_COMB_SUP_INTERROBANG_PALM_BRANCH         &uc UC_COMB_SUP_PARAPHRASE_BRACK_LEFT_RIGHT  &uc UC_COMB_SUP_VERTICAL_BAR_QUILL_LEFT_RIGHT &uc UC_COMB_SUP_HALF_BRACK_TOP_LEFT_RIGHT &uc UC_COMB_SUP_HALF_BRACK_BOTTOM_LEFT_RIGHT &uc UC_COMB_SUP_SIDEWAYS_U_BRACK_LEFT_RIGHT
+   &uc UC_COMB_SUP_DOUBLE_PAREN_LEFT_RIGHT         &uc UC_COMB_SUP_SQUARE_BRACK_STROKE_LEFT_RIGHT &uc UC_COMB_SUP_SQUARE_BRACK_DBL_STROKE_LEFT_RIGHT &uc UC_COMB_SUP_PAREN_TOP_HALF_LEFT_RIGHT &uc UC_COMB_SUP_PAREN_BOTTOM_HALF_LEFT_RIGHT &uc UC_COMB_SUP_HYPHEN_DIAERESIS_TILDE_RING
+   &uc UC_COMB_SUP_TILDE_DOT_ABOVE_BELOW           &none                                        &none                                &none                                 &none                                 &none
+                                                                                              &sl SUP_HIS  &kp LSHIFT  &trans                                                                              &trans  &kp RSHIFT  &trans
+                        >;
+                };
+
+
+		sup_historial_layer {
+                        display-name = "S.HIS";
+// ------------------------------------------------------------------------------------------------------------------------------
+// |  ⸺ / ⸻  |  ⸼ / ⸽  |  ⸾ / ⸿  |  ⸪ / ⸫  |  ⸬ / ⸭  |  ⸮ / ⸯ  |                |  ⸰ / ⸱  |  ⸲ / ⸳  |  ⸴ / ⸵  |  ⸶ / ⸷  |  ⸸ / ⸹  |  ⹀ / ⹁  |
+// |  ⹂ / ⹃  |  ⹄ / ⹅  |  ⹆ / ⹇  |  ⹈ / ⹉  |  ⹊ / ⹋  |  ⹌ / ⹍  |                |  ⹎ / ⹏  |  ⹐ / ⹑  |  ⹒ / ⹝  |  ⹓ / ⹔  |         |         |
+// |         |         |         |         |         |         |                |         |         |         |         |         |         |
+//                     |  trans  | LSHIFT  |  trans  |                        |  trans  | RSHIFT  |  trans  |
+                         bindings = <
+   &uc UC_COMB_SUP_TWO_THREE_EM_DASH               &uc UC_COMB_SUP_STENOGRAPHIC_STOP_SIX_DOTS   &uc UC_COMB_SUP_WIGGLY_LINE_CAPITULUM &uc UC_COMB_SUP_TWO_DOTS_OVER_ONE_OVER_TWO &uc UC_COMB_SUP_SQUARED_FOUR_FIVE_DOT_MARK &uc UC_COMB_SUP_REV_QUESTION_VERTICAL_TILDE
+   &uc UC_COMB_SUP_RING_POINT_MIDDLE_DOT           &uc UC_COMB_SUP_TURNED_RAISED_DOT            &uc UC_COMB_SUP_RAISED_COMMA_TURNED_SEMICOLON &uc UC_COMB_SUP_DAGGER_GUARD_LEFT_RIGHT &uc UC_COMB_SUP_TURNED_DAGGER_SECTION_SIGN &uc UC_COMB_SUP_DOUBLE_HYPHEN_REVERSED_COMMA
+   &uc UC_COMB_SUP_DBL_LOW_REV_9_QUOTE_UPTURN_DASH &uc UC_COMB_SUP_SUSPENSION_MARK_INV_LOW_KAVYKA &uc UC_COMB_SUP_KAVYKA_ABOVE_LOW_KAVYKA &uc UC_COMB_SUP_LOW_KAVYKA_DOT_DBL_STACKED &uc UC_COMB_SUP_DOTTED_SOLIDUS_TRIPLE_DAGGER &uc UC_COMB_SUP_MEDIEVAL_PARAGRAPHUS_MARK
+   &uc UC_COMB_SUP_PUNCTUS_ELEVATUS_CORNISH_DIVIDER &uc UC_COMB_SUP_CROSS_PATTY_RIGHT_LEFT       &uc UC_COMB_SUP_TIRONIAN_ET_OBLIQUE_HYPHEN &uc UC_COMB_SUP_MEDIEVAL_EXCLAM_QUESTION_MARK &none                                 &none
+                                                                                              &trans  &kp LSHIFT  &trans                                                                              &trans  &kp RSHIFT  &trans
+                        >;
+                };
+
                 empty_layer {
-                        label = "empty";
+                        display-name = "empty";
 // ------------------------------------------------------------------------------------------------------------------------------
 // |     |      |      |     |      |         |                                      |      |      |      |      |      |       |
 // |     |      |      |     |      |         |                                      |      |      |      |      |      |       | 

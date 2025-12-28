@@ -12,5 +12,8 @@ manifest:
     - name: zmk-unicode
       remote: urob
       revision: v0.3 # set to same as ZMK version above
+    - name: zmk-leader-key
+      remote: urob
+      revision: v0.3
   self:
     path: config
