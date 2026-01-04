@@ -66,6 +66,8 @@ Based on the current configuration, the following layers are active:
 | 23-25 | **GREEK** | Triple-support for Modern, Archaic, and Coptic scripts |
 | 26-29 | **PUNC/SUP** | Advanced punctuation and supplemental editing tools |
 
+Details can be found in the [layers](layers.md) Document.
+
 ---
 
 ## 🛠️ Build Information
