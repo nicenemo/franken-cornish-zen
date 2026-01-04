@@ -110,14 +110,39 @@
 
 		combo_sticky_math {
                        timeout-ms = <50>;
-                       key-positions = <30 35>; 
+                       key-positions = <29 35>; 
                        bindings = <&tog APL_BQN>;
                 };
+
+		combo_sticky_logic {
+                       timeout-ms = <50>;
+                       key-positions = <0 35>; 
+                       bindings = <&tog LOGIC_SETS>;
+                };
+
+		combo_sticky_analysis {
+                       timeout-ms = <50>;
+                       key-positions = <0 11>; 
+                       bindings = <&tog MATH_ANLS>;
+                };
+
 
 		combo_sticky_greek {
                        timeout-ms = <50>;
                        key-positions = <24 29>; 
                        bindings = <&tog GR_MODERN>;
+                };
+
+		combo_sticky_arachic_greek {
+                       timeout-ms = <50>;
+                       key-positions = <0 29>; 
+                       bindings = <&tog GRARCH>;
+                };
+
+		combo_sticky_coptic {
+                       timeout-ms = <50>;
+                       key-positions = <0 30>; 
+                       bindings = <&tog GRCOPT>;
                 };
 
 
@@ -131,6 +156,12 @@
                        timeout-ms = <50>;
                        key-positions = <0 5>; 
                        bindings = <&tog SUP_EDT>;
+                };
+
+		combo_sticky_historical_punctuation {
+                       timeout-ms = <50>;
+                       key-positions = <0 6>; 
+                       bindings = <&tog SUP_HIS>;
                 };
     	};
 
@@ -2049,10 +2080,10 @@
 // | ∘/. | ⊣/⊢ | ∣/⍰ | ⍨/⋄ | ∇/Δ | ⎵/⎴ |                |  ⇐/⇒  |  ‿/·  |  ⌹/⍞  |  ⍇/⍈  |  ⍬/⌻  |  ⌾/⍢  |
 //                     |LOGIC | SHFT | MATH |                | MATH | SHFT |LOGIC |
                          bindings = <
-   &uc UC_A_LAMP_STAR     &uc UC_A_EP_UP_DN      &uc UC_A_EXEC_PROMPT   &uc UC_A_BASE_DECODE   &uc UC_A_QD_SLOPE_BAR  &uc UC_A_QD_UP_DN          &uc UC_Z_XI_THETA      &uc UC_Z_SEQ_CONCAT    &uc UC_Z_POWER_FINITE  &uc UC_Z_OVERRIDE_PIPE &uc UC_Z_COMP_REL      &uc UC_Z_SPOT_PRIME
-   &uc UC_A_IOTA_RHO      &uc UC_A_QUAD_CIRCLE   &uc UC_A_ALPHA_OMEGA   &uc UC_A_U_ALPHA_OMEGA &uc UC_A_RANK_KEY      &uc UC_A_SQUAD_ZILDE       &uc UC_Z_DOM_RAN_RES   &uc UC_Z_DOM_RAN_SUB   &uc UC_Z_INJ_SURJ      &uc UC_Z_BIJECT_PARTIAL &uc UC_Z_BAG_MEMB_BRACK &uc UC_Z_SEMANTIC_L_R
-   &uc UC_A_JOT_DOT       &uc UC_A_TACK_LEFT_RIGHT &uc UC_A_STILE_QUERY   &uc UC_A_TILDE_DIAMOND &uc UC_A_DEL_DELTA     &uc UC_B_UNDER_TRANS       &uc UC_B_GET_SET       &uc UC_B_STRAND_NULL   &uc UC_A_QD_DIV_QUOTE  &uc UC_A_QD_READ_WRITE &uc UC_A_QD_PLUS_MINUS &uc UC_A_QD_CIRC_PLUS
-                                         &sl LOGIC_SETS     &kp LSHIFT         &sl MATH_ANLS                                 &sl MATH_ANLS      &kp RSHIFT         &sl LOGIC_SETS
+   &uc UC_A_LAMP_STAR     &uc UC_A_EP_UP_DN      &uc UC_A_EXEC_PROMPT   &uc UC_A_BASE_DECODE    &uc UC_A_QD_SLOPE_BAR  &uc UC_A_QD_UP_DN          &uc UC_Z_XI_THETA      &uc UC_Z_SEQ_CONCAT    &uc UC_Z_POWER_FINITE  &uc UC_Z_OVERRIDE_PIPE &uc UC_Z_COMP_REL      &uc UC_Z_SPOT_PRIME
+   &uc UC_A_IOTA_RHO      &uc UC_A_QUAD_CIRCLE   &uc UC_A_ALPHA_OMEGA   &uc UC_A_U_ALPHA_OMEGA  &uc UC_A_RANK_KEY      &uc UC_A_SQUAD_ZILDE       &uc UC_Z_DOM_RAN_RES   &uc UC_Z_DOM_RAN_SUB   &uc UC_Z_INJ_SURJ      &uc UC_Z_BIJECT_PARTIAL &uc UC_Z_BAG_MEMB_BRACK &uc UC_Z_SEMANTIC_L_R
+   &uc UC_A_JOT_DOT       &uc UC_A_TACK_LEFT_RIGHT &uc UC_A_STILE_QUERY   &uc UC_A_TILDE_DIAMOND &uc UC_A_DEL_DELTA    &uc UC_B_UNDER_TRANS       &uc UC_B_GET_SET       &uc UC_B_STRAND_NULL   &uc UC_A_QD_DIV_QUOTE  &uc UC_A_QD_READ_WRITE &uc UC_A_QD_PLUS_MINUS &uc UC_A_QD_CIRC_PLUS
+                                         &trans    &kp LSHIFT             &trans                                               &trans      &kp RSHIFT         &trans
                         >;
                 };
 
@@ -2175,7 +2206,7 @@
    &uc UC_COMB_SUP_INTERROBANG_PALM_BRANCH         &uc UC_COMB_SUP_PARAPHRASE_BRACK_LEFT_RIGHT  &uc UC_COMB_SUP_VERTICAL_BAR_QUILL_LEFT_RIGHT &uc UC_COMB_SUP_HALF_BRACK_TOP_LEFT_RIGHT &uc UC_COMB_SUP_HALF_BRACK_BOTTOM_LEFT_RIGHT &uc UC_COMB_SUP_SIDEWAYS_U_BRACK_LEFT_RIGHT
    &uc UC_COMB_SUP_DOUBLE_PAREN_LEFT_RIGHT         &uc UC_COMB_SUP_SQUARE_BRACK_STROKE_LEFT_RIGHT &uc UC_COMB_SUP_SQUARE_BRACK_DBL_STROKE_LEFT_RIGHT &uc UC_COMB_SUP_PAREN_TOP_HALF_LEFT_RIGHT &uc UC_COMB_SUP_PAREN_BOTTOM_HALF_LEFT_RIGHT &uc UC_COMB_SUP_HYPHEN_DIAERESIS_TILDE_RING
    &uc UC_COMB_SUP_TILDE_DOT_ABOVE_BELOW           &none                                        &none                                &none                                 &none                                 &none
-                                                                                              &sl SUP_HIS  &kp LSHIFT  &trans                                                                              &trans  &kp RSHIFT  &trans
+                                                                                              &trans  &kp LSHIFT  &trans                                                                              &trans  &kp RSHIFT  &trans
                         >;
                 };
 
