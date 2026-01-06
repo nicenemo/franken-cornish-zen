@@ -55,7 +55,7 @@
 #define APL_BQN    20  
 #define LOGIC_SETS 21  
 #define MATH_ANLS  22  
-#define GR_MODERN   23  
+#define GR_MODERN  23  
 #define GRARCH     24  
 #define GRCOPT     25
 #define PUNC_TYP   26
@@ -201,6 +201,11 @@
     			release-after-ms = <500>;
 		};
 
+		key_repeat {
+                        usage-pages = <HID_USAGE_KEY HID_USAGE_CONSUMER>;
+                };
+
+
 		hl: homerow_mods_left {
 			compatible = "zmk,behavior-hold-tap";
 			#binding-cells = <2>;
@@ -221,6 +226,7 @@
 			require-prior-idle-ms = <HM_PRIOR_IDLE>;
 			hold-trigger-key-positions = <KEYS_L THUMBS_L>;
 	  	};
+
 	};
 
         keymap {
@@ -319,10 +325,10 @@
                 nav_layer {
                         display-name = "NAV";
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       RHYPER  |       RMEH   |     LCG   |     LCA  |       LSC   |     LAG   |                                            |     PASTE   |     COPY      |     CUT     |     UNDO   |       REDO      |            INS         |
-// |       LHYPER  |       LMEH   |     LGUI  |     LALT |       LSHFT |     LCTRL |                                            |     LEFT    |     DOWN      |     UP      |     RIGHT  |       F7        |            PRINTSCREEN |
-// |               |              |     RGUI  |     RALT |       RSHFT |     RCTRL |                                            |     HOME    |     PAGE_DOWN |     PAGE_UP |     END    |      SCROLLLOCK |            K_APP       |
-//                                            |     CAPS |             |           |                                            |     RET     |     DEL       |     BSPC    |
+// |       RHYPER  |       RMEH   |     LCG   |     LCA  |       LSC   |     LAG    |                                           |     PASTE   |     COPY      |     CUT     |     UNDO   |       REDO      |            INS         |
+// |       LHYPER  |       LMEH   |     LGUI  |     LALT |       LSHFT |     LCTRL  |                                           |     LEFT    |     DOWN      |     UP      |     RIGHT  |       F7        |            PRINTSCREEN |
+// |               |              |     RGUI  |     RALT |       RSHFT |     RCTRL  |                                           |     HOME    |     PAGE_DOWN |     PAGE_UP |     END    |      SCROLLLOCK |            K_APP       |
+//                                            |     CAPS |             |     none   |                                           |     RET     |     DEL       |     BSPC    |
                         bindings = <
      &kp   RHYPER    &kp   RMEH     &kp LCG     &kp LCA    &kp   LSC     &kp LAG                                                  &kp K_PASTE   &kp K_COPY      &kp K_CUT     &kp K_UNDO   &kp   K_REDO      &kp        INS
      &kp   LHYPER    &kp   LMEH     &kp LGUI    &kp LALT   &kp   LSHFT   &kp LCTRL                                                &kp LEFT      &kp DOWN        &kp UP        &kp RIGHT    &kp   F7          &kp        PRINTSCREEN
@@ -334,15 +340,15 @@
                 volume_layer {
                         display-name = "VOLUME";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       RHYPER |      RMEH |     LCG   |       LCA  |       LSC   |     LAG   |                                              |                    |     K_VOLUME_DOWN  |     K_VOlUME_UP  |                       |              |                |
-// |       LHYPER |      LMEH |     LGUI  |       LALT |       LSHFT |     LCTRL |                                              |       C_BASS_BOOST |     C_VOLUME_DOWN  |     C_VOLUME_UP  |       C_ALT_AUDIO_INC |              |                |
-// |              |           |     RCTRL |       RALT |       RGUI  |     RSHFT |                                              |                    |     K_VOLUME_DOWN2 |     K_VOlUME_UP2 |                       |              |                |      
-//                                        |            |             |           |                                              |       K_MUTE       |     C_MUTE         |     K_MUTE2      |
+// |       RHYPER |      RMEH |     LCG   |       LCA  |       LSC    |    LAG   |                                              |                    |     K_VOLUME_DOWN  |     K_VOlUME_UP  |                       |              |                |
+// |       LHYPER |      LMEH |     LGUI  |       LALT |       LSHFT  |    LCTRL |                                              |       C_BASS_BOOST |     C_VOLUME_DOWN  |     C_VOLUME_UP  |       C_ALT_AUDIO_INC |              |                |
+// |              |           |     RCTRL |       RALT |       RGUI   |    RSHFT |                                              |                    |     K_VOLUME_DOWN2 |     K_VOlUME_UP2 |                       |              |                |      
+//                                        |            |       repeat |          |                                              |       K_MUTE       |     C_MUTE         |     K_MUTE2      |
                         bindings = <
      &kp   RHYPER   &kp  RMEH   &kp LCG     &kp   LCA    &kp   LSC   &kp   LAG                                                    &none                &kp K_VOLUME_DOWN    &kp K_VOLUME_UP    &none                   &none  &none 
      &kp   LHYPER   &kp  LMEH   &kp LGUI    &kp   LALT   &kp   LSHFT &kp   LCTRL                                                  &kp   C_BASS_BOOST   &kp C_VOLUME_DOWN    &kp C_VOLUME_UP    &kp   C_ALT_AUDIO_INC   &none  &none
      &none          &none       &kp RCTRL   &kp   RALT   &kp   RGUI  &kp   RSHFT                                                  &none                &kp K_VOLUME_DOWN2   &kp K_VOLUME_UP2   &none                   &none  &none
-                                            &none        &none       &none                                                        &kp   K_MUTE         &kp C_MUTE           &kp K_MUTE2
+                                            &none        &key_repeat &none                                                        &kp   K_MUTE         &kp C_MUTE           &kp K_MUTE2
                         >;
                 };
 
