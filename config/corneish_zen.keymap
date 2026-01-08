@@ -227,6 +227,13 @@
 			hold-trigger-key-positions = <KEYS_L THUMBS_L>;
 	  	};
 
+		leader: leader {
+			compatible = "zmk,behavior-leader-key";
+			#binding-cells = <0>;
+			/* --- EMOTICONS.H --- */
+			grinning_face { sequence = <S G F>; bindings = <&uc UC_EMJ_GRINNING_FACE>; };
+                };
+
 	};
 
         keymap {
@@ -333,7 +340,7 @@
      &kp   RHYPER    &kp   RMEH     &kp LCG     &kp LCA    &kp   LSC     &kp LAG                                                  &kp K_PASTE   &kp K_COPY      &kp K_CUT     &kp K_UNDO   &kp   K_REDO      &kp        INS
      &kp   LHYPER    &kp   LMEH     &kp LGUI    &kp LALT   &kp   LSHFT   &kp LCTRL                                                &kp LEFT      &kp DOWN        &kp UP        &kp RIGHT    &kp   F7          &kp        PRINTSCREEN
      &none           &none          &kp RGUI    &kp RALT   &kp   RSHFT   &kp RCTRL                                                &kp HOME      &kp PAGE_DOWN   &kp PAGE_UP   &kp END      &kp   SCROLLLOCK  &kp        K_APP
-                                                &kp CAPS   &none         &none                                                    &kp RET       &kp DEL         &kp BSPC      
+                                                &kp CAPS   &none         &leader                                                  &kp RET       &kp DEL         &kp BSPC      
                         >;
                 };
 
