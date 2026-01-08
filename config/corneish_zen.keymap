@@ -142,13 +142,6 @@
 			hold-trigger-key-positions = <KEYS_L THUMBS_L>;
 	  	};
 
-		leader: leader {
-			compatible = "zmk,behavior-leader-key";
-			#binding-cells = <0>;
-			/* --- EMOTICONS.H --- */
-			grinning_face { sequence = <S G F>; bindings = <&uc UC_EMJ_GRINNING_FACE>; };
-                };
-
 	};
 
         keymap {
@@ -160,7 +153,7 @@
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |          DQT      |         Q  |            W  |           E   |            R   |               T     |                       |             Y   |            U   |               I    |              O  |               P  |            \        |
 // |          HASH     |         A  |            S  |           D   |            F   |               G     |                       |             H   |            J   |               K    |              L  |               ;  |            "        |
-// |          leader   |         Z  |            X  |           C   |            V   |               B     |                       |             N   |            M   |               ,    |              .  |               /  |            '        |       
+// |                   |         Z  |            X  |           C   |            V   |               B     |                       |             N   |            M   |               ,    |              .  |               /  |            '        |       
 //                                                  |           ESC |            TAB |               SPACE |                       |             RET |            DEL |               BSPC |
                         bindings = <
    &hl RHYPER DQT       &hl RMEH Q   &hl LCG     W    &hl LCA    E    &hl LSC    R     &hl LAG       T                               &hr RAG     Y     &hr RSC    U     &kp           I      &kp          O    &kp           P    &kp        BACKSLASH
@@ -177,12 +170,12 @@
 // |       RHYPER  |       RMEH   |     LCG   |     LCA  |       LSC   |     LAG    |                                           |     PASTE   |     COPY      |     CUT     |     UNDO   |       REDO      |            INS         |
 // |       LHYPER  |       LMEH   |     LGUI  |     LALT |       LSHFT |     LCTRL  |                                           |     LEFT    |     DOWN      |     UP      |     RIGHT  |       F7        |            PRINTSCREEN |
 // |               |              |     RGUI  |     RALT |       RSHFT |     RCTRL  |                                           |     HOME    |     PAGE_DOWN |     PAGE_UP |     END    |      SCROLLLOCK |            K_APP       |
-//                                            |     CAPS |             |     leader |                                           |     RET     |     DEL       |     BSPC    |
+//                                            |     CAPS |             |            |                                           |     RET     |     DEL       |     BSPC    |
                         bindings = <
      &kp   RHYPER    &kp   RMEH     &kp LCG     &kp LCA    &kp   LSC     &kp LAG                                                  &kp K_PASTE   &kp K_COPY      &kp K_CUT     &kp K_UNDO   &kp   K_REDO      &kp        INS
      &kp   LHYPER    &kp   LMEH     &kp LGUI    &kp LALT   &kp   LSHFT   &kp LCTRL                                                &kp LEFT      &kp DOWN        &kp UP        &kp RIGHT    &kp   F7          &kp        PRINTSCREEN
      &none           &none          &kp RGUI    &kp RALT   &kp   RSHFT   &kp RCTRL                                                &kp HOME      &kp PAGE_DOWN   &kp PAGE_UP   &kp END      &kp   SCROLLLOCK  &kp        K_APP
-                                                &kp CAPS   &none         &leader                                                  &kp RET       &kp DEL         &kp BSPC      
+                                                &kp CAPS   &none         &none                                                    &kp RET       &kp DEL         &kp BSPC      
                         >;
                 };
 
