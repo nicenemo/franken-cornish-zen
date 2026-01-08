@@ -13,56 +13,18 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/ext_power.h>
-#include "keys/numpad_extra_keys.h"
-#include "keys/consumer_extra_keys.h"
 #include "keys/custom_modifiers.h"
 
 #include "keys/keys.h"
 
-#include "keys/combined_punctuation.h"
-#include "keys/combined_supplemental_punctuation.h"
-#include "keys/ulti_math.h"
-
-#define COPILOT  LSGK(F23)
-// linux unicode input
-#define LUC      LSCK(U)
-// Windows unicode input
-#define WUC      LA(X)
 
 
 // layers
 #define DEFAULT     0
-#define NGRAM       0
-#define QWERTY      1
-#define NUM         2
-#define KEYPAD      3
-#define SYM1        4
-#define SYM2        5
-#define NAV         6
-#define VOLUME      7 
-#define FUN         8
-#define HFUN        9
-#define HYPFUN     10
-#define HYPHFUN    11
-#define MEHFUN     12
-#define MEHHFUN    13
-#define MOUSE      14
-#define CONFIG     15
-#define POWER      16
-#define DISPLAY    17
-#define APPLAUNCH  18
-#define CONSUMER   19
-#define APL_BQN    20  
-#define LOGIC_SETS 21  
-#define MATH_ANLS  22  
-#define GR_MODERN  23  
-#define GRARCH     24  
-#define GRCOPT     25
-#define PUNC_TYP   26
-#define PUNC_TEC   27
-#define SUP_EDT    28
-#define SUP_HIS    29
-#define EMPTYLAYER 30
+#define QWERTY      0
+#define NAV         1
+#define CONFIG      2
+#define GR_MODERN   3  
 
 / {
   chosen {
@@ -100,69 +62,22 @@
  / {
 	combos {
         	compatible = "zmk,combos";
-		
+
 		combo_sticky_config {
-            		layers = <NGRAM QWERTY CONFIG>;
+            		layers = <QWERTY CONFIG>;
             		timeout-ms = <25>;
             		key-positions = <24 35>;
             		bindings = <&tog CONFIG>;
         	};
-
-		combo_sticky_math {
-                       timeout-ms = <50>;
-                       key-positions = <29 35>; 
-                       bindings = <&tog APL_BQN>;
-                };
-
-		combo_sticky_logic {
-                       timeout-ms = <50>;
-                       key-positions = <0 35>; 
-                       bindings = <&tog LOGIC_SETS>;
-                };
-
-		combo_sticky_analysis {
-                       timeout-ms = <50>;
-                       key-positions = <0 11>; 
-                       bindings = <&tog MATH_ANLS>;
-                };
-
+		
 
 		combo_sticky_greek {
+            	       layers = <QWERTY GR_MODERN>;
                        timeout-ms = <50>;
                        key-positions = <24 29>; 
                        bindings = <&tog GR_MODERN>;
                 };
 
-		combo_sticky_arachic_greek {
-                       timeout-ms = <50>;
-                       key-positions = <0 29>; 
-                       bindings = <&tog GRARCH>;
-                };
-
-		combo_sticky_coptic {
-                       timeout-ms = <50>;
-                       key-positions = <0 30>; 
-                       bindings = <&tog GRCOPT>;
-                };
-
-
-		combo_sticky_punctuation {
-                       timeout-ms = <50>;
-                       key-positions = <6 11>; 
-                       bindings = <&tog PUNC_TYP>;
-                };
-
-		combo_sticky_supplemental_punctuation {
-                       timeout-ms = <50>;
-                       key-positions = <0 5>; 
-                       bindings = <&tog SUP_EDT>;
-                };
-
-		combo_sticky_historical_punctuation {
-                       timeout-ms = <50>;
-                       key-positions = <0 6>; 
-                       bindings = <&tog SUP_HIS>;
-                };
     	};
 
         macros {
@@ -227,100 +142,34 @@
 			hold-trigger-key-positions = <KEYS_L THUMBS_L>;
 	  	};
 
+		leader: leader {
+			compatible = "zmk,behavior-leader-key";
+			#binding-cells = <0>;
+			/* --- EMOTICONS.H --- */
+			grinning_face { sequence = <S G F>; bindings = <&uc UC_EMJ_GRINNING_FACE>; };
+                };
+
 	};
 
         keymap {
                 compatible = "zmk,keymap";
 
-                ngram_layer {
-                        display-name = "NGRAM";
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |          DQT      |         B  |            Y  |           O   |            U   |               SQT   |                       |             SEMI |            L   |               D    |              W  |               V  |            Z         |
-// |          HASH     |         C  |            I  |           E   |            A   |               COMMA |                       |             DOT  |            H   |               T    |              S  |               N  |            Q         |
-// |          GRAVE    |         G  |            X  |           J   |            K   |               MINUS |                       |             FSLH |            R   |               M    |              F  |               P  |            BACKSLASH |       
-//                                                  |           ESC |            TAB |               SPACE |                       |             RET  |            DEL |               BSPC |
-                        bindings = <
-   &hl RHYPER DQT       &hl RMEH B   &hl LCG     Y    &hl LCA    O    &hl LSC    U     &hl LAG       SQT                             &hr RAG     SEMI   &hr RSC    L     &lt HYPHFUN   D      &lt HYPFUN   W    &lt HFUN      V    &lt FUN    Z 
-   &hl LHYPER HASH      &hl LMEH C   &hl LGUI    I    &hl LALT   E    &hl LSHFT  A     &hl LCTRL     COMMA                           &hr RCTRL   DOT    &hr RSHFT  H     &hr RALT      T      &hr RGUI     S    &hr RMEH      N    &hr RHYPER Q
-   &lt APPLAUNCH GRAVE  &hl LCA  G   &hl RGUI    X    &hl RALT   J    &hl RSHFT  K     &hl RCTRL     MINUS                           &hr LCTRL   FSLH   &hr LSHFT  R     &hr LALT      M      &hr LGUI     F    &kp           P    &lt KEYPAD BACKSLASH 
-                                                      &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET    &lt SYM1   DEL   &lt SYM2      BSPC 
-                        >;
-                };
 
                 qwerty_layer {
                         display-name = "QWERTY";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // |          DQT      |         Q  |            W  |           E   |            R   |               T     |                       |             Y   |            U   |               I    |              O  |               P  |            \        |
 // |          HASH     |         A  |            S  |           D   |            F   |               G     |                       |             H   |            J   |               K    |              L  |               ;  |            "        |
-// |          GRAVE    |         Z  |            X  |           C   |            V   |               B     |                       |             N   |            M   |               ,    |              .  |               /  |            '        |       
+// |          leader   |         Z  |            X  |           C   |            V   |               B     |                       |             N   |            M   |               ,    |              .  |               /  |            '        |       
 //                                                  |           ESC |            TAB |               SPACE |                       |             RET |            DEL |               BSPC |
                         bindings = <
-   &hl RHYPER DQT       &hl RMEH Q   &hl LCG     W    &hl LCA    E    &hl LSC    R     &hl LAG       T                               &hr RAG     Y     &hr RSC    U     &lt HYPHFUN   I      &lt HYPFUN   O    &lt HFUN   P       &lt FUN    BACKSLASH
+   &hl RHYPER DQT       &hl RMEH Q   &hl LCG     W    &hl LCA    E    &hl LSC    R     &hl LAG       T                               &hr RAG     Y     &hr RSC    U     &kp           I      &kp          O    &kp           P    &kp        BACKSLASH
    &hl LHYPER HASH      &hl LMEH A   &hl LGUI    S    &hl LALT   D    &hl LSHFT  F     &hl LCTRL     G                               &hr RCTRL   H     &hr RSHFT  J     &hr RALT      K      &hr RGUI     L    &hr RMEH      SEMI &hr RHYPER DQT
-   &lt APPLAUNCH GRAVE  &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT      COMMA  &hr LGUI     DOT  &kp           FSLH &lt KEYPAD SQT 
-                                                      &lt VOLUME ESC  &lt NAV    TAB   &lt MOUSE     SPACE                           &lt NUM     RET   &lt SYM1   DEL   &lt SYM2      BSPC 
+   &none                &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT      COMMA  &hr LGUI     DOT  &kp           FSLH &kp        SQT 
+                                                      &kp        ESC  &lt NAV    TAB   &kp           SPACE                           &kp         RET   &kp        DEL   &kp           BSPC 
                         >;
                 };
 
-                number_layer {
-                        display-name = "NUM";
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |   %           |     7        |     8        |     9        |     :        | k        |                                     |          D        |           E       |          F |           |      LMEH |          LHYPER  |
-// |   +           |     4        |     5        |     6        |     -        | j        |                                     |          A        |           B       |          C |           |      RMEH |          RHYPER  |
-// |   *           |     1        |     2        |     3        |     /        | G        |                                     |          =        |                   |            |           |      WUC  |                  |
-//                                               |     0        |     ,        | .        |                                     |                   |      UNDER        |       LUC  |
-                            bindings = <
-   &kp PERCENT       &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9   &kp COLON      &kp K                                            &hr RAG   D          &hr RSC   E          &hr RCA  F    &hr RCG PIPE   &hr LMEH PIPE   &kp LHYPER
-   &kp KP_PLUS       &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6   &kp KP_MINUS   &kp J                                            &hr RCTRL A          &hr RSHFT B          &hr RALT C    &hr RGUI AMPS  &hr RMEH AMPS   &kp RHYPER
-   &kp KP_ASTERISK   &kp NUMBER_1   &kp NUMBER_2   &kp NUMBER_3   &kp KP_SLASH   &kp LS(G)                                        &hr LCTRL EQL        &kp LSHFT            &kp LALT      &kp LGUI       &kp  WUC         &none
-                                                   &kp NUMBER_0   &kp COMMA      &kp DOT                                          &none                &kp UNDER            &kp LUC      
-                        >;
-                };
-
-                keypad_layer {
-                        display-name = "KEYPAD";
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |   %           |     7        |     8        |     9        |     :        | k        |                                     |            D       |            E       |           F         |           PIPE    |     PIPE PIPE         |            XOR     |
-// |   +           |     4        |     5        |     6        |     -        | j        |                                     |            A       |            B       |           C         |           AND     |     AND_AND           |            CARET   |
-// |   *           |     1        |     2        |     3        |     /        | G        |                                     |            BIN     |            OCT     |           DEC       |           HEX     |     NUMLOCK           |                    |
-//                                               |     0        |     ,        | .        |                                     |            ENTER   |            UNDER   |           BSPC      |
-                            bindings = <
-   &kp KP_PERCENT    &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp COLON      &kp K                                                      &hr RAG   KP_D       &hr RSC   KP_E       &hr RCA  KP_F         &hr RCG  KP_PIPE   &hr LMEH KP_PIPE_PIPE   &hr LHYPER KP_XOR
-   &kp KP_PLUS       &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_MINUS   &kp J                                                      &hr RCTRL KP_A       &hr RSHFT KP_B       &hr RALT KP_C         &hr RGUI KP_AND    &hr RMEH KP_AND_AND     &hr RHYPER KP_CARET
-   &kp KP_ASTERISK   &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_SLASH   &kp LS(G)                                                  &hr LCTRL KP_BIN     &hr LSHFT KP_OCT     &hr LALT KP_DEC       &hr LGUI KP_HEX    &kp KP_NUM              &none
-                                             &kp KP_N0   &kp KP_COMMA   &kp KP_DOT                                                 &kp       KP_ENTER   &kp UNDER            &kp KP_BACKSPACE      
-                        >;
-                };
-
-
-                symbols_layer1 {
-                        display-name = "SYM1";
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |   !    |     {    |     '    |     "     |           }    |      ?       |                                                |      RAG          |     RSC   |      RCA  |     RCG   |     LMEH |     LHYPER  |
-// |   #    |     ^    |     =    |     _     |           $    |      *       |                                                |           TILDE2  |     RSHFT |      RALT |     RGUI  |     RMEH |     RHYPER  |
-// |   @    |     <    |    "|"   |     -     |           >    |      /       |                                                |           NUHS    |     LSHFT |      LALT |     LGUI  |     RAG  |     RCA     |
-//                                |     €     |           .    |      *       |                                                |                   |             | CAPS WORD |
-                       bindings = <
-   &kp EXCL   &kp LBRC   &kp SQT    &kp DQT           &kp RBRC    &kp QMARK                                                      &kp  RAG           &kp   RSC     &kp   RCA   &kp RCG     &kp LMEH   &kp LHYPER
-   &kp HASH   &kp CARET  &kp EQUAL  &kp UNDER         &kp DOLLAR  &kp ASTERISK                                                   &hr  RCTRL TILDE2  &kp   RSHFT   &kp   RALT  &kp RGUI    &kp RMEH   &kp RHYPER
-   &kp AT     &kp LT     &kp PIPE   &kp MINUS         &kp GT      &kp SLASH                                                      &hr  LCTRL NUHS    &kp   LSHFT   &kp   LALT  &kp LGUI    &kp RAG    &kp RCA
-                                    &kp RA(NUMBER_5)  &kp DOT     &kp ASTERISK                                                   &tog SYM1          &none         &caps_word      
-                        >;
-                };
-                symbols_layer2 {
-                        display-name = "SYM2";
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |   !    |     `     |      (   |     )       |     ;      |     ,         |                                                 |      RAG         |        RSC   |       RCA  |     RCG   |    LMEH |    LHYPER  |
-// |   #    |     ^     |     =    |     _       |     $      |     *         |                                                 |            PIPE2 |        RSHFT |       RALT |     RGUI  |    RMEH |    RHYPER  |
-// |   ~    |     &     |     [    |     ]       |     +      |     \         |                                                 |      LCTRL       |        LSHFT |       LALT |     LGUI  |    RAG  |    RCA     |
-//                                 |     %       |     :      |     ;         |                                                 |      00          |        000   |            |
-                       bindings = <
-   &kp EXCL   &kp GRAVE   &kp LPAR   &kp RPAR      &kp SEMI     &kp COMMA                                                         &kp  RAG            &kp   RSC     &kp   RCA    &kp RCG    &kp LMEH  &kp LHYPER
-   &kp HASH   &kp CARET   &kp EQUAL  &kp UNDER     &kp DOLLAR   &kp ASTERISK                                                      &kp  RCTRL          &kp   RSHFT   &kp   RALT   &kp RGUI   &kp RMEH  &kp RHYPER
-   &kp TILDE  &kp AMPS    &kp LBKT   &kp RBKT      &kp PLUS     &kp BACKSLASH                                                     &hr  LCTRL PIPE2    &kp   LSHFT   &kp   LALT   &kp LGUI   &kp RAG   &kp RCA
-                                     &kp PERCENT   &kp COLON    &kp SEMI                                                          &kpd NUM_0          &kpt  NUM_0   &none      
-                        >;
-                };
 
                 nav_layer {
                         display-name = "NAV";
@@ -328,135 +177,15 @@
 // |       RHYPER  |       RMEH   |     LCG   |     LCA  |       LSC   |     LAG    |                                           |     PASTE   |     COPY      |     CUT     |     UNDO   |       REDO      |            INS         |
 // |       LHYPER  |       LMEH   |     LGUI  |     LALT |       LSHFT |     LCTRL  |                                           |     LEFT    |     DOWN      |     UP      |     RIGHT  |       F7        |            PRINTSCREEN |
 // |               |              |     RGUI  |     RALT |       RSHFT |     RCTRL  |                                           |     HOME    |     PAGE_DOWN |     PAGE_UP |     END    |      SCROLLLOCK |            K_APP       |
-//                                            |     CAPS |             |     none   |                                           |     RET     |     DEL       |     BSPC    |
+//                                            |     CAPS |             |     leader |                                           |     RET     |     DEL       |     BSPC    |
                         bindings = <
      &kp   RHYPER    &kp   RMEH     &kp LCG     &kp LCA    &kp   LSC     &kp LAG                                                  &kp K_PASTE   &kp K_COPY      &kp K_CUT     &kp K_UNDO   &kp   K_REDO      &kp        INS
      &kp   LHYPER    &kp   LMEH     &kp LGUI    &kp LALT   &kp   LSHFT   &kp LCTRL                                                &kp LEFT      &kp DOWN        &kp UP        &kp RIGHT    &kp   F7          &kp        PRINTSCREEN
      &none           &none          &kp RGUI    &kp RALT   &kp   RSHFT   &kp RCTRL                                                &kp HOME      &kp PAGE_DOWN   &kp PAGE_UP   &kp END      &kp   SCROLLLOCK  &kp        K_APP
-                                                &kp CAPS   &none         &none                                                    &kp RET       &kp DEL         &kp BSPC      
+                                                &kp CAPS   &none         &leader                                                  &kp RET       &kp DEL         &kp BSPC      
                         >;
                 };
 
-                volume_layer {
-                        display-name = "VOLUME";
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       RHYPER |      RMEH |     LCG   |       LCA  |       LSC    |    LAG   |                                              |                    |     K_VOLUME_DOWN  |     K_VOlUME_UP  |                       |              |                |
-// |       LHYPER |      LMEH |     LGUI  |       LALT |       LSHFT  |    LCTRL |                                              |       C_BASS_BOOST |     C_VOLUME_DOWN  |     C_VOLUME_UP  |       C_ALT_AUDIO_INC |              |                |
-// |              |           |     RCTRL |       RALT |       RGUI   |    RSHFT |                                              |                    |     K_VOLUME_DOWN2 |     K_VOlUME_UP2 |                       |              |                |      
-//                                        |            |       repeat |          |                                              |       K_MUTE       |     C_MUTE         |     K_MUTE2      |
-                        bindings = <
-     &kp   RHYPER   &kp  RMEH   &kp LCG     &kp   LCA    &kp   LSC   &kp   LAG                                                    &none                &kp K_VOLUME_DOWN    &kp K_VOLUME_UP    &none                   &none  &none 
-     &kp   LHYPER   &kp  LMEH   &kp LGUI    &kp   LALT   &kp   LSHFT &kp   LCTRL                                                  &kp   C_BASS_BOOST   &kp C_VOLUME_DOWN    &kp C_VOLUME_UP    &kp   C_ALT_AUDIO_INC   &none  &none
-     &none          &none       &kp RCTRL   &kp   RALT   &kp   RGUI  &kp   RSHFT                                                  &none                &kp K_VOLUME_DOWN2   &kp K_VOLUME_UP2   &none                   &none  &none
-                                            &none        &key_repeat &none                                                        &kp   K_MUTE         &kp C_MUTE           &kp K_MUTE2
-                        >;
-                };
-
-                fun_layer {
-                        display-name = "FUN";
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       |     F7 |   F8 |     F9  |         |            |                                                                   |      RAG    |       RSC   |     RCA  |      RCG  |       LMEH |       LHYPER  |
-// |       |     F4 |   F5 |     F6  |         |            |                                                                   |      RCTRL  |       RSHFT |     RALT |      RGUI |       RMEH |       RHYPER  |
-// |       |     F1 |   F2 |     F3  |         |            |                                                                   |      LCTRL  |       LSHFT |     LALT |      LGUI |            |               |
-//                         |     F10 |     DEL |       BSPC |                                                                   | tog  FUN    |             |          |
-                         bindings = <
-     &none   &kp F7 &kp F8 &kp   F9  &none       &none                                                                            &kp  RAG      &kp   RSC     &kp RCA     &kp RCG    &kp   LMEH   &kp   LHYPER
-     &none   &kp F4 &kp F5 &kp   F6  &none       &none                                                                            &kp  RCTRL    &kp   RSHFT   &kp RALT    &kp RGUI   &kp   RMEH   &kp   RHYPER
-     &none   &kp F1 &kp F2 &kp   F3  &none       &none                                                                            &kp  LCTRL    &kp   LSHFT   &kp LALT    &kp LGUI   &none        &none
-                           &kp   F10 &kp   DEL   &kp   BSPC                                                                       &tog FUN      &none         &none     
-                        >;
-                };
-
-                hfun_layer {
-                        display-name = "HFUN";
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       |     F17 |     F18 |       F19 |       F23  |       F24  |                                                          |      RAG    |       RSC   |       RCA  |      RCG  |       LMEH |       LHYPER  |
-// |       |     F14 |     F15 |       F16 |       F21  |       F22  |                                                          |      RCTRL  |       RSHFT |       RALT |      RGUI |       RMEH |       RHYPER  |
-// |       |     F11 |     F12 |       F13 |            |            |                                                          |      LCTRL  |       LSHFT |       LALT |      LGUI |            |               |
-//                             |       F20 |        DEL |       BSPC |                                                          |  tog HFUN   |             |            |
-                         bindings = <
-     &none   &kp F17   &kp F18   &kp   F19   &kp   F23    &kp   F24                                                               &kp  RAG      &kp   RSC     &kp   RCA     &kp RCG    &kp   LMEH   &kp   LHYPER
-     &none   &kp F14   &kp F15   &kp   F16   &kp   F21    &kp   F22                                                               &kp  RCTRL    &kp   RSHFT   &kp   RALT    &kp RGUI   &kp   RMEH   &kp   RHYPER
-     &none   &kp F11   &kp F12   &kp   F13   &none        &none                                                                   &kp  LCTRL    &kp   LSHFT   &kp   LALT    &kp LGUI   &none        &none
-                                 &kp   F20   &kp   DEL    &kp   BSPC                                                              &tog HFUN     &none         &none     
-                        >;
-                };
-
-                hypfun_layer {
-                        display-name = "HPR FUN";
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       |        F7  |        F8  |        F9  |          |            |                                                     |       RAG    |       RSC   |       RCA  |      RCG  |       LMEH |       LHYPER  |
-// |       |        F4  |        F5  |        F6  |          |            |                                                     |       RCTRL  |       RSHFT |       RALT |      RGUI |       RMEH |       RHYPER  |
-// |       |        F1  |        F2  |        F3  |          |            |                                                     |       LCTRL  |       LSHFT |       LALT |      LGUI |            |               |
-//                                   |        F10 |          |            |                                                     |              |             |            |
-                         bindings = <
-     &none   &kp LH(F7)   &kp LH(F8)   &kp LH(F9)   &none      &none                                                              &kp   RAG      &kp   RSC     &kp   RCA     &kp RCG    &kp   LMEH   &kp   LHYPER
-     &none   &kp LH(F4)   &kp LH(F5)   &kp LH(F6)   &none      &none                                                              &kp   RCTRL    &kp   RSHFT   &kp   RALT    &kp RGUI   &kp   RMEH   &kp   RHYPER
-     &none   &kp LH(F1)   &kp LH(F2)   &kp LH(F3)   &none      &none                                                              &kp   LCTRL    &kp   LSHFT   &kp   LALT    &kp LGUI   &none        &none
-                                       &kp LH(F10)  &kp   DEL  &kp   BSPC                                                         &tog  HYPFUN   &none         &none     
-                        >;
-                };
-
-                hyphfun_layer {
-                        display-name = "HHPR FUN";
-// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       |        F17  |        F18 |        F19 |          F23 |           F24 |                                             |       RAG     |      RSC   |     RCA  |      RCG  |       LMEH |       LHYPER  |
-// |       |        F14  |        F15 |        F16 |          F21 |           F22 |                                             |       RCTRL   |      RSHFT |     RALT |      RGUI |       RMEH |       RHYPER  |
-// |       |        F11  |        F12 |        F13 |              |               |                                             |       LCTRL   |      LSHFT |     LALT |      LGUI |            |               |
-//                                    |        F20 |          DEL |        BSPC   |                                             | tog   HYPHFUN |            |          |
-                         bindings = <
-     &none   &kp LH(F17)   &kp LH(F18)  &kp LH(F19)   &kp   LH(F23)  &kp   LH(F24)                                                &kp  RAG        &kp   RSC     &kp RCA     &kp RCG    &kp   LMEH   &kp   LHYPER
-     &none   &kp LH(F14)   &kp LH(F15)  &kp LH(F16)   &kp   LH(F21)  &kp   LH(F22)                                                &kp  RCTRL      &kp   RSHFT   &kp RALT    &kp RGUI   &kp   RMEH   &kp   RHYPER
-     &none   &kp LH(F11)   &kp LH(F12)  &kp LH(F13)   &none          &none                                                        &kp  LCTRL      &kp   LSHFT   &kp LALT    &kp LGUI   &none        &none
-                                        &kp LH(F20)   &kp   DEL      &kp   BSPC                                                   &tog HYPHFUN    &none         &none     
-                        >;
-                };
-
-                mehfun_layer {
-                        display-name = "LMEH FUN";
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |      |         F7  |        F8  |        F9   |           |           |                                                     |      RAG    |       RSC   |       RCA  |      RCG  |       LMEH |       LHYPER  |
-// |      |         F4  |        F5  |        F6   |           |           |                                                     |      RCTRL  |       RSHFT |       RALT |      RGUI |       RMEH |       RHYPER  |
-// |      |         F1  |        F2  |        F3   |           |           |                                                     |      LCTRL  |       LSHFT |       LALT |      LGUI |            |               |
-//                                   |        F10  |       DEL |      BSPC |                                                     |  tog MEHFUN |             |            |
-                         bindings = <
-    &none    &kp LM(F7)   &kp LM(F8)   &kp LM(F9)    &none      &none                                                             &kp  RAG       &kp   RSC     &kp   RCA     &kp RCG    &kp   LMEH   &kp   LHYPER
-    &none    &kp LM(F4)   &kp LM(F5)   &kp LM(F6)    &none      &none                                                             &kp  RCTRL     &kp   RSHFT   &kp   RALT    &kp RGUI   &kp   RMEH   &kp   RHYPER
-    &none    &kp LM(F1)   &kp LM(F2)   &kp LM(F3)    &none      &none                                                             &kp  LCTRL     &kp   LSHFT   &kp   LALT    &kp LGUI   &none        &none
-                                       &kp LM(F10)   &kp   DEL  &kp   BSPC                                                        &tog MEHFUN    &none         &none     
-                        >;
-                };
-
-                mehhfun_layer {
-                        display-name = "HLMEH FUN";
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-// |       |        F17  |        F18  |        F19  |          F23  |          F24  |                                          |       RAG     |       RSC    |       RCA  |      RCG  |       LMEH |       LHYPER  |
-// |       |        F14  |        F15  |        F16  |          F21  |          F22  |                                          |       RCTRL   |       RSHFT  |       RALT |      RGUI |       RMEH |       RHYPER  |
-// |       |        F11  |        F12  |        F13  |               |               |                                          |       LCTRL   |       LSHFT  |       LALT |      LGUI |            |               |
-//                                     |        F20  |               |               |                                          |   tog MEHHFUN |              |            |
-                         bindings = <
-     &none   &kp LM(F17)   &kp LM(F18)   &kp LM(F19)   &kp   LM(F23)   &kp   LM(F24)                                              &kp  RAG        &kp   RSC     &kp   RCA     &kp RCG    &kp   LMEH   &kp   LHYPER
-     &none   &kp LM(F14)   &kp LM(F15)   &kp LM(F16)   &kp   LM(F21)   &kp   LM(F22)                                              &kp  RCTRL      &kp   RSHFT   &kp   RALT    &kp RGUI   &kp   RMEH   &kp   RHYPER
-     &none   &kp LM(F11)   &kp LM(F12)   &kp LM(F13)   &none           &none                                                      &kp  LCTRL      &kp   LSHFT   &kp   LALT    &kp LGUI   &none        &none
-                                         &kp LM(F20)   &kp   DEL       &kp   BSPC                                                 &tog MEHHFUN    &none         &none     
-                        >;
-                };
-
-                mouse_layer {
-                        display-name = "MOUSE";
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |            |       |            |             |             |            |                                                    |                 |       MB4       |       MB5     |                  |       |       |
-// |     LHYPER |       |      LGUI  |        LALT |       LSHFT | LCTRL      |                                                    |       MOVE_LEFT |       MOVE_DOWN |       MOVE_UP |       MOVE_RIGHT |       |       |
-// |     LMEH   |       |      RGUI  |        RALT |       RSHFT | RCTRL      |                                                    |       SCRL_LEFT |       SCRL_DOWN |       SCRL_UP |       SCRL_RIGHT |       |       |      
-//                                   |             |       F7    |            |                                                    |       LCLK      |       RCLK      |       MCLK    |
-                        bindings = <
-   &none          &none   &none         &none        &none         &none                                                             &none             &mkp  MB4         &mkp  MB5       &none              &none   &none   
-   &kp   LHYPER   &none   &kp   LGUI    &kp   LALT   &kp   LSHFT   &kp   LCTRL                                                       &mmv  MOVE_LEFT   &mmv  MOVE_DOWN   &mmv  MOVE_UP   &mmv  MOVE_RIGHT   &none   &none   
-   &kp   LMEH     &none   &kp   RGUI    &kp   RALT   &kp   RSHFT   &kp   RCTRL                                                       &msc  SCRL_LEFT   &msc  SCRL_DOWN   &msc  SCRL_UP   &msc  SCRL_RIGHT   &none   &none
-                                        &none        &kp   F7      &none                                                             &mkp  LCLK        &mkp  RCLK        &mkp  MCLK      
-                        >;
-                };
-                
                 config_layer {
                         display-name = "CONFIG";
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -465,118 +194,10 @@
 // | soft off       |                 |                    |               |                      |               SOFT OFF |         |      BT_DISC 0   |     BT_DISC 1   |     BT_DISC 2 |     BIT_DISC 3  |     BT_DISC 4 |            EP_TOG |
 //                                                         |       OUT_USB |              OUT_BLE |               OUT_TOG  |         |      EP_TOG      |     EP_ON       |     EP_OFF    |
                          bindings = <
-   &sys_reset        &none              &none                &none                  &to   QWERTY            &to   NGRAM                &bt  BT_CLR        &bt BT_PRV        &bt BT_NXT      &bt BT_CLR_ALL    &none           &sys_reset 
+   &sys_reset        &none              &none                &none                  &none                   &none                      &bt  BT_CLR        &bt BT_PRV        &bt BT_NXT      &bt BT_CLR_ALL    &none           &sys_reset 
    &bootloader       &uc UC_SET_MACOS   &uc UC_SET_WIN_ALT   &uc UC_SET_WIN_COMPOSE &uc   UC_SET_LINUX_ALT  &uc   UC_SET_LINUX         &bt  BT_SEL 0      &bt BT_SEL 1      &bt BT_SEL 2    &bt BT_SEL 3      &bt BT_SEL 4    &bootloader
    &soft_off         &uc UC_SET_EMACS   &none                &none                  &none                   &soft_off                  &bt  BT_DISC 0     &bt BT_DISC 1     &bt BT_DISC 2   &bt BT_DISC 3     &bt BT_DISC 4   &ext_power EP_TOG
                                                              &out  OUT_USB          &out  OUT_BLE           &out  OUT_TOG              &tog CONFIG        &ext_power EP_ON  &ext_power EP_OFF      
-                        >;
-                };
-
-                power_layer {
-                        display-name = "POWER";
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       |       |       |      |       |         |                                                                           |     C_RESET      |     K_POWER   |    C_POWER     |      |      |       |
-// |       |       |       |      |       |         |                                                                           |     C_SLEEP_MODE |     K_SLEEP   |    C_SLEEP     |      |      |       | 
-// |       |       |       |      |       |         |                                                                           |                  |               |                |      |      |       |
-//                         |      |       |         |                                                                           |     K_LOCK       |     C_AL_LOCK |    C_AL_LOGOFF |
-                         bindings = <
-     &none   &none   &none  &none   &none   &none                                                                                 &kp C_RESET        &kp K_POWER    &kp K_POWER       &none  &none  &none 
-     &none   &none   &none  &none   &none   &none                                                                                 &kp C_SLEEP_MODE   &kp K_SLEEP    &kp C_SLEEP       &none  &none  &none
-     &none   &none   &none  &none   &none   &none                                                                                 &none              &none          &none             &none  &none  &none
-                            &none   &none   &none                                                                                 &kp K_LOCK         &kp C_AL_LOCK  &kp C_AL_LOGOFF  
-                        >;
-                };
-
-
-
-                display_layer {
-                        display-name = "DISPLAY";
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |       |       |       |       |       |       |                                                                            | toggle DISPLAY   |                  |                  |                  |                  |       |
-// |       |       |       |       |       |       |                                                                            |       C_BRI_MIN  |        C_BRI_DEC |        C_BRI_INC |        C_BR_MAX  |       C_BRI_AUTO |       | 
-// |       |       |       |       |       |       |                                                                            |                  |                  |                  |                  |                  |       |
-//                         |       |       |       |                                                                            |       C_BKLT_TOG |        C_ASPECT  |        C_PIP     | 
-                         bindings = <
-     &none   &none   &none   &none   &none   &none                                                                                &tog  DISPLAY      &none              &none              &none              &none              &none 
-     &none   &none   &none   &none   &none   &none                                                                                &kp   C_BRI_MIN    &kp    C_BRI_DEC   &kp    C_BRI_INC   &kp    C_BRI_MAX   &kp   C_BRI_AUTO   &none
-     &none   &none   &none   &none   &none   &none                                                                                &none              &none              &none              &none              &none              &none
-                             &none   &none   &none                                                                                &kp   C_BKLT_TOG   &kp    C_ASPECT    &kp    C_PIP 
-                        >;
-                };
-
-                application_launch_layer {
-                        display-name = "APPL";
-// -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// |        C_AL_MY_COMPUTER |    C_AL_DOCUMENTS   |     C_AL_FILE_BROWSER |     C_AL_WWW                |     K_WWW             |      C_AL_CALCULATOR      |                        |     C_AL_IMAGE_BROWSER |     C_AL_NEWS         |     C_AL_TASK_MANAGER        |    C_AL_KEYBOARD_LAYOUT  |    C_AL_COMMAND_LINE                    |     C_AL_HELP         |
-// |        C_AL_EMAIL       |    C_AL_CALENDAR    |     C_AL_CONTACTS     |     C_AL_INSTANT_MESSAGING  |     C_AL_NETWORK_CHAT |      C_AL_TEXT_EDITOR     |                        |     C_AL_AUDIO_BROWSER |     C_AL_VOICEMAIL    |     C_AL_AV_CAPTURE_PLAYBACK |    C_AL_THESAURUS        |    C_AL_TELEPHONY_DIALER                |     K_HELP            |
-// |        C_AL_WORD        |    C_AL_SPREADSHEET |     C_AL_PRESENTATION |     C_AL_DATABASE           |     C_AL_JOURNAL      |      C_AL_GRAPHICS_EDITOR |                        |     C_AL_MOVIE_BROWSER |     C_AL_FINANCE      |     C_AL_SPELLCHECK          |    C_AL_GRAMMAR_CHECK    |    C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT |     C_AL_OEM_FEATURES |
-//                                                 |     C_AL_PRESENTATION |     C_AL_PREV_TASK          |     C_AL_NEXT_TASK    |                           |                        |     C_AL_SCREEN_SAVER  |     C_AL_COMMAND_LINE |     C_AL_SELECT_TASK         |
-                         bindings = <
-   &kp      C_AL_MY_COMPUTER  &kp C_AL_DOCUMENTS     &kp C_AL_FILE_BROWSER   &kp C_AL_WWW                  &kp K_WWW               &kp  C_AL_CALCULATOR                                 &kp C_AL_IMAGE_BROWSER   &kp C_AL_NEWS           &kp C_AL_TASK_MANAGER         &kp C_AL_KEYBOARD_LAYOUT   &kp C_AL_CONTROL_PANEL                     &kp C_AL_HELP
-   &hl LHYPER C_AL_EMAIL      &kp C_AL_CALENDAR      &kp C_AL_CONTACTS       &kp C_AL_INSTANT_MESSAGING    &kp C_AL_NETWORK_CHAT   &kp  C_AL_TEXT_EDITOR                                &kp C_AL_AUDIO_BROWSER   &kp C_AL_VOICEMAIL      &kp C_AL_AV_CAPTURE_PLAYBACK  &kp C_AL_THESAURUS         &kp C_AL_TELEPHONY_DIALER                  &kp K_HELP
-   &hl LMEH C_AL_WORD         &kp C_AL_SPREADSHEET   &kp C_AL_PRESENTATION   &kp C_AL_DATABASE             &kp C_AL_JOURNAL        &kp  C_AL_GRAPHICS_EDITOR                            &kp C_AL_MOVIE_BROWSER   &kp C_AL_FINANCE        &kp C_AL_SPELLCHECK           &kp C_AL_GRAMMAR_CHECK     &kp C_AL_CONTEXT_AWARE_DESKTOP_ASSISTANT   &kp C_AL_OEM_FEATURES
-                                                                             &kp C_AL_PREV_TASK            &kp C_AL_NEXT_TASK      &none                                                &kp C_AL_SCREEN_SAVER    &kp C_AL_COMMAND_LINE   &kp C_AL_SELECT_TASK 
-                        >;
-                };
-
-                consumer_layer {
-                        display-name = "CONSUMER";
-// ----------------------------     ---------------------------------------------------------------------------------------------------
-// |       |      |      |     |      |         |                                          |      |      |      |      |      |       |
-// |       |      |      |     |      |         |                                          |      |      |      |      |      |       | 
-// |       |      |      |     |      |         |                                          |      |      |      |      |      |       |
-//                       |     |      |         |                                          |      |      |      |
-                         bindings = <
-   &kp   AT  &none       &none  &none  &none  &none                                          &none  &none  &none  &none  &none  &none 
-   &none     &none       &none  &none  &none  &none                                          &none  &none  &none  &none  &none  &none
-   &none     &none       &none  &none  &none  &none                                          &none  &none  &none  &none  &none  &none
-                                &none  &none  &none                                          &none  &none  &none 
-                        >;
-                };
-
-
-		apl_bqn_layer {
-                        display-name = "APL/BQN";
-// ------------------------------------------------------------------------------------------------------------------------------
-// | ⍝/⋆ | ⌈/⌊ | ⍎/⍣ | ⊥/⊤ | ⍀/⌿ | ⍐/⍗ |                |  Ξ/θ  |  ⁀/↾  |  ℙ/𝔽  |  ⊕/∣  |  ⨾/↔  |  ⋅/′  |
-// | ⍳/⍴ | ⎕/○ | ⍺/⍵ | ⍶/⍹ | ⍤/⌸ | ⌷/⍬ |                |  ↰/↱  |  ⩤/⩥  |  ↣/↠  |  ⤖/⇸  |  ⋿/⦉  |  ⟦/⟧  |
-// | ∘/. | ⊣/⊢ | ∣/⍰ | ⍨/⋄ | ∇/Δ | ⎵/⎴ |                |  ⇐/⇒  |  ‿/·  |  ⌹/⍞  |  ⍇/⍈  |  ⍬/⌻  |  ⌾/⍢  |
-//                     |LOGIC | SHFT | MATH |                | MATH | SHFT |LOGIC |
-                         bindings = <
-   &uc UC_A_LAMP_STAR     &uc UC_A_EP_UP_DN      &uc UC_A_EXEC_PROMPT   &uc UC_A_BASE_DECODE    &uc UC_A_QD_SLOPE_BAR  &uc UC_A_QD_UP_DN          &uc UC_Z_XI_THETA      &uc UC_Z_SEQ_CONCAT    &uc UC_Z_POWER_FINITE  &uc UC_Z_OVERRIDE_PIPE &uc UC_Z_COMP_REL      &uc UC_Z_SPOT_PRIME
-   &uc UC_A_IOTA_RHO      &uc UC_A_QUAD_CIRCLE   &uc UC_A_ALPHA_OMEGA   &uc UC_A_U_ALPHA_OMEGA  &uc UC_A_RANK_KEY      &uc UC_A_SQUAD_ZILDE       &uc UC_Z_DOM_RAN_RES   &uc UC_Z_DOM_RAN_SUB   &uc UC_Z_INJ_SURJ      &uc UC_Z_BIJECT_PARTIAL &uc UC_Z_BAG_MEMB_BRACK &uc UC_Z_SEMANTIC_L_R
-   &uc UC_A_JOT_DOT       &uc UC_A_TACK_LEFT_RIGHT &uc UC_A_STILE_QUERY   &uc UC_A_TILDE_DIAMOND &uc UC_A_DEL_DELTA    &uc UC_B_UNDER_TRANS       &uc UC_B_GET_SET       &uc UC_B_STRAND_NULL   &uc UC_A_QD_DIV_QUOTE  &uc UC_A_QD_READ_WRITE &uc UC_A_QD_PLUS_MINUS &uc UC_A_QD_CIRC_PLUS
-                                         &trans    &kp LSHIFT             &trans                                               &trans      &kp RSHIFT         &trans
-                        >;
-                };
-
-                logic_sets_layer {
-                        display-name = "LOGIC";
-// ------------------------------------------------------------------------------------------------------------------------------
-// | ⊬/⊭ | ⌜/⌝ | ⌞/⌟ | ◻/◊ | ⊻/⇔ | ¬/∼ |                |  ℵ/ℶ  |  ℷ/ℸ  |  ω/ε  |  ⋯/⋮  |  ∅/⌀  |  ≈/∼  |
-// | ∀/∃ | ∃!/∄ | ⊢/⊨ | ∨/∧ | ⊤/⊥ | ↑/⊽ |                |  ℕ/ℤ  |  ℚ/ℝ  |  ℂ/𝔹  |  ∪/∩  |  ⊂/⊆  |  ∈/∉  |
-// | none| none| none| none| none| none|                |  none |  none |  none |  none |  none |  none |
-//                     | APL  | SHFT | MATH |                | MATH | SHFT | APL  |
-                         bindings = <
-   &uc UC_L_NPROVE_NENTAIL &uc UC_L_QUINE_UPPER   &uc UC_L_QUINE_LOWER   &uc UC_L_NEC_POSS      &uc UC_L_XOR_IFF       &uc UC_L_NOT_REVERSE       &uc UC_N_ALEPH_BETH    &uc UC_N_GIMEL_DALET   &uc UC_N_OMEGA_EPS     &uc UC_N_SUP_INF       &uc UC_N_EMPTY_NULL    &uc UC_N_ALMOST_ASYMP
-   &uc UC_L_FORALL_EXISTS  &uc UC_L_UNIQUE_NEXIST &uc UC_L_PROVE_ENTAIL  &uc UC_L_JOIN_MEET     &uc UC_L_TOP_BOTTOM    &uc UC_L_SHEFFER_NOR       &uc UC_N_NAT_INT       &uc UC_N_RAT_REAL      &uc UC_N_COMP_BOOL     &uc UC_N_UNION_ISECT   &uc UC_N_SUB_SUBEQ     &uc UC_N_MEMB_NOT
-   &none                   &none                  &none                  &none                  &none                  &none                      &none                  &none                  &none                  &none                  &none                  &none
-                                          &trans       &kp LSHIFT         &trans                                 &trans      &kp RSHIFT         &trans
-                        >;
-                };
-
-                math_analysis_layer {
-                        display-name = "MATH";
-// ------------------------------------------------------------------------------------------------------------------------------
-// | ∇/Δ | ∂/∞ | →/≅ | ℘/ℏ | ℱ/ℒ | ℨ/∗ |                |  ≡/%  |  ≠/∝  |  ≪/≫  |  ∣/∤  |  ⌈/⌊  |  !/^  |
-// | ∫/∮ | ∬/∯ | ∭/∰ | ⨌/Ш | ∑/∏ | ⋅/⨯ |                |  ≤/≥  |  ±/∓  |  √/∛  |  ℙ/ℙ  |  ℝ/ℑ  |  ⊥/∥  |
-// | π/τ | °/㎭ | ∠/ϕ | ∡/ℯ | none| none|                |  none |  none |  none |  none |  none |  none |
-//                     | APL  | SHFT | LOGIC|                | LOGIC| SHFT | APL  |
-                         bindings = <
-   &uc UC_C_NABLA_LAPLACE  &uc UC_C_PARTIAL_INF   &uc UC_C_LIMIT_APPROX  &uc UC_C_WEIERSTRASS_PLANCK &uc UC_S_FOURIER_LAPLACE &uc UC_S_ZTRANS_CONV       &uc UC_M_CONG_MOD      &uc UC_M_NEQ_PROP      &uc UC_M_MUCH_L_G      &uc UC_M_DIV_NDIV      &uc UC_M_CEIL_FLOOR    &uc UC_M_FACT_EXP
-   &uc UC_C_INT_OINT       &uc UC_C_INT_DBL_CONT  &uc UC_C_INT_TRP_VOL   &uc UC_C_INT_QUAD_SHA  &uc UC_C_SUM_PROD      &uc UC_V_DOT_CROSS         &uc UC_M_LESS_GREATER_EQ &uc UC_M_PL_MIN_MIN_PL &uc UC_M_SQUARE_ROOT   &uc UC_M_PRIME_SET     &uc UC_S_REAL_IMAG     &uc UC_S_PERP_PARALLEL
-   &uc UC_S_PI_TAU         &uc UC_S_DEGREE_RAD    &uc UC_S_PHASE_ARG     &uc UC_S_ANGLE_MEAS    &none                  &none                      &none                  &none                  &none                  &none                  &none                  &none
-                                          &trans       &kp LSHIFT         &trans                                &trans     &kp RSHIFT         &trans
                         >;
                 };
 
@@ -592,116 +213,6 @@
    &uc UC_GRC_ALPHA         &uc UC_GRC_SMALL_SIGMA &uc UC_GRC_DELTA   &uc UC_GRC_PHI   &uc UC_GRC_GAMMA &uc UC_GRC_ETA     &uc UC_GRC_XI    &uc UC_GRC_KAPPA  &uc UC_GRC_LAMDA   &none            &uc UC_GRC_ANO_TELEIA &kp RSHFT
    &uc UC_GRC_ZETA          &uc UC_GRC_CHI         &uc UC_GRC_PSI     &uc UC_GRC_OMEGA &uc UC_GRC_BETA  &uc UC_GRC_NU      &uc UC_GRC_MU    &kp COMMA         &kp DOT            &kp SLASH        &uc UC_GRC_TONOS &none
                                                        &trans         &kp LSHIFT       &trans                                               &trans            &kp RSHIFT         &trans 
-                        >;
-                };
-
-		archaic_greek_layer {
-                        display-name = "GRArch";
-// -----------------------------------------------------------------------------------------
-// |  ϐ   |  ϑ   |  ϒ   |  ϓ   |  ϔ   |  ϕ   | |  ϖ   |  ϰ   |  ϱ   |  ͱ   |  ͳ   |  ͷ   |
-// |  Ά   |  Έ   |  Ή   |  Ί   |  Ό   |  Ύ   | |  Ώ   |  ΐ   |  ΰ   |  ͺ   |      | SHIFT|
-// |  ϗ   |  ϙ   |  ϛ   |  ϝ   |  ϟ   |  ϡ   | |  ϳ   |      |      |  ʹ   |      |      |
-//                   | ESC  | TAB  | SPACE | | RET  | DEL  | BSPC |
-                         bindings = <
-   &uc UC_GREEK_BETA_SYMBOL  &uc UC_GREEK_THETA_SYMBOL &uc UC_GRC_UPSILON_HOOK &uc UC_GRC_UPSILON_ACUTE_AND_HOOK &uc UC_GRC_UPSILON_DIAERESIS_AND_HOOK &uc UC_GREEK_PHI_SYMBOL &uc UC_GREEK_PI_SYMBOL &uc UC_GREEK_KAPPA_SYMBOL &uc UC_GREEK_RHO_SYMBOL &uc UC_GRC_HETA &uc UC_GRC_ARCHAIC_SAMPI &uc UC_GRC_PAMPHYLIAN_DIGAMMA
-   &uc UC_GRC_ALPHA_TONOS     &uc UC_GRC_EPSILON_TONOS  &uc UC_GRC_ETA_TONOS   &uc UC_GRC_IOTA_TONOS              &uc UC_GRC_OMICRON_TONOS              &uc UC_GRC_UPSILON_TONOS &uc UC_GRC_OMEGA_TONOS &uc UC_GRC_SMALL_IOTA_DIALYTIKA_AND_TONOS &uc UC_GRC_SMALL_UPSILON_DIALYTIKA_AND_TONOS &uc UC_GRC_YPOGEGRAMMENI &none &kp RSHFT
-   &uc UC_GRC_KAI             &uc UC_GRC_ARCHAIC_KOPPA  &uc UC_GRC_STIGMA      &uc UC_GRC_DIGAMMA                 &uc UC_GRC_KOPPA                      &uc UC_GRC_SAMPI         &uc UC_GRC_YOT        &none                 &none                 &uc UC_GRC_NUMERAL_SIGN &none &none
-                                                       &trans         &kp LSHIFT       &trans                                               &trans            &kp RSHIFT         &trans 
-                        >;
-                };
-
-		greek_coptic_layer {
-                        display-name = "Coptic";
-// -----------------------------------------------------------------------------------------
-// |  ϣ   |  ϥ   |  ϧ   |  ϩ   |  ϫ   |  ϭ   | |  ϯ   |  ϊ   |  ϋ   |  ϶   |  ϸ   |  ϻ   |
-// |  ϼ   |  Ͻ   |  Ͼ   |  Ͽ   |  ϲ   |  ϵ   | |  ϴ   |      |      |      |      | SHIFT|
-// |      |      |      |      |      |      | |      |      |      |      |      |      |
-//                   | ESC  | TAB  | SPACE | | RET  | DEL  | BSPC |
-                         bindings = <
-   &uc UC_GRC_SHEI           &uc UC_GRC_FEI            &uc UC_GRC_KHEI           &uc UC_GRC_HORI             &uc UC_GRC_GANGIA           &uc UC_GRC_SHIMA            &uc UC_GRC_DEI           &uc UC_GRC_IOTA_DIALYTIKA &uc UC_GRC_UPSILON_DIALYTIKA &uc UC_GRC_REVERSED_LUNATE_EPSILON &uc UC_GRC_SHO &uc UC_GRC_SAN
-   &uc UC_GRC_RHO_STROKE     &uc UC_GRC_REVERSED_LUNATE_SIGMA &uc UC_GRC_DOTTED_LUNATE_SIGMA &uc UC_GRC_REVERSED_DOTTED_LUNATE_SIGMA &uc UC_GRC_LUNATE_SIGMA     &uc UC_GRC_LUNATE_EPSILON   &uc UC_GRC_CAPITAL_THETA &none                     &none                        &none                              &none          &kp RSHFT
-   &none                     &none                     &none                     &none                       &none                       &none                       &none                    &none                     &none                        &none                              &none          &none
-                                                       &trans         &kp LSHIFT       &trans                                               &trans            &kp RSHIFT         &trans 
-                        >;
-                };
-
-	punc_type_layer {
-                        display-name = "P.Typ";
-// ------------------------------------------------------------------------------------------------------------------------------
-// | EN/EM Q | EN/EM S | 3/4 EM | 6/FIG     | P/THIN | H/ZWSP |                | NB/MMS |  - / ‑ |  ‒ / – |  — / ― |  ‖ / ‗ |  ‾ / ‿ |
-// |  ‘ / ’  |  “ / ”  |  ‚ / ‛ |  „ / ‟    |  ‹ / › |  ⁀ / ⁁ |                |  † / ‡ |  • / ‣ |  ′ / ″ |  ‴ / ‵ |  ‶ / ‷ |  ‰ / ‱ |
-// |  ․ / ‥  |  … / ‧  |  ‼ / ‽ |  ⁂ / ⁃    |  ⁈ / ⁉ |  ⁌ / ⁍ |                |        |        |        |        |        |        |
-//                              |  PUNC_TEC |        |        |                |        |        |        |
-                         bindings = <
-   &uc UC_COMB_PUN_EN_EM_QUAD           &uc UC_COMB_PUN_EN_EM_SPACE          &uc UC_COMB_PUN_THREE_FOUR_PER_EM_SPACE  &uc UC_COMB_PUN_SIX_PER_EM_FIGURE_SPACE  &uc UC_COMB_PUN_PUNCTUATION_THIN_SPACE  &uc UC_COMB_PUN_HAIR_SPACE_ZWSP             &uc UC_COMB_PUN_NNBSP_MMS               &uc UC_COMB_HYPHEN_NON_BREAKING_HYPHEN  &uc UC_COMB_FIGURE_DASH_EN_DASH  &uc UC_COMB_EM_DASH_HORIZONTAL_BAR  &uc UC_COMB_DOUBLE_VERTICAL_LINE_LOW_LINE  &uc UC_COMB_OVERLINE_UNDERTIE
-   &uc UC_COMB_SINGLE_QUOTATION_MARKS   &uc UC_COMB_DOUBLE_QUOTATION_MARKS   &uc UC_COMB_SINGLE_LOW_HIGH_REV_QUOTES   &uc UC_COMB_DOUBLE_LOW_HIGH_REV_QUOTES   &uc UC_COMB_SINGLE_GUILLEMETS           &uc UC_COMB_CHARACTER_TIE_CARET_INSERTION   &uc UC_COMB_DAGGER_DOUBLE_DAGGER        &uc UC_COMB_BULLET_TRIANGULAR_BULLET    &uc UC_COMB_PRIME_DOUBLE_PRIME   &uc UC_COMB_TRIPLE_REVERSED_PRIME   &uc UC_COMB_REVERSED_DOUBLE_TRIPLE_PRIME   &uc UC_COMB_PER_MILLE_TEN_THOUSAND
-   &uc UC_COMB_ONE_TWO_DOT_LEADER       &uc UC_COMB_HORIZONTAL_ELLIPSIS_HYPHEN_POINT  &uc UC_COMB_DOUBLE_EXCLAMATION_INTERROBANG  &uc UC_COMB_ASTERISM_HYPHEN_BULLET  &uc UC_COMB_QUESTION_EXCLAM_EXCLAM_QUESTION  &uc UC_COMB_BLACK_LEFT_RIGHT_BULLET  &none  &none  &none  &none  &none  &none
-                                                       &trans         &kp LSHIFT       &trans                                               &trans            &kp RSHIFT         &trans 
-                        >;
-                };
-
-		punc_tech_layer {
-                        display-name = "P.Tec";
-// ------------------------------------------------------------------------------------------------------------------------------
-// | ZWNJ/J  | LRM/RLM | LRE/RLE | PDF/LRO | RLO/PDI | LRI/RLI |                | FSI/LS | WJ/FUN | IT/IS  | IP/CAR | ISS/ASS| IAFS/AA|
-// | NAD/NOD |  ⁄ / ※  |  ⁅ / ⁆  |  ⁇ / ⁊  |  ⁋ / ⁏  |  ⁎ / ⁐  |                |  ⁑ / ⁒ |  ⁓ / ⁔ |  ⁕ / ⁖ |  ⁗ / ⁘ |  ⁙ / ⁚ |  ⁛ / ⁜ |
-// |  ⁝ / ⁞  |         |         |         |         |         |                |        |        |        |        |        |        |
-//                     |        |        |        |                        |        |        |        |
-                         bindings = <
-   &uc UC_COMB_PUN_ZW_NON_JOINER_JOINER  &uc UC_COMB_PUN_LTR_RTL_MARK         &uc UC_COMB_PUN_LTR_RTL_EMBEDDING  &uc UC_COMB_PUN_PDF_LTR_OVERRIDE  &uc UC_COMB_PUN_RLO_PDI           &uc UC_COMB_PUN_LTR_RTL_ISOLATE  &uc UC_COMB_PUN_FSI_LINE_PARA_SEP         &uc UC_COMB_PUN_WORD_JOINER_FUNC_APPL  &uc UC_COMB_PUN_INV_TIMES_SEP  &uc UC_COMB_PUN_INV_PLUS_CARET  &uc UC_COMB_PUN_ISS_ASS  &uc UC_COMB_PUN_IAFS_AAFS
-   &uc UC_COMB_PUN_NADS_NODS             &uc UC_COMB_FRACTION_SLASH_REF_MARK  &uc UC_COMB_LEFT_RIGHT_SQUARE_QUILL &uc UC_COMB_DOUBLE_QUES_TIRONIAN_ET &uc UC_COMB_REV_PILCROW_REV_SEMICOLON &uc UC_COMB_LOW_AST_CLOSE_UP &uc UC_COMB_TWO_DOT_ONE_DOT_COMM_MINUS  &uc UC_COMB_SWUNG_DASH_INV_UNDERTIE     &uc UC_COMB_FLOWER_PUNC_THREE_DOT_PUNC &uc UC_COMB_QUAD_PRIME_FOUR_DOT_PUNC &uc UC_COMB_FIVE_DOT_TWO_DOT_PUNC &uc UC_COMB_FOUR_DOT_MARK_DOTTED_CROSS
-   &uc UC_COMB_TRICOLON_VERT_FOUR_DOTS   &none  &none  &none  &none  &none                                                                        &none  &none  &none  &none  &none  &none
-                                                       &trans         &kp LSHIFT       &trans                                               &trans            &kp RSHIFT         &trans 
-                        >;
-                };
-
-
-		sup_editorial_layer {
-                        display-name = "S.EDT";
-// ------------------------------------------------------------------------------------------------------------------------------
-// |  ⸀ / ⸁  |  ⸂ / ⸄  |  ⸃ / ⸅  |  ⸆ / ⸇  |  ⸈ / ⸋  |  ⸉ / ⸊  |                |  ⸌ / ⸍  |  ⸎ / ⸏  |  ⸐ / ⸑  |  ⸒ / ⸓  |  ⸔ / ⸕  |  ⸖ / ⸗  |
-// |  ⸘ / ⸙  |  ⸜ / ⸝  |  ⸠ / ⸡  |  ⸢ / ⸣  |  ⸤ / ⸥  |  ⸦ / ⸧  |                |  ⸨ / ⸩  |  ⹕ / ⹖  |  ⹗ / ⹘  |  ⹙ / ⹚  |  ⹛ / ⹜  |  ⸚ / ⸛  |
-// |  ⸞ / ⸟  |         |         |         |         |         |                |         |         |         |         |         |         |
-//                     | SUP_OLD | LSHIFT  |  trans  |                        |  trans  | RSHIFT  |  trans  |
-                         bindings = <
-   &uc UC_COMB_SUP_SUBST_MARK_DOTTED               &uc UC_COMB_SUP_SUBST_BRACK_LEFT             &uc UC_COMB_SUP_SUBST_BRACK_RIGHT    &uc UC_COMB_SUP_INTERP_MARK_DOTTED    &uc UC_COMB_SUP_TRANSP_MARK_DOTTED    &uc UC_COMB_SUP_TRANSP_BRACK_LEFT_RIGHT
-   &uc UC_COMB_SUP_OMISS_BRACK_LEFT_RIGHT          &uc UC_COMB_SUP_EDITORIAL_CORONIS_PARAGRAPHOS &uc UC_COMB_SUP_FORKED_PARAGRAPHOS_REV &uc UC_COMB_SUP_HYPODIASTOLE_OBELOS &uc UC_COMB_SUP_ANCORA_DOWN_UP       &uc UC_COMB_SUP_RIGHT_ANGLE_DOTTED_OBLIQUE_HYPHEN
-   &uc UC_COMB_SUP_INTERROBANG_PALM_BRANCH         &uc UC_COMB_SUP_PARAPHRASE_BRACK_LEFT_RIGHT  &uc UC_COMB_SUP_VERTICAL_BAR_QUILL_LEFT_RIGHT &uc UC_COMB_SUP_HALF_BRACK_TOP_LEFT_RIGHT &uc UC_COMB_SUP_HALF_BRACK_BOTTOM_LEFT_RIGHT &uc UC_COMB_SUP_SIDEWAYS_U_BRACK_LEFT_RIGHT
-   &uc UC_COMB_SUP_DOUBLE_PAREN_LEFT_RIGHT         &uc UC_COMB_SUP_SQUARE_BRACK_STROKE_LEFT_RIGHT &uc UC_COMB_SUP_SQUARE_BRACK_DBL_STROKE_LEFT_RIGHT &uc UC_COMB_SUP_PAREN_TOP_HALF_LEFT_RIGHT &uc UC_COMB_SUP_PAREN_BOTTOM_HALF_LEFT_RIGHT &uc UC_COMB_SUP_HYPHEN_DIAERESIS_TILDE_RING
-   &uc UC_COMB_SUP_TILDE_DOT_ABOVE_BELOW           &none                                        &none                                &none                                 &none                                 &none
-                                                       &trans         &kp LSHIFT       &trans                                               &trans            &kp RSHIFT         &trans 
-                        >;
-                };
-
-
-		sup_historial_layer {
-                        display-name = "S.HIS";
-// ------------------------------------------------------------------------------------------------------------------------------
-// |  ⸺ / ⸻  |  ⸼ / ⸽  |  ⸾ / ⸿  |  ⸪ / ⸫  |  ⸬ / ⸭  |  ⸮ / ⸯ  |                |  ⸰ / ⸱  |  ⸲ / ⸳  |  ⸴ / ⸵  |  ⸶ / ⸷  |  ⸸ / ⸹  |  ⹀ / ⹁  |
-// |  ⹂ / ⹃  |  ⹄ / ⹅  |  ⹆ / ⹇  |  ⹈ / ⹉  |  ⹊ / ⹋  |  ⹌ / ⹍  |                |  ⹎ / ⹏  |  ⹐ / ⹑  |  ⹒ / ⹝  |  ⹓ / ⹔  |         |         |
-// |         |         |         |         |         |         |                |         |         |         |         |         |         |
-//                     |  trans  | LSHIFT  |  trans  |                        |  trans  | RSHIFT  |  trans  |
-                         bindings = <
-   &uc UC_COMB_SUP_TWO_THREE_EM_DASH               &uc UC_COMB_SUP_STENOGRAPHIC_STOP_SIX_DOTS   &uc UC_COMB_SUP_WIGGLY_LINE_CAPITULUM &uc UC_COMB_SUP_TWO_DOTS_OVER_ONE_OVER_TWO &uc UC_COMB_SUP_SQUARED_FOUR_FIVE_DOT_MARK &uc UC_COMB_SUP_REV_QUESTION_VERTICAL_TILDE
-   &uc UC_COMB_SUP_RING_POINT_MIDDLE_DOT           &uc UC_COMB_SUP_TURNED_RAISED_DOT            &uc UC_COMB_SUP_RAISED_COMMA_TURNED_SEMICOLON &uc UC_COMB_SUP_DAGGER_GUARD_LEFT_RIGHT &uc UC_COMB_SUP_TURNED_DAGGER_SECTION_SIGN &uc UC_COMB_SUP_DOUBLE_HYPHEN_REVERSED_COMMA
-   &uc UC_COMB_SUP_DBL_LOW_REV_9_QUOTE_UPTURN_DASH &uc UC_COMB_SUP_SUSPENSION_MARK_INV_LOW_KAVYKA &uc UC_COMB_SUP_KAVYKA_ABOVE_LOW_KAVYKA &uc UC_COMB_SUP_LOW_KAVYKA_DOT_DBL_STACKED &uc UC_COMB_SUP_DOTTED_SOLIDUS_TRIPLE_DAGGER &uc UC_COMB_SUP_MEDIEVAL_PARAGRAPHUS_MARK
-   &uc UC_COMB_SUP_PUNCTUS_ELEVATUS_CORNISH_DIVIDER &uc UC_COMB_SUP_CROSS_PATTY_RIGHT_LEFT       &uc UC_COMB_SUP_TIRONIAN_ET_OBLIQUE_HYPHEN &uc UC_COMB_SUP_MEDIEVAL_EXCLAM_QUESTION_MARK &none                                 &none
-                                                       &trans         &kp LSHIFT       &trans                                               &trans            &kp RSHIFT         &trans 
-                        >;
-                };
-
-                empty_layer {
-                        display-name = "empty";
-// ------------------------------------------------------------------------------------------------------------------------------
-// |     |      |      |     |      |         |                                      |      |      |      |      |      |       |
-// |     |      |      |     |      |         |                                      |      |      |      |      |      |       | 
-// |     |      |      |     |      |         |                                      |      |      |      |      |      |       |
-//                     |     |      |         |                                      |      |      |      |
-                         bindings = <
-   &none  &none  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none 
-   &none  &none  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none
-   &none  &none  &none  &none  &none  &none                                            &none  &none  &none  &none  &none  &none
-                        &none  &none  &none                                            &none  &none  &none 
                         >;
                 };
         };
