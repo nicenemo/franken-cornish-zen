@@ -165,7 +165,7 @@
                         bindings = <
    &hl RHYPER DQT       &hl RMEH Q   &hl LCG     W    &hl LCA    E    &hl LSC    R     &hl LAG       T                               &hr RAG     Y     &hr RSC    U     &kp           I      &kp          O    &kp           P    &kp        BACKSLASH
    &hl LHYPER HASH      &hl LMEH A   &hl LGUI    S    &hl LALT   D    &hl LSHFT  F     &hl LCTRL     G                               &hr RCTRL   H     &hr RSHFT  J     &hr RALT      K      &hr RGUI     L    &hr RMEH      SEMI &hr RHYPER DQT
-   &none                &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT      COMMA  &hr LGUI     DOT  &kp           FSLH &kp        SQT 
+   &leader              &hl LCA  Z   &hl RGUI    X    &hl RALT   C    &hl RSHFT  V     &hl RCTRL     B                               &hr LCTRL   N     &hr LSHFT  M     &hr LALT      COMMA  &hr LGUI     DOT  &kp           FSLH &kp        SQT 
                                                       &kp        ESC  &lt NAV    TAB   &kp           SPACE                           &kp         RET   &kp        DEL   &kp           BSPC 
                         >;
                 };
