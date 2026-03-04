@@ -63,7 +63,8 @@
 #define PUNC_TEC   27
 #define SUP_EDT    28
 #define SUP_HIS    29
-#define EMPTYLAYER 30
+#define IND        30
+#define EMPTYLAYER 31
 
 / {
   chosen {
@@ -235,29 +236,45 @@
 			grinning_face { sequence = <S G F>; bindings = <&uc UC_EMJ_GRINNING_FACE>; };
                 };
 
-		// --- HOME ROW: PRIMARY (A S D F | J K L ;) ---
-		HID_MORPH_6_IND(k13, P08_NUM,   P_OFF,  P0B_PMUT,  P01_SLP)   
-		HID_MORPH_6_IND(k14, P08_CAPS,  P_OFF,  P0B_HOOK,  P01_WAKE)  
-		HID_MORPH_6_IND(k15, P08_SCRL,  P_OFF,  P0B_RING,  P84_OVLD)  
-		HID_MORPH_6_IND(k16, P08_CMP,   P_OFF,  P0B_MSGT,  P84_HI_T)  
+		// --- HOME ROW: PRIMARY (Finger: Pinky -> Index) ---
+		// Format: Name, Base(08), GUI(59), Ctrl(0B), Alt(01/84/85)
 		
-		HID_MORPH_6_IND(k19, P08_KANA,  P_OFF,  P0B_HOLD,  P84_LO_V)  
-		HID_MORPH_6_IND(k20, P08_PWR,   P_OFF,  P08_DND,   P84_AW_P)  
-		HID_MORPH_6_IND(k21, P08_SHFT,  P_OFF,  P08_MUTE,  P85_B_REM) 
-		HID_MORPH_6_IND(k22, P08_TONE,  P_OFF,  P08_HSPD,  P85_B_CHG) 
+		// Left Hand (Keys 13, 14, 15, 16)
+		HID_MORPH_6_IND(k13, P08_NUM,   P59_ILLUM_EN,  P0B_PMUT,  P01_SLP)   // Key 13 (A)
+		HID_MORPH_6_IND(k14, P08_CAPS,  P59_ILLUM_AUT, P0B_HOOK,  P01_WAKE)  // Key 14 (S)
+		HID_MORPH_6_IND(k15, P08_SCRL,  P59_ILLUM_BRT, P0B_RING,  P84_OVLD)  // Key 15 (D)
+		HID_MORPH_6_IND(k16, P08_CMP,   P59_ILLUM_STP, P0B_MSGT,  P84_HI_T)  // Key 16 (F)
+		
+		// Right Hand (Keys 19, 20, 21, 22)
+		HID_MORPH_6_IND(k19, P08_KANA,  P59_ILLUM_UPT, P0B_HOLD,  P84_LO_V)  // Key 19 (J)
+		HID_MORPH_6_IND(k20, P08_PWR,   P59_ILLUM_CYC, P08_DND,   P84_AW_P)  // Key 20 (K)
+		HID_MORPH_6_IND(k21, P08_SHFT,  P59_ILL_SPD,   P08_MUTE,  P85_B_REM) // Key 21 (L)
+		HID_MORPH_6_IND(k22, P08_TONE,  P59_ILLUM_RED, P08_HSPD,  P85_B_CHG) // Key 22 (;)
 
-		// --- TOP ROW: SECONDARY (Q W E R | U I) ---
-		HID_MORPH_6_IND(k01, P08_LSPD,  P_OFF,  P08_NIT,   P_OFF)     
-		HID_MORPH_6_IND(k02, P08_GEN,   P_OFF,  P08_EXTP,  P_OFF)     
-		HID_MORPH_6_IND(k03, P08_FWD,   P_OFF,  P08_REV,   P_OFF)     
-		HID_MORPH_6_IND(k04, P08_STOP,  P_OFF,  P08_PAUS,  P_OFF)     
-		HID_MORPH_6_IND(k07, P08_BLOW,  P_OFF,  P08_BOK,   P_OFF)     
-		HID_MORPH_6_IND(k08, P08_BCHG,  P_OFF,  P08_MSGL,  P_OFF)     
+		// --- TOP ROW: SECONDARY (Q W E R | U I O P) ---
+		
+		// Left Hand (Keys 01, 02, 03, 04)
+		HID_MORPH_6_IND(k01, P08_LSPD,  P59_ILLUM_GRN, P08_NIT,   P_OFF)     // Key 01 (Q)
+		HID_MORPH_6_IND(k02, P08_GEN,   P59_ILLUM_BLU, P08_EXTP,  P_OFF)     // Key 02 (W)
+		HID_MORPH_6_IND(k03, P08_FWD,   P_OFF,         P08_REV,   P_OFF)     // Key 03 (E)
+		HID_MORPH_6_IND(k04, P08_STOP,  P_OFF,         P08_PAUS,  P_OFF)     // Key 04 (R)
+		
+		// Right Hand (Keys 07, 08, 09, 10)
+		HID_MORPH_6_IND(k07, P08_BLOW,  P_OFF,         P08_BOK,   P_OFF)     // Key 07 (U)
+		HID_MORPH_6_IND(k08, P08_BCHG,  P_OFF,         P08_MSGL,  P_OFF)     // Key 08 (I)
+		HID_MORPH_6_IND(k09, P_OFF,     P_OFF,         P_OFF,     P_OFF)     // Key 09 (O) - Reserved
+		HID_MORPH_6_IND(k10, P_OFF,     P_OFF,         P_OFF,     P_OFF)     // Key 10 (P) - Reserved
 
 		// --- BOTTOM ROW: TERTIARY (X C | /) ---
-		HID_MORPH_6_IND(k26, P14_AUX_B, P_OFF,  P14_AUX_S, P14_AUX_M) 
-		HID_MORPH_6_IND(k27, P85_B_DIS, P_OFF,  P85_B_REP, P_OFF)     
-		HID_MORPH_6_IND(k34, P_OFF,     P_OFF,  P_OFF,     P_CLR) // Reset
+		
+		HID_MORPH_6_IND(k26, P14_AUX_B, P_OFF,         P14_AUX_S, P14_AUX_M) // Key 26 (X)
+		HID_MORPH_6_IND(k27, P85_B_DIS, P_OFF,         P85_B_REP, P_OFF)     // Key 27 (C)
+		
+		// GLOBAL CLEAR (Safety Key)
+		// Hold Alt + Tap / (Key 34) to clear all HID indicators
+		HID_MORPH_6_IND(k34, P_OFF,     P_OFF,         P_OFF,     P_CLR)     // Key 34 (/)
+
+
 
 	};
 
@@ -722,21 +739,21 @@
                         >;
                 };
 
-
-
-        	ind_layer {
-                        display-name = "IND";
-            		// 0      1         2         3         4         5            6      7         8         9      10     11
-            		// 12     13        14        15        16        17           18     19        20        21     22     23
-            		// 24     25        26        27        28        29           30     31        32        33     34     35
-            		//                            36        37        38           39     40        41
-            	bindings = <
+		ind_layer {
+            		display-name = "IND"; // Sets the label on your Zen's E-Ink display
+            
+		    // 0      1         2         3         4         5            6      7         8         9      10     11
+		    // 12     13        14        15        16        17           18     19        20        21     22     23
+		    // 24     25        26        27        28        29           30     31        32        33     34     35
+		    //                            36        37        38           39     40        41
+            
+            bindings = <
 			&to 0     &k01_IND  &k02_IND  &k03_IND  &k04_IND  &none        &none    &k07_IND  &k08_IND  &none    &none    &none
 			&none     &k13_IND  &k14_IND  &k15_IND  &k16_IND  &none        &none    &k19_IND  &k20_IND  &k21_IND &k22_IND &none
 			&lgui     &none     &k26_IND  &k27_IND  &none     &none        &none    &none     &none     &none    &k34_IND &rgui
 						      &lalt     &lshift   &lctrl       &rctrl   &rshift   &ralt
-            		>;
-        	};
+            	    >;
+                };
 
 
                 empty_layer {

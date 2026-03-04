@@ -12,4 +12,5 @@
 #include "led_power_device.h"
 #include "led_battery_system_page.h"
 #include "led_auxilery_display.h"
+#include "illuminations.h"
 #include "hid_morh6_ind.h"
