@@ -1,19 +1,23 @@
 #pragma once
 
-/* * Telephony and Generic Desktop Page (0x0B & 0x01)
- * Formatted for HID_MORPH_6 Macro (Page ID State)
- * Note: &ind prefix removed for macro compatibility
+/* * Telephony (0x0B) and Generic Desktop (0x01)
+ * Split into _ON and _OFF for HID_MORPH_6_IND Macro
  */
 
-/* --- PAGE 0x0B: TELEPHONY SET/CLR PAIRS --- */
+/* --- PAGE 0x0B: TELEPHONY --- */
+#define P0B_PMUT_ON     0x0B 0x17 1
+#define P0B_PMUT_OFF    0x0B 0x17 0
+#define P0B_HOOK_ON     0x0B 0x18 1
+#define P0B_HOOK_OFF    0x0B 0x18 0
+#define P0B_RING_ON     0x0B 0x19 1
+#define P0B_RING_OFF    0x0B 0x19 0
+#define P0B_MSGT_ON     0x0B 0x1A 1
+#define P0B_MSGT_OFF    0x0B 0x1A 0
+#define P0B_HOLD_ON     0x0B 0x20 1
+#define P0B_HOLD_OFF    0x0B 0x20 0
 
-#define P0B_PMUT     0x0B 0x17 1 0x0B 0x17 0 // Phone Mute
-#define P0B_HOOK     0x0B 0x18 1 0x0B 0x18 0 // Off-Hook
-#define P0B_RING     0x0B 0x19 1 0x0B 0x19 0 // Ringing
-#define P0B_MSGT     0x0B 0x1A 1 0x0B 0x1A 0 // Message Waiting (Tel)
-#define P0B_HOLD     0x0B 0x20 1 0x0B 0x20 0 // Call Hold
-
-/* --- PAGE 0x01: GENERIC DESKTOP SET/CLR PAIRS --- */
-
-#define P01_SLP      0x01 0x82 1 0x01 0x82 0 // System Sleep
-#define P01_WAKE     0x01 0x83 1 0x01 0x83 0 // System Wake
+/* --- PAGE 0x01: GENERIC DESKTOP --- */
+#define P01_SLP_ON      0x01 0x82 1
+#define P01_SLP_OFF     0x01 0x82 0
+#define P01_WAKE_ON     0x01 0x83 1
+#define P01_WAKE_OFF    0x01 0x83 0

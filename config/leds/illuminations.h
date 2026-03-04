@@ -1,36 +1,26 @@
 #pragma once
 
 /* * HID Page 0x59: Lighting and Illumination
- * Format for HID_MORPH_6_IND: 
- * [UsagePage] [UsageID] [SetValue] [UsagePage] [UsageID] [ClearValue]
+ * Split into _ON and _OFF for HID_MORPH_6_IND Macro
  */
 
-// --- GLOBAL STATE ---
-// Enables or disables the entire Lamp Array (Physical LEDs)
-#define P59_ILLUM_EN    0x59 0x01 1 0x59 0x01 0 
-
-// Autonomous Mode: 1 = Keyboard Logic (Internal) 0 = Host Logic (Windows/OpenRGB)
-#define P59_ILLUM_AUT   0x59 0x02 1 0x59 0x02 0 
-
-// --- CONTROLS ---
-// Global Intensity/Brightness (Step Up / Reset)
-#define P59_ILLUM_BRT   0x59 0x03 1 0x59 0x03 0 
-
-// Animation/Effect Speed (Faster / Slower)
-#define P59_ILLUM_SPD   0x59 0x04 1 0x59 0x04 0 
-
-// Cycle through hardware-defined patterns
-#define P59_ILLUM_CYC   0x59 0x08 1 0x59 0x08 0 
-
-// Immediate Stop/Pause of current lighting effect
-#define P59_ILLUM_STP   0x59 0x06 1 0x59 0x06 0 
-
-// --- DESIGN UPDATES ---
-// Required by some OS drivers to "Commit" a new color design
-#define P59_ILLUM_UPT   0x59 0x07 1 0x59 0x07 0 
-
-// --- COLOR CHANNEL DIAGNOSTICS ---
-// Toggles for testing specific RGB lines
-#define P59_ILLUM_RED   0x59 0x20 1 0x59 0x20 0 
-#define P59_ILLUM_GRN   0x59 0x21 1 0x59 0x21 0 
-#define P59_ILLUM_BLU   0x59 0x22 1 0x59 0x22 0
+#define P59_ILLUM_EN_ON     0x59 0x01 1
+#define P59_ILLUM_EN_OFF    0x59 0x01 0
+#define P59_ILLUM_AUT_ON    0x59 0x02 1
+#define P59_ILLUM_AUT_OFF   0x59 0x02 0
+#define P59_ILLUM_BRT_ON    0x59 0x03 1
+#define P59_ILLUM_BRT_OFF   0x59 0x03 0
+#define P59_ILLUM_SPD_ON    0x59 0x04 1
+#define P59_ILLUM_SPD_OFF   0x59 0x04 0
+#define P59_ILLUM_STP_ON    0x59 0x06 1
+#define P59_ILLUM_STP_OFF   0x59 0x06 0
+#define P59_ILLUM_CYC_ON    0x59 0x08 1
+#define P59_ILLUM_CYC_OFF   0x59 0x08 0
+#define P59_ILLUM_RED_ON    0x59 0x20 1
+#define P59_ILLUM_RED_OFF   0x59 0x20 0
+#define P59_ILLUM_GRN_ON    0x59 0x21 1
+#define P59_ILLUM_GRN_OFF   0x59 0x21 0
+#define P59_ILLUM_BLU_ON    0x59 0x22 1
+#define P59_ILLUM_BLU_OFF   0x59 0x22 0
+#define P59_ILLUM_UPT_ON    0x59 0x07 1
+#define P59_ILLUM_UPT_OFF   0x59 0x07 0
