@@ -235,29 +235,29 @@
 			grinning_face { sequence = <S G F>; bindings = <&uc UC_EMJ_GRINNING_FACE>; };
                 };
 
-
-		/* Format: NAME, (None), (GUI), (Ctrl), (Alt) */
+		// --- HOME ROW: PRIMARY (A S D F | J K L ;) ---
+		HID_MORPH_6_IND(k13, P08_NUM,   P_OFF,  P0B_PMUT,  P01_SLP)   
+		HID_MORPH_6_IND(k14, P08_CAPS,  P_OFF,  P0B_HOOK,  P01_WAKE)  
+		HID_MORPH_6_IND(k15, P08_SCRL,  P_OFF,  P0B_RING,  P84_OVLD)  
+		HID_MORPH_6_IND(k16, P08_CMP,   P_OFF,  P0B_MSGT,  P84_HI_T)  
 		
-		// --- BLOCK 1: LED Page 08 Packed (None, Ctrl, Alt) ---
-		HID_MORPH_6_IND(k02, P08_NUM,  P_OFF, P08_CAPS, P08_SCRL) 
-		HID_MORPH_6_IND(k03, P08_CMP,  P_OFF, P08_KANA, P08_PWR) 
-		HID_MORPH_6_IND(k04, P08_SHFT, P_OFF, P08_DND,  P08_MUTE) 
-		HID_MORPH_6_IND(k05, P08_TONE, P_OFF, P08_HSPD, P08_LSPD) 
-		HID_MORPH_6_IND(k06, P08_BLOW, P_OFF, P08_BOK,  P08_BCHG) 
-		HID_MORPH_6_IND(k07, P08_MSGL, P_OFF, P08_NIT,  P08_GEN) 
-		HID_MORPH_6_IND(k08, P08_EXTP, P_OFF, P08_FWD,  P08_REV) 
-		HID_MORPH_6_IND(k09, P08_STOP, P_OFF, P08_PAUS, P_OFF)
+		HID_MORPH_6_IND(k19, P08_KANA,  P_OFF,  P0B_HOLD,  P84_LO_V)  
+		HID_MORPH_6_IND(k20, P08_PWR,   P_OFF,  P08_DND,   P84_AW_P)  
+		HID_MORPH_6_IND(k21, P08_SHFT,  P_OFF,  P08_MUTE,  P85_B_REM) 
+		HID_MORPH_6_IND(k22, P08_TONE,  P_OFF,  P08_HSPD,  P85_B_CHG) 
 
-		// --- BLOCK 2: Telephony, Desktop & Hardware Health ---
-		// Packing Phone (0B) and Power (84/85) into the high-priority modifier slots
-		HID_MORPH_6_IND(k10, P0B_PMUT, P_OFF, P0B_HOOK, P0B_RING)
-		HID_MORPH_6_IND(k11, P0B_MSGT, P_OFF, P0B_HOLD, P01_SLP)
-		HID_MORPH_6_IND(k12, P01_WAKE, P_OFF, P84_OVLD, P84_HI_T)
-		HID_MORPH_6_IND(k13, P84_LO_V, P_OFF, P84_AW_P, P85_B_REM)
-		HID_MORPH_6_IND(k14, P85_B_CHG, P_OFF, P85_B_DIS, P85_B_REP)
+		// --- TOP ROW: SECONDARY (Q W E R | U I) ---
+		HID_MORPH_6_IND(k01, P08_LSPD,  P_OFF,  P08_NIT,   P_OFF)     
+		HID_MORPH_6_IND(k02, P08_GEN,   P_OFF,  P08_EXTP,  P_OFF)     
+		HID_MORPH_6_IND(k03, P08_FWD,   P_OFF,  P08_REV,   P_OFF)     
+		HID_MORPH_6_IND(k04, P08_STOP,  P_OFF,  P08_PAUS,  P_OFF)     
+		HID_MORPH_6_IND(k07, P08_BLOW,  P_OFF,  P08_BOK,   P_OFF)     
+		HID_MORPH_6_IND(k08, P08_BCHG,  P_OFF,  P08_MSGL,  P_OFF)     
 
-		// --- BLOCK 3: Auxiliary Display ---
-		HID_MORPH_6_IND(k15, P14_AUX_B, P_OFF, P14_AUX_S, P14_AUX_M)
+		// --- BOTTOM ROW: TERTIARY (X C | /) ---
+		HID_MORPH_6_IND(k26, P14_AUX_B, P_OFF,  P14_AUX_S, P14_AUX_M) 
+		HID_MORPH_6_IND(k27, P85_B_DIS, P_OFF,  P85_B_REP, P_OFF)     
+		HID_MORPH_6_IND(k34, P_OFF,     P_OFF,  P_OFF,     P_CLR) // Reset
 
 	};
 
@@ -721,6 +721,23 @@
                                                        &trans         &kp LSHIFT       &trans                                               &trans            &kp RSHIFT         &trans 
                         >;
                 };
+
+
+
+        	ind_layer {
+                        display-name = "IND";
+            		// 0      1         2         3         4         5            6      7         8         9      10     11
+            		// 12     13        14        15        16        17           18     19        20        21     22     23
+            		// 24     25        26        27        28        29           30     31        32        33     34     35
+            		//                            36        37        38           39     40        41
+            	bindings = <
+			&to 0     &k01_IND  &k02_IND  &k03_IND  &k04_IND  &none        &none    &k07_IND  &k08_IND  &none    &none    &none
+			&none     &k13_IND  &k14_IND  &k15_IND  &k16_IND  &none        &none    &k19_IND  &k20_IND  &k21_IND &k22_IND &none
+			&lgui     &none     &k26_IND  &k27_IND  &none     &none        &none    &none     &none     &none    &k34_IND &rgui
+						      &lalt     &lshift   &lctrl       &rctrl   &rshift   &ralt
+            		>;
+        	};
+
 
                 empty_layer {
                         display-name = "empty";
