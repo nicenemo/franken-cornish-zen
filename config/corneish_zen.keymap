@@ -22,7 +22,7 @@
 #include "keys/combined_punctuation.h"
 #include "keys/combined_supplemental_punctuation.h"
 #include "keys/ulti_math.h"
-#inlcude "leds/leds.h"
+#include "leds/leds.h"
 
 #define COPILOT  LSGK(F23)
 // linux unicode input
