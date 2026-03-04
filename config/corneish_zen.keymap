@@ -22,6 +22,7 @@
 #include "keys/combined_punctuation.h"
 #include "keys/combined_supplemental_punctuation.h"
 #include "keys/ulti_math.h"
+#inlcude "leds/leds.h"
 
 #define COPILOT  LSGK(F23)
 // linux unicode input
@@ -233,6 +234,30 @@
 			/* --- EMOTICONS.H --- */
 			grinning_face { sequence = <S G F>; bindings = <&uc UC_EMJ_GRINNING_FACE>; };
                 };
+
+
+		/* Format: NAME, (None), (GUI), (Ctrl), (Alt) */
+		
+		// --- BLOCK 1: LED Page 08 Packed (None, Ctrl, Alt) ---
+		HID_MORPH_6_IND(k02, P08_NUM,  P_OFF, P08_CAPS, P08_SCRL) 
+		HID_MORPH_6_IND(k03, P08_CMP,  P_OFF, P08_KANA, P08_PWR) 
+		HID_MORPH_6_IND(k04, P08_SHFT, P_OFF, P08_DND,  P08_MUTE) 
+		HID_MORPH_6_IND(k05, P08_TONE, P_OFF, P08_HSPD, P08_LSPD) 
+		HID_MORPH_6_IND(k06, P08_BLOW, P_OFF, P08_BOK,  P08_BCHG) 
+		HID_MORPH_6_IND(k07, P08_MSGL, P_OFF, P08_NIT,  P08_GEN) 
+		HID_MORPH_6_IND(k08, P08_EXTP, P_OFF, P08_FWD,  P08_REV) 
+		HID_MORPH_6_IND(k09, P08_STOP, P_OFF, P08_PAUS, P_OFF)
+
+		// --- BLOCK 2: Telephony, Desktop & Hardware Health ---
+		// Packing Phone (0B) and Power (84/85) into the high-priority modifier slots
+		HID_MORPH_6_IND(k10, P0B_PMUT, P_OFF, P0B_HOOK, P0B_RING)
+		HID_MORPH_6_IND(k11, P0B_MSGT, P_OFF, P0B_HOLD, P01_SLP)
+		HID_MORPH_6_IND(k12, P01_WAKE, P_OFF, P84_OVLD, P84_HI_T)
+		HID_MORPH_6_IND(k13, P84_LO_V, P_OFF, P84_AW_P, P85_B_REM)
+		HID_MORPH_6_IND(k14, P85_B_CHG, P_OFF, P85_B_DIS, P85_B_REP)
+
+		// --- BLOCK 3: Auxiliary Display ---
+		HID_MORPH_6_IND(k15, P14_AUX_B, P_OFF, P14_AUX_S, P14_AUX_M)
 
 	};
 
