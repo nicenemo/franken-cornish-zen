@@ -6,6 +6,13 @@
  * * Logic: Uses Token Pasting to combine parameter names with _ON and _OFF
  */
 
+behaviors {
+        ind: hid_indicator_report {
+            compatible = "zmk,behavior-hid-indicator";
+            #binding-cells = <3>; // Page, Usage, Value
+        };
+    };
+
 #define HID_MORPH_6_IND(NAME, P_NONE, P_GUI, P_CTL, P_ALT) \
     / { \
         behaviors { \
